@@ -49,7 +49,7 @@
                                 <td><?php echo isset($user->date_last_login) ? date_sql_to_date($user->date_last_login) : lang('txt_never_login'); ?></td>
                             </tr>
                             <tr>
-                                <td><?php echo lang('txt_group'); ?></td>
+                                <td><?php echo lang('txt_user_group'); ?></td>
                                 <td>
                                 <?php 
                                 $arr =  explode(',', $user->group_name);

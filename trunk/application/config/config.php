@@ -372,6 +372,7 @@ $config['current_theme'] = 'admintasia_v1';
 
 $config['app_name'] = 'VinaICT';
 
+$config['timezone'] = 'Asia/Ho_Chi_Minh';
 //$config['external_apis'] = realpath(APPLICATION_PATH.'/../../external_apis');
 
 

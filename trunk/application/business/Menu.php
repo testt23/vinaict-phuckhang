@@ -16,11 +16,16 @@ class Menu extends Menu_model {
                     ON (menu.id_parent = parent_menu.id)
                     WHERE menu.disabled = ".IS_NOT_DISABLED;
         
-        if ($filter['name'])
+        if (isset($filter['name']) && $filter['name'])
             $sql .= " AND menu.name LIKE '%".$filter['name']."%'";
         
-        if ($filter['id_menu_parent'])
+        if (isset($filter['id_menu_parent']) && $filter['id_menu_parent'])
             $sql .= " AND menu.id_parent = ".$filter['id_menu_parent'];
+        
+        if (isset($filter['menu_type']) && $filter['menu_type'] == BO)
+            $sql .= " AND menu.type = ".BO;
+        else
+            $sql .= " AND menu.type = ".FO;
         
         $menu->query($sql);
         
@@ -28,7 +33,10 @@ class Menu extends Menu_model {
         
     }
 
-    public static function getMenuTree(&$array_menus = array(), $filter = array()) {
+    public static function getMenuTree(&$array_menus = array(), $filter = array(), $menu_type = false) {
+        
+        if (!$menu_type || $menu_type != FO)
+            $menu_type = BO;
         
         $menu = new Menu();
         
@@ -38,9 +46,7 @@ class Menu extends Menu_model {
             $menu->addWhere("menu.id_parent = ".$filter['parent_id']);
         }
         
-        if (isset ($filter['menu_type'])) {
-            $menu->addWhere("menu.type = ".$filter['menu_type']);
-        }
+        $menu->addWhere("menu.type = ".$menu_type);
         
         $menu->addWhere('menu.disabled = '.IS_NOT_DISABLED);
         $menu->orderBy('menu.position');
@@ -99,6 +105,7 @@ class Menu extends Menu_model {
         $mn->addSelect();
         $mn->addSelect("COUNT(*) count");
         $mn->addWhere("disabled = ".IS_NOT_DISABLED);
+        $mn->addWhere("type = ".$this->type);
 
         if (!$this->id_parent || $this->id_parent == "")
             $mn->addWhere("id_parent = 0");

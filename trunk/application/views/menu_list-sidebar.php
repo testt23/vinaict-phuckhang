@@ -1,7 +1,23 @@
+<script type="text/javascript">
+    function search() {
+        var name = document.getElementById("name");
+        var id_menu_parent = document.getElementById("id_menu_parent");
+        var menu_type = document.getElementById('menu_type');
+        var searchform = document.getElementById("searchform");
+        searchform.action = "?name="+name.value+"&id_menu_parent="+id_menu_parent.value+"&menu_type="+menu_type.value;
+        searchform.submit();
+    }
+    
+    function switchMenuType(menuType) {
+        var menu_type = document.getElementById('menu_type');
+        menu_type.value = menuType;
+        search();
+    }
+</script>
 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
                 <div class="portlet-header ui-widget-header"><?php echo lang('txt_searchbox'); ?></div>
                 <div class="portlet-content">
-                    <form action="" method="post">
+                    <form id="searchform" action="" method="post">
                         <ul>
                             <li>
                                 <label for="name"><?php echo lang('txt_menu_name'); ?></label>
@@ -21,7 +37,8 @@
                                 </div>
                             </li>
                             <li>
-                                <input type="submit" value="<?php echo lang('txt_search'); ?>" />
+                                <input type="hidden" id="menu_type" name="menu_type" value="<?php echo $filter['menu_type']; ?>" />
+                                <input type="button" onclick="search()" value="<?php echo lang('txt_search'); ?>" />
                             </li>
                         </ul>
                     </form>
@@ -34,7 +51,7 @@
                 <ul class="side-menu">
                         <li>
                             <span class="ui-icon ui-icon-triangle-1-e small-icon"></span>
-                            <a href="<?php echo base_url('menu/add'); ?>"><?php echo lang('txt_add_menu'); ?></a>
+                            <a href="<?php echo base_url('menu/add/'.$filter['menu_type']); ?>"><?php echo lang('txt_add_menu'); ?></a>
                         </li>
                 </ul>
         </div>
