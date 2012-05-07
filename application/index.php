@@ -164,7 +164,5 @@ include 'app_config.php';
  */
 require_once BASEPATH.'core/CodeIgniter'.EXT;
 
-date_default_timezone_set('Asia/Ho_Chi_Minh');
-
 /* End of file index.php */
 /* Location: ./index.php */

@@ -20,11 +20,13 @@ $lang['txt_detail']                     = 'Chi tiết';
 $lang['txt_save']                       = 'Lưu';
 $lang['txt_back']                       = 'Trở về';
 $lang['txt_dashboard']                  = 'Bảng điều khiển';
+$lang['txt_front_office']               = 'Trang mặt tiền';
+$lang['txt_back_office']                = 'Trang quản trị';
 
 /* User */
 $lang['txt_user']                       = 'Người dùng';
 $lang['txt_profile']                    = 'Thông tin cá nhân';
-$lang['txt_group']                      = 'Nhóm người dùng';
+$lang['txt_user_group']                 = 'Nhóm người dùng';
 $lang['txt_name']                       = 'Tên';
 $lang['txt_lastname']                   = 'Họ';
 $lang['txt_firstname']                  = 'Tên';

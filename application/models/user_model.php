@@ -19,6 +19,8 @@
 		var $work_phone;	//varchar(15)			NULL
 		var $mobile_phone;	//varchar(15)			NULL
 		var $address;	//varchar(255)			NULL
+		var $name;	//varchar(255)			NULL
+		var $is_business = 0;	//tinyint(1)			NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'int', 'null' => FALSE, 'auto_increment' => TRUE),
@@ -34,6 +36,8 @@
 			'home_phone' => array('type' => 'varchar', 'size' => 15, 'null' => TRUE),
 			'work_phone' => array('type' => 'varchar', 'size' => 15, 'null' => TRUE),
 			'mobile_phone' => array('type' => 'varchar', 'size' => 15, 'null' => TRUE),
-			'address' => array('type' => 'varchar', 'size' => 255, 'null' => TRUE)
+			'address' => array('type' => 'varchar', 'size' => 255, 'null' => TRUE),
+			'name' => array('type' => 'varchar', 'size' => 255, 'null' => TRUE),
+			'is_business' => array('type' => 'tinyint', 'null' => TRUE)
 		);
 	}
