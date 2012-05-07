@@ -152,7 +152,8 @@ class Menu extends Menu_model {
                     SET position = position - 1
                     WHERE position > $this->position
                     AND id_parent = $this->id_parent
-                    AND disabled = ".IS_NOT_DISABLED);
+                    AND disabled = ".IS_NOT_DISABLED."
+                    AND type = ".$this->type);
         
         $this->name = appendIdtoName($this->id, $this->name);
         $this->disabled = IS_DISABLED;

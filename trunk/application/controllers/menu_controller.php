@@ -106,6 +106,7 @@
                     $sql .= " AND id_parent = $menu->id_parent";
                 
                 $sql .= " AND disabled = ".IS_NOT_DISABLED;
+                $sql .= " AND type = ".$menu->type;
                 
                 $mn = new Menu();
                 $mn->query($sql);
@@ -123,12 +124,12 @@
         
         $menu_list = new Menu();
         $menu_list->addWhere('disabled = '.IS_NOT_DISABLED);
+        $menu_list->addWhere('type = '.$menu_type);
         $menu_list->find();
 
         $array_menus = array();
         $filter = array();
         $filter['parent_id'] = 0;
-        $filter['type'] = 1;
         Menu::getMenuTree($array_menus, $filter);
         
         $this->data['menu'] = $menu;
@@ -204,6 +205,7 @@
                         $sql .= " AND id_parent = $menu->id_parent";
 
                     $sql .= " AND disabled = ".IS_NOT_DISABLED;
+                    $sql .= " AND type = ".$menu->type;
                 
                     if ($menu->position != $mn->position) {
                         $mn->query($sql);
@@ -216,7 +218,8 @@
                             SET position = position - 1
                             WHERE position > $mn->position
                             AND id_parent = ".($mn->id_parent ? $mn->id_parent : 0)."
-                            AND disabled = ".IS_NOT_DISABLED;
+                            AND disabled = ".IS_NOT_DISABLED."
+                            AND type = ".$mn->type;
                     
                     $mn->query($sql);
                     
@@ -225,7 +228,8 @@
                             SET position = position + 1
                             WHERE position >= $menu->position
                             AND id_parent = ".($menu->id_parent ? $menu->id_parent : 0)."
-                            AND disabled = ".IS_NOT_DISABLED;
+                            AND disabled = ".IS_NOT_DISABLED."
+                            AND type = ".$menu->type;
                     
                     $mn->query($sql);
                 }
@@ -240,12 +244,12 @@
         
         $menu_list = new Menu();
         $menu_list->addWhere('disabled = '.IS_NOT_DISABLED);
+        $menu_list->addWhere('type = '.$menu->type);
         $menu_list->find();
 
         $array_menus = array();
         $filter = array();
         $filter['parent_id'] = 0;
-        $filter['type'] = 1;
         Menu::getMenuTree($array_menus, $filter);
         
         $this->data['menu'] = $menu;
