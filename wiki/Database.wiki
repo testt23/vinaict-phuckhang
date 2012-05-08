@@ -1,3 +1,5 @@
+{{{
+
 /* 2012-05-08: Truong: Issue 3 */
 
 ALTER TABLE `product` Engine=MyISAM auto_increment=1 comment='' row_format=Default charset=utf8 collate=utf8_unicode_ci;
@@ -14,3 +16,5 @@ CREATE TABLE `page` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `NewIndex1` (`link`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+}}}
