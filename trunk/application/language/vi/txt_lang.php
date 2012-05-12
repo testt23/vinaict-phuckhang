@@ -67,4 +67,15 @@ $lang['txt_add_menu']                   = 'Thêm menu mới';
 $lang['txt_edit_menu']                  = 'Sửa thông tin menu';
 $lang['txt_menu_detail']                = 'Thông tin chi tiết menu';
 
+/* Product */
+$lang['txt_product_list']               = 'Danh sách sản phẩm';
+$lang['txt_add_product']                = 'Thêm sản phẩm';
+$lang['txt_product_code']               = 'Mã sản phẩm';
+$lang['txt_product_name']               = 'Tên sản phẩm';
+$lang['txt_product_short_description']  = 'Mô tả ngắn';
+$lang['txt_product_price']              = 'Giá';
+$lang['txt_product_pic']                = 'Hình ảnh';
+$lang['txt_product_link']               = 'Link';
+$lang['txt_product_category']            = 'Loại';
+
 ?>
