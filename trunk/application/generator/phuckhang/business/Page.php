@@ -1,6 +1,6 @@
 <?php
 
-	class Task extends Task_model {
+	class Page extends Page_model {
 
 		function __construct() {
 			parent::__construct();

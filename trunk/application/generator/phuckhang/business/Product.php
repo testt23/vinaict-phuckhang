@@ -1,6 +1,6 @@
 <?php
 
-	class Assignment extends Assignment_model {
+	class Product extends Product_model {
 
 		function __construct() {
 			parent::__construct();

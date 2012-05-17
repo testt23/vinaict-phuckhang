@@ -1,6 +1,6 @@
 <?php
 
-    class User_controller extends CI_Controller {
+    class Webpage_controller extends CI_Controller {
 
     function __construct(){
         parent::__construct();
@@ -9,26 +9,25 @@
 
     function index(){
         
-        User::checkAccessable($this->session->userdata('userID'), 'user');
+        User::checkAccessable($this->session->userdata('userID'), 'webpage');
         $this->session->set_userdata('stored_url', selfURL());
 
-        $section = "user";
+        $section = "webpage";
         
         // Use for breadcrumb
         $cfer = new Cfer(array(
             lang('txt_dashboard') => base_url('dashboard'),
-            lang('txt_user') => base_url('user'))
+            lang('txt_webpage') => base_url('webpage'))
         );
         
         $filter = array();
-        $filter['name'] = $this->input->get_post('name');
-        $filter['id_group'] = $this->input->get_post('id_group');
+        $filter['title'] = $this->input->get_post('title');
+        $filter['content'] = $this->input->get_post('content');
+        $filter['keywords'] = $this->input->get_post('keywords');
         $filter[PAGINATION_QUERY_STRING_SEGMENT] = $this->input->get(PAGINATION_QUERY_STRING_SEGMENT);
-        $user = User::getList($filter, true);
-        $group = Group::getList();
+        $page = Page::getList($filter, true);
         
-        $this->data['user'] = $user;
-        $this->data['group'] = $group;
+        $this->data['page'] = $page;
         $this->data['filter'] = $filter;
 
         $array_menus = array();
@@ -39,7 +38,7 @@
         $this->data['cfer'] = $cfer;
         $this->data['array_menus'] = $array_menus;
         $this->data['section'] = $section;
-        $this->data['pagination'] = $user->pagination;
+        $this->data['pagination'] = $page->pagination;
         
         $this->load->view('main', $this->data);
     }

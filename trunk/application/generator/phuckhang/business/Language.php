@@ -1,6 +1,6 @@
 <?php
 
-	class Resource extends Resource_model {
+	class Language extends Language_model {
 
 		function __construct() {
 			parent::__construct();
