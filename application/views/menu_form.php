@@ -17,7 +17,7 @@
                                         <?php echo lang('txt_menu_name'); ?>
                                 </label>
                                 <div>
-                                        <input type="text" tabindex="1" maxlength="255" class="field text small" id="name" name="name" value="<?php echo $menu->name; ?>" />
+                                    <div id="name" name="name" class="field text small" type="text-multilang" lang="en vi" def-lang="vi" value="<?php echo $menu->name; ?>"></div>
                                 </div>
                         </li>
                         

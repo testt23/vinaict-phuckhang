@@ -18,6 +18,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Admintasia | Powerful backend admin user interface</title>
         <link href="<?php echo $theme_url; ?>css/style.css" rel="stylesheet" media="all" />
+        <link href="<?php echo base_url(); ?>css/common.css" rel="stylesheet" media="all" />
+        
+        <script type="text/javascript">
+            var lang_iso = new Array('en', 'vi');
+            var lang_name = new Array('English', 'Tiếng Việt');
+            
+        </script>
+        
         <script type="text/javascript" src="<?php echo $theme_url; ?>js/jquery-1.3.2.js"></script>
         <script type="text/javascript" src="<?php echo $theme_url; ?>js/superfish.js"></script>
         <script type="text/javascript" src="<?php echo $theme_url; ?>js/jquery-ui-1.7.2.js"></script>
