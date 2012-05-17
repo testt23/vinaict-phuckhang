@@ -1075,6 +1075,41 @@ function validateLang(element, function_name, args) {
     return true;
 }
 
+function getI18n(string, language_code)
+{
+    if (!language_code || language_code == '') {
+        language_code = 'en';
+    }
+
+    if (language_code.length == 2) {
+        language_code = language_code.toLowerCase();
+    }
+    // Try to find the chain in the string
+    
+    var exp = new RegExp("<"+language_code+">([^<]*)<\/"+language_code+">");
+    var matches = string.match(exp);
+    
+    if (matches[1]) {
+        var output_string = matches[1].replace("&lt;", "<");
+        output_string = output_string.replace("&gt;", ">");
+        return output_string;
+    }
+    
+    return string;
+}
+
+function switchLang(lang, id) {      
+      
+      for (i in lang_iso) {
+          $('#'+id+'_'+lang_iso[i]).attr('style','float:left;display:none');
+          $('#btn_'+id+'_'+lang_iso[i]).attr('style','opacity:0.3');
+      }
+      
+      $('#'+id+'_'+lang).attr('style','float:left;display:block');
+      $('#btn_'+id+'_'+lang).attr('style','opacity:1');
+      
+   }
+
 $(document).ready(function() {
    
    $('div.datepicker').each(function(){
@@ -1124,6 +1159,66 @@ $(document).ready(function() {
        minDate = $(this).attr('mindate') ? $(this).attr('mindate') : null;
        maxDate = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
        getDatePicker($(this).attr('id'), minDate, maxDate);
+   });
+   
+   $('div[type=text-multilang]').each(function(){
+       
+       if (!$(this).attr('lang') || $(this).attr('lang') == '')
+           $(this).attr('lang','en');
+       
+       var str_lang = $.trim($(this).attr('lang'));
+       var arr_lang = str_lang.split(" ");
+
+       var def_lang = $(this).attr('def-lang') ? $(this).attr('def-lang') : 'en';
+
+       for (var i = 0; i < arr_lang.length; i++) {
+           $(this).append('<input type="text" class="'+$(this).attr('class')+'" id="'+$(this).attr('id')+'_'+arr_lang[i]+'" name="'+$(this).attr('name')+'_'+arr_lang[i]+'" value="'+getI18n($(this).attr('value'), arr_lang[i])+'" style="float:left;display:'+(arr_lang[i] == def_lang ? 'block;' : 'none;')+'" />');
+       }
+       
+       for (var i = 0; i < arr_lang.length; i++) {
+           $(this).append('<a id="btn_'+$(this).attr('id')+'_'+arr_lang[i]+'" href="javascript:switchLang(\''+arr_lang[i]+'\', \''+$(this).attr('id')+'\')" class="lang-icon" '+(arr_lang[i] == def_lang ? 'style="opacity:1"' : 'style="opacity:0.3"')+'><img src="../../images/icons/'+arr_lang[i]+'.png" alt="'+lang_name[i]+'" /></a>');
+       }
+       
+       $(this).removeAttr('lang');
+       $(this).removeAttr('def-lang');
+
+        $(this).removeAttr('id');
+        $(this).removeAttr('name');
+        $(this).removeAttr('value');
+        $(this).removeAttr('class');
+        $(this).removeAttr('type');
+       
+   });
+   
+   $('div[type=textarea-multilang]').each(function(){
+       
+       if (!$(this).attr('lang') || $(this).attr('lang') == '')
+           $(this).attr('lang','en');
+       
+       var str_lang = $.trim($(this).attr('lang'));
+       var arr_lang = str_lang.split(" ");
+       var arr_lang_name = new Array('English', 'Tiếng Việt');
+
+       var def_lang = $(this).attr('def-lang') ? $(this).attr('def-lang') : 'en';
+
+       for (var i = 0; i < arr_lang.length; i++) {
+           $(this).append('<textarea class="'+$(this).attr('class')+'" id="'+$(this).attr('id')+'_'+arr_lang[i]+'" name="'+$(this).attr('name')+'_'+arr_lang[i]+'" style="float:left;display:'+(arr_lang[i] == def_lang ? 'block;' : 'none;')+'">'+getI18n($(this).attr('value'), arr_lang[i])+'</textarea>');
+       }
+       
+       for (var i = 0; i < arr_lang.length; i++) {
+           $(this).append('<a id="btn_'+$(this).attr('id')+'_'+arr_lang[i]+'" href="javascript:switchLang(\''+arr_lang[i]+'\', \''+$(this).attr('id')+'\')" class="lang-icon" '+(arr_lang[i] == def_lang ? 'style="opacity:1"' : 'style="opacity:0.3"')+'><img src="../../images/icons/'+arr_lang[i]+'.png" alt="'+arr_lang_name[i]+'" /></a>');
+       }
+       
+       $(this).removeAttr('lang');
+       $(this).removeAttr('def-lang');
+       
+
+        $(this).removeAttr('id');
+        $(this).removeAttr('name');
+        $(this).removeAttr('value');
+        $(this).removeAttr('class');
+        $(this).removeAttr('type');
+       
    });
 
 });
