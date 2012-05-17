@@ -1,5 +1,7 @@
 <?php
 
+/* User */
+
 $lang['err_empty_name']                     = 'Bạn chưa nhập tên';
 $lang['err_invalid_name']                   = 'Tên nhập vào không hợp lệ';
 $lang['err_name_wrong_format']              = 'Tên nhập vào bị sai định dạng';
@@ -18,6 +20,10 @@ $lang['err_password_too_long']              = 'Mật khẩu nhập vào quá dà
 $lang['err_password_too_short']             = 'Mật khẩu nhập vào quá ngắn';
 $lang['err_empty_confirm_password']         = 'Bạn chưa xác nhận mật khẩu';
 $lang['err_password_confirm_not_match']     = 'Mật khẩu xác nhận không khớp';
+
+
+/* Menu */
+
 $lang['err_empty_menu_name']                = 'Bạn chưa nhập Tên Menu';
 $lang['err_empty_uri']                      = 'Bạn chưa nhập URI';
 $lang['err_empty_position']                 = 'Bạn chưa nhập vị trí menu';
@@ -31,6 +37,19 @@ $lang['err_email_deactivated']              = 'Tài khoản người dùng này 
 $lang['err_empty_email_or_password']        = 'Xin vui lòng nhập đầy đủ email và mật khẩu';
 $lang['err_email_not_exist']                = 'Địa chỉ email này không tồn tại';
 $lang['err_wrong_email_or_password']        = 'Email hoặc mật khẩu đăng nhập sai';
+
+/* Page */
+
+$lang['err_empty_title']                    = 'Bạn chưa nhập tiêu đề';
+$lang['err_empty_content']                  = 'Bạn chưa nhập nội dung';
+$lang['err_title_wrong_format']             = 'Tiêu đề nhập vào sai định dạng';
+$lang['err_content_wrong_format']           = 'Nội dung nhập vào sai định dạng';
+$lang['err_invalid_title']                  = 'Tiêu đề không hợp lệ';
+$lang['err_invalid_content']                = 'Nội dung không hợp lệ';
+$lang['err_empty_url']                      = 'Bạn chưa nhập URL';
+$lang['err_invalid_url']                    = 'URL không hợp lệ';
+$lang['err_title_too_long']                 = 'Tiêu đề quá dài';
+$lang['err_url_too_long']                   = 'URL quá dài';
 
 ?>
 
