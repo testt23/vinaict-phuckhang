@@ -85,7 +85,16 @@
         
         if ($act == ACT_SUBMIT) {
             
-            $menu->name = $this->input->post('name');
+            $lang = Language::getList();
+            
+            while($lang->fetchNext()) {
+                
+                if ($this->input->post('name_'.$lang->code)) {
+                    $menu->name .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('name_'.$lang->code)).'</'.$lang->code.'>';
+                }
+                
+            }
+            
             $menu->link = utf8_escape_textarea($this->input->post('link'));
             $menu->id_parent = $this->input->post('id_menu_parent');
             $menu->position = $this->input->post('position') == "0" ? 0 : $this->input->post('position');
@@ -169,7 +178,18 @@
         
         if ($act == ACT_SUBMIT) {
             
-            $menu->name = $this->input->post('name');
+            $lang = Language::getList();
+            
+            $menu->name = '';
+            
+            while($lang->fetchNext()) {
+                
+                if ($this->input->post('name_'.$lang->code)) {
+                    $menu->name .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('name_'.$lang->code)).'</'.$lang->code.'>';
+                }
+                
+            }
+            
             $menu->link = utf8_escape_textarea($this->input->post('link'));
             $menu->section = utf8_escape_textarea($this->input->post('section'));
             $menu->id_parent = $this->input->post('id_menu_parent') ? $this->input->post('id_menu_parent') : 0;

@@ -1077,6 +1077,10 @@ function validateLang(element, function_name, args) {
 
 function getI18n(string, language_code)
 {
+    if (!string) {
+        string = '';
+    }
+    
     if (!language_code || language_code == '') {
         language_code = 'en';
     }
@@ -1089,24 +1093,24 @@ function getI18n(string, language_code)
     var exp = new RegExp("<"+language_code+">([^<]*)<\/"+language_code+">");
     var matches = string.match(exp);
     
-    if (matches[1]) {
-        var output_string = matches[1].replace("&lt;", "<");
-        output_string = output_string.replace("&gt;", ">");
-        return output_string;
+    if (matches) {
+        //var output_string = matches[1].replace("&lt;", "<");
+        //output_string = output_string.replace("&gt;", ">");
+        return matches[1];
     }
     
     return string;
 }
 
-function switchLang(lang, id) {      
+function switchLang(lang, name) {      
       
       for (i in lang_iso) {
-          $('#'+id+'_'+lang_iso[i]).attr('style','float:left;display:none');
-          $('#btn_'+id+'_'+lang_iso[i]).attr('style','opacity:0.3');
+          $('#'+name+'_'+lang_iso[i]).attr('style','float:left;display:none');
+          $('#btn_'+name+'_'+lang_iso[i]).attr('style','opacity:0.3');
       }
       
-      $('#'+id+'_'+lang).attr('style','float:left;display:block');
-      $('#btn_'+id+'_'+lang).attr('style','opacity:1');
+      $('#'+name+'_'+lang).attr('style','float:left;display:block');
+      $('#btn_'+name+'_'+lang).attr('style','opacity:1');
       
    }
 
@@ -1176,7 +1180,7 @@ $(document).ready(function() {
        }
        
        for (var i = 0; i < arr_lang.length; i++) {
-           $(this).append('<a id="btn_'+$(this).attr('id')+'_'+arr_lang[i]+'" href="javascript:switchLang(\''+arr_lang[i]+'\', \''+$(this).attr('id')+'\')" class="lang-icon" '+(arr_lang[i] == def_lang ? 'style="opacity:1"' : 'style="opacity:0.3"')+'><img src="../../images/icons/'+arr_lang[i]+'.png" alt="'+lang_name[i]+'" /></a>');
+           $(this).append('<a id="btn_'+$(this).attr('name')+'_'+arr_lang[i]+'" href="javascript:switchLang(\''+arr_lang[i]+'\', \''+$(this).attr('name')+'\')" class="lang-icon" '+(arr_lang[i] == def_lang ? 'style="opacity:1"' : 'style="opacity:0.3"')+'><img src="../../images/icons/'+arr_lang[i]+'.png" alt="'+lang_name[i]+'" /></a>');
        }
        
        $(this).removeAttr('lang');
@@ -1206,7 +1210,7 @@ $(document).ready(function() {
        }
        
        for (var i = 0; i < arr_lang.length; i++) {
-           $(this).append('<a id="btn_'+$(this).attr('id')+'_'+arr_lang[i]+'" href="javascript:switchLang(\''+arr_lang[i]+'\', \''+$(this).attr('id')+'\')" class="lang-icon" '+(arr_lang[i] == def_lang ? 'style="opacity:1"' : 'style="opacity:0.3"')+'><img src="../../images/icons/'+arr_lang[i]+'.png" alt="'+arr_lang_name[i]+'" /></a>');
+           $(this).append('<a id="btn_'+$(this).attr('name')+'_'+arr_lang[i]+'" href="javascript:switchLang(\''+arr_lang[i]+'\', \''+$(this).attr('name')+'\')" class="lang-icon" '+(arr_lang[i] == def_lang ? 'style="opacity:1"' : 'style="opacity:0.3"')+'><img src="../../images/icons/'+arr_lang[i]+'.png" alt="'+lang_name[i]+'" /></a>');
        }
        
        $(this).removeAttr('lang');
