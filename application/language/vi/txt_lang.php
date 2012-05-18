@@ -79,5 +79,14 @@ $lang['txt_product_pic']                = 'Hình ảnh';
 $lang['txt_product_link']               = 'Link';
 $lang['txt_product_category']           = 'Nhóm sản phẩm';
 
+/* Web page */
+$lang['txt_web_page']                   = 'Trang web';
+$lang['txt_title']                      = 'Tiêu đề';
+$lang['txt_content']                    = 'Nội dung';
+$lang['txt_keyword']                    = 'Từ khóa';
+$lang['txt_status']                     = 'Trạng thái';
+$lang['txt_publishing']                 = 'Đang hiển thị';
+$lang['txt_disabled']                   = 'Đang ẩn';
+$lang['txt_link']                       = 'Liên kết';
 
 ?>

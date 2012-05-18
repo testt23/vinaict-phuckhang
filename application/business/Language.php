@@ -8,6 +8,8 @@
                 
                 function getList() {
                     $lang = new Language();
+                    $lang->addSelect();
+                    $lang->addSelect('*');
                     $lang->find();
                     return $lang;
                 }
