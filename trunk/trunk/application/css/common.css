@@ -1,0 +1,8 @@
+.lang-icon {
+    float: left;
+    margin-left: 5px;
+}
+
+tr.row-disabled td {
+    color: #E0E0E0;
+}
