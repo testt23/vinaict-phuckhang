@@ -10,7 +10,6 @@
     function index(){
         
         User::checkAccessable($this->session->userdata('userID'), 'user');
-        $this->session->set_userdata('stored_url', selfURL());
 
         $section = "user";
         
@@ -49,7 +48,7 @@
 	User::checkAccessable($this->session->userdata('userID'), 'user/change_password');
         $section = 'user_form';
         
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('user');
+        $back = base_url('user');
 	
         $cfer = new Cfer(array(
             lang('txt_dashboard') => base_url('dashboard'),
@@ -100,7 +99,7 @@
     function delete($id = null) {
         
         User::checkAccessable($this->session->userdata('userID'), 'user/delete');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('user');
+        $back = base_url('user');
         
         $user = new User();
 
@@ -116,7 +115,7 @@
     function add() {
         
         User::checkAccessable($this->session->userdata('userID'), 'user/add');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('user');
+        $back = base_url('user');
         $section = 'user_form';
         
         $cfer = new Cfer(array(
@@ -187,7 +186,7 @@
     function edit($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'user/edit');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('user');
+        $back = base_url('user');
         $section = 'user_form';
         
         $cfer = new Cfer(array(

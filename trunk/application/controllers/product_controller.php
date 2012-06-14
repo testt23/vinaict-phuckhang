@@ -12,7 +12,6 @@
         $section = "product";
         
         User::checkAccessable($this->session->userdata('userID'), "product");
-        $this->session->set_userdata('stored_url', selfURL());
         
         // Use for breadcrumb
         $cfer = new Cfer(array(
@@ -47,7 +46,7 @@
     function toggleStatus($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'product/toggleStatus');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         
         $product = new Product();
         
@@ -62,7 +61,7 @@
     function delete($id = null) {
         
         User::checkAccessable($this->session->userdata('userID'), 'product/delete');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         
         $product = new Product();
 
@@ -78,7 +77,7 @@
     function add() {
         
         User::checkAccessable($this->session->userdata('userID'), 'product/add');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         $section = 'product_form';
         
         $cfer = new Cfer(array(
@@ -168,7 +167,7 @@
     function edit($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'product/edit');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         $section = 'product_form';
         
         $cfer = new Cfer(array(
@@ -271,7 +270,7 @@
     function detail($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'product/detail');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         $section = 'product_detail';
         
         $cfer = new Cfer(array(
@@ -333,7 +332,7 @@
     
     function deleteImage($image_id, $id_product) {
         
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         User::checkAccessable($this->session->userdata('userID'), 'product/deleteImage');
         
         $product = new Product();
@@ -355,7 +354,7 @@
     
     function setDefaultImage($image_id, $id_product) {
         
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         User::checkAccessable($this->session->userdata('userID'), 'product/setDefaultImage');
         
         $product = new Product();
@@ -378,7 +377,7 @@
     
     function recreateImage($image_id, $id_product) {
         
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('product');
+        $back = base_url('product');
         User::checkAccessable($this->session->userdata('userID'), 'product/recreateImage');
         
         $product = new Product();

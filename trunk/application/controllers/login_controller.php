@@ -8,7 +8,7 @@
 
         function index(){
             
-            $redirect = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('dashboard');
+            $redirect = base_url('dashboard');
             
             if ($this->session->userdata('userID')) {
                 
@@ -18,7 +18,6 @@
                     
                     if (User::getPermission($user->id)) {
                         if ($this->session->userdata('last_login_id') != $this->session->userdata('userID')) {
-                            $this->session->unset_userdata('stored_url');
                             $redirect = base_url('dashboard');
                         }
                         $this->session->set_userdata('logged_email', $user->email);
@@ -77,8 +76,7 @@
                                 // Reset login attempts
                                 User::resetLoginAttempts($acces->email);
                                 
-								if ($this->session->userdata('last_login_id') != $this->session->userdata('userID')) {
-                                    $this->session->unset_userdata('stored_url');
+                                if ($this->session->userdata('last_login_id') != $this->session->userdata('userID')) {
                                     $redirect = base_url('dashboard');
                                 }
                                 // Redirect user to use the system
@@ -118,10 +116,6 @@
 
         function logout(){
             
-            $stored_url = $this->session->userdata('stored_url');
-            $stored_url = removeQueryString($stored_url, 'errmsg');
-            $stored_url = removeQueryString($stored_url, 'errtype');
-            $this->session->set_userdata('stored_url', $stored_url);
             $this->session->set_userdata('last_login_id', $this->session->userdata('userID'));
             $this->session->unset_userdata('userID');
             $this->session->unset_userdata('logged_email');

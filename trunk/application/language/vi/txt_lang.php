@@ -157,5 +157,5 @@ $lang['txt_shipping_at_billing_address']  = 'Nhận hàng tại địa chỉ tha
 $lang['txt_contact_person']             = 'Người liên hệ';
 $lang['txt_mr']                         = 'Ông';
 $lang['txt_ms']                         = 'Bà';
-$lang['txt_position']                   = 'Chức vụ';
+$lang['txt_job_position']               = 'Chức vụ';
 $lang['txt_career']                     = 'Nghề nghiệp';

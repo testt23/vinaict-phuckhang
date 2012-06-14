@@ -10,7 +10,6 @@
     function index(){
         
         User::checkAccessable($this->session->userdata('userID'), 'menu');
-        $this->session->set_userdata('stored_url', selfURL());
 
         $section = "menu_list";
         
@@ -51,7 +50,7 @@
     function delete($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'menu/delete');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('menu');
+        $back = base_url('menu');
         
         $menu = new Menu();
 
@@ -71,7 +70,7 @@
         
         
         User::checkAccessable($this->session->userdata('userID'), 'menu/add');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('menu');
+        $back = base_url('menu');
         $section = 'menu_form';
         
         $cfer = new Cfer(array(
@@ -155,7 +154,7 @@
     function edit($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'menu/edit');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('menu');
+        $back = base_url('menu');
         $section = 'menu_form';
         
         $cfer = new Cfer(array(

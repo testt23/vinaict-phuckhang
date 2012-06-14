@@ -12,7 +12,6 @@
 		function index(){
 			
                     User::checkAccessable($this->session->userdata('userID'), 'customer');
-                    $this->session->set_userdata('stored_url', selfURL());
 
                     $section = "customer";
 
@@ -50,7 +49,7 @@
 		function add() {
         
                     User::checkAccessable($this->session->userdata('userID'), 'customer/add');
-                    $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('customer');
+                    $back = base_url('customer');
                     $section = 'customer_form';
 
                     $cfer = new Cfer(array(
@@ -147,7 +146,7 @@
                 function edit($id) {
         
                     User::checkAccessable($this->session->userdata('userID'), 'customer/edit');
-                    $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('customer');
+                    $back = base_url('customer');
                     $section = 'customer_form';
                     
                     if (!$id)
@@ -253,7 +252,7 @@
                 function delete($id = null) {
         
                     User::checkAccessable($this->session->userdata('userID'), 'customer/delete');
-                    $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('customer');
+                    $back = base_url('customer');
 
                     $customer = new Customer();
 

@@ -10,7 +10,6 @@
     function index(){
         
         User::checkAccessable($this->session->userdata('userID'), 'webpage');
-        $this->session->set_userdata('stored_url', selfURL());
 
         $section = "webpage";
         
@@ -44,7 +43,7 @@
     function toggleStatus($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'webpage/toggleStatus');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('webpage');
+        $back = base_url('webpage');
         
         $page = new WebPage();
         
@@ -59,7 +58,7 @@
     function delete($id = null) {
         
         User::checkAccessable($this->session->userdata('userID'), 'webpage/delete');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('webpage');
+        $back = base_url('webpage');
         
         $page = new WebPage();
 
@@ -75,7 +74,7 @@
     function add() {
         
         User::checkAccessable($this->session->userdata('userID'), 'webpage/add');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('webpage');
+        $back = base_url('webpage');
         $section = 'webpage_form';
         
         $cfer = new Cfer(array(
@@ -141,7 +140,7 @@
     function edit($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'webpage/edit');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('webpage');
+        $back = base_url('webpage');
         $section = 'webpage_form';
         
         $cfer = new Cfer(array(

@@ -10,8 +10,6 @@
     function index(){
         
         User::checkAccessable($this->session->userdata('userID'), 'user');
-        
-        $this->session->set_userdata('stored_url', selfURL());
 
         $section = "dashboard";
         
