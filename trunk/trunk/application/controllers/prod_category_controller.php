@@ -10,7 +10,6 @@
     function index(){
         
         User::checkAccessable($this->session->userdata('userID'), 'prod_category');
-        $this->session->set_userdata('stored_url', selfURL());
 
         $section = "prod_category";
         
@@ -55,7 +54,7 @@
     function delete($id = null) {
         
         User::checkAccessable($this->session->userdata('userID'), 'prod_category/delete');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('prod_category');
+        $back = base_url('prod_category');
         
         $prod_category = new ProductCategory();
 
@@ -71,7 +70,7 @@
     function add() {
         
         User::checkAccessable($this->session->userdata('userID'), 'prod_category/add');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('prod_category');
+        $back = base_url('prod_category');
         $section = 'prod_category_form';
         
         $cfer = new Cfer(array(
@@ -153,7 +152,7 @@
     function edit($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'prod_category/edit');
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('prod_category');
+        $back = base_url('prod_category');
         $section = 'prod_category_form';
         
         $cfer = new Cfer(array(
@@ -256,7 +255,7 @@
     
     function recreateImage($image_id, $id_product_category) {
         
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('prod_category');
+        $back = base_url('prod_category');
         User::checkAccessable($this->session->userdata('userID'), 'prod_category/recreateImage');
         
         $prod_category = new ProductCategory();
@@ -292,7 +291,7 @@
     
     function deleteImage($image_id, $id_prod_category) {
         
-        $back = $this->session->userdata('stored_url') ? $this->session->userdata('stored_url') : base_url('prod_category');
+        $back = base_url('prod_category');
         User::checkAccessable($this->session->userdata('userID'), 'prod_category/deleteImage');
         
         $prod_category = new ProductCategory();

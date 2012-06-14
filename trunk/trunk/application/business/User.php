@@ -355,16 +355,10 @@ class User extends User_model {
 			
 			if (!$perm || $perm == '') {
                             
-                            $ci =& get_instance();
-                            
-                            if ($stored_url = $ci->session->userdata('stored_url'))
-                                redirect($stored_url, null, null, lang('msg_not_granted_this_page'), MSG_ERROR);
-                            else {
-                                $perm = User::getPermission($user->id, 'dashboard');
-                                
-                                if ($perm && $perm != '') {
-                                    redirect(base_url('dashboard'), null, null, lang('msg_not_granted_this_page'), MSG_ERROR);
-                                }
+                            $perm = User::getPermission($user->id, 'dashboard');
+
+                            if ($perm && $perm != '') {
+                                redirect(base_url('dashboard'), null, null, lang('msg_not_granted_this_page'), MSG_ERROR);
                             }
                             
                             redirect('login/logout');
