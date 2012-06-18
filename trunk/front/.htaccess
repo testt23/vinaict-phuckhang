@@ -1,0 +1,11 @@
+Options +FollowSymlinks
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^products/([\_\.a-zA-Z0-9\-\/\_]+)(.html)$ index.php?url=products/detail/$1 [L]
+RewriteRule ^products/([\_\.a-zA-Z0-9\-\/\_]+)(/)?$ index.php?url=products/category/$1 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)$ index.php?url=$1 [L]
+

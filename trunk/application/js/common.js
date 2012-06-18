@@ -735,7 +735,7 @@ checkMSIE();
 	});
  }
 
-function callFunction(func, agrs, rettype, errmsg)
+function ajaxCallFunction(func, agrs, rettype, errmsg)
 {
     var ret = '';
 
@@ -747,9 +747,9 @@ function callFunction(func, agrs, rettype, errmsg)
         params = params + "&VAL"+i+"="+encodeURIComponent(agrs[i]);
     }
 
-    jQuery.ajax({
+    ret = jQuery.ajax({
         type: "GET",
-        url: site_url+'validator/ajax_callfunction',
+        url: site_url+'ajax/callFunction',
         data: params,
         dataType: rettype,
         cache: false,
@@ -761,7 +761,7 @@ function callFunction(func, agrs, rettype, errmsg)
             if (errmsg != '')
                 alert(errmsg);
         }
-    });
+    }).responseText;
 
     if (ret == 'ajax_timeout') {
         redirect(site_url+'login/login/');
@@ -990,7 +990,7 @@ $.fn.editplace = function(args){
                     $.each(opts.data, function(i, j){
                         arg.push(j);
                     });
-	                var data = callFunction(opts.url,arg,'json');
+	                var data = ajaxCallFunction(opts.url,arg,'json');
 	                if(data.response) {
 	                    hideFn();
                         item.text(data.value);
@@ -1091,7 +1091,7 @@ function validateLang(element, function_name, args) {
                 }
                 agr.push(trim(name_langue.value));
                 agr.push(trim(code));
-                if(callFunction(function_name,agr) )
+                if(ajaxCallFunction(function_name,agr) )
                 {
                     message = err_2.replace("[LANGUAGE]", '&lt;'+code+'&gt;');
                     showErrorBubble(name_langue, message);

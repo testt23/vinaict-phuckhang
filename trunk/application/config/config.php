@@ -378,7 +378,7 @@ $config['timezone'] = 'Asia/Ho_Chi_Minh';
 $config['external_apis'] = './../external_apis/';
 
 $config['upload_path'] = './../uploads/';
-$config['allowed_types'] = 'gif|jpg|png';
+$config['allowed_types'] = 'gif|jpg|png|jpeg';
 $config['max_size']	= '4194304'; // 4MB
 $config['max_width']  = '1024';
 $config['max_height']  = '768';

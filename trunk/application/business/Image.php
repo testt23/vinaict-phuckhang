@@ -14,12 +14,26 @@
                  */
                 function upload($field, $group_code, $data) {
                     
+                    $ci =& get_instance();
+                    
                     $config = array();
-                    $config['upload_path'] = realpath(config_item('upload_path')).'/images/'.$group_code.'/';
+                    
+                    $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images/';
+                    
+                    $config['upload_path'] = realpath($upload_path).$group_code.'/';
                     $img_size = ImageGroup::getImageSizeData($group_code);
                     
                     if (!file_exists($config['upload_path'])) {
+                        $ci->load->helper('file');
                         mkdir($config['upload_path']);
+                        write_file($config['upload_path'].'index.html', '<html>
+                                                                            <head>
+                                                                                    <title>403 Forbidden</title>
+                                                                            </head>
+                                                                            <body>
+                                                                                <p>Directory access is forbidden.</p>
+                                                                            </body>
+                                                                        </html>');
                     }
                     
                     $config['allowed_types'] = config_item('allowed_types');
@@ -31,8 +45,6 @@
                     $config['image_library'] = config_item('image_library');
                     $config['maintain_ratio'] = config_item('maintain_ratio');
                     $config['group_code'] = $group_code;
-
-                    $ci =& get_instance();
                     
                     $ci->load->library('upload', $config);
 
@@ -209,6 +221,161 @@
                     
                     return false;
                     
+                }
+                
+                public static function getImageByCode($code) {
+                    
+                    $img = new Image();
+                    $img->addWhere("code = '$code'");
+                    $img->addSelect();
+                    $img->addSelect('*');
+                    $img->find();
+                    $img->fetchNext();
+                    
+                    return $img->id ? $img : FALSE;
+                    
+                }
+
+
+                function getImageSizes() {
+                    
+                    $image_group = new ImageGroup();
+                    $image_group->get($this->id_image_group);
+                    
+                    $image_sizes = ImageGroup::getImageSizeData($image_group->code);
+                    
+                    if ($this->file && $this->file != '') {
+                        
+                        $image_size = array();
+
+                        foreach ($image_sizes as $code => $size) {
+                            $image_size[] = $code;
+                        }
+                        
+                        return $image_size;
+                        
+                    }
+                    
+                    return false;
+                    
+                }
+                
+                public static function getImageGalleryTree($folder_name = '') {
+                    
+                    $dir = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
+                    $dir = realpath($dir).($folder_name == '' ? '' : '/'.$folder_name);
+                    
+                    $files = preg_grep('/^([^.])/', scandir($dir));
+                    
+                    $arr_files = array();
+                    
+                    $ci =& get_instance();
+                    $ci->load->helper('string');
+                    
+                    foreach($files as $file) {
+                        
+                        if (is_dir($dir."/".$file)) {
+                            
+                            $image_group = ImageGroup::getImageGroup($file);
+                            $name = !empty($image_group->name) ? $image_group->name : $file;
+                            $childs = self::getImageGalleryTree($file);
+                            
+                            if (count($childs) > 0) {
+                                foreach($childs as $key => $child) {
+                                    $child['path'] = $file.'/'.$child['path'];
+                                    $childs[$key] = $child;
+                                }
+                            }
+                            
+                            $arr_files[] = array('id' => random_string('unique'), 'code' => $file, 'name' => $name, 'folder' => $file, 'path' => $file, 'is_dir' => TRUE, 'childs' => count($childs) > 0 ? $childs : FALSE);
+                            
+                        }
+                        else {
+                            
+                            $file_info = pathinfo($file);
+                            $extension = $file_info['extension'];
+                            
+                            $file_allowed = explode('|', config_item('allowed_types'));
+                            
+                            if (in_array($extension, $file_allowed)) {
+                                
+                                $segment = explode('.', $file);
+                                $segment = $segment[0];
+                                $segment = explode('_', $segment);
+
+                                $code = $segment[0];
+
+                                if ($image = Image::getImageByCode($code)) {
+                                    $name = $image->name;
+                                    $description = $image->description;
+                                    $creation_date = $image->creation_date;
+                                }
+                                else {
+                                    $name = $file;
+                                    $description = '';
+                                    $creation_date = '';
+                                }
+
+                                if (isset($segment[1]) && !empty($segment[1])) {
+                                    $img_size = ImageSize::getImageSizeByCode($segment[1]);
+                                    $name .= " ($img_size->name)";
+                                }
+
+                                $arr_files[] = array('id' => random_string('unique'), 'code' => $code, 'name' => $name, 'file' => $file, 'path' => $file, 'description' => $description, 'creation_date' => $creation_date, 'is_dir' => FALSE);
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    return $arr_files;
+                    
+                }
+                
+                public static function renderFolderTrees($folder_name = '') {
+                    
+                    $files = self::getImageGalleryTree($folder_name);
+                    
+                    $folder_tree = '';
+        
+                    foreach($files as $key => $file) {
+                        $folder_tree .= Image::getFolderTreeString($file);
+                    }
+                    
+                    return $folder_tree;
+                    
+                }
+                
+                public static function getFolderTreeString($folder) {
+        
+                    $str = '';
+
+                    $class = $folder['is_dir'] ? 'folder' : 'file';
+                    $aclass = $folder['is_dir'] ? 'folder-link' : 'file-link';
+                    $f = $folder['is_dir'] ? 'foldername="'.$folder['folder'].'"' : 'filename="'.$folder['file'].'"';
+                    $cdate = $folder['is_dir'] ? '' : 'cdate="'.$folder['creation_date'].'"';
+                    $description = $folder['is_dir'] ? '' : 'description="'.$folder['description'].'"';
+
+                    $str .= '<li id="'.$folder['id'].'"><span class="'.$class.'"><a href="#'.$folder['id'].'" class="'.$aclass.'" '.$f.' path="'.$folder['path'].'" '.$description.' '.$cdate.' >'.$folder['name'].'</a></span>';
+
+                    if ($folder['is_dir'] === TRUE) {
+                        if (count($folder['childs']) > 0) {
+                            $str .= '<ul>';
+                            
+                            foreach ($folder['childs'] as $child) {
+                                $str .= self::getFolderTreeString($child);
+                            }
+                            
+                            $str .= '</ul>';
+                        }
+                    }
+
+                    $str .= '</li>';
+
+
+                    return $str;
+
                 }
                 
 	}
