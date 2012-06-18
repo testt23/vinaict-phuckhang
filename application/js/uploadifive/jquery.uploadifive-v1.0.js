@@ -56,7 +56,7 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                     'simUploadLimit'  : 0,                  // The maximum number of files to upload at once
                     'truncateLength'  : 0,                  // The length to truncate the file names to
                     'uploadLimit'     : 0,                  // The maximum number of files you can upload
-                    'uploadScript'    : 'uploadifive.php',  // The path to the upload script
+                    'uploadScript'    : site_url+"image/uploadifive/"+image_group_code,  // The path to the upload script
                     'width'           : 100,                // The width of the button
 
                     /*

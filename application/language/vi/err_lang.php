@@ -52,10 +52,10 @@ $lang['err_title_too_long']                 = 'Tiêu đề quá dài';
 $lang['err_url_too_long']                   = 'URL quá dài';
 
 /* Image */
-$lang['err_invalid_picture']                = 'Bạn chưa upload file hình ảnh';
+$lang['err_invalid_picture']                = 'File hình ảnh không hợp lệ';
 $lang['err_wrong_file_dimension']           = 'Kích thước file hình ảnh lớn hơn kích thước tối đa cho phép';
 $lang['err_wrong_file_size']                = 'Xin vui lòng chỉ upload file dưới 4Mb';
-$lang['err_wrong_file_type']                = 'Xin vui lòng chỉ upload file JPG, PNG, GIF';
+$lang['err_wrong_file_type']                = 'Xin vui lòng chỉ upload file JPG, PNG, GIF, JPEG';
 
 /* Product */
 $lang['err_empty_product_code']             = 'Bạn chưa nhập mã sản phẩm';

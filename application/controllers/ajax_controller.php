@@ -1,6 +1,6 @@
 <?php
 
-class Dashboard_controller extends CI_Controller {
+class Ajax_controller extends CI_Controller {
 
     function callFunction() {
         
@@ -25,7 +25,7 @@ class Dashboard_controller extends CI_Controller {
         }
 
         $val = new JqueryValidator();
-        echo $val->callFunction($objectfunction, $agrs);
+        echo $val->ajaxCallFunction($objectfunction, $agrs);
         die();
         
     }

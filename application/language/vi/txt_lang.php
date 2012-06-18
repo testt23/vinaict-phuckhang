@@ -159,3 +159,8 @@ $lang['txt_mr']                         = 'Ông';
 $lang['txt_ms']                         = 'Bà';
 $lang['txt_job_position']               = 'Chức vụ';
 $lang['txt_career']                     = 'Nghề nghiệp';
+
+/* Image Gallery */
+$lang['txt_image_gallery']              = 'Thư viện ảnh';
+$lang['txt_upload_image']               = 'Upload hình ảnh';
+$lang['txt_creation_date']              = 'Ngày tạo';
