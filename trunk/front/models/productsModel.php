@@ -12,52 +12,19 @@ class ProductsModel extends Model {
         $sql2 .= " join product_category c on p.id_primary_prod_category = c.id ";
         $sql2 .= " where c.link = '" . $name . "'";
         $tongO = $this->Db->getObject($sql2);
-
         $current_page = $page;
         if (($page * 1) == 0) {
             $current_page = 1;
         }
-        $limit = 24;
+        $limit = PAGING_LIMIT;
         $start = ( $current_page - 1 ) * $limit;
-        
-
         $total_page = ceil($tongO->tong / $limit);
-
-        $s = '';
-        if ($total_page == 2) {
-            $s .= '<a href="#">1</a>';
-        } elseif ($total_page > 2) {
-            $min = 1;
-            $max = 2;
-            $chia = $max / 2;
-            if ($current_page <= $chia) {
-                $min = $min;
-                $max = $max;
-            } else if ($current_page >= $total_page - $chia) {
-                $min = $total_page - ($max - 1);
-                $max = $total_page;
-            } else {
-                $min = $current_page - ($chia);
-                $max = $current_page + ($chia) - 1;
-            }
-
-            if ($current_page > 1) {
-                $s .='<a href="(*)/' . ($current_page - 1) . '">Prev</a>';
-            }
-            for ($i = $min; $i <= $max; $i++) {
-                $s .='<a href="(*)/' . $i . '">' . $i . '</a>';
-            }
-            if ($current_page < $total_page) {
-                $s .= '<a href="(*)/' . ($current_page + 1) . '">Next</a>';
-            }
-        }
-
         $sql = " select  p.name, p.id,  p.id_prod_image, i.file, c.link as clink, p.link as plink";
         $sql .= " from product as p join image i on  p.id_def_image = i.id ";
         $sql .= " join product_category c on p.id_primary_prod_category = c.id ";
         $sql .= " where c.link = '" . $name . "' order by p.id DESC limit " . $start . ',' . $limit;
 
-        $arr['paging'] = $s;
+        $arr['paging'] = paging_html($total_page, $current_page, PAGING_RANGE);
         $arr['list'] = $this->Db->getList($sql);
         return $arr;
     }
@@ -78,8 +45,8 @@ class ProductsModel extends Model {
             $listImage = $Object->id_prod_image;
 
             if ($listImage != null) {
-                $sql2 = "select * from image where id in ('" . $listImage . "')";
-                
+                $sql2 = "select * from image where id in (" . $listImage . ")";
+                echo $sql2;
                 $image = $this->Db->getList($sql2);
             }
         }

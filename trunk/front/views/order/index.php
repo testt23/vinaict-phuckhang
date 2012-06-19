@@ -1,6 +1,11 @@
 <script language="javascript">
     $(document).ready(function(){
-        
+        jQuery('#list tr td a').click(function(){
+            if (confirm('Bạn có muốn xóa sản phẩm này ?')){
+                return true;
+            }
+            return false;
+        });
     });
 </script>
 
@@ -22,10 +27,10 @@
             ?>
     
             <tr>
-                <td><img src="<?php echo IMAGE_PATH; ?>together/b.jpg" width="80" height="50" alt="" /></td>
-                <td>Tủ đồ dùng</td>
-                <td>002</td>
-                <td><b style="color:#F00">Call</b></td>
+                <td><img src="<?php echo $List[$i]->getImage(); ?>" width="80" height="50" alt="" /></td>
+                <td><?php echo $List[$i]->getTensanpham(); ?></td>
+                <td><?php echo $List[$i]->getMasanpham(); ?></td>
+                <td><b style="color:#F00"><?php echo $List[$i]->getGiasanpham(); ?></b></td>
                 <td><b style="color:#F00"><?php echo $List[$i]->getSoluong(); ?></b></td>
                 <td><a href="<?php echo URL; ?>order/delete/<?php echo $List[$i]->getMasanpham() .''; ?>">Delete</a></td>
             </tr>

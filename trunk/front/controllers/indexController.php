@@ -10,9 +10,10 @@ class IndexController extends Controller{
         }
     }
     public function index($page=false){
-        echo $page;
         $list = $this->model->list_new_product($page);
-        $this->view->list = $list;
+        $this->view->list = $list['list'];
+        $this->view->paging = $list['paging'];
+        
         $this->view->render('index/index');   
     }
 }
