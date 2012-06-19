@@ -3,5 +3,7 @@
 $keysController = array(
     'san-pham' => 'products',
     'product' => 'products',
-    'home' => 'index'
+    'gioi-thieu' => 'about',
+    'trang-chu' => 'index',
+    'lienhe' => 'contact'
 );

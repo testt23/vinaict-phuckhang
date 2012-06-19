@@ -9,9 +9,22 @@
 
     <body>
         <div id="header">
-            <div id="logo">
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>together/Logo.png" alt="" /></a>
+            <div id="language-wrapper">
+                <form method="post" action="" id="form-en">
+                    <input type="hidden" value="en" name="display-lang"/>
+                    <input id="lang-en" type="submit" value="" name="language"/>
+                </form>
+                    <form method="post" action="" id="form-vi">
+                        <input type="hidden" value="vi" name="display-lang"/>
+                        <input id="lang-vi" type="submit" value="" name="language"/>
+                    </form>
+                
             </div>
+            <div id="logo">
+                <a href="<?php echo URL; ?>"><img src="<?php echo IMAGE_PATH; ?>together/Logo.png" alt="" /></a>
+                
+            </div>
+            
             <div id="menu">
                 <ul>
                     
@@ -22,10 +35,20 @@
                     $totalMenu = count($Menu);
                     ?>
                     <?php for ($i = 0; $i < $totalMenu; $i++): ?>
-                    <li><a href="<?php echo URL .$Menu[$i]->link; ?>"><?php echo getI18n($Menu[$i]->name,'en'); ?></a></li>
+                    <li><a href="<?php echo URL .$Menu[$i]->link; ?>"><?php echo getI18n($Menu[$i]->name,$_SESSION['language']); ?></a></li>
                     <?php endfor; ?>
                 </ul>
             </div>
         </div>
         <div id="container">
       
+<?php
+
+if(isset($_POST['language'])){
+    if (isset($_POST['display-lang'])){
+        $lang = $_POST['display-lang'];
+        $_SESSION['language'] = $lang;
+        header("Location: #".$lang);
+    }
+}
+?>

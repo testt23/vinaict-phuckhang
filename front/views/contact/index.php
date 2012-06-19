@@ -1,9 +1,64 @@
-<form method="post" action="<?php echo URL; ?>/contact/send">
+
+
+<script language="javascript">
+    $(document).ready(function(){
+        function trim(str){
+            var start = 0;
+            var end = str.length;
+            while (start < str.length && str.charAt(start) == ' ') start++;
+            while (end > 0 && str.charAt(end-1) == ' ') end--;
+            return str.substr(start, end-start);
+        }
+        function KiemTra_Email(value) {
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!filter.test(value)) {
+                return false;
+            }
+            return true;
+        }
+        
+        jQuery('#form_contact').submit(function(){
+            <?php 
+                $flag = 'no';
+                Session::init();
+                if (Session::isHave('giohang')){
+                    if (Session::get('giohang') != '' && Session::get('giohang') != null){
+                        $flag = 'yes';
+                    }
+                }
+            ?>
+            var flag = "<?php echo $flag; ?>";
+            if (trim(jQuery('#name').val()) == ''){
+                alert('<?php echo getI18n(JS_TYPE_NAME, $_SESSION['language']); ?>');
+                return false;
+            }else if(trim(jQuery('#email').val()) == ''){
+                alert('<?php echo getI18n(JS_TYPE_EMAIL, $_SESSION['language']); ?>');
+                return false;
+            }else if(!KiemTra_Email(jQuery('#email').val())){
+                alert('<?php echo getI18n(JS_TYPE_EMAIL_FORTMAT, $_SESSION['language']); ?>');
+                return false;
+            }else{
+                if (flag == 'yes'){
+                    if (trim(jQuery('#address').val()) == ''){  
+                        alert('<?php echo getI18n(JS_TYPE_ADDRESS, $_SESSION['language']); ?>');
+                        return false;
+                    }else if(trim(jQuery('#phone').val()) == ''){
+                        alert('<?php echo getI18n(JS_TYPE_PHONE, $_SESSION['language']); ?>');
+                        return false;
+                    }
+                }
+            }
+            return true;
+        });
+    });
+</script>
+
+<form method="post" action="<?php echo URL; ?>/contact/send" id="form_contact">
     <table width="400" cellspacing="30" id="form">
         <tr>
-            <td>Xin chào</td>
+            <td><?php echo getI18n(HI, $_SESSION['language']); ?></td>
             <td id="contact-table">
-                <input type="radio" value="mr" name="general"/> 
+                <input type="radio" value="mr" name="general" checked="true"/> 
                 Mr
                 <input type="radio" value="mrs" name="general" /> 
                 Mrs
@@ -11,35 +66,35 @@
                 Miss</td>
         </tr>
         <tr>
-            <td colspan="2">vui lòng điền thông tin của bạn vào đây.</td>
+            <td colspan="2"><?php echo getI18n(FIRST, $_SESSION['language']); ?>.</td>
         </tr>
 
         <tr>
-            <td>HỌ TÊN</td>
-            <td><input type="text" name="name" value="" /></td>
+            <td><?php echo getI18n(FULL_NAME, $_SESSION['language']); ?></td>
+            <td><input type="text" name="name" value="" id="name" /></td>
         </tr>
         <tr>
-            <td>ĐỊA CHỈ</td>
-            <td><input type="text" name="address" value=""/></td>
+            <td><?php echo getI18n(ADDRESS, $_SESSION['language']); ?></td>
+            <td><input type="text" name="address" value="" id="address"/></td>
         </tr>
         <tr>
-            <td>EMAIL</td>
-            <td><input type="text" name="email" value="" /></td>
+            <td><?php echo getI18n(EMAIL, $_SESSION['language']); ?></td>
+            <td><input type="text" name="email" value="" id="email" /></td>
         </tr>
         <tr>
-            <td>SỐ ĐIỆN THOẠI</td>
-            <td><input type="text" name="phone" value=""/></td>
+            <td><?php echo getI18n(PHONE_NUMBER, $_SESSION['language']); ?></td>
+            <td><input type="text" name="phone" value="" id="phone"/></td>
         </tr>
         <tr>
-            <td>NỘI DUNG</td>
+            <td><?php echo getI18n(DESCRIPTION, $_SESSION['language']); ?></td>
             <td>
-                <textarea name="noidung" style="border: solid 1px;"></textarea>
+                <textarea name="noidung" style="border: solid 1px;" id="noidung"></textarea>
             </td>
         </tr>
         <tr >
             <td colspan="2" align="center" style="text-align: center;" >
-                <input class="button-s" type="reset" value="Nhập lại" name="reset-form" />
-                <input class="button-s" type="submit" value="Gữi" name="submit-form" style="margin-left: 20px;" />
+                <input class="button-s" type="reset" value="<?php echo getI18n(RE_TYPE, $_SESSION['language']); ?>" name="reset-form" />
+                <input id="submit-form" class="button-s" type="submit" value="<?php echo getI18n(SEND, $_SESSION['language']); ?>" name="submit-form" style="margin-left: 20px;" />
             </td>
         </tr>
     </table>

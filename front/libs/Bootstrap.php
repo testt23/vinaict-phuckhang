@@ -3,6 +3,10 @@
 class Bootstrap {
 
     function __construct() {
+        !Session::init();
+        if (!Session::isHave('language')){
+            $_SESSION['language'] = 'vi';
+        }
         $url = isset($_GET['url'])? $_GET['url']: null;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
@@ -11,6 +15,7 @@ class Bootstrap {
         if (empty ($url[0])){
             $url[0] = 'index';
         }
+        //var_dump($url);
         $file_controllers =  'controllers/' . $url[0] . 'Controller.php';
 
         if (file_exists($file_controllers))
@@ -36,22 +41,16 @@ class Bootstrap {
                 
             }else{
                 $controllers->index();
-            }
-            
+            }   
         }
         else
         {
-            $error_file = 'controllers/errorController.php';
-            if (file_exists($error_file))
-            {
-                require $error_file;
-                $errorController = new ErrorController();
-                $errorController->index();
-            }
-            else
-            {
-                echo '<h1>There are some thing error! please check again.</h1>';
-            }
+            
+                require 'controllers/indexController.php';
+                $controllers = new IndexController();
+                $controllers->loadModel('index');
+                $controllers->index(false);
+                
         }
     }
     function error(){

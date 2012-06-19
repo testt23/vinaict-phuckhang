@@ -96,9 +96,9 @@
 table tr td{text-align:center}
 #image{
     width:600px;
-    height:480px;
+    
     float:left;
-    margin:15px 0}
+    margin:15px 0px 20px 0px;}
 #info{float:left}
 #order{width:180px;
        height:31px;
@@ -270,4 +270,37 @@ overflow: hidden;
 .paging a:hover{
     text-decoration: underline;
     background: green;
+}
+
+.paging a.page-active{
+    background: green;
+}
+
+
+#language-wrapper{
+    float:right;
+    width: 300px;
+    margin: 20px 0px 0px 0px;
+}
+#language-wrapper input{
+    cursor: pointer;
+    display: inline;
+    background: red;
+    width: 20px;
+    height: 15px;
+}
+#language-wrapper input#lang-en{
+    background:url(../images/together/en.jpg) no-repeat top left;
+}
+#language-wrapper input#lang-vi{
+    background:url(../images/together/vi.jpg) no-repeat top left;
+}
+#language-wrapper form{
+    width: 20px;
+    display: inline;
+}
+
+.but-language-vi{
+    
+    background:url(../images/together/vi.jpg) no-repeat top left;
 }
