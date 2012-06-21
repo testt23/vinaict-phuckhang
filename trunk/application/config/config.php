@@ -378,6 +378,7 @@ $config['timezone'] = 'Asia/Ho_Chi_Minh';
 $config['external_apis'] = './../external_apis/';
 
 $config['upload_path'] = './../uploads/';
+$config['source_image'] = './../uploads/images/';
 $config['allowed_types'] = 'gif|jpg|png|jpeg';
 $config['max_size']	= '4194304'; // 4MB
 $config['max_width']  = '1024';
@@ -389,6 +390,19 @@ $config['create_thumb'] = FALSE;
 $config['maintain_ratio'] = TRUE;
 $config['width'] = 10000;
 $config['height'] = 10000;
+
+$config['wm_text'] = 'Copyright 2012 - VinaICT';
+$config['wm_type'] = 'text';
+$config['wm_font_path'] = './system/fonts/texb.ttf';
+$config['wm_font_size'] = '16';
+$config['wm_font_color'] = 'ffffff';
+$config['wm_vrt_alignment'] = 'bottom';
+$config['wm_hor_alignment'] = 'center';
+$config['wm_padding'] = '20';
+$config['wm_overlay_path'] = '../uploads/images/icon/watermark.png';
+$config['wm_opacity'] = 50;
+$config['wm_shadow_color'] = 'ffffff';
+$config['wm_shadow_distance'] = 3;
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

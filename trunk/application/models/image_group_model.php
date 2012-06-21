@@ -6,15 +6,17 @@
 		protected $__dbconf = 'default';
 
 		var $id;	//smallint(3) unsigned	Primary Key	Auto Increment	NOT NULL
-		var $code;	//varchar(10)			NOT NULL
+		var $code;	//varchar(20)			NOT NULL
 		var $name;	//varchar(400)			NOT NULL
 		var $id_image_size;	//varchar(5)			NOT NULL
+		var $use_wm = 0;	//tinyint(1) unsigned			NOT NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'smallint', 'null' => FALSE, 'auto_increment' => TRUE),
-			'code' => array('type' => 'varchar', 'size' => 10, 'null' => FALSE),
+			'code' => array('type' => 'varchar', 'size' => 20, 'null' => FALSE),
 			'name' => array('type' => 'varchar', 'size' => 400, 'null' => FALSE),
-			'id_image_size' => array('type' => 'varchar', 'size' => 5, 'null' => FALSE)
+			'id_image_size' => array('type' => 'varchar', 'size' => 5, 'null' => FALSE),
+			'use_wm' => array('type' => 'tinyint', 'null' => FALSE)
 		);
 
 		protected $__relation = array(

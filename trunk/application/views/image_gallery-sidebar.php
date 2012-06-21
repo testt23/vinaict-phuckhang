@@ -4,7 +4,7 @@
                 <ul class="side-menu">
                         <li>
                             <span class="ui-icon ui-icon-triangle-1-e small-icon"></span>
-                            <a href="#" onclick="validate()"><b><?php echo lang('txt_upload_image'); ?></b></a>
+                            <a href="#" id="openUploadBox"><b><?php echo lang('txt_upload_image'); ?></b></a>
                         </li>
                 </ul>
         </div>

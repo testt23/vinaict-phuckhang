@@ -63,11 +63,61 @@ class Image_controller extends CI_Controller {
 
                 $this->upload->file_ext = '.'.$fileParts['extension'];
                 $targetFile = $this->upload->set_filename($uploadDir, $tempFile);
+                $target_file_name = $targetFile;
                 $targetFile = $uploadDir . $targetFile;
 
                 // Save the file
                 move_uploaded_file($tempFile,$targetFile);
-                echo 1;
+                
+                $group_code = str_replace('/', '', $group_code);
+                $img_group = ImageGroup::getImageGroup($group_code);
+                
+                if ($img_group && $img_group->use_wm) {
+                    Image::watermark($upload_path.$group_code.'/'.$target_file_name);
+                    // Need a warning message when system cannot process watermark
+                }
+                
+                $config['group_code'] = $group_code;
+                $config['source_image'] = $target_file_name;
+                
+                $img_size = ImageGroup::getImageSizeData($group_code);
+                
+                foreach ($img_size as $code => $value) {
+                   
+                    $config['new_image'] = str_replace(array('.jpg','.png','.gif'), array('_'.$code.'.jpg', '_'.$code.'.png', '_'.$code.'.gif'), strtolower($target_file_name));
+                            
+                    if ($value && $value !="") {
+                        $size = explode('x', $value['size']);
+                        $config['width'] = trim($size[0]) != '' ? trim($size[0]) : config_item('width');
+                        $config['height'] = trim($size[1]) != '' ? trim($size[1]) : config_item('height');
+                    }
+
+                    $str_config = urlencode(serialize($config));
+
+                    $img_processing_result = file_get_contents(base_url('image/process?config='.$str_config));
+
+                    if (strpos(trim($img_processing_result), '[0]') !== FALSE) {
+                        $message = str_replace('[0]', '', trim($img_processing_result));
+
+                        // Return warning message
+                        if ($message != '')
+                            $str_warning = '[WARNING]'.$message;
+                        
+                    }
+                    
+                    $data = array('name' => date('d-m-Y H:i:s', gmt_to_local(time(), config_item('timezone'))), 'description' => '');
+                    
+                    $image = new Image();
+                    $image->code = $image->code && trim($image->code) != '' ? $image->code : preg_replace("/.jpg|.png|.gif/", '', strtolower($target_file_name));
+                    $image->name = $image->name && trim($image->name) != '' ? $image->name : $data['name'];
+                    $image->description = $image->description && trim($image->description) != '' ? $image->description : $data['description'];
+                    $image->file = strtolower($target_file_name);
+                    $image->id_image_group = $img_group->id;
+                    $image->insert();
+                    
+                }
+                
+                echo '1'.(isset($str_warning) ? $str_warning : '');
 
             } else {
 
