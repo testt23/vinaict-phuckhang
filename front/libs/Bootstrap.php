@@ -15,7 +15,7 @@ class Bootstrap {
         if (empty ($url[0])){
             $url[0] = 'index';
         }
-        //var_dump($url);
+        var_dump($url);
         $file_controllers =  'controllers/' . $url[0] . 'Controller.php';
 
         if (file_exists($file_controllers))

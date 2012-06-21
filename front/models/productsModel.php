@@ -23,7 +23,10 @@ class ProductsModel extends Model {
         $sql .= " from product as p join image i on  p.id_def_image = i.id ";
         $sql .= " join product_category c on p.id_primary_prod_category = c.id ";
         $sql .= " where c.link = '" . $name . "' order by p.id DESC limit " . $start . ',' . $limit;
-
+        
+        var_dump($sql);
+        
+        
         $arr['paging'] = paging_html($total_page, $current_page, PAGING_RANGE);
         $arr['list'] = $this->Db->getList($sql);
         return $arr;
@@ -37,7 +40,9 @@ class ProductsModel extends Model {
     }
 
     public function detail($catename = false, $productname = false) {
+        var_dump($productname);
         $sql1 = "select p.currency, p.id, p.name,  p.id_def_image, p.description, p.link, p.id_prod_image, p.price , p.currency, i.file, c.link as clink from product as p join image as i on p.id_def_image = i.id join product_category as c on c.id = p.id_primary_prod_category where c.link = '" . $catename . "' and p.link = '" . $productname . "'";
+
         $Object = $this->Db->getObject($sql1);
         $image = '';
         if ($Object != '' && $Object != null) {
