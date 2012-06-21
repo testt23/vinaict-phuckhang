@@ -18,9 +18,9 @@
                     
                     $config = array();
                     
-                    $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images/';
+                    $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
                     
-                    $config['upload_path'] = realpath($upload_path).$group_code.'/';
+                    $config['upload_path'] = realpath($upload_path).'/'.$group_code.'/';
                     $img_size = ImageGroup::getImageSizeData($group_code);
                     
                     if (!file_exists($config['upload_path'])) {
@@ -54,6 +54,14 @@
                         
                         $config['source_image'] = $img['file_name'];
                         unset($config['upload_path']);
+                        
+                        $img_group = ImageGroup::getImageGroup($group_code);
+
+                        if ($img_group && $img_group->use_wm) {
+                            
+                            Image::watermark($upload_path.'/'.$group_code.'/'.$config['source_image']);
+                            
+                        }
                         
                         foreach ($img_size as $code => $value) {
                             
@@ -360,7 +368,7 @@
                     $str .= '<li id="'.$folder['id'].'"><span class="'.$class.'"><a href="#'.$folder['id'].'" class="'.$aclass.'" '.$f.' path="'.$folder['path'].'" '.$description.' '.$cdate.' >'.$folder['name'].'</a></span>';
 
                     if ($folder['is_dir'] === TRUE) {
-                        if (count($folder['childs']) > 0) {
+                        if (is_array($folder['childs']) && count($folder['childs']) > 0) {
                             $str .= '<ul>';
                             
                             foreach ($folder['childs'] as $child) {
@@ -376,6 +384,61 @@
 
                     return $str;
 
+                }
+                
+                public static function watermark($image_path = '') {
+                    
+                    if (!defined('WM_ENABLED') || !WM_ENABLED) {
+                        MessageHandler::add(lang('err_watermark_disabled'), MSG_ERROR, MESSAGE_ONLY);
+                        return false;
+                    }
+                    
+                    if ($image_path == '') {
+                        MessageHandler::add(lang('err_invalid_source_image'), MSG_ERROR, MESSAGE_ONLY);
+                        return false;
+                    }
+                    
+                    if (!file_exists(realpath($image_path))) {
+                        MessageHandler::add(lang('err_image_source_not_found'), MSG_ERROR, MESSAGE_ONLY);
+                        return false;
+                    }
+                    
+                    $config = array();
+                    $config['image_library'] = config_item('image_library');
+                    $config['source_image'] = $image_path;
+                    $config['wm_type'] = defined('WM_TYPE') ? WM_TYPE : config_item('wm_type');
+                    $config['wm_vrt_alignment'] = defined('WM_VRT_ALIGNMENT') ? WM_VRT_ALIGNMENT : config_item('wm_vrt_alignment');
+                    $config['wm_hor_alignment'] = defined('WM_HOR_ALIGNMENT') ? WM_HOR_ALIGNMENT : config_item('wm_hor_alignment');
+                    
+                    if ($config['wm_type'] == 'overlay') {
+                        $config['wm_overlay_path'] = defined('WM_OVERLAY_PATH') ? WM_OVERLAY_PATH : config_item('wm_overlay_path');
+                        $config['wm_opacity'] = defined('WM_OPACITY') ? WM_OPACITY : config_item('wm_opacity');
+                        
+                        if (!file_exists(realpath($config['wm_overlay_path']))) {
+                            MessageHandler::add(lang('err_overlay_not_found'), MSG_ERROR, MESSAGE_ONLY);
+                            return false;
+                        }
+                    }
+                    else {
+                        $config['wm_text'] = defined('WM_TEXT') ? WM_TEXT : config_item('wm_text');
+                        $config['wm_font_path'] = defined('WM_FONT_PATH') ? WM_FONT_PATH : config_item('wm_font_path');
+                        $config['wm_font_size'] = defined('WM_FONT_SIZE') ? WM_FONT_SIZE : config_item('wm_font_size');
+                        $config['wm_font_color'] = defined('WM_FONT_COLOR') ? WM_TEXT : config_item('wm_font_color');
+                        $config['wm_shadow_color'] = defined('WM_SHADOW_COLOR') ? WM_SHADOW_COLOR : config_item('wm_shadow_color');
+                        $config['wm_shadow_distance'] = defined('WM_SHADOW_DISTANCE') ? WM_SHADOW_DISTANCE : config_item('wm_shadow_distance');
+                        
+                        if (!file_exists(realpath($config['wm_font_path']))) {
+                            MessageHandler::add(lang('err_font_not_found'), MSG_ERROR, MESSAGE_ONLY);
+                            return false;
+                        }
+                    }
+                    
+                    $ci =& get_instance();
+                    $ci->load->library('image_lib');
+                    $ci->image_lib->initialize($config);
+                    $ci->image_lib->watermark();
+                    return true;
+                    
                 }
                 
 	}

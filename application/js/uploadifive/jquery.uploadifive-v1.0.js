@@ -46,7 +46,7 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                     'fileSizeLimit'   : 0,                  // Maximum allowed size of files to upload
                     'fileType'        : false,              // Type of files allowed (image, etc)
                     'formData'        : {},                 // Additional data to send to the upload script
-                    'height'          : 30,                 // The height of the button
+                    'height'          : 24,                 // The height of the button
                     'method'          : 'post',             // The method to use when submitting the upload
                     'multi'           : true,               // Set to true to allow multiple file selections
                     'overrideEvents'  : [],                 // An array of events to override
@@ -56,8 +56,8 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                     'simUploadLimit'  : 0,                  // The maximum number of files to upload at once
                     'truncateLength'  : 0,                  // The length to truncate the file names to
                     'uploadLimit'     : 0,                  // The maximum number of files you can upload
-                    'uploadScript'    : site_url+"image/uploadifive/"+image_group_code,  // The path to the upload script
-                    'width'           : 100,                // The width of the button
+                    'uploadScript'    : 'uploadifive.php',  // The path to the upload script
+                    'width'           : 100                // The width of the button
 
                     /*
                     // Events
@@ -315,7 +315,7 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                             file.queueItem.find('.fileinfo').html(' - Cancelled');
                         }
                         file.queueItem.find('.progress-bar').width(0);
-                        file.queueItem.delay(delay).fadeOut(fadeTime, function() {
+                        file.queueItem.fadeOut(fadeTime, function() {
                            $(this).remove();
                         });
                         delete file.queueItem;

@@ -164,3 +164,4 @@ $lang['txt_career']                     = 'Nghề nghiệp';
 $lang['txt_image_gallery']              = 'Thư viện ảnh';
 $lang['txt_upload_image']               = 'Upload hình ảnh';
 $lang['txt_creation_date']              = 'Ngày tạo';
+$lang['txt_select_files']               = 'Chọn Files';

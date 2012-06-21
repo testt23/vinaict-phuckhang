@@ -56,6 +56,11 @@ $lang['err_invalid_picture']                = 'File hình ảnh không hợp l�
 $lang['err_wrong_file_dimension']           = 'Kích thước file hình ảnh lớn hơn kích thước tối đa cho phép';
 $lang['err_wrong_file_size']                = 'Xin vui lòng chỉ upload file dưới 4Mb';
 $lang['err_wrong_file_type']                = 'Xin vui lòng chỉ upload file JPG, PNG, GIF, JPEG';
+$lang['err_watermark_disabled']             = 'Chức năng đóng dấu hình ảnh đã bị vô hiệu hóa';
+$lang['err_invalid_source_image']           = 'File ảnh gốc không hợp lệ';
+$lang['err_image_source_not_found']         = 'Không tìm thấy file ảnh gốc';
+$lang['err_overlay_not_found']              = 'Không tìm thấy hình ảnh làm con dấu';
+$lang['err_font_not_found']                 = 'Không tìm thấy font chữ';
 
 /* Product */
 $lang['err_empty_product_code']             = 'Bạn chưa nhập mã sản phẩm';
