@@ -1,0 +1,11 @@
+Options +FollowSymlinks
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/([_\.a-zA-Z0-9-/_]*?)/?$ index.php/$1/$2/$3 [L]
+RewriteRule ^([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/?$ index.php/$1/$2 [L]
+RewriteRule ^([a-zA-Z0-9-_]+)/?$ index.php/$1 [L]
+
+
