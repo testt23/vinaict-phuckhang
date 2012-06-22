@@ -3,7 +3,6 @@ class ShoppingCart {
 
     function __construct() {
         Session::init();
-
     }
     public function create(){
         if (!isset($_SESSION['giohang'])){
@@ -13,7 +12,7 @@ class ShoppingCart {
     public function addCart($masanpham, $tensanpham, $giasanpham, $image){
         $this->create();
         $cart = new clsCart();
-        $ListCart = Session::get('giohang');
+        $ListCart = Session::get('giohang');   
         $flag = 'yes';
         if ($ListCart != ''){
             $total = count($ListCart);    
@@ -34,7 +33,7 @@ class ShoppingCart {
             $ListCart[] = $cart;
         }
         Session::set('giohang', $ListCart);
-    }
+    }  
     public function deleteCart($masanpham){
         $ListCart = Session::get('giohang');
         $ListNew = '';

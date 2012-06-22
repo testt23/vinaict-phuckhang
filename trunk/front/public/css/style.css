@@ -304,3 +304,7 @@ overflow: hidden;
     
     background:url(../images/together/vi.jpg) no-repeat top left;
 }
+
+.online-counter{
+    margin-top: 4px;
+}

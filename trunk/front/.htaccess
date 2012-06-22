@@ -4,8 +4,17 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
 
-RewriteRule ^products/([\_\.a-zA-Z0-9\-\/\_]+)(.html)$ index.php?url=products/detail/$1 [L]
-RewriteRule ^products/([\_\.a-zA-Z0-9\-\/\_]+)(/)?$ index.php?url=products/category/$1 [L]
-RewriteRule ^([a-zA-Z0-9\-\_\/]+)$ index.php?url=$1 [L]
+
+RewriteRule ^products/([\_\.a-zA-Z0-9\-\/\_]+).html/?$ index.php?url=products/detail/$1 [L]
+RewriteRule ^products/([\_\.a-zA-Z0-9\-\/\_]+)/?$ index.php?url=products/category/$1 [L]
+RewriteRule ^([\_\.a-zA-Z0-9\-\/\_]+).html/?$ index.php?url=pages/$1 [L]
+#RewriteRule ^([a-zA-Z0-9-_]+).html/?$ index.php?url=pages/$1 [L]
+RewriteRule ^([a-zA-Z0-9-_]+)/?$ index.php?url=$1 [L]
+RewriteRule ^([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/?$ index.php?url=$1/$2 [L]
+RewriteRule ^([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/?$ index.php?url=$1/$2/$3 [L]
+RewriteRule ^([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/?$ index.php?url=$1/$2/$3/$4 [L]
+
+
 
