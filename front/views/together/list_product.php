@@ -17,7 +17,7 @@ $List = $this->list;
         <?php 
         if (isset($this->paging)){
             if (isset($this->cate)){
-                $paging = str_replace('(*)', URL . '/products/' . $this->cate , $this->paging);
+                $paging = str_replace('(*)', URL . 'products/' . $this->cate , $this->paging);
                 echo $paging;
             }else{
                 $paging = str_replace('(*)', URL . 'index'  , $this->paging);
@@ -25,7 +25,6 @@ $List = $this->list;
             }
             
         }
-        
         ?>
         
     </div>
