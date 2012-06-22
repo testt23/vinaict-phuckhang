@@ -49,8 +49,8 @@
                 <td>
                 <?php 
                 $parents = explode(',', $prod_category['id_parent']);
-                foreach ($parents as $parent) {
-                    echo trim($parent) ? '('.$arr_prod_category[trim($parent)]['code'].') '.$arr_prod_category[trim($parent)]['name'].'<br/>' : '';
+                foreach ($parents as $key => $parent) {
+                    echo trim($parent) && isset($arr_prod_category[trim($parent)]) ? '('.$arr_prod_category[trim($parent)]['code'].') '.$arr_prod_category[trim($parent)]['name'].'<br/>' : '';
                 }
                 ?>
                 </td>

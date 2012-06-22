@@ -28,7 +28,7 @@
             $arr_prod_category[$prod_category->id] = array('code' => $prod_category->code,
                                                 'name' => getI18n($prod_category->name),
                                                 'description' => truncateString(clean_html(getI18n($prod_category->description)), 100),
-                                                'link' => getI18n($prod_category->link),
+                                                'link' => $prod_category->link,
                                                 'picture' => $prod_category->picture,
                                                 'keywords' => $prod_category->keywords,
                                                 'id_parent' => $prod_category->id_parent
@@ -98,14 +98,11 @@
                     $prod_category->description .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('description_'.$lang->code)).'</'.$lang->code.'>';
                 }
                 
-                if ($this->input->post('link_'.$lang->code)) {
-                    $prod_category->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
             }
             
-            $prod_category->code = $this->input->post('code');
-            $prod_category->keywords = $this->input->post('keywords');
+            $prod_category->code = utf8_escape_textarea($this->input->post('code'));
+            $prod_category->link = utf8_escape_textarea($this->input->post('link'));
+            $prod_category->keywords = utf8_escape_textarea($this->input->post('keywords'));
             $prod_category->id_parent = $this->input->post('id_parent');
             
             if ($prod_category->id_parent) {
@@ -137,7 +134,6 @@
         Menu::getMenuTree($array_menus, $filter);
         
         $this->data['prod_category'] = $prod_category;
-        $this->data['arr_parent'] = $arr_parent;
         $this->data['categories'] = $categories;
         $this->data['arr_parent'] = $arr_parent;
         $this->data['array_menus'] = $array_menus;
@@ -174,7 +170,8 @@
             MessageHandler::add(lang('msg_prod_category_has_no_picture_uploaded'), MSG_WARNING, MESSAGE_ONLY);
         
         $categories = ProductCategory::getTree(null, $id);
-        $arr_parent = array();
+        $arr_parent = explode(',', $prod_category->id_parent);
+        
         
         $image = new Image();
         
@@ -190,7 +187,6 @@
             
             $prod_category->name = '';
             $prod_category->description = '';
-            $prod_category->link = '';
             
             while($lang->fetchNext()) {
                 
@@ -202,23 +198,20 @@
                     $prod_category->description .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('description_'.$lang->code)).'</'.$lang->code.'>';
                 }
                 
-                if ($this->input->post('link_'.$lang->code)) {
-                    $prod_category->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
             }
             
-            $prod_category->code = $this->input->post('code');
-            $prod_category->keywords = $this->input->post('keywords');
-            $prod_category->id_parent = $this->input->post('id_parent');
+            $prod_category->code = utf8_escape_textarea($this->input->post('code'));
+            $prod_category->keywords = utf8_escape_textarea($this->input->post('keywords'));
+            $prod_category->link = utf8_escape_textarea($this->input->post('link'));
             
-            if ($prod_category->id_parent) {
-                if (is_array($prod_category->id_parent)) {
-                    $arr_parent = $prod_category->id_parent;
+            if ($this->input->post('id_parent')) {
+                if (is_array($this->input->post('id_parent'))) {
+                    $arr_parent = $this->input->post('id_parent');
                     $prod_category->id_parent = implode(',', $arr_parent);
                 }
                 else {
                     $arr_parent[] = $prod_category->id_parent;
+                    $prod_category->id_parent = $this->input->post('id_parent');
                 }
             }
             
@@ -241,7 +234,6 @@
         Menu::getMenuTree($array_menus, $filter);
         
         $this->data['prod_category'] = $prod_category;
-        $this->data['arr_parent'] = $arr_parent;
         $this->data['categories'] = $categories;
         $this->data['arr_parent'] = $arr_parent;
         $this->data['array_menus'] = $array_menus;
