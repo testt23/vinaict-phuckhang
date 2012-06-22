@@ -139,6 +139,36 @@ class ProductCategory extends Product_category_model {
         
     }
     
+    function addPictureById ($id_picture = null) {
+        
+        if ($id_picture) {
+            
+            $image = new Image();
+            
+            if ($image->get($id_picture)) {
+                
+                if ($this->id_image) {
+                    $img = new Image();
+                    if ($img->get($this->id_image)) {
+                        $img->delete();
+                    }
+                }
+                
+                $this->id_image = $image->id;
+                $this->update();
+                
+                if ($image->name != $this->code || $image->description != getI18n($this->name)) {
+                    $image->name = $this->code;
+                    $image->description = getI18n($this->name);
+                    $image->update();
+                }
+                
+            }
+            
+        }
+        
+    }
+    
     function addPicture($field = 'image') {
         
         $image = new Image();

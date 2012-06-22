@@ -22,10 +22,10 @@
 
 <script type="text/javascript">
     
-    var image_group_code = '';
-    var buttonClass = 'ui-state-default ui-corner-all';
-    
-    function loadUpload() {
+    function loadUpload(image_group_code) {
+        
+        if (!image_group_code)
+            image_group_code = '';
         
         $('#file_upload').uploadifive({
                     'auto'         : false,
@@ -61,10 +61,9 @@
         });
         
         $('#browser .folder-link').click(function() {
-            image_group_code = $(this).attr('foldername');
             
             $('#file_upload').uploadifive("destroy");
-            loadUpload();
+            loadUpload($(this).attr('foldername'));
             
             var htmlcontent = '<ul>';
             $(this).parent().parent().find('li .file-link').each(function() {
@@ -145,7 +144,7 @@
     <form>
             <div id="queue"></div>
             <input id="file_upload" name="file_upload" type="file" multiple="true" />
-            <a class="btn ui-state-default ui-corner-all" style="position: relative; top: 8px;" href="javascript:$('#file_upload').uploadifive('upload')">Upload Files</a>
+            <a class="btn ui-state-default ui-corner-all" style="position: relative; top: 8px;" href="javascript:$('#file_upload').uploadifive('upload')"><?php echo lang('txt_upload'); ?></a>
     </form>
 </div>
 <div class="treeview-container">
