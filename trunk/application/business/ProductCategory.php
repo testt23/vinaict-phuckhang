@@ -64,7 +64,7 @@ class ProductCategory extends Product_category_model {
                         'level' => $filter['level']
                     ); 
             $filter['id_prod_category_parent'] = $prod_category->id;
-            $arrProdCategory = array_merge($arrProdCategory, ProductCategory::getTree($filter));
+            $arrProdCategory = array_merge($arrProdCategory, ProductCategory::getTree($filter, $id_prod_category_excluded));
         }
 
         return $arrProdCategory;
@@ -104,10 +104,6 @@ class ProductCategory extends Product_category_model {
             
             if (strlen(getI18n($this->description, $lang->code)) > MAX_LENGTH_NAME) {
                 MessageHandler::add (lang('err_desc_too_long').': '.lang('msg_please_check'). ' "'.getI18n($this->description, $lang->code).'"', MSG_ERROR, MESSAGE_ONLY);
-            }
-            
-            if (strlen(getI18n($this->link, $lang->code)) > MAX_LENGTH_NAME) {
-                MessageHandler::add (lang('err_url_too_long').': '.lang('msg_please_check'). ' "'.getI18n($this->link, $lang->code).'"', MSG_ERROR, MESSAGE_ONLY);
             }
                 
         }

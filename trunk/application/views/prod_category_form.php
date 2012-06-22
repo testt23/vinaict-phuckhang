@@ -83,7 +83,7 @@
                                         <?php echo lang('txt_link'); ?>
                                 </label>
                                 <div>
-                                        <div type="text-multilang" lang="en,vi" tabindex="1" maxlength="255" class="field text medium" id="link" name="link" value="<?php echo $prod_category->link; ?>" />
+                                        <input type="text" tabindex="1" maxlength="255" class="field text medium" id="link" name="link" value="<?php echo $prod_category->link; ?>" />
                                 </div>
                         </li>
                         <li>
