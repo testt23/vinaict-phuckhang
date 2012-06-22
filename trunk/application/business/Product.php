@@ -202,6 +202,37 @@ class Product extends Product_model {
         
     }
     
+    function addPictureById ($id_picture = null) {
+        
+        if ($id_picture) {
+            
+            $image = new Image();
+            
+            if ($image->get($id_picture)) {
+                
+                if (!$this->id_prod_image || $this->id_prod_image == '')
+                    $this->id_prod_image = $image->id;
+                else {
+                    $pictures = explode(',', $this->id_prod_image);
+                    
+                    if (!in_array($id_picture, $pictures))
+                        $this->id_prod_image .= ",$image->id";
+                }
+                
+                $this->update();
+                
+                if ($image->name != $this->code || $image->description != getI18n($this->name)) {
+                    $image->name = $this->code;
+                    $image->description = getI18n($this->name);
+                    $image->update();
+                }
+                
+            }
+            
+        }
+        
+    }
+    
     function addPicture($field = 'image') {
         
         $image = new Image();

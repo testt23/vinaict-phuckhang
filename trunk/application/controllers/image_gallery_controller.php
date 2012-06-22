@@ -9,8 +9,6 @@ class Image_gallery_controller extends CI_Controller {
 
     function index(){
         
-        $this->benchmark->mark('code_start');
-        
         User::checkAccessable($this->session->userdata('userID'), 'image_gallery');
 
         $section = "image_gallery";

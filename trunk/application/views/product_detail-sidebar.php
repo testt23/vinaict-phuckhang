@@ -4,6 +4,10 @@
                 <ul class="side-menu">
                         <li>
                             <span class="ui-icon ui-icon-triangle-1-e small-icon"></span>
+                            <a href="#" id="openUploadBox"><b><?php echo lang('txt_upload_image'); ?></b></a>
+                        </li>
+                        <li>
+                            <span class="ui-icon ui-icon-triangle-1-e small-icon"></span>
                             <a href="<?php echo $backlink; ?>"><?php echo lang('txt_back_to_product_list'); ?></a>
                         </li>
                 </ul>

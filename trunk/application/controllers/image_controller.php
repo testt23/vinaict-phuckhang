@@ -28,7 +28,7 @@ class Image_controller extends CI_Controller {
         
     }
 
-    function uploadifive($group_code = '') {
+    function uploadifive($group_code = '', $id_item = null) {
 
         if (!empty($_FILES)) {
             
@@ -84,7 +84,7 @@ class Image_controller extends CI_Controller {
                 
                 foreach ($img_size as $code => $value) {
                    
-                    $config['new_image'] = str_replace(array('.jpg','.png','.gif'), array('_'.$code.'.jpg', '_'.$code.'.png', '_'.$code.'.gif'), strtolower($target_file_name));
+                    $config['new_image'] = str_replace(array('.jpg','.png','.gif','.jpeg'), array('_'.$code.'.jpg', '_'.$code.'.png', '_'.$code.'.gif', '_'.$code.'.jpeg'), strtolower($target_file_name));
                             
                     if ($value && $value !="") {
                         $size = explode('x', $value['size']);
@@ -105,17 +105,35 @@ class Image_controller extends CI_Controller {
                         
                     }
                     
-                    $data = array('name' => date('d-m-Y H:i:s', gmt_to_local(time(), config_item('timezone'))), 'description' => '');
-                    
-                    $image = new Image();
-                    $image->code = $image->code && trim($image->code) != '' ? $image->code : preg_replace("/.jpg|.png|.gif/", '', strtolower($target_file_name));
-                    $image->name = $image->name && trim($image->name) != '' ? $image->name : $data['name'];
-                    $image->description = $image->description && trim($image->description) != '' ? $image->description : $data['description'];
-                    $image->file = strtolower($target_file_name);
-                    $image->id_image_group = $img_group->id;
-                    $image->insert();
-                    
                 }
+                
+                $data = array('name' => date('d-m-Y H:i:s', gmt_to_local(time(), config_item('timezone'))), 'description' => '');
+                
+                if ($group_code == IMG_PRODUCT_CODE) {
+                    $product = new Product();
+                    if ($id_item && $product->get($id_item))
+                        $data = array('name' => $product->code, 'description' => getI18n($product->name));
+                }
+                elseif ($group_code == IMG_PRODUCT_CATEGORY_CODE) {
+                    $prod_category = new ProductCategory();
+                    if ($id_item && $prod_category->get($id_item))
+                        $data = array('name' => $prod_category->code, 'description' => getI18n($prod_category->name));
+                }
+
+                $image = new Image();
+                $image->code = $image->code && trim($image->code) != '' ? $image->code : preg_replace("/.jpg|.png|.gif|.jpeg/", '', strtolower($target_file_name));
+                $image->name = $image->name && trim($image->name) != '' ? $image->name : $data['name'];
+                $image->description = $image->description && trim($image->description) != '' ? $image->description : $data['description'];
+                $image->file = strtolower($target_file_name);
+                $image->id_image_group = $img_group->id;
+                
+                if ($image->insert()) {
+                    if (isset($product) && $product->id) {
+                        $product->addPictureById($image->id);
+                    }
+                    elseif (isset($prod_category) && $prod_category->id)
+                        $prod_category->addPictureById($image->id);
+                }   
                 
                 echo '1'.(isset($str_warning) ? $str_warning : '');
 

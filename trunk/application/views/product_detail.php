@@ -1,6 +1,8 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('js/uploadifive/uploadifive.css'); ?>" />
 <link rel="stylesheet" href="<?php echo base_url('js/prettyPhoto/css/prettyPhoto.css'); ?>" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 <script src="<?php echo base_url('js/prettyPhoto/js/jquery.prettyPhoto.js'); ?>" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo base_url('js/zclip/jquery.zclip.min.js'); ?>"></script>
+<script src="<?php echo base_url('js/uploadifive/jquery.uploadifive-v1.0.js'); ?>" type="text/javascript"></script>
 <script type="text/javascript">
     function deleteImage(id, id_product) {
         
@@ -19,9 +21,38 @@
     }
     
     $(document).ready(function(){
+        
+        $('#file_upload').uploadifive({
+                'auto'         : false,
+                'queueID'      : 'queue',
+                'buttonClass'   : 'btn ui-state-default ui-corner-all',
+                'uploadScript' : '<?php echo base_url("image/uploadifive/").IMG_PRODUCT_CODE."/$product->id"; ?>',
+                'buttonText'   : '<?php echo lang('txt_select_files'); ?>',
+                'onUploadComplete' : function(file, data) {
+                    if (data == 1) {
+                        //console.log(image_group_code);
+                    }
+
+                }
+        });
+        
         $("a[rel^='prettyPhoto']").prettyPhoto({
             animation_speed: 'fast',
             social_tools: false
+        });
+        
+        $('#upload-box').dialog({
+            autoOpen: false,
+            width: 600,
+            bgiframe: false,
+            modal: true,
+            close: function() {
+                document.location.href = '<?php echo selfURL(); ?>';
+            }
+        });
+
+        $('#openUploadBox').click(function() {
+            $('#upload-box').dialog("open");
         });
         
         $("a[rel^='copy-link']").each(function(){
@@ -46,22 +77,13 @@
     <?php echo lang('txt_product_picture'); ?>
     </div>
     <div class="portlet-content">
-        
-        <form action="" method="post" enctype="multipart/form-data" class="forms" name="prodimageform" >
-                <ul>
-                        <li>
-                                <label class="desc">
-                                        <?php echo lang('txt_select_file'); ?>
-                                </label>
-                                <div>
-                                        <input type="file" id="image" name="image" />
-                                        <input type="submit" value="<?php echo lang('txt_upload'); ?>" />
-                                </div>
-                        </li>
-                </ul>
-            <input type="hidden" name="act" value="<?php echo ACT_SUBMIT; ?>" />
-        </form>
-        
+        <div id="upload-box" title="<?php echo lang('txt_upload_image'); ?>">
+            <form>
+                    <div id="queue"></div>
+                    <input id="file_upload" name="file_upload" type="file" multiple="true" />
+                    <a class="btn ui-state-default ui-corner-all" style="position: relative; top: 8px;" href="javascript:$('#file_upload').uploadifive('upload')"><?php echo lang('txt_upload'); ?></a>
+            </form>
+        </div>
         <div class="hastable">				
         <?php if ($picture) { ?>
             <table> 
