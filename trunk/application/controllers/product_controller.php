@@ -110,16 +110,13 @@
                     $product->description .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('description_'.$lang->code)).'</'.$lang->code.'>';
                 }
                 
-                if ($this->input->post('link_'.$lang->code)) {
-                    $product->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
             }
             
-            $product->code = $this->input->post('code');
+            $product->code = utf8_escape_textarea($this->input->post('code'));
+            $product->link = utf8_escape_textarea($this->input->post('link'));
             $product->price = $this->input->post('price');
             $product->currency = $this->input->post('currency');
-            $product->keywords = $this->input->post('keywords');
+            $product->keywords = utf8_escape_textarea($this->input->post('keywords'));
             $product->is_disabled = $this->input->post('is_disabled');
             $product->id_prod_category = $this->input->post('id_prod_category');
             $product->id_primary_prod_category = $this->input->post('id_primary_product_category');
@@ -194,7 +191,6 @@
             $product->name = '';
             $product->short_description = '';
             $product->description = '';
-            $product->link = '';
             
             while($lang->fetchNext()) {
                 
@@ -210,16 +206,13 @@
                     $product->description .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('description_'.$lang->code)).'</'.$lang->code.'>';
                 }
                 
-                if ($this->input->post('link_'.$lang->code)) {
-                    $product->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
             }
             
-            $product->code = $this->input->post('code');
+            $product->code = utf8_escape_textarea($this->input->post('code'));
+            $product->link = utf8_escape_textarea($this->input->post('link'));
             $product->price = $this->input->post('price');
             $product->currency = $this->input->post('currency');
-            $product->keywords = $this->input->post('keywords');
+            $product->keywords = utf8_escape_textarea($this->input->post('keywords'));
             $product->is_disabled = $this->input->post('is_disabled');
             $product->id_prod_category = $this->input->post('id_prod_category');
             $product->id_primary_prod_category = $this->input->post('id_primary_product_category');
