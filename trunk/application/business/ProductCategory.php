@@ -93,6 +93,9 @@ class ProductCategory extends Product_category_model {
         if ($this->link == "") {
             MessageHandler::add (lang('err_empty_product_category_link'), MSG_ERROR, MESSAGE_ONLY);
         }
+        elseif (!validate_uri($this->link, URI_PATTERN, PROD_CATEGORY_URI_PREFIX, PROD_CATEGORY_URI_SUFFIX)) {
+            MessageHandler::add (lang('err_invalid_link'), MSG_ERROR, MESSAGE_ONLY);
+        }
         
         $lang = Language::getList();
         
