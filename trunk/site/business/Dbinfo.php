@@ -10,7 +10,8 @@ class dbinfo {
     
     /*COUNT*/
     
-    public $_count = 'total_count';
+    public $_count                                  = 'is_count';
+    public $_max                                    = 'is_max';
     
     /*LIST TABLE'S NAME*/
     
@@ -21,6 +22,19 @@ class dbinfo {
     public $_table_web_page                         = 'web_page';
     public $_table_customer                         = 'customer';
     public $_table_session                          = 'session';
+    public $_table_article                          = 'article';
+    public $_table_article_category                 = 'article_category';
+    public $_table_currency                         = 'currency';
+    public $_table_group                            = 'group';
+    public $_table_image_size                       = 'image_size';
+    public $_table_language                         = 'language';
+    public $_table_menu                             = 'menu';
+    public $_table_param_group                      = 'param_group';
+    public $_table_param_group_parameter            = 'param_group_parameter';
+    public $_table_param_parameter                  = 'parameter';
+    public $_table_param_permission                 = 'permission';
+    public $_table_user                             = 'user';
+    public $_table_user_group                       = 'user_group';
     
     
     /*PRODUCT*/
@@ -365,6 +379,64 @@ class dbinfo {
     public $_group_as_name                          = 'group_name';
     public $_group_as_disabled                      = 'group_disabled';
     
+    /*CURRENCY*/
+    
+    public $_currency_id                            = 'currency.id';
+    public $_currency_code                          = 'currency.code';
+    public $_currency_name                          = 'currency.name';
+    public $_currency_size                          = 'currency.size';
+    public $_currency_rate                          = 'currency.rate';
+    public $_currency_is_default                    = 'currency.is_default';
+    public $_currency_is_deleted                    = 'currency.is_deleted';
+    
+    public $_currency_as_id                         = 'currency_id';
+    public $_currency_as_code                       = 'currency_code';
+    public $_currency_as_name                       = 'currency_name';
+    public $_currency_as_size                       = 'currency_size';
+    public $_currency_as_rate                       = 'currency_rate';
+    public $_currency_as_is_default                 = 'currency_is_default';
+    public $_currency_as_is_deleted                 = 'currency_is_deleted';
+    
+    
+    /*ARTICLE CATEGORY*/
+    
+    public $_article_category_id                    = 'article_category.id';
+    public $_article_category_name                  = 'article_category.name';
+    public $_article_category_is_deleted            = 'article_category.is_deleted';
+    public $_article_category_id_parent             = 'article_category.id_parent';
+    public $_article_category_description           = 'article_category.description';
+    public $_article_category_keywords              = 'article_category.keywords';
+    public $_article_category_link                  = 'article_category.link';
+    
+    public $_article_category_as_id                 = 'article_category_id';
+    public $_article_category_as_name               = 'article_category_name';
+    public $_article_category_as_is_deleted         = 'article_category_is_deleted';
+    public $_article_category_as_id_parent          = 'article_category_id_parent';
+    public $_article_category_as_description        = 'article_category_description';
+    public $_article_category_as_keywords           = 'article_category_keywords';
+    public $_article_category_as_link               = 'article_category_link';
+    
+    /*ARTICLE*/
+    
+    public $_article_id                             = 'article.id';
+    public $_article_title                          = 'article.title';
+    public $_article_content                        = 'article.content';
+    public $_article_link                           = 'article.link';
+    public $_article_keywords                       = 'article.keywords';
+    public $_article_is_disabled                    = 'article.is_disabled';
+    public $_article_id_article_category            = 'article.id_article_category';
+    public $_article_id_image                       = 'article.id_image';
+    public $_article_is_deleted                     = 'article.is_deleted';
+    
+    public $_article_as_id                          = 'article_id';
+    public $_article_as_title                       = 'article_title';
+    public $_article_as_content                     = 'article_content';
+    public $_article_as_link                        = 'article_link';
+    public $_article_as_keywords                    = 'article_keywords';
+    public $_article_as_is_disabled                 = 'article_is_disabled';
+    public $_article_as_id_article_category         = 'article_id_article_category';
+    public $_article_as_id_image                    = 'article_id_image';
+    public $_article_as_is_deleted                  = 'article_is_deleted';
     
 }
 
