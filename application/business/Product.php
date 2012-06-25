@@ -67,6 +67,9 @@ class Product extends Product_model {
         if ($this->link == "") {
             MessageHandler::add (lang('err_empty_product_link'), MSG_ERROR, MESSAGE_ONLY);
         }
+        elseif (!validate_uri($this->link, URI_PATTERN, PRODUCT_URI_PREFIX, PRODUCT_URI_SUFFIX)) {
+            MessageHandler::add (lang('err_invalid_link'), MSG_ERROR, MESSAGE_ONLY);
+        }
         
         if (!$this->id_prod_category) {
             MessageHandler::add (lang('err_empty_product_category'), MSG_ERROR, MESSAGE_ONLY);
@@ -84,10 +87,6 @@ class Product extends Product_model {
             
             if (strlen(getI18n($this->short_description, $lang->code)) > MAX_LENGTH_NAME) {
                 MessageHandler::add (lang('err_short_desc_too_long').': '.lang('msg_please_check'). ' "'.getI18n($this->short_description, $lang->code).'"', MSG_ERROR, MESSAGE_ONLY);
-            }
-            
-            if (strlen(getI18n($this->link, $lang->code)) > MAX_LENGTH_NAME) {
-                MessageHandler::add (lang('err_url_too_long').': '.lang('msg_please_check'). ' "'.getI18n($this->link, $lang->code).'"', MSG_ERROR, MESSAGE_ONLY);
             }
                 
         }
