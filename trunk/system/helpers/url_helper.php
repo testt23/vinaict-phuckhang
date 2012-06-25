@@ -680,10 +680,39 @@ if ( ! function_exists('curPageURL'))
     }
 }
 
-function direct_url($url) {
-    
-    return preg_replace('/\/([A-Za-z0-9-_.]*)\/\../', '', $url);
-    
+if ( ! function_exists('direct_url'))
+{
+    function direct_url($url) {
+
+        return preg_replace('/\/([A-Za-z0-9-_.]*)\/\../', '', $url);
+
+    }
+}
+
+if ( ! function_exists('validate_uri'))
+{
+    function validate_uri($uri, $uri_pattern, $prefix = '', $suffix = '') {
+        
+        if ($prefix != '')
+            $preg_prefix = $prefix.'(\/)';
+        else
+            $preg_prefix = '';
+        
+        if ($suffix != '')
+            $preg_suffix = '\\'.$suffix;
+        else
+            $preg_suffix = '';
+        
+        $pattern = '/'.$preg_prefix.$uri_pattern.'('.$preg_suffix.')$/';
+        
+        $uri = $prefix.'/'.$uri.$suffix;
+        
+        if (preg_match($pattern, $uri))
+            return true;
+        else
+            return false;
+        
+    }
 }
 
 /* End of file url_helper.php */
