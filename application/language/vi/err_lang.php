@@ -6,14 +6,14 @@ $lang['err_empty_name']                     = 'Bạn chưa nhập tên';
 $lang['err_invalid_name']                   = 'Tên nhập vào không hợp lệ';
 $lang['err_name_wrong_format']              = 'Tên nhập vào bị sai định dạng';
 $lang['err_empty_first_name']               = 'Bạn chưa nhập tên';
-$lang['err_empty_last_name']                = 'Bạn chưa nhập họ';
+$lang['err_empty_last_name']                = 'Bạn chưa nhập h�?';
 $lang['err_name_too_long']                  = 'Tên nhập vào quá dài';
 $lang['err_first_name_too_long']            = 'Tên nhập vào quá dài';
-$lang['err_last_name_too_long']             = 'Họ nhập vào quá dài';
+$lang['err_last_name_too_long']             = 'H�? nhập vào quá dài';
 $lang['err_empty_email']                    = 'Bạn chưa nhập email';
 $lang['err_invalid_email']                  = 'Email không hợp lệ';
 $lang['err_email_too_long']                 = 'Email nhập vào quá dài';
-$lang['err_email_exists']                   = 'Địa chỉ email này đã được sử dụng';
+$lang['err_email_exists']                   = '�?ịa chỉ email này đã được sử dụng';
 $lang['err_empty_password']                 = 'Bạn chưa nhập mật khẩu';
 $lang['err_empty_new_password']             = 'Bạn chưa nhập mật khẩu mới';
 $lang['err_password_too_long']              = 'Mật khẩu nhập vào quá dài';
@@ -33,22 +33,24 @@ $lang['err_max_position_is']                = 'Vị trí lớn nhất hiện t�
 $lang['err_max_allowed_position_is']        = 'Bạn chỉ được nhập số lớn nhất là';
 $lang['err_empty_section']                  = 'Bạn chưa nhập Section';
 $lang['err_section_too_long']               = 'Section nhập vào quá dài';
-$lang['err_email_deactivated']              = 'Tài khoản người dùng này chưa được kích hoạt hoặc đã bị khóa';
+$lang['err_email_deactivated']              = 'Tài khoản ngư�?i dùng này chưa được kích hoạt hoặc đã bị khóa';
 $lang['err_empty_email_or_password']        = 'Xin vui lòng nhập đầy đủ email và mật khẩu';
-$lang['err_email_not_exist']                = 'Địa chỉ email này không tồn tại';
+$lang['err_email_not_exist']                = '�?ịa chỉ email này không tồn tại';
 $lang['err_wrong_email_or_password']        = 'Email hoặc mật khẩu đăng nhập sai';
 
 /* Page */
 
-$lang['err_empty_title']                    = 'Bạn chưa nhập tiêu đề';
+$lang['err_empty_title']                    = 'Bạn chưa nhập tiêu đ�?';
 $lang['err_empty_content']                  = 'Bạn chưa nhập nội dung';
-$lang['err_title_wrong_format']             = 'Tiêu đề nhập vào sai định dạng';
+$lang['err_title_wrong_format']             = 'Tiêu đ�? nhập vào sai định dạng';
 $lang['err_content_wrong_format']           = 'Nội dung nhập vào sai định dạng';
-$lang['err_invalid_title']                  = 'Tiêu đề không hợp lệ';
+$lang['err_invalid_title']                  = 'Tiêu đ�? không hợp lệ';
 $lang['err_invalid_content']                = 'Nội dung không hợp lệ';
 $lang['err_empty_url']                      = 'Bạn chưa nhập URL';
 $lang['err_invalid_url']                    = 'URL không hợp lệ';
-$lang['err_title_too_long']                 = 'Tiêu đề quá dài';
+$lang['err_invalid_uri']                    = 'URI không hợp lệ';
+$lang['err_invalid_link']                   = 'Liên kết không hợp lệ';
+$lang['err_title_too_long']                 = 'Tiêu đ�? quá dài';
 $lang['err_url_too_long']                   = 'URL quá dài';
 
 /* Image */
@@ -72,9 +74,9 @@ $lang['err_product_name_too_long']          = 'Tên sản phẩm quá dài';
 $lang['err_short_desc_too_long']            = 'Nội dung mô tả vắn tắt quá dài';
 $lang['err_empty_product_link']             = 'Bạn chưa nhập liên kết';
 $lang['err_invalid_product_link']           = 'Liên kết không hợp lệ';
-$lang['err_empty_product_category']         = 'Bạn chưa chọn nhóm sản phẩm';
-$lang['err_empty_primary_product_category'] = 'Bạn chưa chọn nhóm sản phẩm chính';
-$lang['err_product_code_exists']            = 'Đã tồn tại sản phẩm này';
+$lang['err_empty_product_category']         = 'Bạn chưa ch�?n nhóm sản phẩm';
+$lang['err_empty_primary_product_category'] = 'Bạn chưa ch�?n nhóm sản phẩm chính';
+$lang['err_product_code_exists']            = '�?ã tồn tại sản phẩm này';
 
 /* Product category */
 $lang['err_empty_product_category_code']    = 'Bạn chưa nhập mã nhóm sản phẩm';
@@ -89,7 +91,7 @@ $lNG['err_invalid_product_category_link']   = 'Liên kế nhóm sản phẩm kh�
 $lang['err_empty_company_name']             = 'Bạn chưa nhập tên công ty hoặc tổ chức';
 $lang['err_empty_tax_code']                 = 'Bạn chưa nhập mã số thuế';
 $lang['err_empty_tax_code']                 = 'Bạn chưa nhập mã số thuế';
-$lang['err_empty_gender']                   = 'Bạn chưa chọn giới tính';
+$lang['err_empty_gender']                   = 'Bạn chưa ch�?n giới tính';
 $lang['err_empty_contact_address']          = 'Bạn chưa nhập địa chỉ liên hệ';
 $lang['err_empty_billing_address']          = 'Bạn chưa nhập địa chỉ thanh toán';
 $lang['err_empty_shipping_address']         = 'Bạn chưa nhập địa chỉ nhận hàng';
@@ -98,4 +100,4 @@ $lang['err_invalid_work_phone']             = 'Số điện thoại công ty kh�
 $lang['err_invalid_mobile_phone']           = 'Số điện thoại di động không hợp lệ';
 $lang['err_invalid_fax']                    = 'Số fax không hợp lệ';
 $lang['err_empty_birthdate']                = 'Bạn chưa nhập ngày sinh';
-$lang['err_empty_contact_person']           = 'Bạn chưa nhập tên người liên hệ';
+$lang['err_empty_contact_person']           = 'Bạn chưa nhập tên ngư�?i liên hệ';
