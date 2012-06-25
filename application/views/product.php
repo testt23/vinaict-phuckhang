@@ -39,7 +39,7 @@
                 <td><?php $product_name = clean_html(getI18n($product->name)); echo $product_name; ?></td>
                 <td><?php if ($product->picture) { ?><a href="<?php echo UPLOAD_IMAGE_URL.$image_group_code.'/'.$product->picture; ?>" title="<?php echo clean_html(getI18n($product->short_description)); ?>" rel="prettyPhoto" ><img src="<?php echo UPLOAD_IMAGE_URL.$image_group_code.'/'.str_replace(array('.jpg','.png','.gif','.JPG','.PNG','.GIF'), array(BO_PROD_IMG_SUFFIX.'.jpg',BO_PROD_IMG_SUFFIX.'.png',BO_PROD_IMG_SUFFIX.'.gif',BO_PROD_IMG_SUFFIX.'.JPG',BO_PROD_IMG_SUFFIX.'.PNG',BO_PROD_IMG_SUFFIX.'.GIF'), $product->picture); ?>" alt="<?php echo $product_name; ?>" /></a><?php } else { echo lang('txt_no_picture'); } ?></td>
                 <td><?php echo $product->price ? $product->price.' '.$product->currency : lang('txt_call') ; ?></td>
-                <td><?php echo clean_html(getI18n($product->link)); ?></td>
+                <td><?php echo clean_html($product->link); ?></td>
                 <td><?php echo $product->keywords; ?></td>
                 <td><?php echo $product->is_disabled == IS_DISABLED ? lang('txt_hidden') : lang('txt_publishing'); ?></td>
                 <td>
