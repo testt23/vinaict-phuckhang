@@ -288,14 +288,84 @@ class dbinfo {
     
     /*PARAM GROUP*/
     
-    public $_param_group_id = 'param_group.id';
-    public $_param_group_code = 'param_group.code';
-    public $_param_group_name = 'param_group.name';
-    public $_param_group_disabled = 'param_group.disabled';
-    public $_param_group_createion_date = 'param_group.creation_date';
-    public $_param_group_id_user_created = 'param_group.id_user_created';
-    public $_param_group_modification_date = 'param_group.modification_date';
-    public $_param_group_id_user_modified = 'param_group.id_user_modified';
+    public $_param_group_id                         = 'param_group.id';
+    public $_param_group_code                       = 'param_group.code';
+    public $_param_group_name                       = 'param_group.name';
+    public $_param_group_disabled                   = 'param_group.disabled';
+    public $_param_group_createion_date             = 'param_group.creation_date';
+    public $_param_group_id_user_created            = 'param_group.id_user_created';
+    public $_param_group_modification_date          = 'param_group.modification_date';
+    public $_param_group_id_user_modified           = 'param_group.id_user_modified';
+    
+    /*PARAM GROUP PARAMETER*/
+    
+    public $_param_group_parameter_id_parameter     = 'param_group_parameter.id_parameter';
+    public $_param_group_parameter_id_param_group   = 'param_group_parameter.id_param_group';
+    
+    public $_param_group_parameter_as_id_parameter  = 'param_group_parameter_id_parameter';
+    public $_param_group_parameter_as_id_param_group = 'param_group_parameter_id_param_group';
+    
+    /*MENU*/
+    
+    public $_menu_id                                = 'menu.id';
+    public $_menu_name                              = 'menu.name';
+    public $_menu_position                          = 'menu.position';
+    public $_menu_link                              = 'menu.link';
+    public $_menu_section                           = 'menu.section';
+    public $_menu_parent                            = 'menu.id_parent';
+    public $_menu_disabled                          = 'menu.disabled';
+    public $_menu_type                              = 'menu.type';
+    
+    public $_menu_as_id                             = 'menu_id';
+    public $_menu_as_name                           = 'menu_name';
+    public $_menu_as_position                       = 'menu_position';
+    public $_menu_as_link                           = 'menu_link';
+    public $_menu_as_section                        = 'menu_section';
+    public $_menu_as_parent                         = 'menu_id_parent';
+    public $_menu_as_disabled                       = 'menu_disabled';
+    public $_menu_as_type                           = 'menu_type';
+    
+    
+    /*LANGUAGE*/
+    
+    public $_language_id                            = 'language.id';
+    public $_language_code                          = 'language.code';
+    public $_language_name                          = 'language.name';
+    public $_language_is_disabled                   = 'language.is_disabled';
+    public $_language_is_deleted                    = 'language.is_deleted';
+    
+    public $_language_as_id                         = 'language_id';
+    public $_language_as_code                       = 'language_code';
+    public $_language_as_name                       = 'language_name';
+    public $_language_as_is_disabled                = 'language_is_disabled';
+    public $_language_as_is_deleted                 = 'language_is_deleted';
+    
+    
+    /*IMAGE SIZE*/
+    
+    public $_image_size_id                          = 'image_size.id';
+    public $_image_size_code                        = 'image_size.code';
+    public $_image_size_name                        = 'image_size.name';
+    public $_image_size_value                       = 'image_size.value';
+    
+    public $_image_size_as_id                       = 'image_size_id';
+    public $_image_size_as_code                     = 'image_size_code';
+    public $_image_size_as_name                     = 'image_size_name';
+    public $_image_size_as_value                    = 'image_size_value';
+    
+    /*GROUP*/
+    
+    public $_group_id                               = 'group.id';
+    public $_group_code                             = 'group.code';
+    public $_group_name                             = 'group.name';
+    public $_group_disabled                         = 'group.disabled';
+    
+    public $_group_as_id                            = 'group_id';
+    public $_group_as_code                          = 'group_code';
+    public $_group_as_name                          = 'group_name';
+    public $_group_as_disabled                      = 'group_disabled';
+    
+    
 }
 
 ?>
