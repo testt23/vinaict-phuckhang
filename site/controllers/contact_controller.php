@@ -13,22 +13,15 @@ class Contact_controller extends CI_Controller {
 
     public function sendmail() {
         $this->load->library('email');
-        $config['protocol'] = 'smtp';
-        $config['smtp_host'] = 'localhost';
-        $config['smtp_port'] = 80;
-        $config['validate'] = 'TRUE';
-        $this->email->initialize($config);
-        $this->email->from('thehalfheart@gmail.com', 'Nguyen van cuong');
-        $this->email->to('thehalfheart@gmail.com');
-        $this->email->subject('Mail Tesst');
-        $this->email->message('Chao ban chung toi dang test mail');
-        
-        if ($this->email->send()) {
-            echo 'thanh cong';
-        }else{
-            echo 'that bai';
-        }
-        return FALSE;
+        $this->email->from('TheHalfHeart@gmail.com', 'Your Name');
+        $this->email->to('ngvancuong_thienduongmangtenem@yahoo.com');
+
+        $this->email->subject('Email Test');
+        $this->email->message('Testing the email class.');
+
+        $this->email->send();
+
+        echo $this->email->print_debugger();
     }
 
 }

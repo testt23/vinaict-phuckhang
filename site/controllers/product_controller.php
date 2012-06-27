@@ -67,6 +67,10 @@ class Product_controller extends CI_Controller{
     public function order_contact(){
         $data['content'] = 'order_form';
         $this->load->view('temp', $data);
+        if ($this->input->post('check') != null && $this->input->post('check') == 'check'){
+            $Customer = new Customer();
+            $Customer->checkEmail();
+        }
     }
     
 
