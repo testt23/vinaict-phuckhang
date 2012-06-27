@@ -15,14 +15,24 @@
             return true;
         }
         
-        jQuery('.item input').focus(function(){
-            var value = $(this).attr('title');
-            alert(value);
+        jQuery('.item input, #description').focus(function(){ // ra
+            var title = $(this).attr('title');
+            var value = $(this).val();
+            if (value == title){
+                $(this).val('');
+                $(this).css('color','black');
+            }
             
         });
         
-        jQuery('.item input').blur(function(){
-            alert('eheh');
+        jQuery('.item input, #description').blur(function(){ // vao
+            var title = $(this).attr('title');
+            var value = $(this).val();
+            if (trim(value) == ''){
+                $(this).val(title);
+                $(this).css('color','gray');
+            }
+            
         });
         
         order();
@@ -74,35 +84,34 @@
                 <input type="text" value="Birthday" name="birthday" title="Birthday"/>
             </li>
             <li class="item tem1"  class="none">
-                <input type="text" value="Your company" name="name"/>
+                <input type="text" value="Your company" name="company" title="Your company"/>
             </li>
             <li class="item tem1" class="none">
-                <input type="text" value="Mã số thuế" name="address"/>
+                <input type="text" value="Tax code" name="tax_code" title="Tax code"/>
             </li>
             <li class="item tem1"  class="none">
-                <input type="text" value="Fax" name="address"/>
+                <input type="text" value="Fax" name="fax" title="Fax"/>
             <li class="item">
-                <input type="text" value="Your Email" name="email"/>
-            </li>
-            <li class="item">
-                <input type="text" value="Shopping address" name="phone"/>
+                <input type="text" value="Your Email" name="email" title="Your Email"/>
             </li>
             <li class="item">
-                <input type="text" value="Billing address" name="address"/>
-            </li>
-
+                <input type="text" value="Shopping address" name="shopping_address" title="Shopping address"/>
             </li>
             <li class="item">
-                <input type="text" value="YM!" name="yahoo"/>
+                <input type="text" value="Billing address" name="billing_addres" title="Billing address"/>
             </li>
             <li class="item">
-                <input type="text" value="Skype" name="skype"/>
+                <input type="text" value="YM!" name="yahoo" title="YM!"/>
             </li>
-            <li>
-                <textarea id="description" name="description">Tin nhắn</textarea>
+            <li class="item">
+                <input type="text" value="Skype" name="skype" title="Skype"/>
+            </li>
+            <li class="it">
+                <textarea id="description" name="description" title="Message">Message</textarea>
             </li>
             <li style="text-align: right;">
-                <input  type="submit" value="Contact" id="bnt_contact"/>
+                <input type="hidden" name="check" value="check"/>
+                <input  type="submit" value="Order" id="bnt_contact"/>
             </li>
         </ul>
     </div>

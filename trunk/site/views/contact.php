@@ -50,7 +50,7 @@
                 <textarea id="description" name="description">Tin nhắn</textarea>
             </li>
             <li style="text-align: right;">
-                <input  type="submit" value="Contact" id="bnt_contact"/>
+                <input  type="submit" value="Order" id="bnt_contact"/>
             </li>
         </ul>
     </div>
