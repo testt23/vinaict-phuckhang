@@ -2,6 +2,7 @@
 
 $config['useragent']        = "VinaICT";
 $config['protocol']         = 'sendmail';
+$config['mailpath']         = '/usr/sbin/sendmail';
 $config['wordwrap']         = TRUE;
 $config['wrapchars']        = 76;
 $config['mailtype']         = 'html';
