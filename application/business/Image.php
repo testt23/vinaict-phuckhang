@@ -26,6 +26,7 @@
                     if (!file_exists($config['upload_path'])) {
                         $ci->load->helper('file');
                         mkdir($config['upload_path']);
+                        chmod($config['upload_path'], 0755);
                         write_file($config['upload_path'].'index.html', '<html>
                                                                             <head>
                                                                                     <title>403 Forbidden</title>

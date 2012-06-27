@@ -43,6 +43,7 @@ class Image_controller extends CI_Controller {
 
             if (!file_exists($config['upload_path'])) {
                 mkdir($config['upload_path']);
+                chmod($config['upload_path'], 0755);
                 $this->load->helper('file');
                 write_file($config['upload_path'].'index.html', '<html><head><title>403 Forbidden</title></head><body><p>Directory access is forbidden.</p></body></html>');
             }
