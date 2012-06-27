@@ -37,6 +37,7 @@ class Image_controller extends CI_Controller {
             $config = array();
                     
             $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
+            $config['wm_type'] = defined('WM_TYPE') ? WM_TYPE : config_item('wm_type');
 
             $config['upload_path'] = realpath($upload_path).'/'.$group_code;
 
@@ -73,7 +74,18 @@ class Image_controller extends CI_Controller {
                 $img_group = ImageGroup::getImageGroup($group_code);
                 
                 if ($img_group && $img_group->use_wm) {
-                    Image::watermark($upload_path.$group_code.'/'.$target_file_name);
+                    
+                    if ($config['wm_type'] == 'overlay') {
+                        $this->load->helper('image');
+                        watermark($upload_path.$group_code.'/'.$target_file_name, $config);
+                    }
+                    else {
+                        $this->load->library('image_lib');
+                        $this->image_lib->initialize($config);
+                        $this->image_lib->watermark();
+                    }
+                    
+                    //Image::watermark($upload_path.$group_code.'/'.$target_file_name);
                     // Need a warning message when system cannot process watermark
                 }
                 
