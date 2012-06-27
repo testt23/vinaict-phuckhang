@@ -6,7 +6,7 @@ class Contact_controller extends CI_Controller {
         parent::__construct();
     }
 
-    public function index() {
+    public function index() {     
         $data['content'] = 'contact';
         $this->load->view('temp', $data);
     }
@@ -21,7 +21,7 @@ class Contact_controller extends CI_Controller {
         $this->email->from('thehalfheart@gmail.com', 'Nguyen van cuong');
         $this->email->to('thehalfheart@gmail.com');
         $this->email->subject('Mail Tesst');
-        $this->email->message('Chao ban chun toi dang test mail');
+        $this->email->message('Chao ban chung toi dang test mail');
         
         if ($this->email->send()) {
             echo 'thanh cong';

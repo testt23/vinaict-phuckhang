@@ -96,7 +96,7 @@
 table tr td{text-align:center}
 #image{
     width:600px;
-    
+
     float:left;
     margin:15px 0px 20px 0px;}
 #info{float:left}
@@ -193,12 +193,12 @@ table tr td{text-align:center}
 
 
 #slide-images{
-   width: 467px;
-   height: 110px;
+    width: 467px;
+    height: 110px;
 }
 
 #slide-images .slide{
-    
+
     width:100%;
     margin:5px auto;
     height:100%;
@@ -223,7 +223,7 @@ table tr td{text-align:center}
 
 #scrollable{
     position: absolute;
-overflow: hidden;
+    overflow: hidden;
     top: 5px;
     left: 14px;
     width: 440px;
@@ -244,7 +244,7 @@ overflow: hidden;
     height: 80px;
 }
 #scrollable .items img.active{
-        border: solid 5px gray;
+    border: solid 5px gray;
     width: 90px;
     height: 80px;
 }
@@ -264,7 +264,7 @@ overflow: hidden;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
-    
+
 }
 
 .paging a:hover{
@@ -301,10 +301,52 @@ overflow: hidden;
 }
 
 .but-language-vi{
-    
+
     background:url(../images/site/vi.jpg) no-repeat top left;
 }
 
 .online-counter{
     margin-top: 4px;
 }
+
+
+
+#contact-wrapper{
+    width: 400px;
+    margin:  0px auto;
+}
+#ul-contact{
+    margin: 20px 0px 20px 0px;
+}
+#ul-contact li{
+    width: 400px;
+}   
+#ul-contact li.item input{
+    padding: 5px 5px 5px 5px;
+    border : solid 1px gray;
+    -moz-border-radius: 5px 5px 5px 5px;
+    margin: 5px 0px 5px 0px;
+    width: 300px !important;
+    color: gray;
+}
+#description{
+    border: solid 1px gray;
+    -moz-border-radius: 5px 5px 5px 5px;
+    padding: 5px;
+    font-size: 12px;
+    width:350px;
+    color: gray;
+    height:50px;
+}
+
+#bnt_contact{
+    margin: 10px 100px 10px 10px;;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto;
+    padding: 5px;
+    background: gray;
+    color: white;
+    -moz-border-radius: 5px 5px 5px 5px;    
+}
+
