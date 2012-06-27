@@ -63,5 +63,11 @@ class Product_controller extends CI_Controller{
         $this->load->view('temp', $data);
         
     }
+    
+    public function order_contact(){
+        $data['content'] = 'order_form';
+        $this->load->view('temp', $data);
+    }
+    
 
 }
