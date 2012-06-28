@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+<style type="text/css">
+		body {
+			color: #000000;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		body, td, th, input, textarea, select, a {
+			font-size: 12px;
+		}
+		*{margin:0px; padding:0px;list-style:none;}
+		p {
+			margin-top: 0px;
+			margin-bottom: 20px;
+		}
+		a, a:visited, a b {
+			color: #378DC1;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		a img {
+			border: none;
+		}
+		#container {
+			width: 680px;
+			margin:0px auto;
+			clear:both;
+		}
+		#header{
+			width:100%;
+			float:left;
+			clear:both;	
+			margin-top:20px;
+			background:#f2f2f2;
+			border-bottom:2px solid #212121;
+		}
+		#header #top_header{
+			width:100%;
+			height:40px;
+			clear:both;
+			float:left;
+			background:#212121;
+			border-radius: 3px 3px 0px 0px;
+			}
+		#top_header span{
+			color:#fefefe;
+			float:right;
+			line-height:40px;
+			font-style:italic;
+			margin-right:10px;
+			}
+		#bottom_header{
+			float:left;
+			clear:both;
+			width:100%;
+			margin-top:20px;
+			margin-right:20px;
+			margin-bottom:20px;
+			background:#f2f2f2;
+			}
+		#bottom_header a{
+			color:#545454;
+			font-size:30px;
+			text-align:right;
+			text-decoration:none;
+			text-transform:capitalize;
+			font-weight:bold;
+			float:right;
+			margin-right:20px;
+			}
+		#footer{
+			width:100%;
+			clear:both;
+			background:#f2f2f2;
+			}
+		#ct{
+			width:100%;
+			float:left;
+			clear:both;
+			background:#f2f2f2;
+			border-top:2px solid #212121;
+			}
+		#ct ul{
+			margin-left:20px;
+			margin-top:20px;
+			margin-bottom:20px;
+			}
+		#ct ul a{
+			color:#7c5d38;
+			text-decoration:none;
+			}
+		#content{
+			width:100%;
+			float:left;
+			clear:both;
+			background:#fff;
+			}
+		#wrap{
+			background:#fff;
+			width:640px;
+			margin-left:20px;
+			margin-top:20px;
+			margin-bottom:20px;
+			clear:both;
+			float:left;
+			}
+		.question{
+			margin-top:10px;
+			margin-left:10px;
+			clear:both;
+			}
+		.question span{
+			color:#000;
+			font-weight:bold;
+			font-size:16px;
+			}
+		.detail{
+			margin-top:30px;
+			margin-left:10px;
+			clear:both;
+			margin-bottom:30px;
+			}
+		.detail .ttkh{
+			width:600px;
+			margin:20px auto;
+			text-align:left;
+			line-height:25px;
+			background:#fefefe;
+			border:1px solid #f2f2f2;
+			border-top:none;
+			border-radius: 0px 0px 2px 2px;
+			}
+		.detail .ttct{
+			width:600px;
+			margin:20px auto;
+			text-align:center;
+			line-height:25px;
+			background:#fefefe;
+			border:1px solid #f2f2f2;
+			border-top:none;
+			border-radius: 0px 0px 2px 2px;
+			}
+		.detail table .tt{
+			background:#696969;
+			height:30px;
+			color:#fefefe;
+			text-align:center;
+			text-transform:uppercase;
+			border-radius: 2px 2px 0px 0px;
+			border-bottom:1px solid #212121;
+			font-weight:bold;
+			}
+		.detail table tr .left-td{
+			width:140px;
+			background:#e6e9ea;
+			text-align:right;
+			}
+		.detail table tr td strong{
+				margin-right:10px;
+			}
+		.detail table .tt-info{
+			text-align:center;
+			background:#e6e9ea;
+			font-weight:bold;
+			height:25px;
+			}
+		.detail table tr td{
+			border-right:solid 1px #f5f5f5;
+			}
+		.detail table tr td:last-child{
+			border-right:none;
+			}
+		.ttct{
+			text-align:center;
+			line-height:25px;
+			}
+
+		#confirm{
+			width:100%;
+			float:left;
+			margin:0px auto;
+			clear:both;
+			margin:20px auto;
+			}
+		#confirm a{
+			float:right;
+			margin-right:40px;
+			background:#7b5d3a;
+			padding:5px 20px;
+			text-decoration:none;
+			color:#fff;
+			border-radius: 3px;
+			font-weight:bold;
+			-moz-box-shadow: 1px 1px 1px 0px #ccc;
+			}
+		#confirm a:hover{
+			background:#856d51;
+			}
+
+</style>
+<body>
+    <div id="container">
+		<div id="header">
+        	<div id="top_header">
+            <span>Thứ Tư, ngày 27/06/2012</span>
+            </div><!-- end top_header -->
+            <div id="bottom_header">
+            	<a href="#"><span>xác nhận thông tin đặt hàng</span></a>
+            </div><!--end bottom_header -->
+        </div><!--end header -->
+        
+        <div id="content">
+        	<div id="wrap">
+               	  <div class="question">
+                    	<span>Quý khách đã đặt hàng online tại website của công ty chúng tôi. Làm ơn kiểm tra lại thông  tin đặt hàng và xác nhận đơn đặt hàng. Xin cảm ơn!</span>
+                  </div><!--end question -->
+                    <div class="detail">
+                   	  <table class="ttkh" cellpadding="0" cellspacing="0">
+                      <tr class="tt">
+                    	    <td colspan="2">Thông tin khách hàng</td>
+
+                  	    </tr>
+                    	  <tr>
+                    	    <td width="130" class="left-td"><strong>Company:</strong> </td>
+                    	    <td width="218">akfjlafjl</td>
+                  	    </tr>
+                    	  <tr>
+                    	    <td class="left-td"><strong>Your Name:</strong></td>
+                    	    <td>skjskj</td>
+                  	    </tr>
+                          <tr>
+                    	    <td class="left-td"><strong>Your Company:</strong></td>
+                    	    <td>&agagg;</td>
+                  	    </tr>
+                        <tr>
+                    	    <td class="left-td"><strong>Tax Code:</strong></td>
+                    	    <td>agagag</td>
+                  	    </tr>
+                        <tr>
+                    	    <td class="left-td"><strong>Fax:</strong></td>
+                    	    <td>agagag</td>
+                  	    </tr>
+                        
+                        <tr>
+                    	    <td class="left-td"><strong>Your Email:</strong></td>
+                    	    <td>agagag</td>
+                  	    </tr>
+                        <tr>
+                    	    <td class="left-td"><strong>Shopping Address:</strong></td>
+                    	    <td>agagag</td>
+                  	    </tr>
+                        <tr>
+                    	    <td class="left-td"><strong>Billing Address:</strong></td>
+                    	    <td>aagag</td>
+                  	    </tr>
+                        <tr>
+                    	    <td class="left-td"><strong>YM!:</strong></td>
+                    	    <td>agagag</td>
+                  	    </tr>
+                        <tr>
+                    	    <td class="left-td"><strong>Skype:</strong></td>
+                    	    <td>agagag</td>
+                  	    </tr>
+                        <tr>
+                    	    <td class="left-td"><strong>Message:</strong></td>
+                    	    <td>agagag</td>
+                  	    </tr>
+                  	  </table>
+                    </div><!--end detail -->
+                    
+                    <div class="detail">
+                   	  <table class="ttct" cellpadding="0" cellspacing="0">
+                      <tr class="tt">
+                    	    <td colspan="4">Các sản phẩm chi tiết đơn đặt hàng </td>
+                  	    </tr>
+                    	  <tr class="tt-info">
+                    	    <td width="218">Tên sản phẩm</td>
+                            <td width="218">Mã Sản phẩm</td>
+                            <td width="218">Giá Sản phẩm </td>
+                            <td width="218">Số lượng</td>
+                  	    </tr>
+                         <tr>
+                    	    <td width="218">kshakljflajf</td>
+                            <td width="218">lajflsjlfks</td>
+                            <td width="218">ljslkjflajsf </td>
+                            <td width="218">lkasjlajk</td>
+                  	    </tr>
+                    	  <tr>
+                    	    <td width="218">kshakl kkdj jflajf</td>
+                            <td width="218">lajfls a jlfks</td>
+                            <td width="218">ljsl fskafs jflajsf </td>
+                            <td width="218">lkasj a  lajk</td>
+                  	    </tr>
+                  	  </table>
+                    </div><!--end detail -->
+                    <div id="confirm">
+                    	<a href="#">Confirm</a>
+                    </div><!--end confirm-->
+            </div><!--end wrap -->
+
+        </div><!--end #content -->
+        
+        <div id="footer">
+            <div id="ct">
+                <ul>
+                	<li><strong>VinaICT</strong></li>
+                   	<li><strong>Địa chỉ:</strong>170/46, Lê Đức Thọ, P.6, Q. Gò Vấp</li>
+                    <li><strong>Điện thoại:</strong> (08)6.289.0254</li>
+                    <li><strong>Hotline:</strong>(08)6.289.0254</li>
+                    <li><strong>Fax:</strong>(08)6.289.0264</li> 
+                    <li><strong>Email:</strong> <a href="#">truong@vinaict.com</a></li> 
+                </ul>
+            </div><!--end #ct -->
+        </div><!--end footer -->
+    </div><!--end container -->
+</body>
+</html>
