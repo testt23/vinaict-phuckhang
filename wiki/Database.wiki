@@ -370,22 +370,23 @@ insert  into `web_page`(`id`,`title`,`content`,`link`,`keywords`,`is_disabled`,`
 
 DROP TABLE IF EXISTS `purchase_order`;
 
-create table `purchase_order`( 
-   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT , 
-   `code` varchar(12) NOT NULL , 
-   `id_customer` bigint UNSIGNED NOT NULL , 
-   `order_date` date , 
-   `amount` float UNSIGNED NOT NULL , 
-   `is_deleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' , 
-   `status` tinyint(2) UNSIGNED NOT NULL , 
-   `description` text , 
-   `shipping_address` varchar(100) NOT NULL , 
-   `billing_address` varchar(100) NOT NULL , 
-   `shipping_date` date , 
-   `payment_date` date , 
-   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-   `modification_date` datetime , 
-   PRIMARY KEY (`id`)
- );
+CREATE TABLE `purchase_order` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `code` VARCHAR(12) COLLATE utf8_unicode_ci NOT NULL,
+  `id_customer` BIGINT(20) UNSIGNED NOT NULL,
+  `order_date` DATE DEFAULT NULL,
+  `amount` FLOAT UNSIGNED NOT NULL,
+  `is_deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
+  `status` TINYINT(2) UNSIGNED NOT NULL,
+  `description` TEXT COLLATE utf8_unicode_ci,
+  `shipping_address` VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
+  `billing_address` VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
+  `shipping_date` DATE DEFAULT NULL,
+  `payment_date` DATE DEFAULT NULL,
+  `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modification_date` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`code`)
+) ENGINE=MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 }}}
