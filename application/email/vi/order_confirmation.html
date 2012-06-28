@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>{title}</title>
 </head>
 <style type="text/css">
 		body {
@@ -91,6 +91,7 @@
 			margin-left:20px;
 			margin-top:20px;
 			margin-bottom:20px;
+			line-height:18px;
 			}
 		#ct ul a{
 			color:#7c5d38;
@@ -188,9 +189,10 @@
 			margin:0px auto;
 			clear:both;
 			margin:20px auto;
+			text-align:center;
 			}
 		#confirm a{
-			float:right;
+		
 			margin-right:40px;
 			background:#7b5d3a;
 			padding:5px 20px;
@@ -203,25 +205,35 @@
 		#confirm a:hover{
 			background:#856d51;
 			}
+		#wrap span{
+			font-size:15px;
+			font-weight:bold;
+			}
+		#wrap span em{
+			color:#F60;
+			}
 
 </style>
 <body>
     <div id="container">
 		<div id="header">
         	<div id="top_header">
-            <span>Thứ Tư, ngày 27/06/2012</span>
+            <span>{date_time}</span>
             </div><!-- end top_header -->
             <div id="bottom_header">
-            	<a href="#"><span>xác nhận thông tin đặt hàng</span></a>
+            	<a href="#"><span>{title}</span></a>
             </div><!--end bottom_header -->
         </div><!--end header -->
         
         <div id="content">
         	<div id="wrap">
-               	  <div class="question">
-                    	<span>Quý khách đã đặt hàng online tại website của công ty chúng tôi. Làm ơn kiểm tra lại thông  tin đặt hàng và xác nhận đơn đặt hàng. Xin cảm ơn!</span>
-                  </div><!--end question -->
-                    <div class="detail">
+
+                    	<span>{txt_welcome} {customer_name}, <br />
+                            Chúng tôi vừa nhận được đơn đặt hàng của bạn tại website, chúng tôi là <a href="www.DatVangNgheThuat.com">www.DatVangNgheThuat.com</a><br /><br />
+
+						Sau đây là thông tin liên hệ của bạn đã đăng ký:
+						</span>
+                  <div class="detail">
                    	  <table class="ttkh" cellpadding="0" cellspacing="0">
                       <tr class="tt">
                     	    <td colspan="2">Thông tin khách hàng</td>
@@ -274,8 +286,12 @@
                   	    </tr>
                   	  </table>
                     </div><!--end detail -->
+                    	<span>
+                        	Và thông tin đơn đặt hàng của bạn:
+						</span>
+   
                     
-                    <div class="detail">
+					<div class="detail">
                    	  <table class="ttct" cellpadding="0" cellspacing="0">
                       <tr class="tt">
                     	    <td colspan="4">Các sản phẩm chi tiết đơn đặt hàng </td>
@@ -300,9 +316,23 @@
                   	    </tr>
                   	  </table>
                     </div><!--end detail -->
-                    <div id="confirm">
+
+            <span>
+            Xin vui lòng kiểm tra, xác nhận thông tin và đơn đặt hàng của bạn bằng cách <em>click</em> vào nút dưới đây<br />
+            </span>
+					<div id="confirm">
                     	<a href="#">Confirm</a>
                     </div><!--end confirm-->
+            <span>
+            Mọi thắc mắc hoặc thông tin liên hệ, góp ý. Xin vui lòng gửi email cho chúng tôi về địa chỉ <em>{contact_email}</em><br /><br />
+            
+            Xin cảm ơn và trân trọng,<br />
+            
+            {contact_name}
+            </span>              
+                    
+                    
+                    
             </div><!--end wrap -->
 
         </div><!--end #content -->
@@ -310,12 +340,13 @@
         <div id="footer">
             <div id="ct">
                 <ul>
-                	<li><strong>VinaICT</strong></li>
-                   	<li><strong>Địa chỉ:</strong>170/46, Lê Đức Thọ, P.6, Q. Gò Vấp</li>
-                    <li><strong>Điện thoại:</strong> (08)6.289.0254</li>
-                    <li><strong>Hotline:</strong>(08)6.289.0254</li>
-                    <li><strong>Fax:</strong>(08)6.289.0264</li> 
-                    <li><strong>Email:</strong> <a href="#">truong@vinaict.com</a></li> 
+                	<li><strong>Công ty TNHH Dát Vàng Phúc Khang</strong></li>
+                   	<li><strong>Địa chỉ: </strong> 207 Huỳnh Văn Nghệ, P.12, Q. Gò Vấp</li>
+                    <li><strong>Điện thoại: </strong>(08)66806108</li>
+                    <li><strong>Hotline: </strong>0973513579</li>
+                    <li><strong>Fax: </strong>(08)66806108</li> 
+                    <li><strong>Website: </strong> <a href="#">www.DatVangNgheThuat.com</a></li> 
+                    <li><strong>Email: </strong> <a target="_new" href="mailto:phuckhanggold@gmail.com">phuckhanggold@gmail.com</a></li>  
                 </ul>
             </div><!--end #ct -->
         </div><!--end footer -->
