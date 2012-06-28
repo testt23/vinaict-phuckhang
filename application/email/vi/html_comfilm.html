@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Untitled Document</title>
+    </head>            
+    <style type="text/css">
+        html {
+            background: #FFFFFF;
+        }
+
+        body {
+
+            margin:auto;
+            padding:0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #444;
+            font-size: 12px;
+            line-height: 1.5em;
+            width: 840px;
+            display: table;
+
+        }
+
+        a:link, a:visited {	color: #AFA; text-decoration: none; }
+
+        a:active, a:hover { color: #FF0; text-decoration: underline; }
+
+        #templatemo_container {
+
+            width: 840px;
+            margin: auto;
+            background: #313131;
+
+        }
+
+        #templatemo_header {
+
+            width: 840px;
+            height: 100px;
+            background: url(images/templatemo_header.jpg) no-repeat;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #templatemo_content {
+
+            margin: 0;
+            padding: 0;
+
+        }
+        /* Left Content */
+        #templatemo_content_left {
+
+            float:left;
+            width: 250px;
+            min-height: 618px;
+            background: url(images/templatemo_left_bg.jpg);
+            margin: 0;
+            padding: 0;
+
+        }
+
+
+        /* Right Content */
+        #templatemo_content_right {
+
+            float: right;
+            width: 250px;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #templatemo_content_right_bottom {
+
+            float: right;
+            width: 707px;
+            background: #4c4c4c url(images/templatemo_right_bottom.jpg) right bottom no-repeat;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #templatemo_content_right_top {
+
+            width: 682px;
+            background: url(images/templatemo_right_top.jpg) top no-repeat;
+            margin: 0;
+            padding: 33px 0px 0px 25px;
+
+        }
+
+        #templatemo_content_right_top .templatemo_post_area {
+            width: 650px;
+            margin: 0;
+            padding-top: 15px;
+            padding-right: 0;
+            padding-bottom: 0;
+            padding-left: 0;
+
+        }
+
+        .templatemo_post_area h1 {
+
+            font-family: Tahoma;
+            font-size:	18px;
+            color: #AFA;
+            margin: 0 0 10px 0;
+            padding: 0;
+
+        }
+
+        .templatemo_post_area p {
+
+            font-family: Tahoma;
+            font-size:	12px;
+            text-align: justify;
+            color: #FFF;
+            margin: 0 0 10px 0;
+            padding: 0;
+
+        }
+        .templatemo_post_area h2 {
+
+            font-family: Tahoma;
+            font-size:	12px;
+            color: #AFA;
+            margin: 0 0 10px 0;
+            padding: 0;
+
+        }
+        .templatemo_post_area h3 {
+
+            font-family: Tahoma;
+            font-size:	12px;
+            color: #FFF;
+            margin: 0 0 10px 0;
+            padding: 0;
+
+        }
+        #ct{
+            width:100%;
+            float:left;
+            clear:both;
+            background:#f2f2f2;
+            border-top:2px solid #212121;
+        }
+
+        * html #templatemo_content_right_bottom_section {
+
+            margin-top: -20px;
+        }
+
+        #templatemo_content_right_bottom_section {
+
+            width: 687px;
+            background: #161616;
+            margin: 0;
+            padding: 10px;
+
+        }
+
+        #templatemo_content_right_bottom_section .templatemo_text_area {
+
+
+            margin: 0;
+            padding: 20px 0px 20px 20px;
+
+        }
+
+        .templatemo_text_area h1 {
+
+            font-family: Tahoma;
+            font-size:	18px;
+            color: #4c4c4c;
+            margin: 0 0 10px 0;
+            padding: 0;
+
+        }
+
+        .templatemo_text_area p {
+
+            font-family: Tahoma;
+            font-size:	12px;
+            text-align: justify;
+            color: #8b8b8b;
+            margin: 0 0 10px 0;
+            padding: 0;
+
+        }
+
+        .templatemo_text_area img {
+
+            margin: 0 20px 10px 0;
+            padding: 0;
+            border: 1px solid #8fd300;
+
+        }
+
+        * html .templatemo_bottom_panel_section {
+
+            margin-top: -35px;
+        }
+
+        .templatemo_bottom_panel_section {
+
+            background: url(images/templatemo_bottom_bg.jpg) no-repeat;
+            width: 920px;
+            height: 109px;
+            margin: 0;
+            padding:  10px;
+
+        }
+
+        .templatemo_bottom_section_left {
+
+            float: left;	
+            width: 300px;
+            margin: 0;
+            padding: 10px;
+
+        }
+
+        .templatemo_bottom_section_left h1 {
+
+            font-family: Verdana;
+            font-size: 12px;
+            color: #ffd200;
+            margin: 0 0 5px 0;
+            padding: 0;
+
+        }
+
+        .templatemo_bottom_section_left ul {
+            list-style: circle;
+            color: #fff;
+            margin: 0 0 0 15px;
+            padding: 0;
+        }
+
+        .templatemo_bottom_section_left li a {
+            font-family: Verdana;
+            font-size: 12px;
+            text-decoration: underline;
+            color: #fff;
+            margin: 0 0 10px 0;
+            padding: 0;
+
+        }
+
+        .templatemo_bottom_section_left li a:hover {
+
+            text-decoration: none;
+
+        }
+
+        .templatemo_bottom_section_right {
+
+            float: right;	
+            width: 300px;
+            margin: 0;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .templatemo_bottom_section_right h1 {
+
+            font-family: Verdana;
+            font-size: 12px;
+            color: #ffd200;
+            margin: 0 5px 5px 0;
+            padding: 0;
+
+        }
+
+        .templatemo_bottom_section_right p {
+
+            font-family: Verdana;
+            font-size: 12px;
+            color: #fff;
+            text-align:	right;
+            margin: 0 0 10px 0;
+            padding: 0;
+        }
+
+        .templatemo_bottom_section_right img {
+            border: none;
+        }
+        /* End Of Right Content */
+
+        * html #templatemo_footer {
+
+            margin-top: -26px;
+        }
+
+        #templatemo_footer {
+
+            width: 840px;
+            height: 150px;
+            background: url(images/templatemo_header.jpg) no-repeat;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #templatemo_footer a {
+
+            color: #fff;
+            text-decoration: underline;
+
+        }
+
+        #templatemo_footer a:hover {
+
+            color: #ff0;
+            text-decoration: none;
+
+        }
+
+        .cleaner {
+
+            clear: both;
+            height: 0px;
+
+        }
+    </style>
+
+<body>
+    <div id="templatemo_container">
+
+        <div id="templatemo_header">
+            Header,
+        </div>
+        <div id="templatemo_content">
+
+            <!-- End Of Left -->
+            <div id="templatemo_content_right">
+                <div id="templatemo_content_right_bottom">
+                    <div id="templatemo_content_right_top">
+                        <div class="templatemo_post_area">
+                            <h1>Xác nhận thông tin đặt hàng</h1>
+                            <p>
+
+                            </p>
+                            <table border="0" cellpadding="1" cellspacing="1" width="600">
+                                <tbody>
+                                    <tr><td colspan="2" align="center"><h2>Thông tin của bạn</h2></td></tr>
+                                    <tr>
+                                        <th width="173" scope="row"><h2>Your name:</h2></th>
+                                        <td width="420"><h3> abc </h3></td>
+                                    </tr>
+                                </tbody>
+                                <p/>                                
+                                <tr>
+                                    <th scope="row"><h2>Address:</h2></th>
+                                    <td><h3> abc </h3></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><h2>Email:</h2></th>
+                                    <td><h3> abc </h3></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><h2>Home phone:</h2></th>
+                                    <td><h3> abc </h3></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><h2>Mobile phone:</h2></th>
+                                    <td><h3> abc </h3></td>
+                                </tr>
+                                <tr></tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <table width="500">
+                                            <tr>
+                                                <td colspan="4" align="center"><h2>Thông tin các sản phẩm bạn đã chọn</h2></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h2>Tên sản phẩm</h2></td>
+                                                <td><h2>Số lượng</h2></td>
+                                                <td><h2>Đơn giá</h2></td>
+                                                <td><h2>Thành tiền</h2></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h3> abc </h3></td>
+                                                <td><h3> 1 </h3></td>
+                                                <td><h3> 30000 </h3></td>
+                                                <td><h3> 30000 </h3></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h3> abc </h3></td>
+                                                <td><h3> 2 </h3></td>
+                                                <td><h3> 30000 </h3></td>
+                                                <td><h3> 60000 </h3></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" scope="row"> <input name="btn_Send" id="btn_Send" value="Gửi thông tin" type="submit" />
+                                    </th>
+                                </tr>
+                            </table>
+                            <p></p>
+                        </div>
+                        <div class="cleaner"></div>
+                    </div><!-- End Of Right Top -->			
+                </div><!-- End Of Right Bottom -->	
+                <div class="cleaner"></div>		
+
+                <div class="cleaner"></div>	
+            </div><!-- End Of Right -->
+            <div class="cleaner"></div>
+        </div><!-- End Of content -->
+
+        <div id="templatemo_footer">
+            VinaICT<br />
+            Địa chỉ:170/46, Lê Đức Thọ, P.6, Q. Gò Vấp<br />
+            Điện thoại: (08)6.289.0254<br />
+            Hotline:(08)6.289.0254<br />
+            Fax:(08)6.289.0264 <br />
+            Email:<a href="#">truong@vinaict.com</a> 
+
+        </div>
+    </div>
+    </div><!-- End Of container -->
+
+
+
+</body></html>
