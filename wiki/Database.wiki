@@ -368,6 +368,8 @@ insert  into `web_page`(`id`,`title`,`content`,`link`,`keywords`,`is_disabled`,`
 
 /* 28-06-2012: Pham Thanh Nam: Order Management */
 
+DROP TABLE IF EXISTS `purchase_order`;
+
 create table `purchase_order`( 
    `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT , 
    `code` varchar(12) NOT NULL , 
