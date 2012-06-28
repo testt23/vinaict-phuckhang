@@ -366,8 +366,24 @@ CREATE TABLE `web_page` (
 
 insert  into `web_page`(`id`,`title`,`content`,`link`,`keywords`,`is_disabled`,`id_parent`) values (2,'<en>About Us</en><vi>Giới thiệu</vi>','<en>&lt;p&gt; &lt;strong&gt;- Grand Home was established with a goal to providing customer with high quality interior product. Grand Home’s product are combinations of culture and art with sophisticated shapes, luxurious designs and modern designing ideas.&lt;/strong&gt;&lt;/p&gt;&lt;div&gt; &lt;em&gt;- With continuous attempts and with the strength of, we have created the most sophistcated and best quality product for all customers.&lt;/em&gt;&lt;/div&gt;&lt;div&gt; &lt;em&gt;- The message Grand Home would like to send to the customers is “with all respects, Grand Home commits to provide customers best products and services”.&lt;/em&gt;&lt;/div&gt;&lt;div&gt; - We are proud and strive restlessly to make Grand Home’s saff experts on their fields. Whith a team of and professionlly trained decorators, artists and skillful workers Grand Home surely satify all customers.&lt;/div&gt;</en><vi>&lt;p align=&quot;justify&quot;&gt; &lt;big&gt;Được thành lập từ năm 2000, sau hơn một thập kỷ ra đời và phát triển, GrandHome chính thức trở thành một trong những nhà thiết kế và trang trí nội thất hàng đầu tại Việt Nam. Hiện GrandHome có trụ sở chính đặt tại 81 Hồ Văn Huê - Phường 9 - Quận Phú Nhuận - TP.Hồ Chí Minh. Trong hơn một thập kỷ qua, chúng tôi đã không ngừng cố gắng để vượt qua sự mong đợi của Quý khách hàng với phương châm “Sự hài lòng của khách hàng là thành công của chúng tôi”.&lt;/big&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Thế mạnh của GrandHome là mang đến cho Quý khách hàng những sản phẩm nội thất cổ điển cao cấp mang hơi thở của thời gian. Những sản phẩm được các nhà thiết kế, họa sỹ và công nhân lành nghề thổi hồn vào thông qua những đôi tay chuyên nghiệp. Không chỉ chăm chút vẻ đẹp bên ngoài, sản phẩm của GrandHome còn đa dạng về thiết kế nhờ sự hết hợp tinh tế giữa văn hóa và nghệ thuật của các nước Ý, Pháp, Nga...&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Với bản lĩnh của người tiên phong trong lĩnh vực thiết kế và trang trí nội thất cổ điển tại Việt Nam. Đội ngũ chuyên gia và công nhân của GrandHome không ngừng sáng tạo, không chỉ cho ra đời những sản phẩm tốt nhất cho khách hàng mà còn biến mỗi thiết kế là một phong cách riêng cho từng ngôi nhà của Quý khách.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; “Nhìn sản phẩm nhớ đến GrandHome” – đó là mục tiêu chúng tôi luôn hướng đến.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; &amp;nbsp;&lt;/p&gt;&lt;h3 align=&quot;justify&quot; style=&quot;color:red;&quot;&gt; &lt;strong&gt;CAM KẾT CỦA CHÚNG TÔI&lt;/strong&gt;&lt;/h3&gt;&lt;p align=&quot;justify&quot;&gt; &lt;u&gt;Không ngừng tạo ra những sản phẩm mới, độc đáo, riêng biệt.&lt;/u&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Chất lượng luôn cao hơn giá thành.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Lấy sự hài lòng của khách hàng làm thước đo cho sự phát triển của công ty.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Đồng hành cùng Quý khách hàng trên từng sản phẩm.&lt;/p&gt;</vi>','about','about, gioi thieu',0,NULL);
 
-/* 27-06-2012: Your Name: Your Task Name */
+/* 28-06-2012: Pham Thanh Nam: Order Management */
 
-
+create table `purchase_order`( 
+   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT , 
+   `code` varchar(12) NOT NULL , 
+   `id_customer` bigint UNSIGNED NOT NULL , 
+   `order_date` date , 
+   `amount` float UNSIGNED NOT NULL , 
+   `is_deleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' , 
+   `status` tinyint(2) UNSIGNED NOT NULL , 
+   `description` text , 
+   `shipping_address` varchar(100) NOT NULL , 
+   `billing_address` varchar(100) NOT NULL , 
+   `shipping_date` date , 
+   `payment_date` date , 
+   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+   `modification_date` datetime , 
+   PRIMARY KEY (`id`)
+ );
 
 }}}
