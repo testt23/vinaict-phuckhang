@@ -35,7 +35,8 @@ class dbinfo {
     public $_table_param_permission                 = 'permission';
     public $_table_user                             = 'user';
     public $_table_user_group                       = 'user_group';
-    
+    public $_table_order                            = 'order';
+    public $_table_order_details                    = 'order_details';
     
     /*PRODUCT*/
     
@@ -437,6 +438,38 @@ class dbinfo {
     public $_article_as_id_article_category         = 'article_id_article_category';
     public $_article_as_id_image                    = 'article_id_image';
     public $_article_as_is_deleted                  = 'article_is_deleted';
+    
+    
+        /*ORDER*/
+    
+    public $_order_id = 'order.id';
+    public $_order_id_customer = 'order.id_customer';
+    public $_order_description = 'order.description';
+    
+    public $_order_as_id = 'order_id';
+    public $_order_as_id_customer = 'order_id_customer';
+    public $_order_as_description = 'order_description';
+    
+    
+    /**ORDER DETAILS*/
+    
+    public $_order_details_id = 'order_details.id';
+    public $_order_details_id_order = 'order_details.id_order';
+    public $_order_details_id_product = 'order_details.id_product';
+    public $_order_details_number = 'order_details.number';
+    public $_order_details_name_product = 'order_details.name_product';
+    public $_order_details_price = 'order_details.price';
+    public $_order_details_image = 'order_details.image';
+    
+    
+    public $_order_as_details_id = 'order_details_id';
+    public $_order_as_details_id_order = 'order_details_id_order';
+    public $_order_as_details_id_product = 'order_details_id_product';
+    public $_order_as_details_number = 'order_details_number';
+    public $_order_as_details_name_product = 'order_details_name_product';
+    public $_order_as_details_price = 'order_details_price';
+    public $_order_as_details_image = 'order_details_image';
+    
     
 }
 

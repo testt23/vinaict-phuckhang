@@ -12,10 +12,10 @@ class Contact_controller extends CI_Controller {
     }
 
     public function sendmail() {
+        
         $this->load->library('email');
         $this->email->from('TheHalfHeart@gmail.com', 'Your Name');
         $this->email->to('ngvancuong_thienduongmangtenem@yahoo.com');
-
         $this->email->subject('Email Test');
         $this->email->message('Testing the email class.');
 
@@ -23,5 +23,8 @@ class Contact_controller extends CI_Controller {
 
         echo $this->email->print_debugger();
     }
+    
+    
+    
 
 }

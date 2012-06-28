@@ -9,7 +9,7 @@ class Product_controller extends CI_Controller{
     }
     
     public function index(){
-        echo 'We are in index page';
+        redirect('index');
     }
     
     public function details($link = false){
@@ -37,7 +37,7 @@ class Product_controller extends CI_Controller{
         }
     }
     
-    public function order(){
+    public function order(){ // 
         $Shopping = new ShoppingCart();
         if ($this->input->post('click_access') != null && $this->input->post('click_access') == 'click_access'){
             $id = $this->input->post('h_id');
@@ -67,9 +67,30 @@ class Product_controller extends CI_Controller{
     public function order_contact(){
         $data['content'] = 'order_form';
         $this->load->view('temp', $data);
-        if ($this->input->post('check') != null && $this->input->post('check') == 'check'){
+        if ($this->input->post('check') != null && $this->input->post('check') == 'order-ok'){
+            $email = $this->input->post('email');
             $Customer = new Customer();
-            $Customer->checkEmail();
+            $Cus = $Customer->getByEmail($email);
+            
+            $cus_id = '';
+            $ord_id = '';
+            if ($Cus->countRows() > 0){
+                // khoong them khach hang moi
+                // insert order before
+                $Cus->fetchFirst();
+                $cus_id = $Cus->{$this->if->_customer_as_id};
+                $Order = new Order();
+                $ord_id = $Order->insert($cus_id, $this->input->post('description'));
+                
+                
+            }else{
+                // them khach hang moi
+                $cus = $Customer->insert();
+                $cus_id = $Customer->id;
+                // insert into order
+                $Order = new Order();
+                $ord_id = $Order->insert($cus_id, $this->input->post('description'));
+            }
         }
     }
     
