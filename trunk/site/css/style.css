@@ -312,21 +312,24 @@ table tr td{text-align:center}
 
 
 #contact-wrapper{
-    width: 400px;
+    width: 1000px;
     margin:  0px auto;
+    border: solid 1px gray;
 }
-#ul-contact{
+.ul-contact{
     margin: 20px 0px 20px 0px;
+    float:left;
 }
-#ul-contact li{
-    width: 400px;
+.ul-contact li{
+    width: 300px;
+    
 }   
-#ul-contact li.item input{
+.ul-contact li.item input{
     padding: 5px 5px 5px 5px;
     border : solid 1px gray;
     -moz-border-radius: 5px 5px 5px 5px;
     margin: 5px 0px 5px 0px;
-    width: 300px !important;
+    width: 200px !important;
     color: gray;
 }
 #description{
@@ -334,7 +337,7 @@ table tr td{text-align:center}
     -moz-border-radius: 5px 5px 5px 5px;
     padding: 5px;
     font-size: 12px;
-    width:350px;
+    width:250px;
     color: gray;
     height:50px;
 }
@@ -350,3 +353,23 @@ table tr td{text-align:center}
     -moz-border-radius: 5px 5px 5px 5px;    
 }
 
+.main-title{
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0px 0px 0px 10px;
+    background: gray;
+    color: white;
+}
+
+.contact-logo{
+    width: 150px;
+    height: 300px;
+    float:left;
+}
+.contact-content{
+    float:right;
+    width: 640px;
+    padding: 20px 100px 20px 100px;
+                
+}

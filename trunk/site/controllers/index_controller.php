@@ -8,8 +8,8 @@
 		}
 
 		function index($page = 1){
-                    $Product = new Product();
                     
+                    $Product = new Product();
                     $info = $Product->getNewProduct($page);
                     $data['product'] = $info['product'];
                     $data['paging'] = $info['paging'];
