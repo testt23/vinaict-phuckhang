@@ -103,7 +103,7 @@
     });
 </script>
 <?php endif;?>
-<?php if (!empty($product)): $product->fetchFirst(); ?>
+<?php if (!empty($product) && $product->countRows() > 0): $product->fetchFirst(); ?>
     <div id="image">
         
         <?php if ($show == 'yes'):?> 

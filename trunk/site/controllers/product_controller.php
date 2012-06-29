@@ -11,32 +11,48 @@ class Product_controller extends CI_Controller{
     public function index(){
         redirect('index');
     }
+     
+    // function display a list products by page
+    public function prod_list_by_category($url_cate = '', $url_page = 1){
+        if (!empty($url_cate)){
+            $Product = new Product();
+            $info = $Product->getProductByCategory($url_cate, $url_page);
+            $data['content'] = 'index';
+            $data['product'] = $info['product'];
+            $data['paging'] = $info['paging'];
+            $this->load->view('temp', $data);
+        }
+        else{
+            redirec('index');
+        }
+    }
     
-    public function details($link = false){
-        echo $_SERVER['PATH_INFO'];
-        echo 'i"m in details page';
-        if (!empty ($link)){
-            
+    // function display detail a product
+    public function prod_detail($url_link = null){
+        if (!empty ($url_link)){ // neu link khong ton tai hay bi trong
             $Product = new Product();
             $Image = new Image();
             
-            $Product_tmp = $Product->getProductByLink($link);
-            
+            $Product_tmp = $Product->getProductByLink($url_link);
             $Product_tmp->fetchFirst();
             $data['product'] = $Product_tmp;
+            if ($Product_tmp->countRows() > 0){
+                $data['image'] = $Image->getListImageByListId($Product_tmp->the_product_id_prod_image());
+            }else{
+                $data['image'] = '';
+            }
             
-            $data['image'] = $Image->getListImageByListId($Product_tmp->the_product_id_prod_image());
             
             $data['content'] = 'prod_details';
 
             $this->load->view('temp', $data);
             
         }else{
-            
             redirect('index');
-            
         }
     }
+   
+    
     
     public function order(){ // 
         $Shopping = new ShoppingCart();
@@ -54,18 +70,7 @@ class Product_controller extends CI_Controller{
         $this->load->view('temp', $data);
         
     }
-    public function prod_cate($cate = '', $page = 1){
-        echo $_SERVER['PATH_INFO'];
-        echo 'category:' . $cate . 'page: ' . $page;
-        
-        $Product = new Product();
-        $info = $Product->getProductByCategory($cate, $page);
-        $data['content'] = 'index';
-        $data['product'] = $info['product'];
-        $data['paging'] = $info['paging'];
-        $this->load->view('temp', $data);
-        
-    }
+    
     
     public function order_contact(){
         $data['content'] = 'order_form';

@@ -43,10 +43,17 @@ $route['default_controller'] = "index";
 $route['controller_suffix'] = '_controller';
 $route['404_override'] = '';
 $route['directory'] = '';
+// index page
+$route['^index/(:num)'] =  'index/page/$1';
 
-$route['^products/(.+).html'] =  'product/details/$1';
-$route['^products/(.+)/([a-zA-Z0-9-_]+)'] =  'product/prod_cate/$2';
-$route['^products/([a-zA-Z0-9-_]+)'] =  'product/prod_cate/$1';
+//product page
+$route['^products/(.+).html'] =  'product/prod_detail/$1';
+$route['^products/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$1/$2';
+$route['^products/(.+)/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$2/$3';
+$route['^products/(.+)/([a-zA-Z0-9-_]+)'] =  'product/prod_list_by_category/$2';
+$route['^products/([a-zA-Z0-9-_]+)'] =  'product/prod_list_by_category/$1';
+
+
 $route['^([a-zA-Z0-9-_]+).html'] =  'page/the_page/$1';
 $route['^([a-zA-Z0-9-_]+).htm'] =  'page/the_page/$1';
 

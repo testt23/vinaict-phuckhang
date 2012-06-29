@@ -26,7 +26,7 @@ class Product extends Product_model {
         if ($page * 1 == 0) {
             $page = 1;
         }
-
+        
         $Product_count = new Product();
         $Product_count->addSelect();
         $Product_count->addSelect(' count(' . $this->if->_product_id . ') as ' . $this->if->_count);
@@ -43,7 +43,7 @@ class Product extends Product_model {
         $total_page = ceil($total_record / $limit);
         $Paging = new Paging();
 
-        $string_paging = $Paging->paging_html(base_url() . 'index/page', $total_page, $page, 7);
+        $string_paging = $Paging->paging_html(base_url() . 'index', $total_page, $page, 7);
         
 
         $Product = new Product();
@@ -66,7 +66,7 @@ class Product extends Product_model {
     }
 
     // function get a product by a link. return a product
-    public function getProductByLink($link = null) {
+    public function getProductByLink($url_link = null) {
 
         $filter = array(
             $this->if->_image_file => $this->if->_image_as_file,
@@ -77,7 +77,7 @@ class Product extends Product_model {
         );
 
         $Image = Image::_join_image_group($filter);
-
+        
         $Product = new Product();
         $Product->addSelect();
         $Product->addSelect($this->if->_product_id . ' as ' . $this->if->_product_as_id);
@@ -92,7 +92,7 @@ class Product extends Product_model {
         $Product->addSelect('p.' . $this->if->_image_as_file);
         $Product->addSelect('p.' . $this->if->_image_group_as_code);
         $Product->addWhere($this->if->_product_is_deleted . ' = 0');
-        $Product->addWhere($this->if->_product_link . " = '" . $link . "'");
+        $Product->addWhere($this->if->_product_link . " = '" . $url_link . "'");
 
         $Product->addJoin($Image, 'LEFT', ' as p ', 'p.' . $this->if->_image_as_id . ' = ' . $this->if->_product_id_def_image);
 
@@ -111,10 +111,6 @@ class Product extends Product_model {
             if ($Cat_tmp->countRows() > 0) {
                 $id = $Cat_tmp->the_prod_cate_id();
                 if ($id) {
-
-
-
-
                     /**/
                     /* begin paging */
                     $filter = array(
@@ -150,7 +146,7 @@ class Product extends Product_model {
                     $total_page = ceil($total_record / $limit);
                     $Paging = new Paging();
 
-                    $string_paging = $Paging->paging_html(base_url() . 'product/prod_cate/' . $link . '', $total_page, $page, 7);
+                    $string_paging = $Paging->paging_html(base_url() . 'products/' . $link . '', $total_page, $page, 7);
 
                     /* begin list */
 
@@ -204,7 +200,7 @@ class Product extends Product_model {
     }
 
     public function the_product_link() {
-        return base_url() . 'product/details/' . $this->{$this->if->_product_as_link};
+        return base_url() . 'products/' . $this->{$this->if->_product_as_link} . '.html';
     }
 
     public function the_image_group_code() {
@@ -212,11 +208,19 @@ class Product extends Product_model {
     }
 
     public function the_image_link_thumb() {
-        return base_url() . '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        $url = '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        if (file_exists($url)){
+            $url =  $this->config->item('image_temp') . '/Logo.png';
+        }
+        return base_url() . $url;
     }
 
     public function the_image_link_large() {
-        return base_url() . '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_large.jpg', '_large.png', '_large.gif'), $this->{$this->if->_image_as_file});
+        $url = '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_large.jpg', '_large.png', '_large.gif'), $this->{$this->if->_image_as_file});
+        if (file_exists($url)){
+            $url =  $this->config->item('image_temp') . '/Logo.png';
+        }
+        return base_url() . $url;
     }
 
     public function the_image_link_small() {
