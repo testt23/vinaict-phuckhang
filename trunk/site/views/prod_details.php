@@ -144,12 +144,15 @@
             <p><b><?php echo $product->the_product_description(); ?></b></p>
         </div>
         <div id="order">
-            <form method="POST" action="<?php echo base_url() ?>/product/order">
+            <form method="POST" action="<?php echo base_url() ?>/list-cart">
                 <input type="hidden" name="h_category" value="<?php echo $product->the_image_link_thumb(); ?>"/>
                 <input type="hidden" name="h_image" value="<?php echo $product->the_image_link_thumb(); ?>"/>
                 <input type="hidden" name="h_id" value="<?php echo $product->the_product_id(); ?>"/>
+                <input type="hidden" name="h_link" value="<?php echo $product->the_product_link(); ?>" />
+                <input type="hidden" name="h_code" value="<?php echo $product->the_product_code(); ?>" />
                 <input type="hidden" name="h_name" value="<?php echo $product->the_product_name(); ?>"/>
                 <input type="hidden" name="h_price" value="<?php echo $product->the_product_price(); ?>"/>
+                <input type="hidden" name="h_description" value="<?php echo $product->the_product_description(); ?>"/>
                 <input type="hidden" name="h_curency" value="<?php echo $product->the_product_currency(); ?>"/>
                 <input type="hidden" name="click_access" value="click_access"/>
                 <input type="submit" name="orderSubmit" value="ORDER"/>

@@ -46,6 +46,10 @@ $route['directory'] = '';
 // index page
 $route['^index/(:num)'] =  'index/page/$1';
 
+
+// order
+$route['^list-cart'] =  'product/prod_list_cart';
+$route['^order-contact'] =  'product/prod_order_contact';
 //product page
 $route['^products/(.+).html'] =  'product/prod_detail/$1';
 $route['^products/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$1/$2';
