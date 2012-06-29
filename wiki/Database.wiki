@@ -389,4 +389,24 @@ CREATE TABLE `purchase_order` (
   UNIQUE KEY `NewIndex1` (`code`)
 ) ENGINE=MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+/* 29-06-2012: Pham Thanh Nam: Order Management */
+
+DROP TABLE IF EXISTS `purchase_order_detail`;
+
+create table `purchase_order_detail`( 
+   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT , 
+   `id_purchase_order` bigint UNSIGNED NOT NULL , 
+   `id_product` bigint UNSIGNED NOT NULL , 
+   `code_product` varchar(15) NOT NULL , 
+   `name_product` varchar(250) NOT NULL , 
+   `price_product` float NOT NULL , 
+   `currency_product` varchar(3) NOT NULL , 
+   `desciption_product` text , 
+   `image_product` varchar(300) , 
+   `number` bigint UNSIGNED NOT NULL , 
+   `is_deleted` tinyint(1) UNSIGNED DEFAULT '0' , 
+   PRIMARY KEY (`id`)
+ )
+
 }}}
