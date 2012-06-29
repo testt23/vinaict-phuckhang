@@ -409,4 +409,14 @@ create table `purchase_order_detail`(
    PRIMARY KEY (`id`)
  )
 
+
+DROP TABLE IF EXISTS `purchase_order_status`;
+
+create table `purchase_order_status`( 
+   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT , 
+   `name` varchar(200) NOT NULL , 
+   PRIMARY KEY (`id`)
+ )
+
+
 }}}
