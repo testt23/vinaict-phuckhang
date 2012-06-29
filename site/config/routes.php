@@ -38,10 +38,17 @@
 |
 */
 
+
 $route['default_controller'] = "index";
 $route['controller_suffix'] = '_controller';
 $route['404_override'] = '';
 $route['directory'] = '';
+
+$route['^products/(.+).html'] =  'product/details/$1';
+$route['^products/(.+)/([a-zA-Z0-9-_]+)'] =  'product/prod_cate/$2';
+$route['^products/([a-zA-Z0-9-_]+)'] =  'product/prod_cate/$1';
+$route['^([a-zA-Z0-9-_]+).html'] =  'page/the_page/$1';
+$route['^([a-zA-Z0-9-_]+).htm'] =  'page/the_page/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
