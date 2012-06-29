@@ -54,25 +54,37 @@ class Product_controller extends CI_Controller{
    
     
     
-    public function order(){ // 
+    public function prod_list_cart(){ // 
         $Shopping = new ShoppingCart();
+        
         if ($this->input->post('click_access') != null && $this->input->post('click_access') == 'click_access'){
-            $id = $this->input->post('h_id');
-            $name = $this->input->post('h_name');
-            $price = $this->input->post('h_price');
-            $image = $this->input->post('h_image');
-            $currency = $this->input->post('h_currency');
-            $number = 1;
-            $Shopping->insert($id, $name, $image, $price, $number, $currency);
+            $id_purchase_order = '';
+            $id_product = $this->input->post('h_id');
+            $code_product = $this->input->post('h_code');
+            $name_product = $this->input->post('h_name');
+            $price_product = $this->input->post('h_price');
+            $currency_product = $this->input->post('h_curency');
+            $description_product = $this->input->post('h_description');
+            $image_product = $this->input->post('h_image');
+            $number  = 1;
+            $is_deleted = 0 ;
+            $link_product = $this->input->post('h_link');
+            
+            $Shopping->t_insert( $id_purchase_order, 
+                    $id_product, $code_product, $name_product,
+                    $price_product, $currency_product, $description_product, 
+                    $image_product, $number, $is_deleted, $link_product);
         }
+        
+        
         $data['shopping'] = $Shopping->get_list();
-        $data['content'] = 'prod_order';
+        $data['content'] = 'order_list';
         $this->load->view('temp', $data);
         
     }
     
     
-    public function order_contact(){
+    public function prod_order_contact(){
         $data['content'] = 'order_form';
         $this->load->view('temp', $data);
         if ($this->input->post('check') != null && $this->input->post('check') == 'order-ok'){

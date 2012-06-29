@@ -35,8 +35,9 @@ class dbinfo {
     public $_table_param_permission                 = 'permission';
     public $_table_user                             = 'user';
     public $_table_user_group                       = 'user_group';
-    public $_table_order                            = 'order';
-    public $_table_order_details                    = 'order_details';
+    public $_table_purchase_order_status            = 'purchase_order_status';
+    public $_table_purchase_order                   = 'purchase_order';
+    public $_table_purchase_order_detail            = 'purchase_order_detail';
     
     /*PRODUCT*/
     
@@ -439,37 +440,73 @@ class dbinfo {
     public $_article_as_id_image                    = 'article_id_image';
     public $_article_as_is_deleted                  = 'article_is_deleted';
     
+    // PURCHASE ORDER 
+    public $_purchase_order_id                      = 'purchase_order.id';
+    public $_purchase_order_code                    = 'purchase_order.code';
+    public $_purchase_order_is_customer             = 'purchase_order.is_customer';
+    public $_purchase_order_order_date              = 'purchase_order.order_date';
+    public $_purchase_order_amount                  = 'purchase_order.amount';
+    public $_purchase_order_is_deleted              = 'purchase_order.is_deleted';
+    public $_purchase_order_status                  = 'purchase_order.status';
+    public $_purchase_order_description             = 'purchase_order.description';
+    public $_purchase_order_shipping_address        = 'purchase_order.shipping_address';
+    public $_purchase_order_billing_address         = 'purchase_order.billing_address';
+    public $_purchase_order_shipping_date           = 'purchase_order.shipping_date';
+    public $_purchase_order_payment_date            = 'purchase_order.payment_date';
+    public $_purchase_order_creation_date           = 'purchase_order.creation_date';
+    public $_purchase_order_modification_date       = 'purchase_order.modification_date';
     
-        /*ORDER*/
+    public $_purchase_order_as_id                   = 'purchase_order_id';
+    public $_purchase_order_as_code                 = 'purchase_order_code';
+    public $_purchase_order_as_is_customer          = 'purchase_order_is_customer';
+    public $_purchase_order_as_order_date           = 'purchase_order_order_date';
+    public $_purchase_order_as_amount               = 'purchase_order_amount';
+    public $_purchase_order_as_is_deleted           = 'purchase_order_is_deleted';
+    public $_purchase_order_as_status               = 'purchase_order_status';
+    public $_purchase_order_as_description          = 'purchase_order_description';
+    public $_purchase_order_as_shipping_address     = 'purchase_order_shipping_address';
+    public $_purchase_order_as_billing_address      = 'purchase_order_billing_address';
+    public $_purchase_order_as_shipping_date        = 'purchase_order_shipping_date';
+    public $_purchase_order_as_payment_date         = 'purchase_order_payment_date';
+    public $_purchase_order_as_creation_date        = 'purchase_order_creation_date';
+    public $_purchase_order_as_modification_date    = 'purchase_order_modification_date';
     
-    public $_order_id = 'order.id';
-    public $_order_id_customer = 'order.id_customer';
-    public $_order_description = 'order.description';
+    // PURCHASE ORDER DETAILS
     
-    public $_order_as_id = 'order_id';
-    public $_order_as_id_customer = 'order_id_customer';
-    public $_order_as_description = 'order_description';
+    public $_purchase_order_detail_id               = 'purchase_order_detail.id';
+    public $_purchase_order_detail_id_purchase_order = 'purchase_order_detail.id_purchase_order';
+    public $_purchase_order_detail_id_product       = 'purchase_order_detail.id_product';
+    public $_purchase_order_detail_code_product     = 'purchase_order_detail.code_product';
+    public $_purchase_order_detail_name_product     = 'purchase_order_detail.name_product';
+    public $_purchase_order_detail_price_product    = 'purchase_order_detail.price_product';
+    public $_purchase_order_detail_currency_product = 'purchase_order_detail.currency_product';
+    public $_purchase_order_detail_description_product    = 'purchase_order_detail.description_product';
+    public $_purchase_order_detail_image_product    = 'purchase_order_detail.image_product';
+    public $_purchase_order_detail_number           = 'purchase_order_detail.number';
+    public $_purchase_order_detail_is_deleted       = 'purchase_order_detail.is_deleted';
+    public $_purchase_order_detail_link_product     = 'purchase_order_detail.link_product';
+    
+    public $_purchase_order_detail_as_id               = 'purchase_order_detail_id';
+    public $_purchase_order_detail_as_id_purchase_order = 'purchase_order_detail_id_purchase_order';
+    public $_purchase_order_detail_as_id_product       = 'purchase_order_detail_id_product';
+    public $_purchase_order_detail_as_code_product     = 'purchase_order_detail_code_product';
+    public $_purchase_order_detail_as_name_product     = 'purchase_order_detail_name_product';
+    public $_purchase_order_detail_as_price_product    = 'purchase_order_detail_price_product';
+    public $_purchase_order_detail_as_currency_product = 'purchase_order_detail_currency_product';
+    public $_purchase_order_detail_as_description_product    = 'purchase_order_detail_description_product';
+    public $_purchase_order_detail_as_image_product    = 'purchase_order_detail_image_product';
+    public $_purchase_order_detail_as_number           = 'purchase_order_detail_number';
+    public $_purchase_order_detail_as_is_deleted       = 'purchase_order_detail_is_deleted';
+    public $_purchase_order_detail_as_link_product     = 'purchase_order_detail_link_product';
     
     
-    /**ORDER DETAILS*/
+    // PURCHASE ORDER status
     
-    public $_order_details_id = 'order_details.id';
-    public $_order_details_id_order = 'order_details.id_order';
-    public $_order_details_id_product = 'order_details.id_product';
-    public $_order_details_number = 'order_details.number';
-    public $_order_details_name_product = 'order_details.name_product';
-    public $_order_details_price = 'order_details.price';
-    public $_order_details_image = 'order_details.image';
+    public $_purchase_order_status_id     = 'purchase_order_status.id';
+    public $_purchase_order_status_name     = 'purchase_order_status.name';
     
-    
-    public $_order_as_details_id = 'order_details_id';
-    public $_order_as_details_id_order = 'order_details_id_order';
-    public $_order_as_details_id_product = 'order_details_id_product';
-    public $_order_as_details_number = 'order_details_number';
-    public $_order_as_details_name_product = 'order_details_name_product';
-    public $_order_as_details_price = 'order_details_price';
-    public $_order_as_details_image = 'order_details_image';
-    
+    public $_purchase_order_status_as_id     = 'purchase_order_status_id';
+    public $_purchase_order_status_as_name     = 'purchase_order_status_name';
     
 }
 
