@@ -13,7 +13,8 @@ class Product_controller extends CI_Controller{
     }
     
     public function details($link = false){
-        
+        echo $_SERVER['PATH_INFO'];
+        echo 'i"m in details page';
         if (!empty ($link)){
             
             $Product = new Product();
@@ -54,6 +55,8 @@ class Product_controller extends CI_Controller{
         
     }
     public function prod_cate($cate = '', $page = 1){
+        echo $_SERVER['PATH_INFO'];
+        echo 'category:' . $cate . 'page: ' . $page;
         
         $Product = new Product();
         $info = $Product->getProductByCategory($cate, $page);

@@ -24,6 +24,12 @@ include 'app_config.php';
  * as this file.
  *
  */
+        if (isset($_SERVER['PATH_INFO'])){
+            define('PATH_INFO', $_SERVER['PATH_INFO']);
+        }else{
+            define('PATH_INFO','');
+        }
+        
 	$system_path = SYSTEM_PATH;
 
 /*

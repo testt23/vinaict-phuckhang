@@ -11,6 +11,8 @@
                     
                 }
                 public function the_page($link = ''){
+                    echo $_SERVER['PATH_INFO'];
+                    var_dump($link);
                     if ($link != ''){
                         $Webpage = new WebPage();
                         $info = $Webpage->getPage($link);

@@ -20,6 +20,8 @@
                     $this->index($page);
                 }
                 
+                
+                
 		// You can place some more methods code here
 
 	}

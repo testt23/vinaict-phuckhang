@@ -45,7 +45,7 @@
                 sec.hide(300,"linear",function(){
                     items.append($(this));//chen img vua an vao cuoi
                     $(this).css({'display':'block'});
-                })
+                });
             }
             changeNumber(1);
         });
