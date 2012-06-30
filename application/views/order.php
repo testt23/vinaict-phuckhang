@@ -16,7 +16,8 @@
             social_tools: false
         });
         
-        var status_icon = new Array(
+        <?php
+        $status_icon = array(
             'ui-icon-cancel',
             'ui-icon-clock',
             'ui-icon-transferthick-e-w',
@@ -24,23 +25,20 @@
             'ui-icon-arrowreturnthick-1-w'
         );
         
-        for (var i = 0; i < status_icon.length - 1; i++) {
+        for ($i = 0; $i < count($status_icon) - 1; $i++) {
+            $next_icon = $i < count($status_icon) - 2 ? $i + 1 : $i;
+            $prev_icon = $i > 1 ? $i - 1 : $i;
             
-            var next_icon = i < status_icon.length - 2 ? i + 1 : i;
-            var prev_icon = i > 1 ? i - 1 : i;
+            echo "$('.$status_icon[$i]').mouseover(function() {";
+            echo "$(this).attr('class', 'ui-icon $status_icon[$next_icon]');";
+            echo "});";
             
-            $(status_icon[i]).mouseover(function() {
-                alert($(this).html());
-                $(this).attr('class', 'ui-icon '+status_icon[next_icon]);
-            });
-        }
+            echo "$('.$status_icon[$i]').mouseout(function() {";
+            echo "$(this).attr('class', 'ui-icon $status_icon[$prev_icon]');";
+            echo "});";
+            
+        } ?>
         
-        $('.' + status_icon[status]).mouseover(function() {
-                    
-            $(this).attr('class', 'ui-icon '+status_icon[next_icon]);
-                
-        });
-           
             
         /*
         
