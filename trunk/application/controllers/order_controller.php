@@ -19,6 +19,12 @@
             lang('txt_order') => base_url('order'))
         );
         
+        // Get system timezone name
+        $current_timezone = defined('SYSTEM_TIMEZONE') ? SYSTEM_TIMEZONE : config_item('timezone');
+        // Get system timezone code
+        $local_timezone = get_code_by_timezone_name($current_timezone);
+        $this->data['local_timezone'] = $local_timezone;
+        
         $filter = array();
         $filter['code'] = $this->input->get_post('code');
         $filter['name'] = $this->input->get_post('name');
