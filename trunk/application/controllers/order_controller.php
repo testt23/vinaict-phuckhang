@@ -60,11 +60,9 @@
     
     }
     
-    function setStatus($status = null, $id = null) {
+    function status($status = null, $id = null) {
         
-        
-        
-        User::checkAccessable($this->session->userdata('userID'), 'order/status_next');
+        User::checkAccessable($this->session->userdata('userID'), 'order/status');
         $back = base_url('order');
         
         $order = new PurchaseOrder();
