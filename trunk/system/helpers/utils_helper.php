@@ -685,14 +685,14 @@ if ( ! function_exists('date_sql_to_timestamp'))
 
 if ( ! function_exists('date_sql_to_local_date'))
 {
-    function date_sql_to_local_date($sql_date_time, $timezone = 'UTC', $french_type = true) {
+    function date_sql_to_local_date($sql_date_time, $timezone = 'UTC', $french_type = true, $display_time = true) {
         
-        if ($french_type) {
-            return date('d/m/Y H:i:s', gmt_to_local(date_sql_to_timestamp($sql_date_time), $timezone));
-        }
-        else {
-            return date('m/d/Y H:i:s', gmt_to_local(date_sql_to_timestamp($sql_date_time), $timezone));
-        }
+        if ($french_type)
+            $format = $display_time ? 'd/m/Y H:i:s' : 'd/m/Y';
+        else
+            $format = $display_time ? 'm/d/Y H:i:s' : 'm/d/Y';
+        
+        return date($format, gmt_to_local(date_sql_to_timestamp($sql_date_time), $timezone));
         
     }
 }
