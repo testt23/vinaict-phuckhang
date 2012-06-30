@@ -117,51 +117,76 @@ while ($order_status->fetchNext()) {
 
                 <tr>
                     <td><?php echo $order->code; ?></td>
-                    <td><?php $order_name = $order->is_business == 1 ? clean_html(getI18n($order->company)) : $order_name = clean_html(getI18n($order->lastname . '' . $order->firstname));
-            echo $order_name; ?></td>                
-                    <td><?php echo $order->description; ?></td>
-                    <td><?php if ($order->order_date == NULL)
-                echo "Null"; else
-                echo date('d-m-Y', strtotime($order->order_date)); ?></td>
-                    <td><?php echo $order->amount ? $order->amount : lang('txt_call'); ?></td>
-                    <td><?php $status = $order->status;
-            echo clean_html(getI18n($list_status[$status])); ?></td>
-                    <td><?php if ($order->shipping_date == Null)
-                echo "Null"; else
-                echo date('d-m-Y', strtotime($order->shipping_date)); ?></td>
                     <td>
-
+                        <?php
+                            $order_name = $order->is_business == 1 ? clean_html(getI18n($order->company)) : $order_name = clean_html(getI18n($order->lastname . '' . $order->firstname));
+                            echo $order_name;
+                        ?>
+                    </td>
+                    <td><?php echo $order->description; ?></td>
+                    <td>
+                        <?php
+                            if ($order->order_date == NULL)
+                                echo "Null";
+                            else
+                                echo date('d-m-Y', strtotime($order->order_date));
+                        ?>
+                    </td>
+                    <td><?php echo $order->amount ? $order->amount : lang('txt_call'); ?></td>
+                    <td>
+                        <?php
+                            $status = $order->status;
+                            echo clean_html(getI18n($list_status[$status]));
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                            if ($order->shipping_date == Null)
+                                echo "Null";
+                            else
+                                echo date('d-m-Y', strtotime($order->shipping_date));
+                        ?>
+                    </td>
+                    <td>
                         <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_order_detail'); ?>" href="<?php echo base_url('order/detail/' . $order->id_order . '/' . $status); ?>">
                             <span class="ui-icon ui-icon-folder-open"></span>
                         </a>
-    <?php $status_next = $status + 1;
-    $status_prev = $status - 1;
-    if ($status == 4) { ?>
-                            <a class="btn_no_text btn ui-state-default  ui-corner-all tooltip" title="<?php echo lang('txt_order_done'); ?>">
-                                <span class="ui-icon ui-icon-check"></span>
-                            </a>
-    <?php } else if ($status == 1 || $status == 2) { ?>
-                            <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_next])); ?>" href="<?php echo base_url('order/setStatus/' . $status_next . '/' . $order->id_order); ?>">
-                                <span class="ui-icon <?php if ($status == 1) {
-            echo "ui-icon-cancel";
-        } else {
-            echo "ui-icon-clock";
-        } ?>"></span>
-                            </a>
-                <?php } else { ?>
-                            <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_next])); ?>" href="<?php echo base_url('order/setStatus/' . $status_next . '/' . $order->id_order); ?>">
-                                <span class="ui-icon ui-icon-transferthick-e-w"></span>
-                            </a>
-                            <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_prev])); ?>" href="<?php echo base_url('order/setStatus/' . $status_prev . '/' . $order->id_order); ?>">
-                                <span class="ui-icon ui-icon-arrowreturnthick-1-w"></span>
-                            </a>
-    <?php } ?>
+                        <?php
+                            $status_next = $status + 1;
+                            $status_prev = $status - 1;
+                            if ($status == 4) {
+                        ?>
+                        <a class="btn_no_text btn ui-state-default  ui-corner-all tooltip" title="<?php echo lang('txt_order_done'); ?>">
+                            <span class="ui-icon ui-icon-check"></span>
+                        </a>
+                        <?php
+                            }
+                            else if ($status == 1 || $status == 2)
+                            {
+                        ?>
+                        <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_next])); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
+                            <span class="ui-icon <?php if ($status == 1) { echo "ui-icon-cancel"; } else { echo "ui-icon-clock"; } ?>"></span>
+                        </a>
+                        <?php
+                            }
+                            else
+                            {
+                        ?>
+                        <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_next])); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
+                            <span class="ui-icon ui-icon-transferthick-e-w"></span>
+                        </a>
+                        <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_prev])); ?>" href="<?php echo base_url('order/status/' . $status_prev . '/' . $order->id_order); ?>">
+                            <span class="ui-icon ui-icon-arrowreturnthick-1-w"></span>
+                        </a>
+                        <?php
+                            }
+                        ?>
                         <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_delete'); ?>" href="#" onclick="deleteOrder(<?php echo $order->id_order; ?>)">
                             <span class="ui-icon ui-icon-trash"></span>
                         </a>
                     </td>
-                </tr> 
-<?php } ?>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
 
