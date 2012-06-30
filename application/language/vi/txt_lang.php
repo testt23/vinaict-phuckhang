@@ -165,3 +165,16 @@ $lang['txt_image_gallery']              = 'Thư viện ảnh';
 $lang['txt_upload_image']               = 'Upload hình ảnh';
 $lang['txt_creation_date']              = 'Ngày tạo';
 $lang['txt_select_files']               = 'Chọn Files';
+
+
+/* Purchase Order */
+$lang['txt_order']                      = 'Đơn đặt hàng';
+$lang['txt_add_order']                  = 'Thêm đơn đặt hàng';
+$lang['txt_order_detail']               = 'Chi tiết hóa đơn';
+$lang['txt_order_done']                 = 'Hóa đơn đã hoàn thành';
+$lang['txt_order_description']          = 'Thông tin hóa đơn';
+$lang['txt_order_date']                 = 'Ngày kích hoạt';
+$lang['txt_order_shipping_date']        = 'Ngày giao hàng';
+$lang['txt_order_amount']               = 'Tổng giá trị';
+$lang['txt_back_to_order_list']         = 'Trở về danh sách hóa đơn';
+$lang['txt_number']                     = 'Số lượng';
