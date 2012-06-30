@@ -20,7 +20,7 @@ class Contact_controller extends CI_Controller {
         $this->email->message('Testing the email class.');
 
         $this->email->send();
-
+        
         echo $this->email->print_debugger();
     }
     
