@@ -51,6 +51,7 @@ $route['^index/(:num)'] =  'index/page/$1';
 $route['^list-cart'] =  'product/prod_list_cart';
 $route['^order-contact'] =  'product/prod_order_contact';
 //product page
+$route['^products/contact'] =  'product/prod_order_contact';
 $route['^products/(.+).html'] =  'product/prod_detail/$1';
 $route['^products/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$1/$2';
 $route['^products/(.+)/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$2/$3';

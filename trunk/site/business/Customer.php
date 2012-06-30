@@ -9,42 +9,16 @@ class Customer extends Customer_model {
         $this->if = new dbinfo();
     }
     
-    public function getByEmail($email){
+    public function findByEmail($email){
         $Customer = new Customer();
         $Customer->addSelect();
-        $Customer->addSelect($this->if->_customer_id);
+        $Customer->addSelect($this->if->_table_customer . '.*');
         $Customer->addWhere($this->if->_customer_email ." = '" .$email. "'");
         $Customer->find();
         return $Customer;
 
     }
-    public function checkEmail($email) {
-        $Customer = new Customer();
-        
-        $Customer->addSelect();
-        $Customer->addSelect($this->if->_customer_email . ' as ' . $this->if->_customer_as_id);
-        $Customer->addWhere($this->if->_customer_email . " = '" . $email . "'");
-        $Customer->find();
-        if ($Customer->countRows() > 0) {
-            return true;
-        }
-        return false;
-    }
 
-    public function insert() {
-        
-        if ($this->input->post('check') != null && $this->input->post('check') == 'order-ok'){
-            $email = $this->input->post('email');
-            $option = $this->input->post('option_contact');
-            if ($option == '0'){
-                $this->insert_with_individuals();
-            }else if ($option == '1'){
-                $this->insert_with_company();
-            }else{
-                $this->insert_with_contact();
-            }
-        }
-    }
 
     public function insert_with_company() {
         // neu nguoi dung submit
