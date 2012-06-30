@@ -410,13 +410,22 @@ create table `purchase_order_detail`(
  )
 
 
-DROP TABLE IF EXISTS `purchase_order_status`;
+CREATE TABLE IF NOT EXISTS `purchase_order_status` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
-create table `purchase_order_status`( 
-   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT , 
-   `name` varchar(200) NOT NULL , 
-   PRIMARY KEY (`id`)
- )
+--
+-- Dumping data for table `purchase_order_status`
+--
+
+INSERT INTO `purchase_order_status` (`id`, `name`) VALUES
+(1, '<en>Unactive</en><vi>Chưa kích hoạt</vi>'),
+(2, '<en>Pending</en><vi>Đang đợi</vi>'),
+(3, '<en>Shipping</en><vi>Đang vận chuyển</vi>'),
+(4, '<en>Done</en><vi>Hoàn thành</vi>');
+
 
 
 }}}
