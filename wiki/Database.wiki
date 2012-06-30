@@ -410,7 +410,9 @@ create table `purchase_order_detail`(
  )
 
 
-CREATE TABLE IF NOT EXISTS `purchase_order_status` (
+DROP TABLE IF EXISTS `purchase_order_status`;
+
+CREATE TABLE `purchase_order_status` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
