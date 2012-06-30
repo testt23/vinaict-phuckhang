@@ -25,7 +25,8 @@
             'ui-icon-arrowreturnthick-1-w'
         );
         
-        for ($i = 0; $i < count($status_icon) - 1; $i++) {
+        for ($i = 0; $i < count($status_icon); $i++) {
+            
             $next_icon = $i < count($status_icon) - 2 ? $i + 1 : $i;
             $prev_icon = $i > 1 ? $i - 1 : $i;
             
@@ -34,7 +35,7 @@
             echo "});";
             
             echo "$('.$status_icon[$i]').mouseout(function() {";
-            echo "$(this).attr('class', 'ui-icon $status_icon[$prev_icon]');";
+            echo "$(this).attr('class', 'ui-icon $status_icon[$i]');";
             echo "});";
             
         } ?>
@@ -124,14 +125,7 @@ while ($order_status->fetchNext()) {
                         ?>
                     </td>
                     <td><?php echo $order->description; ?></td>
-                    <td>
-                        <?php
-                            if ($order->order_date == NULL)
-                                echo "Null";
-                            else
-                                echo date('d-m-Y', strtotime($order->order_date));
-                        ?>
-                    </td>
+                    <td><?php echo date_sql_to_local_date($order->order_date, $local_timezone, true, false); ?></td>
                     <td><?php echo $order->amount ? $order->amount : lang('txt_call'); ?></td>
                     <td>
                         <?php
@@ -140,12 +134,7 @@ while ($order_status->fetchNext()) {
                         ?>
                     </td>
                     <td>
-                        <?php
-                            if ($order->shipping_date == Null)
-                                echo "Null";
-                            else
-                                echo date('d-m-Y', strtotime($order->shipping_date));
-                        ?>
+                        <?php echo date_sql_to_local_date($order->shipping_date, $local_timezone, true, false); ?>
                     </td>
                     <td>
                         <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_order_detail'); ?>" href="<?php echo base_url('order/detail/' . $order->id_order . '/' . $status); ?>">
@@ -154,18 +143,18 @@ while ($order_status->fetchNext()) {
                         <?php
                             $status_next = $status + 1;
                             $status_prev = $status - 1;
-                            if ($status == 4) {
+                            if ($status == ORD_STT_COMPLETED) {
                         ?>
                         <a class="btn_no_text btn ui-state-default  ui-corner-all tooltip" title="<?php echo lang('txt_order_done'); ?>">
                             <span class="ui-icon ui-icon-check"></span>
                         </a>
                         <?php
                             }
-                            else if ($status == 1 || $status == 2)
+                            else if ($status == ORD_STT_UNACCEPTED || $status == ORD_STT_PENDING)
                             {
                         ?>
                         <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_next])); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
-                            <span class="ui-icon <?php if ($status == 1) { echo "ui-icon-cancel"; } else { echo "ui-icon-clock"; } ?>"></span>
+                            <span class="ui-icon <?php if ($status == ORD_STT_UNACCEPTED) { echo "ui-icon-cancel"; } else { echo "ui-icon-clock"; } ?>"></span>
                         </a>
                         <?php
                             }
