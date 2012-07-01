@@ -28,15 +28,56 @@
  */
 class CI_Router {
 
+	/**
+	 * Config class
+	 *
+	 * @var object
+	 * @access public
+	 */
 	var $config;
+	/**
+	 * List of routes
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $routes			= array();
+	/**
+	 * List of error routes
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $error_routes	= array();
+	/**
+	 * Current class name
+	 *
+	 * @var string
+	 * @access public
+	 */
 	var $class			= '';
+	/**
+	 * Current method name
+	 *
+	 * @var string
+	 * @access public
+	 */
 	var $method			= 'index';
+	/**
+	 * Sub-directory that contains the requested controller class
+	 *
+	 * @var string
+	 * @access public
+	 */
 	var $directory		= '';
+	/**
+	 * Default controller (and method if specific)
+	 *
+	 * @var string
+	 * @access public
+	 */
 	var $default_controller;
 	var $controller_suffix = '';
-
 	/**
 	 * Constructor
 	 *
@@ -88,46 +129,51 @@ class CI_Router {
 		}
 
 		// Load the routes.php file.
-		@include(APPPATH.'config/routes'.EXT);
+		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/routes.php'))
+		{
+			include(APPPATH.'config/'.ENVIRONMENT.'/routes.php');
+		}
+		elseif (is_file(APPPATH.'config/routes.php'))
+		{
+			include(APPPATH.'config/routes.php');
+		}
+
 		$this->routes = ( ! isset($route) OR ! is_array($route)) ? array() : $route;
 		unset($route);
 
 		// Set the default controller so we can display it in the event
 		// the URI doesn't correlated to a valid controller.
 		$this->default_controller = ( ! isset($this->routes['default_controller']) OR $this->routes['default_controller'] == '') ? FALSE : strtolower($this->routes['default_controller']);
-		
 		$this->directory = ( ! isset($this->routes['directory']) OR $this->routes['directory'] == '') ? FALSE : strtolower($this->routes['directory']);
 		$this->controller_suffix = ( ! isset($this->routes['controller_suffix']) OR $this->routes['controller_suffix'] == '') ? FALSE : strtolower($this->routes['controller_suffix']);
 	
-                // Truong hop co tham so nhung khong phai cac tham so quy dinh trong he thong
-                if (!isset($_GET[$this->config->item('controller_trigger')]) && $_SERVER['QUERY_STRING']) {
-                    
-                    $request_uri = trim(str_replace(config_item('app_path'), '', trim($_SERVER['REQUEST_URI'], '/')),'/');
-                    
-                    if ($_SERVER['QUERY_STRING'] && $_SERVER['QUERY_STRING'] != '')
-                        $request_uri = trim(str_replace(trim($_SERVER['QUERY_STRING']), '', $request_uri),'/');
-                    
-                    $request_uri = trim(str_replace('?', '', $request_uri),'/');
-                    
-                    $s = explode('/', $request_uri);
-                    
-                    if (count($s) > 1) {
-                        $this->set_class(trim($this->uri->_filter_uri($s[0].$this->controller_suffix)));
-                        $this->set_method(trim($this->uri->_filter_uri($s[1])));
-                    }
-                    elseif (count($s) == 1) {
-                        $this->set_class(trim($this->uri->_filter_uri($s[0].$this->controller_suffix)));
-                    }
-                    
-                }
-                
+		// Truong hop co tham so nhung khong phai cac tham so quy dinh trong he thong
+		if (!isset($_GET[$this->config->item('controller_trigger')]) && $_SERVER['QUERY_STRING']) {
+			
+			$request_uri = trim(str_replace(config_item('app_path'), '', trim($_SERVER['REQUEST_URI'], '/')),'/');
+			
+			if ($_SERVER['QUERY_STRING'] && $_SERVER['QUERY_STRING'] != '')
+				$request_uri = trim(str_replace(trim($_SERVER['QUERY_STRING']), '', $request_uri),'/');
+			
+			$request_uri = trim(str_replace('?', '', $request_uri),'/');
+			
+			$s = explode('/', $request_uri);
+			
+			if (count($s) > 1) {
+				$this->set_class(trim($this->uri->_filter_uri($s[0].$this->controller_suffix)));
+				$this->set_method(trim($this->uri->_filter_uri($s[1])));
+			}
+			elseif (count($s) == 1) {
+				$this->set_class(trim($this->uri->_filter_uri($s[0].$this->controller_suffix)));
+			}
+		}
+			
 		// Were there any query string segments?  If so, we'll validate them and bail out since we're done.
 		if (count($segments) > 0)
 		{
 			return $this->_validate_request($segments);
 		}
-                
-                
+
 		// Fetch the complete URI string
 		$this->uri->_fetch_uri_string();
 
@@ -172,6 +218,7 @@ class CI_Router {
 		if (strpos($this->default_controller, '/') !== FALSE)
 		{
 			$x = explode('/', $this->default_controller);
+			// VinaICT: Try to remove
 			//$this->set_class($x[0]);
 			//$this->set_method($x[1]);
 			$this->_set_request($x);
@@ -211,6 +258,7 @@ class CI_Router {
 			return $this->_set_default_controller();
 		}
 
+		// VinaICT: Add controller_suffix when load class
 		$this->set_class($segments[0].($this->controller_suffix && $this->controller_suffix != '' ? $this->controller_suffix : ''));
 
 		if (isset($segments[1]))
@@ -248,6 +296,7 @@ class CI_Router {
 			return $segments;
 		}
 
+		// VinaICT: Add controller_suffix when load class
 		if ($this->controller_suffix) {
 			// Does the requested controller exist in the root folder?
 			if (file_exists(APPPATH.'controllers/'.$segments[0].$this->controller_suffix.EXT))
@@ -257,14 +306,13 @@ class CI_Router {
 		}
 
 		// Does the requested controller exist in the root folder?
-		if (file_exists(APPPATH.'controllers/'.$segments[0].EXT))
+		if (file_exists(APPPATH.'controllers/'.$segments[0].'.php'))
 		{
 			return $segments;
 		}
 
 		// Is the controller in a sub-folder?
-		if (is_dir(APPPATH.'controllers/'.$segments[0]
-				.($this->controller_suffix ? $this->controller_suffix : '')))
+		if (is_dir(APPPATH.'controllers/'.$segments[0].($this->controller_suffix ? $this->controller_suffix : '')))
 		{
 			// Set the directory and remove it from the segment array
 			$this->set_directory($segments[0]);
@@ -273,13 +321,21 @@ class CI_Router {
 			if (count($segments) > 0)
 			{
 				// Does the requested controller exist in the sub-folder?
-				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0]
-						.($this->controller_suffix ? $this->controller_suffix : '').EXT))
+				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].($this->controller_suffix ? $this->controller_suffix : '').'.php'))
 				{
-					show_404($this->fetch_directory().$segments[0]
-							.($this->controller_suffix ? $this->controller_suffix : ''));
+					if ( ! empty($this->routes['404_override']))
+					{
+						$x = explode('/', $this->routes['404_override']);
+						$this->set_directory('');
+						$this->set_class($x[0]);
+						$this->set_method(isset($x[1]) ? $x[1] : 'index');
+						return $x;
+					}
+					else
+					{
+						show_404($this->fetch_directory().$segments[0].($this->controller_suffix ? $this->controller_suffix : ''));
+					}
 				}
-
 			}
 			else
 			{
@@ -287,7 +343,6 @@ class CI_Router {
 				if (strpos($this->default_controller, '/') !== FALSE)
 				{
 					$x = explode('/', $this->default_controller);
-
 					$this->set_class($x[0].($this->controller_suffix ? $this->controller_suffix : ''));
 					$this->set_method($x[1]);
 				}
@@ -298,15 +353,13 @@ class CI_Router {
 				}
 
 				// Does the default controller exist in the sub-folder?
-				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller
-						.($this->controller_suffix ? $this->controller_suffix : '').EXT))
+				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller.($this->controller_suffix ? $this->controller_suffix : '').'.php'))
 				{
 					$this->directory = '';
 					return array();
 				}
 
 			}
-
 			return $segments;
 		}
 
@@ -316,10 +369,8 @@ class CI_Router {
 		if (!empty($this->routes['404_override']))
 		{
 			$x = explode('/', $this->routes['404_override']);
-
 			$this->set_class($x[0]);
 			$this->set_method(isset($x[1]) ? $x[1] : 'index');
-
 			return $x;
 		}
 
@@ -438,7 +489,6 @@ class CI_Router {
 		{
 			return 'index';
 		}
-
 		return $this->method;
 	}
 

@@ -166,3 +166,44 @@ require_once BASEPATH.'core/CodeIgniter'.EXT;
 
 /* End of file index.php */
 /* Location: ./index.php */
+
+/* Code bellow are appended by VinaICT */
+
+/* Autoload */
+function __autoload($className)
+{
+	if (strpos($className, 'CI_') == FALSE)
+		$is_except_class = FALSE;
+	elseif ($className == 'CI_Model')
+		$is_except_class = FALSE;
+	else
+		$is_except_class = TRUE;
+	
+	if (!class_exists($className, false) && !$is_except_class) {
+		if ($className == 'CI_Model') {
+			require(dirname(__FILE__).'/core/Model.php');
+		}
+		if ($className == 'MessageHandler') {
+			require(dirname(__FILE__).'/core/MessageHandler.php');
+		}
+		elseif (file_exists(APPPATH.'business/'.$className.'.php')) {
+			require(APPPATH.'business/'.$className.'.php');
+		}
+		else {
+			if (file_exists(APPPATH.'models/'.strtolower($className).'.php')) {
+				require(APPPATH.'models/'.strtolower($className).'.php');
+			}
+		}
+	}
+}
+
+// Notification message type
+define('MSG_ERROR', 1);
+define('MSG_WARNING', 2);
+define('MSG_INFO', 3);
+define('MSG_HAPPY', 4);
+define('MESSAGE_ONLY', 0);
+define('LOG_ONLY', 1);
+define('MESSAGE_AND_LOG', 2);
+
+date_default_timezone_set(config_item('timezone'));
