@@ -76,7 +76,7 @@ class Product_controller extends CI_Controller {
 
     public function prod_order_contact() {
         $mess = '';
-        
+
         $firstname = '';
         $lastname = '';
         $company = '';
@@ -90,14 +90,14 @@ class Product_controller extends CI_Controller {
         $mobile_phone = '';
         $website = '';
         $yahoo_id = '';
-        $skype_id =  '';
+        $skype_id = '';
         $is_business = 0;
         $tax_code = '';
-        $fax =  '';
-        $career =  '';
-        $email =  '';
+        $fax = '';
+        $career = '';
+        $email = '';
         $description = '';
-        
+
         $ShoppingCart = new ShoppingCart();
         $List = $ShoppingCart->get_list();
         $data['shopping'] = $List;
@@ -240,7 +240,6 @@ class Product_controller extends CI_Controller {
                     // insert order
                     $description = $this->input->post('description');
                     $PurchaseOrder = new PurchaseOrder();
-                    $PurchaseOrder->code = $email;
                     $PurchaseOrder->id_customer = $cus_id;
                     $PurchaseOrder->order_date = date('Y/d/m');
                     $PurchaseOrder->amount = 0;
@@ -257,7 +256,20 @@ class Product_controller extends CI_Controller {
 
                     // insert into Order details
                     $total = count($List);
+                    /*  <tr class="tt-info">
+                    	    <td width="218">Tên sản phẩm</td>
+                            <td width="218">Link Sản phẩm</td>
+                            <td width="218">Giá Sản phẩm </td>
+                            <td width="218">Số lượng</td>
+                  	  </tr>*/
+                    $list_product = '';
                     for ($i = 0; $i < $total; $i++) {
+                        $list_product .= '<tr class="tt-info">
+                    	    <td width="218">'.$List[$i]->get_name_product().'</td>
+                            <td width="218">'.$List[$i]->get_link_product().'</td>
+                            <td width="218">'. $List[$i]->get_price_product() . ' ' .$List[$i]->get_currency_product().'</td>
+                            <td width="218">'. $List[$i]->get_number() . '</td>
+                  	  </tr>';
                         $Details = new PurchaseOrderDetail();
                         $Details->id_purchase_order = $PurchaseOrder->id;
                         $Details->id_product = $List[$i]->get_id_product();
@@ -273,13 +285,37 @@ class Product_controller extends CI_Controller {
                         $Details->insert();
                         unset($Details);
                     }
+
+                    $filter = array();
+                    $filter['title'] = 'Xác nhận thông tin đặt hàng';
+                    $filter['txt_welcome'] = 'welcome ban';
+                    $filter['customer_name'] = $firstname . ' ' . $lastname;
+                    $filter['your_name'] = $firstname . ' ' . $lastname;
+                    $filter['company'] = $company;
+                    $filter['tax_code'] = $tax_code;
+                    $filter['fax'] = $fax;
+                    $filter['email'] = $email;
+                    $filter['shopping_address'] = $shipping_address;
+                    $filter['billing_address'] = $billing_address;
+                    $filter['yahoo'] = $yahoo_id;
+                    $filter['skype'] = $skype_id;
+                    $filter['message'] = $description;
+                    $filter['list_product'] = $list_product;
+                    $filter['contact_email'] = $email;
+                    $filter['contact_name'] = 'tap doan IT';
+                    $filter['url_confirm'] = 'dantri.com';
+
+                    $Mail = new Mailer();
+                    $Mail->sendmail($filter);
+
                     $mess = 'Cám ơn bạn đã đặt hàng. vui lòng vào email xác nhận mua hàng, chúng tôi sẽ liên hệ với bạn sớm nhất. xin cám ơn.';
                 } else {
                     $mess = 'Vui lòng nhập địa chỉ email';
                 }
             }
         }
-        
+
+        $filter = array();
         $filter['yahoo'] = $yahoo_id;
         $filter['skype'] = $skype_id;
         $filter['website'] = $website;
