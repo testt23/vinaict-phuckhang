@@ -39,6 +39,8 @@
 * @param	string
 * @return	bool	TRUE if the current version is $version or higher
 */
+if ( ! function_exists('is_php'))
+{
 	function is_php($version = '5.0.0')
 	{
 		static $_is_php;
@@ -51,6 +53,7 @@
 
 		return $_is_php[$version];
 	}
+}
 
 // ------------------------------------------------------------------------
 
@@ -64,6 +67,8 @@
  * @access	private
  * @return	void
  */
+if ( ! function_exists('is_really_writable'))
+{
 	function is_really_writable($file)
 	{
 		// If we're on a Unix server with safe_mode off we call is_writable
@@ -88,7 +93,7 @@
 			@unlink($file);
 			return TRUE;
 		}
-		elseif (($fp = @fopen($file, FOPEN_WRITE_CREATE)) === FALSE)
+		elseif ( ! is_file($file) OR ($fp = @fopen($file, FOPEN_WRITE_CREATE)) === FALSE)
 		{
 			return FALSE;
 		}
@@ -96,6 +101,7 @@
 		fclose($fp);
 		return TRUE;
 	}
+}
 
 // ------------------------------------------------------------------------
 
@@ -112,6 +118,8 @@
 * @param	string	the class name prefix
 * @return	object
 */
+if ( ! function_exists('load_class'))
+{
 	function &load_class($class, $directory = 'libraries', $prefix = 'CI_')
 	{
 		static $_classes = array();
@@ -124,17 +132,17 @@
 
 		$name = FALSE;
 
-		// Look for the class first in the native system/libraries folder
-		// thenin the local application/libraries folder
-		foreach (array(BASEPATH, APPPATH) as $path)
+		// Look for the class first in the local application/libraries folder
+		// then in the native system/libraries folder
+		foreach (array(APPPATH, BASEPATH) as $path)
 		{
-			if (file_exists($path.$directory.'/'.$class.EXT))
+			if (file_exists($path.$directory.'/'.$class.'.php'))
 			{
 				$name = $prefix.$class;
 
 				if (class_exists($name) === FALSE)
 				{
-					require($path.$directory.'/'.$class.EXT);
+					require($path.$directory.'/'.$class.'.php');
 				}
 
 				break;
@@ -142,13 +150,13 @@
 		}
 
 		// Is the request a class extension?  If so we load it too
-		if (file_exists(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.EXT))
+		if (file_exists(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php'))
 		{
 			$name = config_item('subclass_prefix').$class;
 
 			if (class_exists($name) === FALSE)
 			{
-				require(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.EXT);
+				require(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php');
 			}
 		}
 
@@ -157,7 +165,7 @@
 		{
 			// Note: We use exit() rather then show_error() in order to avoid a
 			// self-referencing loop with the Excptions class
-			exit('Unable to locate the specified class: '.$class.EXT);
+			exit('Unable to locate the specified class: '.$class.'.php');
 		}
 
 		// Keep track of what we just loaded
@@ -166,6 +174,7 @@
 		$_classes[$class] = new $name();
 		return $_classes[$class];
 	}
+}
 
 // --------------------------------------------------------------------
 
@@ -176,6 +185,8 @@
 * @access	public
 * @return	array
 */
+if ( ! function_exists('is_loaded'))
+{
 	function is_loaded($class = '')
 	{
 		static $_is_loaded = array();
@@ -187,34 +198,9 @@
 
 		return $_is_loaded;
 	}
+}
 
 // ------------------------------------------------------------------------
-
-/* Autoload */
-        function __autoload($className)
-        {
-            $except_classes = array('CI_Exceptions','CI_Benchmark','CI_Hooks','CI_Config','CI_Utf8','CI_URI','CI_Router','CI_Output','CI_Input','CI_Lang','CI_Loader');
-            $is_except_class = in_array($className, $except_classes);
-            
-            if (!class_exists($className, false) && !$is_except_class) {
-                if ($className == 'CI_Model') {
-                    require(dirname(__FILE__).'/Model.php');
-                }
-                if ($className == 'MessageHandler') {
-                    require(dirname(__FILE__).'/MessageHandler.php');
-                }
-                elseif (file_exists(APPPATH.'business/'.$className.'.php')) {
-                    require(APPPATH.'business/'.$className.'.php');
-                }
-                else {
-                    if (file_exists(APPPATH.'models/'.strtolower($className).'.php')) {
-                        require(APPPATH.'models/'.strtolower($className).'.php');
-                    }
-                }
-            }
-        }
-
-
 /**
 * Loads the main config.php file
 *
@@ -224,6 +210,8 @@
 * @access	private
 * @return	array
 */
+if ( ! function_exists('get_config'))
+{
 	function &get_config($replace = array())
 	{
 		static $_config;
@@ -233,15 +221,19 @@
 			return $_config[0];
 		}
 
+		// Is the config file in the environment folder?
+		if ( ! defined('ENVIRONMENT') OR ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/config.php'))
+		{
+			$file_path = APPPATH.'config/config.php';
+		}
+
 		// Fetch the config file
-		if ( ! file_exists(APPPATH.'config/config'.EXT))
+		if ( ! file_exists($file_path))
 		{
 			exit('The configuration file does not exist.');
 		}
-		else
-		{
-			require(APPPATH.'config/config'.EXT);
-		}
+
+		require($file_path);
 
 		// Does the $config array exist in the file?
 		if ( ! isset($config) OR ! is_array($config))
@@ -263,6 +255,7 @@
 
 		return $_config[0] =& $config;
 	}
+}
 
 // ------------------------------------------------------------------------
 
@@ -272,6 +265,8 @@
 * @access	public
 * @return	mixed
 */
+if ( ! function_exists('config_item'))
+{
 	function config_item($item)
 	{
 		static $_config_item = array();
@@ -289,6 +284,7 @@
 
 		return $_config_item[$item];
 	}
+}
 
 // ------------------------------------------------------------------------
 
@@ -304,12 +300,15 @@
 * @access	public
 * @return	void
 */
+if ( ! function_exists('show_error'))
+{
 	function show_error($message, $status_code = 500, $heading = 'An Error Was Encountered')
 	{
 		$_error =& load_class('Exceptions', 'core');
 		echo $_error->show_error($heading, $message, 'error_general', $status_code);
 		exit;
 	}
+}
 
 // ------------------------------------------------------------------------
 
@@ -323,12 +322,15 @@
 * @access	public
 * @return	void
 */
+if ( ! function_exists('show_404'))
+{
 	function show_404($page = '', $log_error = TRUE)
 	{
 		$_error =& load_class('Exceptions', 'core');
 		$_error->show_404($page, $log_error);
 		exit;
 	}
+}
 
 // ------------------------------------------------------------------------
 
@@ -341,6 +343,8 @@
 * @access	public
 * @return	void
 */
+if ( ! function_exists('log_message'))
+{
 	function log_message($level = 'error', $message, $php_error = FALSE)
 	{
 		static $_log;
@@ -353,6 +357,7 @@
 		$_log =& load_class('Log');
 		$_log->write_log($level, $message, $php_error);
 	}
+}
 
 // ------------------------------------------------------------------------
 
@@ -364,6 +369,8 @@
  * @param	string
  * @return	void
  */
+if ( ! function_exists('set_status_header'))
+{
 	function set_status_header($code = 200, $text = '')
 	{
 		$stati = array(
@@ -438,6 +445,7 @@
 			header("HTTP/1.1 {$code} {$text}", TRUE, $code);
 		}
 	}
+}
 
 // --------------------------------------------------------------------
 
@@ -455,6 +463,8 @@
 * @access	private
 * @return	void
 */
+if ( ! function_exists('_exception_handler'))
+{
 	function _exception_handler($severity, $message, $filepath, $line)
 	{
 		 // We don't bother with "strict" notices since they tend to fill up
@@ -484,55 +494,70 @@
 
 		$_error->log_exception($severity, $message, $filepath, $line);
 	}
+}
 
-	// --------------------------------------------------------------------
+// --------------------------------------------------------------------
 
-	/**
-	 * Remove Invisible Characters
-	 *
-	 * This prevents sandwiching null characters
-	 * between ascii characters, like Java\0script.
-	 *
-	 * @access	public
-	 * @param	string
-	 * @return	string
-	 */
-	function remove_invisible_characters($str)
+/**
+ * Remove Invisible Characters
+ *
+ * This prevents sandwiching null characters
+ * between ascii characters, like Java\0script.
+ *
+ * @access	public
+ * @param	string
+ * @return	string
+ */
+if ( ! function_exists('remove_invisible_characters'))
+{
+	function remove_invisible_characters($str, $url_encoded = TRUE)
 	{
-		static $non_displayables;
-
-		if ( ! isset($non_displayables))
+		$non_displayables = array();
+		
+		// every control character except newline (dec 10)
+		// carriage return (dec 13), and horizontal tab (dec 09)
+		
+		if ($url_encoded)
 		{
-			// every control character except newline (dec 10), carriage return (dec 13), and horizontal tab (dec 09),
-			$non_displayables = array(
-										'/%0[0-8bcef]/',			// url encoded 00-08, 11, 12, 14, 15
-										'/%1[0-9a-f]/',				// url encoded 16-31
-										'/[\x00-\x08]/',			// 00-08
-										'/\x0b/', '/\x0c/',			// 11, 12
-										'/[\x0e-\x1f]/'				// 14-31
-									);
+			$non_displayables[] = '/%0[0-8bcef]/';	// url encoded 00-08, 11, 12, 14, 15
+			$non_displayables[] = '/%1[0-9a-f]/';	// url encoded 16-31
 		}
+		
+		$non_displayables[] = '/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/S';	// 00-08, 11, 12, 14-31, 127
 
 		do
 		{
-			$cleaned = $str;
-			$str = preg_replace($non_displayables, '', $str);
+			$str = preg_replace($non_displayables, '', $str, -1, $count);
 		}
-		while ($cleaned != $str);
+		while ($count);
 
 		return $str;
 	}
-        
-        date_default_timezone_set(config_item('timezone'));
+}
 
-// Notification message type
-define('MSG_ERROR', 1);
-define('MSG_WARNING', 2);
-define('MSG_INFO', 3);
-define('MSG_HAPPY', 4);
-define('MESSAGE_ONLY', 0);
-define('LOG_ONLY', 1);
-define('MESSAGE_AND_LOG', 2);
-        
+// ------------------------------------------------------------------------
+
+/**
+* Returns HTML escaped variable
+*
+* @access	public
+* @param	mixed
+* @return	mixed
+*/
+if ( ! function_exists('html_escape'))
+{
+	function html_escape($var)
+	{
+		if (is_array($var))
+		{
+			return array_map('html_escape', $var);
+		}
+		else
+		{
+			return htmlspecialchars($var, ENT_QUOTES, config_item('charset'));
+		}
+	}
+}
+
 /* End of file Common.php */
 /* Location: ./system/core/Common.php */

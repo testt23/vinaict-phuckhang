@@ -26,9 +26,19 @@
  */
 class CI_Lang {
 
+	/**
+	 * List of translations
+	 *
+	 * @var array
+	 */
 	var $language	= array();
+	/**
+	 * List of loaded language files
+	 *
+	 * @var array
+	 */
 	var $is_loaded	= array();
-
+	
 	/**
 	 * Constructor
 	 *
@@ -47,18 +57,21 @@ class CI_Lang {
 	 * @access	public
 	 * @param	mixed	the name of the language file to be loaded. Can be an array
 	 * @param	string	the language (en, etc.)
+	 * @param	bool	return loaded array of translations
+	 * @param 	bool	add suffix to $langfile
+	 * @param 	string	alternative path to look for language file
 	 * @return	mixed
 	 */
 	function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '')
 	{
-		$langfile = str_replace(EXT, '', $langfile);
+		$langfile = str_replace('.php', '', $langfile);
 
 		if ($add_suffix == TRUE)
 		{
 			$langfile = str_replace('_lang.', '', $langfile).'_lang';
 		}
 
-		$langfile .= EXT;
+		$langfile .= '.php';
 
 		if (in_array($langfile, $this->is_loaded, TRUE))
 		{
@@ -69,6 +82,7 @@ class CI_Lang {
 
 		if ($idiom == '')
 		{
+			/* Customized by VinaICT */
 			$deft_lang = ( ! isset($config['language'])) ? 'en' : $config['language'];
                         $deft_lang = ($deft_lang == '') ? 'en' : $deft_lang;
                         
@@ -135,19 +149,23 @@ class CI_Lang {
 	 */
 	function line($line = '')
 	{
-		$line = ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
-		return $line;
+		$value = ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
+		// Because killer robots like unicorns!
+		if ($value === FALSE)
+		{
+			log_message('error', 'Could not find the language line "'.$line.'"');
+		}
+
+		return $value;
 	}
-        
-        function getSystemLanguage() {
-            
-            $CI =& get_instance();
-            $deft_lang = ( ! isset($config['language'])) ? 'en' : $config['language'];
-            
-            $CI->load->library('session');
-            return $CI->session->userdata('lang') ? $CI->session->userdata('lang') : $deft_lang;
-            
-        }
+
+	function getSystemLanguage() {
+		$CI =& get_instance();
+		$deft_lang = ( ! isset($config['language'])) ? 'en' : $config['language'];
+		
+		$CI->load->library('session');
+		return $CI->session->userdata('lang') ? $CI->session->userdata('lang') : $deft_lang;
+	}
 
 }
 // END Language Class
