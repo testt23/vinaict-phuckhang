@@ -170,8 +170,6 @@ $config['controller_trigger']	= 'c';
 $config['function_trigger']		= 'm';
 $config['directory_trigger']	= 'd'; // experimental not currently in use
 
-$config['app_path'] = 'phuckhang/trunk/application';
-
 /*
 |--------------------------------------------------------------------------
 | Error Logging Threshold
