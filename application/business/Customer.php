@@ -26,10 +26,11 @@
 
                         $filter[PAGINATION_QUERY_STRING_SEGMENT] = isset($filter[PAGINATION_QUERY_STRING_SEGMENT]) && $filter[PAGINATION_QUERY_STRING_SEGMENT] ? $filter[PAGINATION_QUERY_STRING_SEGMENT] : 1;
                         // Initialize pagination
-                        $this->load->library('pagination');
-                        $this->pagination->setModel($customer);
-                        $this->pagination->url = curPageURL();
-                        $this->pagination->cur_page = $filter[PAGINATION_QUERY_STRING_SEGMENT];
+                        $ci =& get_instance();
+                        $ci->load->library('pagination');
+                        $ci->pagination->setModel($customer);
+                        $ci->pagination->url = curPageURL();
+                        $ci->pagination->cur_page = $filter[PAGINATION_QUERY_STRING_SEGMENT];
 
                     }
 
