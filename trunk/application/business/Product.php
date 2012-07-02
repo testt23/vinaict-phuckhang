@@ -252,6 +252,11 @@ class Product extends Product_model {
             return false;
         }
         
+    }    
+    function getProductByID($id){
+        $pro_det = new Product();
+        $pro_det->get($id);
+        return $pro_det;
     }
     
 }
