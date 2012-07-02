@@ -407,7 +407,7 @@ create table `purchase_order_detail`(
    `number` bigint UNSIGNED NOT NULL , 
    `is_deleted` tinyint(1) UNSIGNED DEFAULT '0' , 
    PRIMARY KEY (`id`)
- )
+ )ENGINE=MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 DROP TABLE IF EXISTS `purchase_order_status`;
