@@ -13,6 +13,7 @@
 		var $id_parent = 0;	//int(11)			NOT NULL
 		var $disabled = 0;	//tinyint(1)			NOT NULL
 		var $type = 1;	//tinyint(1) unsigned			NOT NULL
+		var $relation;	//varchar(100)			NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'int', 'null' => FALSE, 'auto_increment' => TRUE),
@@ -22,6 +23,7 @@
 			'section' => array('type' => 'varchar', 'size' => 255, 'null' => FALSE),
 			'id_parent' => array('type' => 'int', 'null' => FALSE),
 			'disabled' => array('type' => 'tinyint', 'null' => FALSE),
-			'type' => array('type' => 'tinyint', 'null' => FALSE)
+			'type' => array('type' => 'tinyint', 'null' => FALSE),
+			'relation' => array('type' => 'varchar', 'size' => 100, 'null' => TRUE)
 		);
 	}
