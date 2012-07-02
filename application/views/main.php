@@ -4,7 +4,6 @@
     $theme = $this->config->item('current_theme').'/';
     $skin = $this->config->item('current_skin');
     $skin = $skin ? $skin.'/':'';
-    $application = $this->config->item('app_folder');
     $app_name = SITE_NAME;
     $this->load->helper('url');
     $base_url = base_url();
