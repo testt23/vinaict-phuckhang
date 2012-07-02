@@ -441,4 +441,11 @@ ALTER TABLE `menu`
 ALTER TABLE `parameter` 
    CHANGE `category` `always_load` TINYINT(1) DEFAULT '0' NOT NULL;
 
+/* 02-07-2012 - Pham Thanh Nam - Manager Order */
+INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_group`, `value`) VALUES
+(, 'order/delete', 0, 1, '1,2,3,4'),
+(, 'order/detail', 0, 1, '1,2,3,4'),
+(, 'order/status', 0, 1, '1,2,3,4'),
+(, 'order/deleteOrderDetail', 0, 1, '1,2,3,4');
+
 }}}
