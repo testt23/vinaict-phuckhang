@@ -365,7 +365,6 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['app_folder'] = 'application';
 $config['themes_folder'] = 'themes';
 $config['current_theme'] = 'admintasia_v1';
 //$config['current_skin'] = 'red';
