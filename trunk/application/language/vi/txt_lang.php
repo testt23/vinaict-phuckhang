@@ -87,6 +87,7 @@ $lang['txt_description']                = 'Mô tả';
 $lang['txt_about_product_information']  = 'Thông tin chi tiết về sản phẩm của bạn';
 $lang['txt_about_50_words']             = 'Khoảng 50 từ';
 $lang['txt_price']                      = 'Giá';
+$lang['txt_currency']                   = 'Đơn vị';
 $lang['txt_product_pic']                = 'Hình ảnh sản phẩm';
 $lang['txt_product_link']               = 'Link';
 $lang['txt_product_category']           = 'Nhóm sản phẩm';
