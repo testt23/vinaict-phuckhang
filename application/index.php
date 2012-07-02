@@ -197,13 +197,4 @@ function __autoload($className)
 	}
 }
 
-// Notification message type
-define('MSG_ERROR', 1);
-define('MSG_WARNING', 2);
-define('MSG_INFO', 3);
-define('MSG_HAPPY', 4);
-define('MESSAGE_ONLY', 0);
-define('LOG_ONLY', 1);
-define('MESSAGE_AND_LOG', 2);
-
 date_default_timezone_set(config_item('timezone'));
