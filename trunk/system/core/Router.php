@@ -149,14 +149,13 @@ class CI_Router {
 	
 		// Process $_SERVER['QUERY_STRING'] which is not 'controller_trigger' in config.php file
 		if (!isset($_GET[$this->config->item('controller_trigger')]) && $_SERVER['QUERY_STRING']) {
-			$app_folder = trim(str_replace($_SERVER['DOCUMENT_ROOT'], '', APPPATH), '/');
+			$app_folder = trim(str_replace($_SERVER['DOCUMENT_ROOT'], '', str_replace('\\', '/', APPPATH)), '/');
 			$request_uri = trim(str_replace($app_folder, '', trim($_SERVER['REQUEST_URI'], '/')),'/');
 			
 			if ($_SERVER['QUERY_STRING'] && $_SERVER['QUERY_STRING'] != '')
 				$request_uri = trim(str_replace(trim($_SERVER['QUERY_STRING']), '', $request_uri),'/');
 			
 			$request_uri = trim(str_replace('?', '', $request_uri),'/');
-			
 			$s = explode('/', $request_uri);
 			
 			if (count($s) > 1) {
