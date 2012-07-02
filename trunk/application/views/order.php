@@ -35,60 +35,28 @@
             echo "});";
             
             echo "$('.$status_icon[$i]').mouseout(function() {";
-            echo "$(this).attr('class', 'ui-icon $status_icon[$i]');";
+            echo "$(this).attr('class', 'ui-icon $status_icon[$i]');";            
             echo "});";
             
-        } ?>
-        
             
-        /*
+        }
         
-        $('.ui-icon-transferthick-e-w').hover( 
-            function(){
-                $(this).addClass('ui-icon-check');
-                $(this).parent('a.ui-state-default').addClass('ui-state-active');
-            },function(){
-                $(this).removeClass('ui-icon-check');
-                $(this).parent('a.ui-state-default').removeClass('ui-state-active');
-        });
+        $status_undo    = count($status_icon) - 1 ;
+        $status_clock   = 1;
         
-        $('.ui-icon-arrowreturnthick-1-w').hover( 
-            function(){
-                $(this).addClass('ui-icon-clock');
-                $(this).parent('a.ui-state-default').addClass('ui-state-active');
-            },function(){
-                $(this).removeClass('ui-icon-clock');
-                $(this).parent('a.ui-state-default').removeClass('ui-state-active');
-        });
+        echo "$('.$status_icon[$status_undo]').mouseover(function() {";
+        echo "$(this).attr('class', 'ui-icon $status_icon[$status_clock]');";
+        echo "$(this).parents('a').attr('class', 'btn_no_text btn ui-state-active ui-corner-all tooltip');";
+        echo "});";
         
-        $('.ui-icon-cancel').hover( 
-            function(){
-                $(this).addClass('ui-icon-clock');
-                $(this).parent('a.ui-state-default').addClass('ui-state-active');
-            },function(){
-                $(this).removeClass('ui-icon-clock');
-                $(this).parent('a.ui-state-default').removeClass('ui-state-active');
-        });
-        
-        $('.ui-icon-clock').mouseover( 
-            function(){
-                $(this).attr('class', '.ui-icon ui-icon-transferthick-e-w')
-            }
-        );
-        
-        $('.ui-icon-clock').mouseout(
-            function(){
-                $(this).removeClass('ui-icon-transferthick-e-w');
-            }
-        );
-        
-        $('.ui-state-default').hover( 
-            function(){
-                $(this).addClass('ui-state-active');
-            },function(){
-                $(this).removeClass('ui-state-active');
-        });
-         */
+        echo "$('.$status_icon[$status_undo]').mouseout(function() {";
+        echo "$(this).parents('a').attr('class', 'btn_no_text btn ui-state-default ui-corner-all tooltip');";
+        echo "});";    
+        ?>
+                
+//        $('.ui-icon-arrowreturnthick-1-w').mouseover(function() {
+//            $(this).parent('a.ui-state-default').addClass('ui-state-active');
+//        });   
         
     });
 </script>
@@ -105,11 +73,11 @@ while ($order_status->fetchNext()) {
             <tr>
                 <th width="100px"><?php echo lang('txt_prod_code'); ?></th> 
                 <th><?php echo lang('txt_customer'); ?></th> 
-                <th width="100px"><?php echo lang('txt_order_description'); ?></th> 
-                <th><?php echo lang('txt_order_date'); ?></th> 
+                <th width="200px"><?php echo lang('txt_order_description'); ?></th> 
+                <th width="100px"><?php echo lang('txt_order_date'); ?></th>
+                <th width="100px"><?php echo lang('txt_order_shipping_date'); ?></th> 
                 <th><?php echo lang('txt_order_amount'); ?></th> 
-                <th width="100px"><?php echo lang('txt_status'); ?></th> 
-                <th><?php echo lang('txt_order_shipping_date'); ?></th> 
+                <th width="100px"><?php echo lang('txt_order_status'); ?></th> 
                 <th style="width:132px"><?php echo lang('txt_options'); ?></th> 
             </tr> 
         </thead> 
@@ -125,16 +93,14 @@ while ($order_status->fetchNext()) {
                         ?>
                     </td>
                     <td><?php echo $order->description; ?></td>
-                    <td><?php echo date_sql_to_local_date($order->order_date, $local_timezone, true, false); ?></td>
-                    <td><?php echo $order->amount ? $order->amount : lang('txt_call'); ?></td>
-                    <td>
+                    <td style="text-align: center;"><?php  echo date_sql_to_local_date($order->order_date, $local_timezone, true, false); ?></td>
+                    <td style="text-align: center;"><?php  echo date_sql_to_local_date($order->shipping_date, $local_timezone, true, false); ?></td>
+                    <td style="text-align: right;"><?php echo $order->amount ? $order->amount : lang('txt_call'); ?></td>
+                    <td style="text-align: center;">
                         <?php
                             $status = $order->status;
                             echo clean_html(getI18n($list_status[$status]));
                         ?>
-                    </td>
-                    <td>
-                        <?php echo date_sql_to_local_date($order->shipping_date, $local_timezone, true, false); ?>
                     </td>
                     <td>
                         <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_order_detail'); ?>" href="<?php echo base_url('order/detail/' . $order->id_order . '/' . $status); ?>">
@@ -145,26 +111,34 @@ while ($order_status->fetchNext()) {
                             $status_prev = $status - 1;
                             if ($status == ORD_STT_COMPLETED) {
                         ?>
-                        <a class="btn_no_text btn ui-state-default  ui-corner-all tooltip" title="<?php echo lang('txt_order_done'); ?>">
+                        <a class="btn_no_text btn ui-state-default  ui-corner-all tooltip" title="<?php echo lang('txt_status_completed'); ?>">
                             <span class="ui-icon ui-icon-check"></span>
                         </a>
                         <?php
                             }
-                            else if ($status == ORD_STT_UNACCEPTED || $status == ORD_STT_PENDING)
+                            else if ($status == ORD_STT_UNACCEPTED)
                             {
                         ?>
-                        <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_next])); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
-                            <span class="ui-icon <?php if ($status == ORD_STT_UNACCEPTED) { echo "ui-icon-cancel"; } else { echo "ui-icon-clock"; } ?>"></span>
+                        <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo lang('txt_next_to').': '.lang('txt_status_pending'); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
+                            <span class="ui-icon ui-icon-cancel"></span>
+                        </a>
+                        <?php
+                            }
+                            else if( $status == ORD_STT_PENDING ) 
+                            {
+                        ?>
+                        <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo lang('txt_next_to').': '.lang('txt_status_shipping'); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
+                            <span class="ui-icon ui-icon-clock"></span>
                         </a>
                         <?php
                             }
                             else
                             {
                         ?>
-                        <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_next])); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
+                        <a class="btn_no_text btn ui-state-active ui-corner-all tooltip" title="<?php echo lang('txt_next_to').': '.lang('txt_status_completed'); ?>" href="<?php echo base_url('order/status/' . $status_next . '/' . $order->id_order); ?>">
                             <span class="ui-icon ui-icon-transferthick-e-w"></span>
                         </a>
-                        <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo clean_html(getI18n($list_status[$status_prev])); ?>" href="<?php echo base_url('order/status/' . $status_prev . '/' . $order->id_order); ?>">
+                        <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_back_to').': '.lang('txt_status_pending');; ?>" href="<?php echo base_url('order/status/' . $status_prev . '/' . $order->id_order); ?>">
                             <span class="ui-icon ui-icon-arrowreturnthick-1-w"></span>
                         </a>
                         <?php
