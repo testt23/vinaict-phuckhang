@@ -260,6 +260,7 @@
         $this->load->view('main', $this->data);
     }
     
+    
     function detail($id) {
         
         User::checkAccessable($this->session->userdata('userID'), 'product/detail');
@@ -290,6 +291,7 @@
             MessageHandler::add(lang('msg_product_no_presentative_picture'), MSG_WARNING, MESSAGE_ONLY);
         
         $picture = $product->getPictures();
+        $pro_det = $product->getProductByID($id);
         
         $array_menus = array();
         $filter = array();
@@ -298,6 +300,7 @@
         Menu::getMenuTree($array_menus, $filter);
         
         $this->data['product'] = $product;
+        $this->data['pro_det'] = $pro_det;
         $this->data['picture'] = $picture;
         $this->data['image_path'] = 'images/';
         $this->data['array_menus'] = $array_menus;
