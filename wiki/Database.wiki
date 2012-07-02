@@ -437,4 +437,8 @@ INSERT  INTO `parameter`(`id`,`name`,`code`,`value`,`category`,`status`,`creatio
 ALTER TABLE `menu` 
    ADD COLUMN `relation` VARCHAR(100) NULL AFTER `type`;
 
+/* 02-07-2012 16:15 - Ly Vinh Truong - Settings */
+ALTER TABLE `parameter` 
+   CHANGE `category` `always_load` TINYINT(1) DEFAULT '0' NOT NULL;
+
 }}}
