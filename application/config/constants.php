@@ -65,8 +65,19 @@ define('MESSAGE_ONLY', 0);
 define('LOG_ONLY', 1);
 define('MESSAGE_AND_LOG', 2);
 
+// Date type definition
+define('TEXT', 1);
+define('TEXTAREA', 2);
+define('NUMBER', 3);
+define('DATE', 4);
+define('DATETIME', 5);
+define('BOOLEAN', 6);
+define('LIST', 8);
+define('LIST_MULTI', 9);
+define('PICTURE', 10);
+
 // Load from database
-@include(APPPATH.'config/database'.EXT);
+@include(APPPATH.'config/database.php');
     $db_conf = $db['default'];
     
     $link = mysql_connect($db_conf['hostname'], $db_conf['username'], $db_conf['password']);

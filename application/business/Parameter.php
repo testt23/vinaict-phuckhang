@@ -6,6 +6,26 @@
 			parent::__construct();
 		}
                 
+                function getList($filter = array()) {
+                    $parameter = new Parameter();
+                    $parameter->addJoin(new ParamGroupParameter(), 'LEFT');
+                    $parameter->addJoin(new ParamGroup(), 'LEFT');
+                    $parameter->addSelect();
+                    $parameter->addSelect('parameter.*, param_group.name param_group_name');
+                    $parameter->addWhere('parameter.disabled = '.IS_NOT_DISABLED);
+
+                    if (isset($filter['id_param_group']) && $filter['id_param_group'])
+                        $parameter->addWhere('id_param_group = '.$filter['id_param_group']);
+                    
+                    if (isset($filter['always_load']) && $filter['always_load'] == '1')
+                        $parameter->addWhere('always_load = '.$filter['always_load']);
+
+                    $parameter->orderBy(getI18nRealStringSql("param_group.name").", parameter.name");
+                    $parameter->find();
+
+                    return $parameter;
+                }
+                
                 public static function getValue($code) {
                     
                     $parameter = new Parameter();
@@ -101,6 +121,66 @@
                     }
                     
                     return $params;
+                    
+                }
+                
+                function validateInput() {
+                    return TRUE;
+                }
+
+
+                public static function saveValue($id, $value) {
+                    
+                    $param = new Parameter();
+                    
+                    if (!$id || !$param->get($id))
+                        return FALSE;
+                    
+                    $param->value = utf8_escape_textarea($value);
+                    
+                    if ($param->validateInput()) {
+                        $param->update();
+                        return json_encode($param);
+                    }
+                    
+                }
+                
+                public static function getParamByID($id) {
+                    $param = new Parameter();
+                    
+                    if (!$id || !$param->get($id))
+                        return FALSE;
+                    
+                    return json_encode($param);
+                }
+                
+                public static function renderInput($id) {
+                    
+                    $param = new Parameter();
+                    
+                    if (!$id || !$param->get($id))
+                        return FALSE;
+                    
+                    switch ($param->data_type) {
+                        case TEXT:
+                            return '<input type="text" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            break;
+                        case TEXTAREA:
+                            return '<textarea id="param_data_'.$param->id.'" name="param_'.$param->id.'">'.$param->value.'</textarea>';
+                            break;
+                        case NUMBER:
+                            return '<input type="text" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            break;
+                        case DATE:
+                            return '<div class="datepicker" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            break;
+                        case DATETIME:
+                            return '<div class="datepicker" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            break;
+                        case BOOLEAN:
+                            return '<input type="checkbox" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="1" '.($param->value == '1' ? 'checked' : '').' />';
+                            break;
+                    }
                     
                 }
 	}

@@ -194,6 +194,8 @@
             $menu->id_parent = $this->input->post('id_menu_parent') ? $this->input->post('id_menu_parent') : 0;
             $menu->position = $this->input->post('position') == "0" ? 0 : $this->input->post('position');
             
+            $categories = ProductCategory::getTree();
+            
             if ($menu->validateInput()) {
                 
                 $menu->position = round($menu->position);

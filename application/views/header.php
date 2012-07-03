@@ -6,7 +6,7 @@
 		</div>
             
 		<div id="sitename">
-			<a href="index.html" class="logo float-left" title="Admintasia">Admintasia</a>
+			<a href="index.html" class="logo float-left" title="<?php echo SITE_NAME; ?>"><?php echo SITE_NAME; ?></a>
 		</div>
 		<?php include_once 'menu.php'; ?>
 	</div>

@@ -4,7 +4,10 @@ class JqueryValidator
 {
 	var $availableFunctions = array(
             'Image::getImageGalleryTree',
-            'Image::renderFolderTrees'
+            'Image::renderFolderTrees',
+            'Parameter::getParamByID',
+            'Parameter::renderInput',
+            'Parameter::saveValue'
 	);
 
 	var $classInvalid = false;
