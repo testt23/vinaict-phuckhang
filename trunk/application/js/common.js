@@ -1157,8 +1157,8 @@ function switchLang(lang, name) {
       $('#btn_'+name+'_'+lang).attr('style','opacity:1');
       
    }
-
-$(document).ready(function() {
+   
+function initDocument() {
    
    $('div.datepicker').each(function(){
        
@@ -1298,6 +1298,12 @@ $(document).ready(function() {
         $(this).removeAttr('type');
        
    });
+   
+}
+
+$(document).ready(function() {
+   
+   initDocument();
 
 });
 

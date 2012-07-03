@@ -86,3 +86,25 @@ tr.row-disabled td {
 	padding: 0 3px 3px;
 	width: 98%;
 }
+
+.items-list li.param {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.items-list li.hover {
+    font-weight: bold;
+    background-color: #ddd;
+}
+
+.items-list li.param_group {
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.items-list li.param .value {
+    margin: 2px;
+}
+.float-right .ui-icon {
+    margin-right: 0;
+}
