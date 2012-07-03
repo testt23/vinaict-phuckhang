@@ -448,4 +448,10 @@ INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_group`, `value`) VALUES
 (119, 'order/status', 0, 1, '1,2,3,4'),
 (120, 'order/deleteOrderDetail', 0, 1, '1,2,3,4');
 
+/* 03-07-2012 23:30 - Ly Vinh Truong - Settings */
+ALTER TABLE `parameter` 
+   ADD COLUMN `data_type` TINYINT(1) DEFAULT '1' NOT NULL AFTER `disabled`,
+   ADD COLUMN `data` TEXT AFTER `data_type`;
+
+
 }}}
