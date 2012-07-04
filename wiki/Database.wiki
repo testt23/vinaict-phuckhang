@@ -330,7 +330,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`email`,`pass`,`date_last_login`,`last_name`,`first_name`,`disabled`,`login_attempts`,`deactived`,`is_controller`,`home_phone`,`work_phone`,`mobile_phone`,`address`,`name`,`is_business`) values (1,'truong@vinaict.com','1c84eef95efa8cfe106394a660da8a12929b18f0','2012-06-27 13:27:52','Lý','Vĩnh Trường',0,0,0,0,'','','0908 080 656',NULL,NULL,0),(2,'hoangtam@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b','2012-04-14 09:21:08','Mai','Nguyễn Hoàng Tâm',0,0,0,0,'','','',NULL,NULL,0),(3,'van.nguyen@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b','2012-05-07 13:38:56','Nguyễn','Tô Thanh Vân',0,0,0,0,'','','',NULL,NULL,0),(4,'test@abcdef.com','9b7265c00f6743bfe7c6f21ecc5c3d579b10787e',NULL,'','',0,0,0,0,'','','','test','Test',1),(5,'truong@rubygraphic.com','bad37b5b72604087774623ba58a30450e04018e7',NULL,'','',0,0,0,0,'','','','123 ABD','Test Công ty',1);
+insert  into `user`(`id`,`email`,`pass`,`date_last_login`,`last_name`,`first_name`,`disabled`,`login_attempts`,`deactived`,`is_controller`,`home_phone`,`work_phone`,`mobile_phone`,`address`,`name`,`is_business`) values (1,'truong@vinaict.com','1c84eef95efa8cfe106394a660da8a12929b18f0','2012-07-04 08:30:25','Lý','Vĩnh Trường',0,0,0,0,'','','0908 080 656',NULL,NULL,0),(5,'phamthanhnam@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Pham','Thanh Nam',0,0,0,0,NULL,NULL,NULL,NULL,NULL,0),(4,'nguyenvancuong@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Nguyen','van Cuong',0,0,0,0,NULL,NULL,NULL,NULL,NULL,0),(3,'lehoangchanh@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Le','Hoang Chanh',0,0,0,0,NULL,NULL,NULL,NULL,NULL,0),(2,'huynhbaan@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Huynh','Ba An',0,0,0,0,'','','','',NULL,0);
 
 /*Table structure for table `user_group` */
 
@@ -344,7 +344,7 @@ CREATE TABLE `user_group` (
 
 /*Data for the table `user_group` */
 
-insert  into `user_group`(`id_user`,`id_group`) values (1,1),(2,1),(3,1),(4,1);
+insert  into `user_group`(`id_user`,`id_group`) values (1,1),(2,1),(3,1),(4,1),(5,1);
 
 /*Table structure for table `web_page` */
 
