@@ -1,6 +1,6 @@
 <?php
 
-	class UserGroup extends User_group_model {
+	class UsrGroupUser extends Usr_group_user_model {
 
 		function __construct() {
 			parent::__construct();

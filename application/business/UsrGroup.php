@@ -1,6 +1,6 @@
 <?php
 
-	class Usrgroup extends Usr_group_model {
+	class UsrGroup extends Usr_group_model {
 
 		function __construct() {
 			parent::__construct();
@@ -8,7 +8,7 @@
                 
                 public static function getList($id = NULL) {
                     
-                    $group = new Usrgroup();
+                    $group = new UsrGroup();
                     $group->addWhere('usr_group.disabled = '.IS_NOT_DISABLED);
                     if($id){
                         $group->addWhere('id = '. $id);
@@ -38,20 +38,11 @@
                     return MessageHandler::countError() > 0 ? false : true;
                 }
                 
-                function delete($id = null){
+                function delete() {
                     $this->disabled = 1;
-                    //$this->addWhere('id = '.$id);
-                    $this->db->where('id = ' . $id);
-                    $this->db->update('usr_group',$this);
-                    
-                    return TRUE;
-                }
-                
-                function update($id = null){
-                    
-                    $this->db->where('id = ' . $id);
-                    $this->db->update('usr_group',$this);
-                    
+                    $this->code = appendIdtoName($this->id, $this->code);
+                    $this->name = appendIdtoName($this->id, $this->name);
+                    $this->update();
                     return TRUE;
                 }
 	}
