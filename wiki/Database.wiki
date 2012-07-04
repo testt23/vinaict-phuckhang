@@ -462,7 +462,7 @@ CREATE TABLE `news_category` (
   `keyword` varchar(200) DEFAULT NULL,
   `link` varchar(400) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 INSERT INTO `news_category`(`id`,`name`,`description`,`id_parent`,`keyword`,`link`) VALUES (1,'test','Test is test for me, but me I don\'t know....\r\n','1','test','test_news_category'),(2,'Code function for back end page','This is function test. I am ..............','2','code','news_category');
 
