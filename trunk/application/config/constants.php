@@ -74,7 +74,11 @@ define('DATETIME', 5);
 define('BOOLEAN', 6);
 define('LIST', 8);
 define('LIST_MULTI', 9);
-define('PICTURE', 10);
+define('EDITOR', 10);
+define('TEXT_MULTILANG', 11);
+define('TEXTAREA_MULTILANG', 12);
+define('EDITOR_MULTILANG', 13);
+define('PICTURE', 14);
 
 // Load from database
 @include(APPPATH.'config/database.php');
