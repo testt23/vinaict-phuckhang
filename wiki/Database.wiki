@@ -453,5 +453,6 @@ ALTER TABLE `parameter`
    ADD COLUMN `data_type` TINYINT(1) DEFAULT '1' NOT NULL AFTER `disabled`,
    ADD COLUMN `data` TEXT AFTER `data_type`;
 
-
+/* 04-07-2012 15:30 - Huynh Ba An - News_Category */
+insert  into `news_category`(`id`,`name`,`description`,`id_parent`,`keyword`,`link`) values (1,'test','Test is test for me, but me I don\'t know....\r\n','1','test','test_news_category'),(2,'Code function for back end page','This is function test. I am ..............','2','code','news_category');
 }}}
