@@ -21,10 +21,10 @@
         
         $filter = array();
         $filter['name'] = $this->input->get_post('name');
-        $filter['id_group'] = $this->input->get_post('id_group');
+        $filter['id_usr_group'] = $this->input->get_post('id_usr_group');
         $filter[PAGINATION_QUERY_STRING_SEGMENT] = $this->input->get(PAGINATION_QUERY_STRING_SEGMENT);
         $user = User::getList($filter, true);
-        $group = Group::getList();
+        $group = Usrgroup::getList();
         
         $this->data['user'] = $user;
         $this->data['group'] = $group;
@@ -138,7 +138,7 @@
             $user->work_phone = $this->input->post('work_phone');
             $user->mobile_phone = $this->input->post('mobile_phone');
             $user->address = utf8_escape_textarea($this->input->post('address'));
-            $sel_groups = $this->input->post('id_group');
+            $sel_groups = $this->input->post('id_usr_group');
             
             if ($user->validateInput($confirm_password)) {
                 
@@ -147,10 +147,10 @@
                 if ($user->insert()) {
                     
                     if (count($sel_groups) > 0) {
-                        foreach ($sel_groups as $id_group) {
+                        foreach ($sel_groups as $id_usr_group) {
                             $user_grp = new UserGroup();
                             $user_grp->id_user = $user->id;
-                            $user_grp->id_group = $id_group;
+                            $user_grp->id_usr_group = $id_usr_group;
                             $user_grp->insert();
                         }
                     }
@@ -163,7 +163,7 @@
             
         }
         
-        $group = Group::getList();
+        $group = Usr_group::getList();
 
         $array_menus = array();
         $filter = array();
@@ -211,7 +211,7 @@
         $user_grps->find();
 
         while ($user_grps->fetchNext()) {
-            $sel_groups[] = $user_grps->id_group;
+            $sel_groups[] = $user_grps->id_usr_group;
         }
         
         if ($act == ACT_SUBMIT) {
@@ -223,7 +223,7 @@
             $user->work_phone = $this->input->post('work_phone');
             $user->mobile_phone = $this->input->post('mobile_phone');
             $user->address = utf8_escape_textarea($this->input->post('address'));
-            $sel_groups = $this->input->post('id_group');
+            $sel_groups = $this->input->post('id_usr_group');
             
             if ($user->validateInput()) {
                 
@@ -235,9 +235,9 @@
                         $user_grp->id_user = $user->id;
                         $user_grp->delete();
                         
-                        foreach ($sel_groups as $id_group) {
+                        foreach ($sel_groups as $id_usr_group) {
                             $user_grp->id_user = $user->id;
-                            $user_grp->id_group = $id_group;
+                            $user_grp->id_usr_group = $id_usr_group;
                             $user_grp->insert();
                         }
                     }
@@ -250,7 +250,7 @@
             
         }
         
-        $group = Group::getList();
+        $group = Usr_group::getList();
 
         $array_menus = array();
         $filter = array();

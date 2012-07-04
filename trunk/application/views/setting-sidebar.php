@@ -1,9 +1,9 @@
 <script type="text/javascript">
     function search() {
         var name = document.getElementById("name");
-        var id_group = document.getElementById("id_group");
+        var id_usr_group = document.getElementById("id_usr_group");
         var searchform = document.getElementById("searchform");
-        searchform.action = "?name="+name.value+"&id_group="+id_group.value;
+        searchform.action = "?name="+name.value+"&id_usr_group="+id_usr_group.value;
         searchform.submit();
     }
 </script>

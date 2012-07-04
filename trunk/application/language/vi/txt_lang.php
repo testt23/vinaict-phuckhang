@@ -26,7 +26,6 @@ $lang['txt_hold_ctrl_to_select_many']   = 'Giữ phím Ctrl để chọn nhiều
 $lang['txt_detail_information']         = 'Thông tin chi tiết';
 $lang['txt_upload']                     = 'Upload';
 $lang['txt_code']                       = 'Mã';
-$lang['txt_ungrouped']                  = 'Chưa phân nhóm';
 
 /* User */
 $lang['txt_user']                       = 'User';
@@ -186,6 +185,14 @@ $lang['txt_status_pending']             = 'Chờ đợi';
 $lang['txt_status_shipping']            = 'Vận chuyển';
 $lang['txt_status_completed']           = 'Hoàn tất';
 
-/* Settings */
-$lang['txt_settings']                    = 'Cài đặt';
-$lang['txt_system_configuration']       = 'Cấu hình hệ thống';
+
+/* Group */
+$lang['txt_code_group']                 = 'Mã nhóm';
+$lang['txt_name_group']                 = 'Tên nhóm';
+$lang['txt_group']                      = 'Danh sách nhóm người dùng';
+$lang['txt_list_urser']                 = 'Danh sách người dùng';
+$lang['txt_add_group']                  = 'Thêm nhóm người dùng mới';
+$lang['txt_edit_group']                 = 'Thay đổi thông tin nhóm người dùng';
+
+
+
