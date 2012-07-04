@@ -1,9 +1,9 @@
 <script type="text/javascript">
     function search() {
         var name = document.getElementById("name");
-        var id_group = document.getElementById("id_group");
+        var id_usr_group = document.getElementById("id_usr_group");
         var searchform = document.getElementById("searchform");
-        searchform.action = "?name="+name.value+"&id_group="+id_group.value;
+        searchform.action = "?name="+name.value+"&id_usr_group="+id_usr_group.value;
         searchform.submit();
     }
 </script>
@@ -19,12 +19,12 @@
                                 </div>
                             </li>
                             <li>
-                                <label for="id_group"><?php echo lang('txt_user_group'); ?></label>
+                                <label for="id_usr_group"><?php echo lang('txt_user_group'); ?></label>
                                 <div>
-                                    <select id="id_group" name="id_group">
+                                    <select id="id_usr_group" name="id_usr_group">
                                         <option value=""><?php echo lang('txt_all'); ?></option>
                                         <?php while ($group->fetchNext()) { ?>
-                                        <option <?php if ($group->id == $filter['id_group']) { echo "selected"; } ?> value="<?php echo $group->id; ?>"><?php echo getI18n($group->name); ?></option>
+                                        <option <?php if ($group->id == $filter['id_usr_group']) { echo "selected"; } ?> value="<?php echo $group->id; ?>"><?php echo getI18n($group->name); ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

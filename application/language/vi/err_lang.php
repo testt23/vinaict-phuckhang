@@ -101,3 +101,9 @@ $lang['err_invalid_mobile_phone']           = 'Số điện thoại di động k
 $lang['err_invalid_fax']                    = 'Số fax không hợp lệ';
 $lang['err_empty_birthdate']                = 'Bạn chưa nhập ngày sinh';
 $lang['err_empty_contact_person']           = 'Bạn chưa nhập tên ngư�?i liên hệ';
+
+/* Group */
+$lang['err_empty_code']                     = 'Bạn chưa nhập mã nhóm';
+$lang['err_code_too_long']                  = 'Mã nhóm nhập vào quá dài';
+$lang['err_empty_name']                     = 'Bạn chưa nhập tên nhóm';
+$lang['err_name_too_long']                  = 'Tên nhóm nhập vào quá dài';

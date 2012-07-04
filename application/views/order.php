@@ -53,10 +53,7 @@
         echo "$(this).parents('a').attr('class', 'btn_no_text btn ui-state-default ui-corner-all tooltip');";
         echo "});";    
         ?>
-                
-//        $('.ui-icon-arrowreturnthick-1-w').mouseover(function() {
-//            $(this).parent('a.ui-state-default').addClass('ui-state-active');
-//        });   
+               
         
     });
 </script>

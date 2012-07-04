@@ -165,21 +165,21 @@ class User extends User_model {
         
         $user = new User();
         $user->addJoin(new UserGroup(), 'LEFT');
-        $user->addJoin(new Group(), 'LEFT');
+        $user->addJoin(new Usrgroup(), 'LEFT');
         
         if(isset($filter['name']) && $filter['name']) {
             $user->addWhere("(user.last_name LIKE '%".utf8_escape_textarea($filter['name'])."%'");
             $user->addWhere("user.first_name LIKE '%".utf8_escape_textarea($filter['name'])."%')", 'OR');
         }
-        if(isset($filter['id_group']) && $filter['id_group']) {
-            $user->addWhere("user_group.id_group = ".$filter['id_group']);
+        if(isset($filter['id_usr_group']) && $filter['id_usr_group']) {
+            $user->addWhere("user_group.id_usr_group = ".$filter['id_usr_group']);
         }
         
         $user->addWhere('user.disabled = '.IS_NOT_DISABLED);        
         
         // Get total rows
         $user->addSelect();
-        $user->addSelect("user.*, GROUP_CONCAT(group.name) group_name");
+        $user->addSelect("user.*, GROUP_CONCAT(usr_group.name) group_name");
         $user->groupBy('user.id');
         $user->orderBy("user.last_name, user.first_name");
         $user->find();
@@ -305,7 +305,7 @@ class User extends User_model {
                 
                 $perm = new Permission();
                 $perm->addSelect();
-                $perm->addJoin(new UserGroup(), 'LEFT', 'user_group', 'permission.id_group = user_group.id_group');
+                $perm->addJoin(new UserGroup(), 'LEFT', 'user_group', 'permission.id_usr_group = user_group.id_usr_group');
                 $perm->addWhere("user_group.id_user = ".$id_user);
                 
                 if ($uri && $uri != '') {

@@ -156,11 +156,11 @@
                                 </div>
                         </li>
                         <li>
-                                <label for="id_group" class="desc">
+                                <label for="id_usr_group" class="desc">
                                         <?php echo lang('txt_group'); ?>
                                 </label>
                                 <div>
-                                        <select tabindex="3" class="field select small" id="id_group" name="id_group[]" multiple size="5" > 
+                                        <select tabindex="3" class="field select small" id="id_usr_group" name="id_usr_group[]" multiple size="5" > 
                                             <?php while ($group->fetchNext()) { ?>
                                             <option value="<?php echo $group->id; ?>" <?php if (in_array($group->id, $sel_groups)) { ?>selected<?php } ?> >
                                                         <?php echo getI18n($group->name); ?>

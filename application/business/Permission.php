@@ -20,7 +20,7 @@
                     $arr_id_user = array();
                     
                     if (!$id_user) {
-                        $group = new Group();
+                        $group = new Usr_group();
                         $group->addWhere("disabled = ".IS_NOT_DISABLED);
                         $group->addSelect();
                         $group->addSelect("id");
@@ -28,11 +28,11 @@
                         
                         while($group->fetchNext()) {
                             $permission = new Permission();
-                            $permission->id_group = $group->id;
+                            $permission->id_usr_group = $group->id;
                             $permission->uri = $uri;
                             $permission->delete();
                             
-                            $permission->id_group = $group->id;
+                            $permission->id_usr_group = $group->id;
                             $permission->uri = $uri;
                             $permission->value = implode(',', $perm);
                             $permission->insert();
@@ -77,11 +77,11 @@
                     
                 }
                 
-                public static function deletePermissionByGroup($uri, $id_group) {
+                public static function deletePermissionByUsr_group($uri, $id_usr_group) {
                     
                     $permission = new Permission();
                     $permission->uri = $uri;
-                    $permission->id_group = $id_group;
+                    $permission->id_usr_group = $id_usr_group;
                     $permission->delete();
                     
                 }
