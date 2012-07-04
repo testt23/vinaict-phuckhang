@@ -20,7 +20,7 @@
                     $arr_id_user = array();
                     
                     if (!$id_user) {
-                        $group = new Usr_group();
+                        $group = new UsrGroup();
                         $group->addWhere("disabled = ".IS_NOT_DISABLED);
                         $group->addSelect();
                         $group->addSelect("id");
@@ -77,7 +77,7 @@
                     
                 }
                 
-                public static function deletePermissionByUsr_group($uri, $id_usr_group) {
+                public static function deletePermissionByUsrGroup($uri, $id_usr_group) {
                     
                     $permission = new Permission();
                     $permission->uri = $uri;
