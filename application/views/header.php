@@ -6,7 +6,7 @@
 		</div>
             
 		<div id="sitename">
-			<a href="index.html" class="logo float-left" title="<?php echo SITE_NAME; ?>"><?php echo SITE_NAME; ?></a>
+			<a href="<?php echo base_url(); ?>" class="logo float-left" title="<?php echo getI18n(SITE_NAME); ?>"><?php echo getI18n(SITE_NAME); ?></a>
 		</div>
 		<?php include_once 'menu.php'; ?>
 	</div>

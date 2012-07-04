@@ -136,10 +136,20 @@
                     if (!$id || !$param->get($id))
                         return FALSE;
                     
-                    $param->value = utf8_escape_textarea($value);
+                    if ($param->data_type == TEXT_MULTILANG || $param->data_type == TEXTAREA_MULTILANG || $param->data_type == EDITOR_MULTILANG) {
+                        $lang = Language::getArrayLangIso();
+                        $param->value = '';
+                        $value = json_decode($value);
+                        foreach ($lang as $l) {
+                            $param->value .= '<'.$l.'>'.utf8_escape_textarea($value->$l).'</'.$l.'>';
+                        }
+                    }
+                    else
+                        $param->value = utf8_escape_textarea($value);
                     
                     if ($param->validateInput()) {
                         $param->update();
+                        $param->value = getI18n($param->value);
                         return json_encode($param);
                     }
                     
@@ -163,22 +173,32 @@
                     
                     switch ($param->data_type) {
                         case TEXT:
-                            return '<input type="text" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            return '<input type="text" id="param_data_'.$param->id.'" name="param_data_'.$param->id.'" value="'.$param->value.'" />';
                             break;
                         case TEXTAREA:
-                            return '<textarea id="param_data_'.$param->id.'" name="param_'.$param->id.'">'.$param->value.'</textarea>';
+                            return '<textarea id="param_data_'.$param->id.'" name="param_data_'.$param->id.'">'.$param->value.'</textarea>';
                             break;
                         case NUMBER:
-                            return '<input type="text" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            return '<input type="text" id="param_data_'.$param->id.'" name="param_data_'.$param->id.'" value="'.$param->value.'" />';
                             break;
                         case DATE:
-                            return '<div class="datepicker" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            return '<div class="datepicker" id="param_data_'.$param->id.'" name="param_data_'.$param->id.'" value="'.$param->value.'" />';
                             break;
                         case DATETIME:
-                            return '<div class="datepicker" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="'.$param->value.'" />';
+                            return '<div class="datepicker" id="param_data_'.$param->id.'" name="param_data_'.$param->id.'" value="'.$param->value.'" />';
                             break;
                         case BOOLEAN:
-                            return '<input type="checkbox" id="param_data_'.$param->id.'" name="param_'.$param->id.'" value="1" '.($param->value == '1' ? 'checked' : '').' />';
+                            return '<input type="checkbox" id="param_data_'.$param->id.'" name="param_data_'.$param->id.'" value="1" '.($param->value == '1' ? 'checked' : '').' />';
+                            break;
+                        case TEXT_MULTILANG:
+                            $lang = Language::getArrayLangIso();
+                            $lang = implode(',', $lang);
+                            return '<div type="text-multilang" lang="'.$lang.'" tabindex="1" maxlength="255" class="field text medium" id="param_data_'.$param->id.'" name="param_data_'.$param->id.'" value="'.$param->value.'" ></div>';
+                            break;
+                        case TEXTAREA_MULTILANG:
+                            $lang = Language::getArrayLangIso();
+                            $lang = implode(',', $lang);
+                            return '<div type="textarea-multilang" lang="'.$lang.'" tabindex="1" maxlength="255" class="field text medium" id="param_data_'.$param->id.'" name="param_data_'.$param->id.'" value="'.$param->value.'" ></div>';
                             break;
                     }
                     

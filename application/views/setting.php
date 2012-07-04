@@ -24,10 +24,28 @@
         var agr = new Array();
         agr.push(id);
         
-        if ($('#param_data_'+id).attr('type') == 'checkbox')
+        if ($('#param_data_'+id).attr('type') == 'checkbox') {
             agr.push($('#param_data_'+id).attr('checked') ? '1' : '0');
-        else
-            agr.push($('#param_data_'+id).val());
+        }            
+        else {
+            <?php
+                echo 'var str_val = \'{\';'."\n";
+                $lang = Language::getArrayLangIso();
+                foreach ($lang as $l) {
+                    echo 'if ($("#param_data_"+id+"_'.$l.'").val()) {'."\n";
+                    echo 'str_val += "\"'.$l.'\" : \""+$("#param_data_"+id+"_'.$l.'").val()+"\", ";'."\n";
+                    echo '}'."\n";
+                }
+                echo 'str_val = str_val.substring(0, str_val.length - 2);'."\n";
+                echo 'str_val += \'}\';'."\n";
+            ?>
+            
+            if (str_val == '}')
+                agr.push($('#param_data_'+id).val());
+            else
+                agr.push(str_val);
+        }
+            
         
         var data = ajaxCallFunction('Parameter::saveValue',agr,'json');
         
@@ -62,7 +80,7 @@
                                 <span class="value"><?php echo getI18n($parameter->name); ?></span>
                             </div>
                             <div class="float-right">
-                                <span class="value"><?php if ($parameter->data_type == BOOLEAN) { echo '<span class="ui-icon ui-icon-'.($parameter->value == '1' ? 'check' : 'closethick').'"></span>'; } else { echo $parameter->value; } ?></span>
+                                <span class="value"><?php if ($parameter->data_type == BOOLEAN) { echo '<span class="ui-icon ui-icon-'.($parameter->value == '1' ? 'check' : 'closethick').'"></span>'; } else { echo getI18n($parameter->value); } ?></span>
                                 <span class="button">
                                     <a href="javascript:editParam(<?php echo $parameter->id; ?>)">
                                         <span class="ui-icon ui-icon-wrench"></span>

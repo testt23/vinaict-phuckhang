@@ -13,4 +13,13 @@
                     $lang->find();
                     return $lang;
                 }
+                
+                function getArrayLangIso() {
+                    $lang = self::getList();
+                    $arr_lang = array();
+                    while($lang->fetchNext()) {
+                        $arr_lang[] = $lang->code;
+                    }
+                    return $arr_lang;
+                }
 	}
