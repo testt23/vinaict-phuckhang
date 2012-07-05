@@ -1,9 +1,9 @@
 <script type="text/javascript">
     function search() {
         var name = document.getElementById("name");
-        var id_usr_group = document.getElementById("id_usr_group");
+        var id_usr_group = document.getElementById("id_param_group");
         var searchform = document.getElementById("searchform");
-        searchform.action = "?name="+name.value+"&id_usr_group="+id_usr_group.value;
+        searchform.action = "?name="+name.value+"&id_param_group="+id_usr_group.value;
         searchform.submit();
     }
 </script>
@@ -14,7 +14,7 @@
             <form id="searchform" name="searchform" action="" method="post">
                 <ul>
                     <li>
-                        <label for="id_param_group"><?php echo lang('txt_group'); ?></label>
+                        <label for="id_param_group"><?php echo lang('txt_param_group'); ?></label>
                         <div>
                             <select id="id_param_group" name="id_param_group" >
                                 <option>All</option>
