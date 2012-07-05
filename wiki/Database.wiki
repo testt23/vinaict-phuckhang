@@ -475,4 +475,19 @@ ALTER TABLE `usr_group_user`
 ALTER TABLE `permission` 
    CHANGE `id_group` `id_usr_group` SMALLINT(5) UNSIGNED DEFAULT '0' NULL ;
 
+UPDATE `phuckhang`.`permission` SET `uri` = 'usr_group' WHERE `permission`.`id` =43;
+
+INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_usr_group`, `value`) VALUES
+(121, 'usr_group/delete', 0, 1, '1,2,3,4'),
+(122, 'usr_group/edit', 0, 1, '1,2,3,4'),
+(123, 'usr_group/add', 0, 1, '1,2,3,4'),
+(133, 'article', 0, 1, '1,2,3,4'),
+(125, 'article/add', 0, 1, '1,2,3,4'),
+(126, 'article/delete', 0, 1, '1,2,3,4'),
+(127, 'article/edit', 0, 1, '1,2,3,4');
+
+INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES
+(58, 'max length of the code', 'MAX_LENGTH_CODE', '10', 1, 0, '2012-07-04 11:59:59', NULL, 1, NULL, 0, 1, NULL),
+(59, 'max length of the name group', 'MAX_LENGTH_NAME_GROUP', '200', 1, 0, '2012-07-05 12:05:02', NULL, 1, NULL, 0, 1, NULL);
+
 }}}
