@@ -512,4 +512,9 @@ insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disable
 
 UPDATE `parameter` SET `data_type` = 12, `value` = '<en>Phuc Khang Gilding Store</en><vi>Cửa Hàng Dát Vàng Phúc Khang</vi>' WHERE `id` = 15;
 
+/* 05-07-2012 - Pham Thanh Nam - User (add field lang) */
+
+alter table `phuckhang`.`user` 
+   add column `lang` varchar(5) DEFAULT 'vi' NOT NULL after `is_business`
+
 }}}
