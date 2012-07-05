@@ -107,3 +107,4 @@ $lang['err_empty_code']                     = 'Bạn chưa nhập mã nhóm';
 $lang['err_code_too_long']                  = 'Mã nhóm nhập vào quá dài';
 $lang['err_empty_name']                     = 'Bạn chưa nhập tên nhóm';
 $lang['err_name_too_long']                  = 'Tên nhóm nhập vào quá dài';
+$lang['err_exit_user']                      = 'Có người dùng thuộc nhóm này bạn không thể xóa được ';

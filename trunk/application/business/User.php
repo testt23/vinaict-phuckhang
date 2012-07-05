@@ -164,7 +164,7 @@ class User extends User_model {
     function getList(&$filter = array(), $pager = true) {
         
         $user = new User();
-        $user->addJoin(new UserGroup(), 'LEFT');
+        $user->addJoin(new UsrGroupUser(), 'LEFT');
         $user->addJoin(new Usrgroup(), 'LEFT');
         
         if(isset($filter['name']) && $filter['name']) {
@@ -172,7 +172,7 @@ class User extends User_model {
             $user->addWhere("user.first_name LIKE '%".utf8_escape_textarea($filter['name'])."%')", 'OR');
         }
         if(isset($filter['id_usr_group']) && $filter['id_usr_group']) {
-            $user->addWhere("user_group.id_usr_group = ".$filter['id_usr_group']);
+            $user->addWhere("usr_group_user.id_usr_group = ".$filter['id_usr_group']);
         }
         
         $user->addWhere('user.disabled = '.IS_NOT_DISABLED);        
@@ -269,7 +269,7 @@ class User extends User_model {
             $user->get($this->id);
             $user->disabled = IS_DISABLED;
             $user->update();
-            
+            return TRUE;
         }
         
       
@@ -305,8 +305,8 @@ class User extends User_model {
                 
                 $perm = new Permission();
                 $perm->addSelect();
-                $perm->addJoin(new UserGroup(), 'LEFT', 'user_group', 'permission.id_usr_group = user_group.id_usr_group');
-                $perm->addWhere("user_group.id_user = ".$id_user);
+                $perm->addJoin(new UsrGroupUser(), 'LEFT', 'usr_group_user', 'permission.id_usr_group = usr_group_user.id_usr_group');
+                $perm->addWhere("usr_group_user.id_user = ".$id_user);
                 
                 if ($uri && $uri != '') {
                     $perm->addWhere("permission.uri = '$uri'");
