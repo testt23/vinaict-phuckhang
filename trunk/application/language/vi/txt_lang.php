@@ -194,5 +194,8 @@ $lang['txt_list_urser']                 = 'Danh sách người dùng';
 $lang['txt_add_group']                  = 'Thêm nhóm người dùng mới';
 $lang['txt_edit_group']                 = 'Thay đổi thông tin nhóm người dùng';
 
-
-
+/* Settings */
+$lang['txt_settings']                   = 'Cài đặt';
+$lang['txt_system_configuration']       = 'Cấu hình hệ thống';
+$lang['txt_param_group']                = 'Nhóm tham số';
+$lang['txt_ungrouped']                  = 'Chưa phân nhóm';
