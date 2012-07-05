@@ -506,4 +506,8 @@ CREATE TABLE `article` (
   UNIQUE KEY `NewIndex1` (`link`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/* 05-07-2012 12:00 - Ly Vinh Truong - Settings */
+
+UPDATE `parameter` SET `data_type` = 12, `value` = '<en>Phuc Khang Gilding Store</en><vi>Cửa Hàng Dát Vàng Phúc Khang</vi>' WHERE `id` = 15;
+
 }}}
