@@ -466,7 +466,7 @@ CREATE TABLE `news_category` (
 
 INSERT INTO `news_category`(`id`,`name`,`description`,`id_parent`,`keyword`,`link`) VALUES (1,'test','Test is test for me, but me I don\'t know....\r\n','1','test','test_news_category'),(2,'Code function for back end page','This is function test. I am ..............','2','code','news_category');
 
-/* 02-07-2012 - Pham Thanh Nam - Manager user group */
+/* 04-07-2012 - Pham Thanh Nam - Manager user group */
 
 RENAME TABLE `group` TO `usr_group`;
 RENAME TABLE `user_group` TO `usr_group_user`;
@@ -489,5 +489,21 @@ INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_usr_group`, `value`) VALUE
 INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES
 (58, 'max length of the code', 'MAX_LENGTH_CODE', '10', 1, 0, '2012-07-04 11:59:59', NULL, 1, NULL, 0, 1, NULL),
 (59, 'max length of the name group', 'MAX_LENGTH_NAME_GROUP', '200', 1, 0, '2012-07-05 12:05:02', NULL, 1, NULL, 0, 1, NULL);
+
+
+/* 05-07-2012 - Pham Thanh Nam - Manager article */
+
+DROP TABLE IF EXISTS `article`;
+
+CREATE TABLE `article` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `keywords` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_news_category` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`link`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 }}}
