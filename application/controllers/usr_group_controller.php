@@ -48,8 +48,9 @@
         if ($id && !$group->get($id)) {
             redirect($back);
         }
-        
-        $group->delete($group->id);
+        if(!$group->isExitUserByUsrGroup($group->id)){
+            $group->delete($group->id);
+        }
         redirect($back);
     
     }

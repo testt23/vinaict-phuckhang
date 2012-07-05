@@ -107,7 +107,14 @@
             redirect($back);
         }
         
-        $user->delete();
+        if( $user->delete()){   // Delete user in table usr_group_user
+            
+            $usr_group = new UsrGroupUser();
+            $usr_group->id_user = $user->id;
+            $usr_group->delete();
+            
+        }
+        
         redirect($back);
     
     }
@@ -148,7 +155,7 @@
                     
                     if (count($sel_groups) > 0) {
                         foreach ($sel_groups as $id_usr_group) {
-                            $user_grp = new UserGroup();
+                            $user_grp = new UsrGroupUser();
                             $user_grp->id_user = $user->id;
                             $user_grp->id_usr_group = $id_usr_group;
                             $user_grp->insert();
@@ -206,8 +213,8 @@
         
         $sel_groups = array();
         
-        $user_grps = new UserGroup();
-        $user_grps->addWhere('user_group.id_user = '.$user->id);
+        $user_grps = new UsrGroupUser();
+        $user_grps->addWhere('usr_group_user.id_user = '.$user->id);
         $user_grps->find();
 
         while ($user_grps->fetchNext()) {
@@ -231,7 +238,7 @@
                     
                     if (count($sel_groups) > 0) {
                         
-                        $user_grp = new UserGroup();
+                        $user_grp = new UsrGroupUser();
                         $user_grp->id_user = $user->id;
                         $user_grp->delete();
                         

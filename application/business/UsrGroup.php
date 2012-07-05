@@ -31,7 +31,7 @@
                     if (trim($this->name) == "") {
                             MessageHandler::add (lang('err_empty_name'), MSG_ERROR, MESSAGE_ONLY);
                     }
-                    else if (strlen($this->name) > MAX_LENGTH_NAME) {
+                    else if (strlen($this->name) > MAX_LENGTH_NAME_GROUP) {
                             MessageHandler::add (lang('err_name_too_long'), MSG_ERROR, MESSAGE_ONLY);
                     }
                     
@@ -44,5 +44,23 @@
                     $this->name = appendIdtoName($this->id, $this->name);
                     $this->update();
                     return TRUE;
+                }
+                
+                function isExitUserByUsrGroup($id = NULL){
+                    
+                    if($id){
+                        $this->addJoin(new UsrGroupUser());
+                        $this->addWhere('id = '. $id);
+                        $this->find();
+                        
+                        if( $this->countRows() > 0 ){
+                            MessageHandler::add (lang('err_exit_user'), MSG_ERROR, MESSAGE_ONLY);
+                            return TRUE;
+                        }else {
+                            return FALSE;
+                        } 
+                    }
+                    
+                    return FALSE;
                 }
 	}

@@ -1,8 +1,8 @@
 <?php
 
-	class User_group_model extends CI_Model {
+	class Usr_group_user_model extends CI_Model {
 
-		protected $__tbname = 'user_group';
+		protected $__tbname = 'usr_group_user';
 		protected $__dbconf = 'default';
 
 		var $id_user;	//int(10) unsigned	Primary Key		NOT NULL

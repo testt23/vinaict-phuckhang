@@ -21,6 +21,6 @@
 
 		protected $__relation = array(
 			array('table' => 'user', 'foreign_key' => 'id_user'),
-			array('table' => 'group', 'foreign_key' => 'id_usr_group')
+			array('table' => 'usr_group', 'foreign_key' => 'id_usr_group')
 		);
 	}
