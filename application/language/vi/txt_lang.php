@@ -199,3 +199,9 @@ $lang['txt_settings']                   = 'Cài đặt';
 $lang['txt_system_configuration']       = 'Cấu hình hệ thống';
 $lang['txt_param_group']                = 'Nhóm tham số';
 $lang['txt_ungrouped']                  = 'Chưa phân nhóm';
+
+/* Article */
+$lang['txt_article']                    = 'Danh sách các bài viết';
+$lang['txt_add_article']                = 'Thêm bài viết mới';
+$lang['txt_edit_article']               = 'Thay đổi thông tin bài viết';
+$lang['txt_category']                   = 'Chủ đề';
