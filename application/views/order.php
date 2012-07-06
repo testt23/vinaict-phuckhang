@@ -90,9 +90,9 @@ while ($order_status->fetchNext()) {
                         ?>
                     </td>
                     <td><?php echo $order->description; ?></td>
-                    <td style="text-align: center;"><?php  echo date_sql_to_local_date($order->order_date, $local_timezone, true, false); ?></td>
-                    <td style="text-align: center;"><?php  echo date_sql_to_local_date($order->shipping_date, $local_timezone, true, false); ?></td>
-                    <td style="text-align: right;"><?php echo $order->amount ? $order->amount : lang('txt_call'); ?></td>
+                    <td style="text-align: center;"><?php  //echo date_sql_to_local_date($order->order_date, $local_timezone, true, false); ?></td>
+                    <td style="text-align: center;"><?php  //echo date_sql_to_local_date($order->shipping_date, $local_timezone, true, false); ?></td>
+                    <td style="text-align: right;"><?php echo $order->amount ? floatval($order->amount).' '.$order->currency : lang('txt_call'); ?></td>
                     <td style="text-align: center;">
                         <?php
                             $status = $order->status;
