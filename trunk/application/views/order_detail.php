@@ -38,7 +38,7 @@
                 <td><?php echo $order_detail->code_product ?></td>
                 <td><?php echo $order_detail->name_product; ?></td>
                 <td><?php echo $order_detail->desciption_product; ?></td>
-                <td><?php echo $order_detail->price_product ? $order_detail->price_product .' '. $order_detail->currency_product : lang('txt_call') ; ?></td>
+                <td><?php echo $order_detail->price_product ? floatval($order_detail->price_product) .' '. $order_detail->currency_product : lang('txt_call') ; ?></td>
                 <td><?php echo $order_detail->number; ?></td>
                 <td>
                     <?php if($order_status == 1){ ?>
