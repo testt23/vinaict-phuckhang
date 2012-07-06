@@ -26,7 +26,7 @@
                 <th width="200px"><?php echo lang('txt_name'); ?></th>                 
                 <th width="200px"><?php echo lang('txt_description'); ?></th> 
                 <th width="200px"><?php echo lang('txt_link'); ?></th> 
-                <th width="200px"><?php echo lang('txt_keywords'); ?></th> 
+                <th width="200px"><?php echo lang('txt_keyword'); ?></th> 
                 <th width="200px"><?php echo lang('txt_parent_news_category'); ?></th> 
                 <th width="120px"><?php echo lang('txt_options'); ?></th> 
             </tr> 
@@ -40,19 +40,12 @@
                 <td><?php echo $news_category['description']; ?></td>
                 <td><?php echo $news_category['link']; ?></td>
                 <td><?php echo $news_category['keyword']; ?></td>
-                <td>
-                <?php 
-                $parents = explode(',', $news_category['id_parent']);
-                foreach ($parents as $key => $parent) {
-                    echo trim($parent) && isset($arr_news_category[trim($parent)]) ? '('.$arr_news_category[trim($parent)]['id'].') '.$arr_news_category[trim($parent)]['name'].'<br/>' : '';
-                }
-                ?>
-                </td>
+                <td><?php echo $news_category['id_parent']; ?></td>
                 <td>
                     <a class="btn_no_text btn ui-state-ui-corner-all tooltip" title="<?php echo lang('txt_edit'); ?>" href="<?php echo base_url('news_category/edit/'.$id); ?>">
                             <span class="ui-icon ui-icon-wrench"></span>
                     </a>
-                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_delete'); ?>" href="#" onclick="deleteNewsCategory(<?php echo $id; ?>)">
+                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_delete'); ?>" href="#" onclick="deleteProdCategory(<?php echo $id; ?>)">
                             <span class="ui-icon ui-icon-trash"></span>
                     </a>
                 </td>
