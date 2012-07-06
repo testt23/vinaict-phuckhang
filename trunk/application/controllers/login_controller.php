@@ -79,6 +79,7 @@
                                 if ($this->session->userdata('last_login_id') != $this->session->userdata('userID')) {
                                     $redirect = base_url('dashboard');
                                 }
+                                $this->session->set_userdata('lang',utf8_escape_html($acces->lang));
                                 // Redirect user to use the system
                                 redirect($redirect);
                             }
@@ -116,11 +117,25 @@
 
         function logout(){
             
+            //$this->load->library('session');
+            
             $this->session->set_userdata('last_login_id', $this->session->userdata('userID'));
             $this->session->unset_userdata('userID');
             $this->session->unset_userdata('logged_email');
             redirect('login');
             
+        }
+        
+        function lang($lang = 'en'){
+            
+            $logged_user = new User();
+            
+            if ($logged_user->get($this->session->userdata("userID"))) {
+                $logged_user->lang = $lang;
+                $logged_user->update();
+                $this->session->set_userdata('lang',  utf8_escape_html($logged_user->lang));
+            }
+            redirect($this->session->userdata('url_lang'));            
         }
     
     }
