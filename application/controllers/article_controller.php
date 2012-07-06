@@ -89,21 +89,21 @@
                 if ($this->input->post('content_'.$lang->code)) {
                     $article->content .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('content_'.$lang->code)).'</'.$lang->code.'>';
                 }
-                
-                if ($this->input->post('link_'.$lang->code)) {
-                    $article->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
+                                               
             }
             
             if ($this->input->post('keywords')) {
-                $article->keywords = $this->input->post('keywords');
+                $article->keywords = utf8_escape_textarea($this->input->post('keywords'));
             }
             
             if ($this->input->post('id_news_category')) {
                 $article->id_news_category = $this->input->post('id_news_category');               
             }
-                  
+            
+            if ($this->input->post('link')) {
+                $article->link = utf8_escape_textarea($this->input->post('link'));
+            }
+                        
             if ($article->validateInput()) {
                 $article->insert();
                 redirect($back);
@@ -170,10 +170,7 @@
                     $article->content .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('content_'.$lang->code)).'</'.$lang->code.'>';
                 }
                 
-                if ($this->input->post('link_'.$lang->code)) {
-                    $article->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
+                                
             }
             
             if ($this->input->post('keywords')) {
@@ -181,10 +178,13 @@
             }
             
             if ($this->input->post('id_news_category')) {
-                $article->id_news_category = $this->input->post('id_news_category');                 
-                //$article->id_news_category = $this->input->post('id_news_category');
+                $article->id_news_category = $this->input->post('id_news_category');    
             }
-            //echo "<pre>";  var_dump($article->id_article_category); echo "<pre>";
+            
+            if ($this->input->post('link')) {
+                $article->link = utf8_escape_textarea($this->input->post('link'));
+            }
+                            
             if ($article->validateInput()) {
                 $article->update();
                 redirect($back);

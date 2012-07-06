@@ -12,10 +12,10 @@
     <table> 
         <thead> 
             <tr>
-                <th width="200px"><?php echo lang('txt_title'); ?></th> 
-                <th width="250px"><?php echo lang('txt_content'); ?></th> 
-                <th width="180px"><?php echo lang('txt_link'); ?></th> 
-                <th width="100px"><?php echo lang('txt_keyword'); ?></th> 
+                <th style="width:150px"><?php echo lang('txt_title'); ?></th> 
+                <th style="width:300px"><?php echo lang('txt_content'); ?></th> 
+                <th style="width:150px"><?php echo lang('txt_link'); ?></th> 
+                <th style="width:150px"><?php echo lang('txt_keyword'); ?></th> 
                 <th style="width:120px"><?php echo lang('txt_options'); ?></th> 
             </tr> 
         </thead> 
@@ -25,7 +25,7 @@
             <tr>
                 <td><?php echo clean_html(getI18n($article->title)); ?></td>
                 <td><?php echo truncateString(clean_html(getI18n($article->content)), 100); ?></td>
-                <td><?php echo clean_html(getI18n($article->link)); ?></td>
+                <td><?php echo $article->link; ?></td>
                 <td><?php echo $article->keywords; ?></td>
                 <td>
                     <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_edit'); ?>" href="<?php echo base_url('article/edit/'.$article->id); ?>">
