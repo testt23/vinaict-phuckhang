@@ -521,4 +521,8 @@ alter table `phuckhang`.`user`
 insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disabled`,`type`,`relation`)values
 (44,'<en>Categories</en><vi>Danh mục tin</vi>',1,'news_category','news_category',31,0,2,NULL);
 
+
+/* 06-07-2012 - Phạm Thanh Nam - Manager Purchase_order*/
+ALTER TABLE `purchase_order` CHANGE `status` `status` TINYINT( 2 ) UNSIGNED NOT NULL DEFAULT '1'
+
 }}}
