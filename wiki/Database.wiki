@@ -514,7 +514,7 @@ UPDATE `parameter` SET `data_type` = 12, `value` = '<en>Phuc Khang Gilding Store
 
 /* 05-07-2012 - Pham Thanh Nam - User (add field lang) */
 
-alter table `phuckhang`.`user` 
+alter table `user` 
    add column `lang` varchar(5) DEFAULT 'vi' NOT NULL after `is_business`;
 
 /* 06-07-2012 - Huynh Ba An - Manager News category*/
@@ -523,6 +523,6 @@ insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disable
 
 
 /* 06-07-2012 - Phạm Thanh Nam - Manager Purchase_order*/
-ALTER TABLE `purchase_order` CHANGE `status` `status` TINYINT( 2 ) UNSIGNED NOT NULL DEFAULT '1'
+ALTER TABLE `purchase_order` CHANGE `status` `status` TINYINT( 2 ) UNSIGNED NOT NULL DEFAULT '1';
 
 }}}
