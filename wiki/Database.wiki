@@ -519,6 +519,6 @@ alter table `phuckhang`.`user`
 
 /* 06-07-2012 - Huynh Ba An - Manager News category*/
 insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disabled`,`type`,`relation`)values
-(43,'<en>41_Categories</en><vi>41_Danh mục tin</vi>',1,'news_category','news_category',39,1,1,NULL),(44,'<en>Categories</en><vi>Danh mục tin</vi>',1,'news_category','news_category',31,0,2,NULL);
+(44,'<en>Categories</en><vi>Danh mục tin</vi>',1,'news_category','news_category',31,0,2,NULL);
 
 }}}
