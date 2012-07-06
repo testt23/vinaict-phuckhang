@@ -525,4 +525,7 @@ insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disable
 /* 06-07-2012 - Phạm Thanh Nam - Manager Purchase_order*/
 ALTER TABLE `purchase_order` CHANGE `status` `status` TINYINT( 2 ) UNSIGNED NOT NULL DEFAULT '1';
 
+alter table `purchase_order` 
+   add column `currency` varchar(3) DEFAULT 'VND' NULL after `modification_date`;
+
 }}}
