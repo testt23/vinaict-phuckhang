@@ -24,13 +24,6 @@ include 'app_config.php';
  * as this file.
  *
  */
-        
-        if (isset($_SERVER['PATH_INFO'])){
-            define('PATH_INFO', $_SERVER['PATH_INFO']);
-        }else{
-            define('PATH_INFO','');
-        }
-        
 	$system_path = SYSTEM_PATH;
 
 /*
@@ -118,6 +111,7 @@ include 'app_config.php';
 
 	// ensure there's a trailing slash
 	$system_path = rtrim($system_path, '/').'/';
+
 	// Is the system path correct?
 	if ( ! is_dir($system_path))
 	{
@@ -172,3 +166,35 @@ require_once BASEPATH.'core/CodeIgniter'.EXT;
 
 /* End of file index.php */
 /* Location: ./index.php */
+
+/* Code bellow are appended by VinaICT */
+
+/* Autoload */
+function __autoload($className)
+{
+	if (strpos($className, 'CI_') == FALSE)
+		$is_except_class = FALSE;
+	elseif ($className == 'CI_Model')
+		$is_except_class = FALSE;
+	else
+		$is_except_class = TRUE;
+	
+	if (!class_exists($className, false) && !$is_except_class) {
+		if ($className == 'CI_Model') {
+			require(dirname(__FILE__).'/core/Model.php');
+		}
+		if ($className == 'MessageHandler') {
+			require(dirname(__FILE__).'/core/MessageHandler.php');
+		}
+		elseif (file_exists(APPPATH.'business/'.$className.'.php')) {
+			require(APPPATH.'business/'.$className.'.php');
+		}
+		else {
+			if (file_exists(APPPATH.'models/'.strtolower($className).'.php')) {
+				require(APPPATH.'models/'.strtolower($className).'.php');
+			}
+		}
+	}
+}
+
+date_default_timezone_set(config_item('timezone'));
