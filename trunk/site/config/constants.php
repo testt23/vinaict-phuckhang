@@ -63,7 +63,7 @@ define('BUSINESS', 2);
     $link = mysql_connect($db_conf['hostname'], $db_conf['username'], $db_conf['password']);
     mysql_select_db($db_conf['database']);
     
-    $query = 'SELECT code, value FROM parameter WHERE category = '.SYSTEM;
+    $query = 'SELECT `code`, `value` FROM `parameter` WHERE `always_load` = 1';
     $setting = mysql_query($query, $link);
     
     while ($row = mysql_fetch_array($setting)) {
