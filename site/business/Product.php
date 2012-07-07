@@ -4,11 +4,13 @@ class Product extends Product_model {
 
     var $if;
     var $lang;
-
+    var $pre_fix_product = '';
     function __construct() {
         parent::__construct();
         $this->if = new dbinfo();
         $lang = 'vi';
+        $this->pre_fix_product = trim(str_replace(array('products', 'index'), array('products', 'products'), $_SERVER['PATH_INFO']), '/');
+        var_dump($this->pre_fix_product);
     }
 
     // this function use for get a list new product limited 20 products
@@ -34,7 +36,9 @@ class Product extends Product_model {
         $Product_count->addWhere($this->if->_product_is_featured . ' = 1');
         $Product_count->addWhere($this->if->_product_is_disabled . ' = 0');
         $Product_count->addJoin($Image, 'LEFT', ' as p ', 'p.' . $this->if->_image_as_id . ' = ' . $this->if->_product_id_def_image);
-
+        
+        
+        
         $Product_count->find();
 
         $Product_count->fetchFirst();
@@ -218,7 +222,7 @@ class Product extends Product_model {
     }
 
     public function the_product_link() {
-        return base_url() . 'products/' . $this->{$this->if->_product_as_link} . '.html';
+        return base_url(). $this->pre_fix_product . '/' . $this->{$this->if->_product_as_link} . '.html';
     }
     public function the_product_description() {
         return getI18n($this->{$this->if->_product_as_description}, $this->lang);

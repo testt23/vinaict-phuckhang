@@ -17,29 +17,95 @@
     position:relative;
     top:15px;
     left:200px;}
+
+
+/*menu*/
+
+
 #menu{
     height:50px;
     background:#014109;
     margin-top:15px;}
-#menu ul{
+#navMenu{
     width:1000px;
     height:50px;
     margin:0 auto;
-    list-style:none}
-#menu ul li{
-    height:11px;
-    float:left;
-    padding:20px 0;}
-#menu ul li:hover{
+    list-style:none
+}
+#navMenu ul{
+    position: absolute;
+}
+#navMenu li{
     height:11px;
     float:left;
     padding:20px 0;
-    background:#5f9366}
-#menu ul li a{
+    position: relative;
+}
+#navMenu li:hover{
+    background:#5f9366;
+}
+
+#navMenu li:hover ul{
+    display:block;
+}
+#navMenu li:hover ul li{
+    background: #014109;
+}
+#navMenu li a{
     text-decoration:none;
     color:#fff;
     font-weight:bold;
-    margin:0 20px;}
+    margin:0 20px;
+}
+
+
+#navMenu li ul{
+    display: none;
+    background: #014109;
+    top: 50px;
+    left: 0px;
+    width: 150px;
+    height: auto;
+    box-shadow: 0px 0px 2px 2px gray;
+}
+#navMenu li ul li:hover{
+    background: #5f9366;
+}
+
+#navMenu li ul li{
+    height: auto;
+    line-height: 20px;
+    padding: 5px 10px;
+    width: 130px;
+    border-bottom: solid 1px gray;
+}
+#navMenu li ul li a{
+    margin: 0px;
+}
+
+/* an het */
+#navMenu li ul li ul{
+    display: none;
+}
+#navMenu li:hover ul li ul{
+    display: none !important;
+}
+
+
+#navMenu li ul li ul{
+    top: 0px;
+    left: 150px;
+}
+
+/* cap 3 */
+#navMenu li ul li:hover ul {
+    display: block !important;
+}
+#navMenu li ul li:hover ul li ul{
+    display: none !important;
+}
+
+
 /* Main */
 #container{
     width:1000px;

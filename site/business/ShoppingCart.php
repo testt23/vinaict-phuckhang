@@ -38,7 +38,7 @@ class ShoppingCart {
                 if ($item->get_id_product() == $id_product) {
                     $item->set_number($item->get_number() + 1);
                     if (($item->get_price_product() * 1) != 0) {
-                        $item->set_name_product($item->get_price_product() + $price);
+                        $item->set_name_product($item->get_price_product() + $price_product);
                     }
                     $flag = 'no';
                     break;
