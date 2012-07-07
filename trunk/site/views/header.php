@@ -7,8 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $this->config->item('app_name'); ?></title>
         <link href="<?php echo base_url(); ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>
-        
+        <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
     </head>
     
     <body>
@@ -29,11 +28,16 @@
             </div>
             
             <div id="menu">
-                <ul>
-                    <?php $List = Menu::getList(); ?>
-                   <?php while($List->fetchNext()): ?>
-                    <li><a href="<?php echo $List->the_link(); ?>"><?php echo $List->the_name(); ?></a></li>
-                    <?php endwhile; ?>
+                <ul id="navMenu">
+                    
+                   <?php $M = new Menu();
+                        $Menu = $M->getList();
+                    while ($Menu->fetchNext()): ?>
+                    <li>
+                    <a href="<?php echo $Menu->the_link(); ?>"><?php echo $Menu->the_name(); ?></a>
+                    </li>
+                    <?php endwhile;
+                   ?>
                 </ul>
             </div>
         </div>

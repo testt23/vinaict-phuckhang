@@ -1,10 +1,11 @@
 <?php
 
 class Product_controller extends CI_Controller {
-
+    
     function __construct() {
 
         parent::__construct();
+        
     }
 
     public function index() {
@@ -76,114 +77,99 @@ class Product_controller extends CI_Controller {
 
     public function prod_order_contact() {
         $mess = '';
-
-        $firstname = '';
-        $lastname = '';
-        $company = '';
-        $gender = '';
-        $birthday = '';
-        $billing_address = '';
-        $shipping_address = '';
-        $contact_address = '';
-        $home_phone = '';
-        $work_phone = '';
-        $mobile_phone = '';
-        $website = '';
-        $yahoo_id = '';
-        $skype_id = '';
-        $is_business = 0;
-        $tax_code = '';
-        $fax = '';
-        $career = '';
-        $email = '';
+        
         $description = '';
+        $firstname = $this->input->post('firstname');
+        $lastname = $this->input->post('lastname');
+        $company = $this->input->post('company');
+        $gender = $this->input->post('gender');
+        $birthday = '';
+        $billing_address = $this->input->post('billing_addres');
+        $shipping_address = $this->input->post('shipping_address');
+        $contact_address = '';
+        $home_phone = $this->input->post('home_phone');
+        $work_phone = $this->input->post('work_phone');
+        $mobile_phone = $this->input->post('mobile_phone');
+        $website = $this->input->post('website');
+        echo '<pre>' .  $website  . 'CHUNG TOI LA AI' . '</pre>';
+        $yahoo_id = $this->input->post('yahoo');
+        $skype_id = $this->input->post('Skype');
+        $is_deleted = 0;
+        $id_user = '';
+        $is_business = 0;
+        if ($this->input->post('option_contact') == '1') {
+            $is_business = 1;
+        }
+        $tax_code = $this->input->post('tax_code');
+        $fax = $this->input->post('fax');
+        $career = $this->input->post('career');
+        $contact_person = '';
+        $position = '';
+        $email = $this->input->post('email');
 
         $ShoppingCart = new ShoppingCart();
         $List = $ShoppingCart->get_list();
         $data['shopping'] = $List;
+
+        // neu form duoc submit
         if ($this->input->post('check') != null && $this->input->post('check') == 'order-ok') {
             if ($List) {
-                $email = $this->input->post('email');
                 if (trim($email) != '') {
-
-
-                    $firstname = $this->input->post('firstname');
-                    $lastname = $this->input->post('lastname');
-                    $company = $this->input->post('company');
-                    $gender = $this->input->post('gender');
-                    $birthday = '';
-                    $billing_address = $this->input->post('billing_addres');
-                    $shipping_address = $this->input->post('shipping_address');
-                    $contact_address = '';
-                    $home_phone = $this->input->post('home_phone');
-                    $work_phone = $this->input->post('Work phone');
-                    $mobile_phone = $this->input->post('firstname');
-                    $website = $this->input->post('mobile_phone');
-                    $yahoo_id = $this->input->post('yahoo');
-                    $skype_id = $this->input->post('Skype');
-                    $is_deleted = 0;
-                    $id_user = '';
-                    $is_business = 0;
-                    if ($this->input->post('option_contact') == '1') {
-                        $is_business = 1;
-                    }
-                    $tax_code = $this->input->post('tax_code');
-                    $fax = $this->input->post('fax');
-                    $career = $this->input->post('career');
-                    $contact_person = '';
-                    $position = '';
-
-                    $email = $this->input->post('email');
                     $CM = new Customer();
                     $Customer = $CM->findByEmail($email);
                     $cus_id = '';
+                    
                     // khach hang da ton tai
                     if ($Customer->countRows() > 0) {
-                        $Cus = new Customer();
+                        
                         $Customer->fetchFirst();
-                        if ($firstname == '') {
+                        
+                        if (empty ($firstname)) {
                             $firstname = $Customer->firstname;
                         }
-                        if ($lastname == '') {
-                            $firstname = $Customer->lastname;
+                        if (empty ($lastname)) {
+                            $lastname = $Customer->lastname;
                         }
-                        if ($company == '') {
+                        if (empty ($company )) {
                             $company = $Customer->company;
                         }
-                        if ($billing_address == '') {
+                        if (empty ($billing_address )) {
                             $billing_address = $Customer->billing_address;
                         }
-                        if ($shipping_address == '') {
+                        if (empty ($shipping_address)) {
                             $shipping_address = $Customer->shipping_address;
                         }
-                        if ($home_phone == '') {
+                        if (empty ($home_phone)){
                             $home_phone = $Customer->home_phone;
                         }
-                        if ($work_phone == '') {
+                        if (empty ($work_phone)) {
                             $work_phone = $Customer->work_phone;
                         }
-                        if ($mobile_phone == '') {
+                        if (empty ($mobile_phone)) {
                             $mobile_phone = $Customer->mobile_phone;
                         }
-                        if ($website == '') {
+                        if (empty ($website)){
+                            echo 'VAO WEBSITE';
                             $website = $Customer->website;
                         }
-                        if ($yahoo_id == '') {
+                        if (empty ($yahoo_id)){
                             $yahoo_id = $Customer->yahoo_id;
                         }
 
-                        if ($skype_id == '') {
+                        if (empty ($skype_id)){
                             $skype_id = $Customer->skype_id;
                         }
-                        if ($tax_code == '') {
+                        if (empty ($tax_code)) {
                             $tax_code = $Customer->tax_code;
                         }
-                        if ($fax == '') {
+                        if (empty ($fax)) {
                             $fax = $Customer->fax;
                         }
-                        if ($career == '') {
+                        if (empty ($career)){
                             $fax = $Customer->fax;
                         }
+                        
+                        $Cus = new Customer();
                         $Cus->id = $Customer->id;
                         $Cus->email = $email;
                         $Cus->firstname = $firstname;
@@ -198,6 +184,7 @@ class Product_controller extends CI_Controller {
                         $Cus->work_phone = $work_phone;
                         $Cus->mobile_phone = $mobile_phone;
                         $Cus->website = $website;
+                        
                         $Cus->yahoo_id = $yahoo_id;
                         $Cus->skype_id = $skype_id;
                         $Cus->tax_code = $tax_code;
@@ -206,120 +193,138 @@ class Product_controller extends CI_Controller {
                         $Cus->update();
                         $cus_id = $Cus->id;
                     } else {
+                        $Shopping = new ShoppingCart();
+
                         // them khach hang moi
-                        if (!empty($billing_address)) {
+                        if (empty($billing_address)) {
                             $mess = 'Vui lòng nhập địa chỉ nhận tiền';
-                        } else if (!empty($shipping_address)) {
+                        } else if (empty($shipping_address)) {
                             $mess = 'Vui lòng nhập địa chỉ giao hàng';
-                        } else if (!empty($firstname) || !empty($lastname)) {
+                        } else if (empty($firstname) || !empty($lastname)) {
                             $mess = 'Vui lòng nhập tên của bạn';
+                        } else if ($is_business == '1') {
+                            if (empty($company)) {
+                                $mess = 'Vui lòng nhập tên công ty';
+                            }if (empty($work_phone)) {
+                                $mess = 'Vui lòng nhập điện thoại công ty';
+                            }if (empty($tax_code)) {
+                                $mess = 'Vui lòng nhập mã số thuế';
+                            }
+                        } else {
+                            $Cus = new Customer();
+                            $Cus->email = $email;
+                            $Cus->firstname = $firstname;
+                            $Cus->lastname = $lastname;
+                            $Cus->company = $company;
+                            $Cus->gender = $gender;
+                            $Cus->birthdate = $birthday;
+                            $Cus->billing_address = $billing_address;
+                            $Cus->shipping_address = $shipping_address;
+                            $Cus->contact_address = $contact_address;
+                            $Cus->home_phone = $home_phone;
+                            $Cus->work_phone = $work_phone;
+                            $Cus->mobile_phone = $mobile_phone;
+                            $Cus->website = $website;
+                            $Cus->yahoo_id = $yahoo_id;
+                            $Cus->skype_id = $skype_id;
+                            $Cus->tax_code = $tax_code;
+                            $Cus->fax = $fax;
+                            $Cus->career = $career;
+                            $Cus->insert();
+                            $cus_id = $Cus->id;
                         }
-                        $Cus = new Customer();
-                        $Cus->email = $email;
-                        $Cus->firstname = $firstname;
-                        $Cus->lastname = $lastname;
-                        $Cus->company = $company;
-                        $Cus->gender = $gender;
-                        $Cus->birthdate = $birthday;
-                        $Cus->billing_address = $billing_address;
-                        $Cus->shipping_address = $shipping_address;
-                        $Cus->contact_address = $contact_address;
-                        $Cus->home_phone = $home_phone;
-                        $Cus->work_phone = $work_phone;
-                        $Cus->mobile_phone = $mobile_phone;
-                        $Cus->website = $website;
-                        $Cus->yahoo_id = $yahoo_id;
-                        $Cus->skype_id = $skype_id;
-                        $Cus->tax_code = $tax_code;
-                        $Cus->fax = $fax;
-                        $Cus->career = $career;
-                        $Cus->insert();
-                        $cus_id = $Cus->id;
                     }
+                    if (!empty($cus_id)) {
+                        // insert order
+                        $description = $this->input->post('description');
+                        $PurchaseOrder = new PurchaseOrder();
+                        $PurchaseOrder->id_customer = $cus_id;
+                        $PurchaseOrder->order_date = date('Y/d/m');
+                        $PurchaseOrder->amount = 0;
+                        $PurchaseOrder->is_deleted = 0;
+                        $PurchaseOrder->status = '';
+                        $PurchaseOrder->description = $description;
+                        $PurchaseOrder->billing_address = $billing_address;
+                        $PurchaseOrder->shipping_address = $shipping_address;
+                        $PurchaseOrder->shipping_date = '';
+                        $PurchaseOrder->payment_date = '';
+                        $PurchaseOrder->creation_date = '';
+                        $PurchaseOrder->modification_date = '';
+                        $PurchaseOrder->insert();
 
-                    // insert order
-                    $description = $this->input->post('description');
-                    $PurchaseOrder = new PurchaseOrder();
-                    $PurchaseOrder->id_customer = $cus_id;
-                    $PurchaseOrder->order_date = date('Y/d/m');
-                    $PurchaseOrder->amount = 0;
-                    $PurchaseOrder->is_deleted = 0;
-                    $PurchaseOrder->status = '';
-                    $PurchaseOrder->description = $description;
-                    $PurchaseOrder->billing_address = $billing_address;
-                    $PurchaseOrder->shipping_address = $shipping_address;
-                    $PurchaseOrder->shipping_date = '';
-                    $PurchaseOrder->payment_date = '';
-                    $PurchaseOrder->creation_date = '';
-                    $PurchaseOrder->modification_date = '';
-                    $PurchaseOrder->insert();
-
-                    // insert into Order details
-                    $total = count($List);
-                    /*  <tr class="tt-info">
-                    	    <td width="218">Tên sản phẩm</td>
-                            <td width="218">Link Sản phẩm</td>
-                            <td width="218">Giá Sản phẩm </td>
-                            <td width="218">Số lượng</td>
-                  	  </tr>*/
-                    $list_product = '';
-                    for ($i = 0; $i < $total; $i++) {
-                        $list_product .= '<tr class="tt-info">
-                    	    <td width="218">'.$List[$i]->get_name_product().'</td>
-                            <td width="218">'.$List[$i]->get_link_product().'</td>
-                            <td width="218">'. $List[$i]->get_price_product() . ' ' .$List[$i]->get_currency_product().'</td>
-                            <td width="218">'. $List[$i]->get_number() . '</td>
-                  	  </tr>';
-                        $Details = new PurchaseOrderDetail();
-                        $Details->id_purchase_order = $PurchaseOrder->id;
-                        $Details->id_product = $List[$i]->get_id_product();
-                        $Details->code_product = $List[$i]->get_code_product();
-                        $Details->name_product = $List[$i]->get_name_product();
-                        $Details->price_product = $List[$i]->get_price_product();
-                        $Details->currency_product = $List[$i]->get_currency_product();
-                        $Details->desciption_product = $List[$i]->get_description_product();
-                        $Details->image_product = $List[$i]->get_image_product();
-                        $Details->number = $List[$i]->get_number();
-                        $Details->is_deleted = '0';
-                        $Details->link_product = $List[$i]->get_link_product();
-                        $Details->insert();
-                        unset($Details);
+                        // insert into Order details
+                        $total = count($List);
+                        $list_product = '';
+                        for ($i = 0; $i < $total; $i++) {
+                            $list_product .= '<tr class="tt-info">
+                                    <td width="218"><a href="'.$List[$i]->get_link_product().'">' . $List[$i]->get_name_product() . '</a></td>
+                                    <td width="218">' . $List[$i]->get_id_product() . '</td>
+                                    <td width="218">' . $List[$i]->get_price_product() . ' ' . $List[$i]->get_currency_product() . '</td>
+                                    <td width="218">' . $List[$i]->get_number() . '</td>
+                                    </tr>';
+                            $Details = new PurchaseOrderDetail();
+                            $Details->id_purchase_order = $PurchaseOrder->id;
+                            $Details->id_product = $List[$i]->get_id_product();
+                            $Details->code_product = $List[$i]->get_code_product();
+                            $Details->name_product = $List[$i]->get_name_product();
+                            $Details->price_product = $List[$i]->get_price_product();
+                            $Details->currency_product = $List[$i]->get_currency_product();
+                            $Details->desciption_product = $List[$i]->get_description_product();
+                            $Details->image_product = $List[$i]->get_image_product();
+                            $Details->number = $List[$i]->get_number();
+                            $Details->is_deleted = '0';
+                            $Details->link_product = $List[$i]->get_link_product();
+                            $Details->insert();
+                            unset($Details);
+                        }
+                        // send mail
+                       
+                        $filter = array();
+                        $filter['company'] = $company;
+                        $filter['your_name'] = $firstname . ' ' . $lastname;
+                        $filter['tax_code'] = $tax_code;
+                        $filter['website'] = $website;
+                        $filter['fax'] = $fax;
+                        $filter['your_email'] = $email;
+                        $filter['shipping_address'] = $shipping_address;
+                        $filter['billing_address'] = $billing_address;
+                        $filter['ym'] = $yahoo_id;
+                        $filter['skype'] = $skype_id;
+                        $filter['message'] = $description;
+                        $filter['info_product'] = $list_product;
+                        $filter['url_confirm'] = '#confirm';
+                        $Mailer = new Mailer();
+                        $Mailer->sendmail($filter);
+                        
+                        $mess = 'Cám ơn bạn đã đặt hàng. vui lòng vào email xác nhận mua hàng, chúng tôi sẽ liên hệ với bạn sớm nhất. xin cám ơn.';
+                    }else{
+                        $mess = 'Bạn chưa mua sản phẩm nào. vui lòng chọn khách hàng bình thường và điền đầy đủ thông tin';
                     }
-
-                    $filter = array();
-                    $filter['title'] = 'Xác nhận thông tin đặt hàng';
-                    $filter['txt_welcome'] = 'welcome ban';
-                    $filter['customer_name'] = $firstname . ' ' . $lastname;
-                    $filter['your_name'] = $firstname . ' ' . $lastname;
-                    $filter['company'] = $company;
-                    $filter['tax_code'] = $tax_code;
-                    $filter['fax'] = $fax;
-                    $filter['email'] = $email;
-                    $filter['shopping_address'] = $shipping_address;
-                    $filter['billing_address'] = $billing_address;
-                    $filter['yahoo'] = $yahoo_id;
-                    $filter['skype'] = $skype_id;
-                    $filter['message'] = $description;
-                    $filter['list_product'] = $list_product;
-                    $filter['contact_email'] = $email;
-                    $filter['contact_name'] = 'tap doan IT';
-                    $filter['url_confirm'] = 'dantri.com';
-
-                    $Mail = new Mailer();
-                    $Mail->sendmail($filter);
-
-                    $mess = 'Cám ơn bạn đã đặt hàng. vui lòng vào email xác nhận mua hàng, chúng tôi sẽ liên hệ với bạn sớm nhất. xin cám ơn.';
-                } else {
-                    $mess = 'Vui lòng nhập địa chỉ email';
+                }  else {
+                    $mess = 'Vui lòng nhập email';
                 }
+            }else{ //  neu chua co mon hang nao
+                $mess = 'Bạn chưa có món hàng nào';
             }
         }
-
+        
+        
+       
+        // load data into view and select view
+        
+        $new_customer = '1';
+        if ($this->input->post('new-customer') != null) {
+            $new_customer = $this->input->post('new-customer');
+        }
+        
         $filter = array();
         $filter['yahoo'] = $yahoo_id;
         $filter['skype'] = $skype_id;
+        $filter['option_contact'] = $this->input->post('option-contact');
         $filter['website'] = $website;
         $filter['email'] = $email;
+        $filter['gender'] = $gender;
+        $filter['new_customer'] = $new_customer;
         $filter['tax_code'] = $tax_code;
         $filter['fax'] = $fax;
         $filter['mobile_phone'] = $mobile_phone;

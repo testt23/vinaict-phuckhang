@@ -30,7 +30,6 @@
                 <td><?php echo $shopping[$i]->get_code_product(); ?></td>
                 <td><b style="color:#F00"><?php echo $shopping[$i]->get_price_product(); ?></b></td>
                 <td><b style="color:#F00"><?php echo $shopping[$i]->get_number(); ?></b></td>
-
             </tr>
         <?php endfor; ?>
     <?php endif; ?>
