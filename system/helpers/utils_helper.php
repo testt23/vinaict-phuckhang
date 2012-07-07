@@ -817,3 +817,12 @@ if ( ! function_exists('truncateString')) {
     }
 
 }
+
+if ( ! function_exists('get_raw_app_uri')) {
+    function get_raw_app_uri() {
+        $app_folder = trim(str_replace($_SERVER['DOCUMENT_ROOT'], '', str_replace('\\', '/', APPLICATION_PATH)), '/');
+        $request_uri = trim(str_replace($app_folder, '', trim($_SERVER['REQUEST_URI'], '/')),'/');
+        $request_uri = str_replace('?'.$_SERVER['QUERY_STRING'], '', $request_uri);
+        return $request_uri;
+    }
+}
