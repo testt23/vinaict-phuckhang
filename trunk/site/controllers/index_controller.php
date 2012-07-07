@@ -9,8 +9,8 @@
 
 		function index($page = 1){
                     
-                    $Product = new Product();
-                    $info = $Product->getNewProduct($page);
+                    $product = new Product();
+                    $info = $product->getNewProduct($page);
                     $data['product'] = $info['product'];
                     $data['paging'] = $info['paging'];
                     $data['content'] = 'index';

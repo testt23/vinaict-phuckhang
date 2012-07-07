@@ -342,7 +342,6 @@ class CI_Model {
 	}
 
 	public function query($sql) {
-	
 		if (strpos(trim($sql), 'SELECT') === 0) {
                     $this->__row_pos = -1;
                     $query = $this->db->query($sql);
