@@ -170,8 +170,10 @@ require_once BASEPATH.'core/CodeIgniter'.EXT;
 /* Code bellow are appended by VinaICT */
 
 /* Autoload */
+
 function __autoload($className)
 {
+        
 	if (strpos($className, 'CI_') == FALSE)
 		$is_except_class = FALSE;
 	elseif ($className == 'CI_Model')
@@ -195,6 +197,8 @@ function __autoload($className)
 			}
 		}
 	}
+        
 }
+
 
 date_default_timezone_set(config_item('timezone'));

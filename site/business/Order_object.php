@@ -13,7 +13,9 @@ class Order_object {
     var $number;
     
     var $link_product;
+    var $lang;
     function __construct() {
+        $this->lang = get_system_language();
     }
     
 
@@ -30,7 +32,7 @@ class Order_object {
     }
 
     public function get_name_product() {
-        return $this->name_product;
+        return getI18n($this->name_product, $this->lang);
     }
 
     public function get_price_product() {
@@ -38,11 +40,11 @@ class Order_object {
     }
 
     public function get_currency_product() {
-        return $this->currency_product;
+        return getI18n($this->currency_product, $this->lang);
     }
 
     public function get_description_product() {
-        return $this->desciption_product;
+        return getI18n($this->desciption_product, $this->lang);
     }
 
     public function get_image_product() {

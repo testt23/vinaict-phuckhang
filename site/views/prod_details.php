@@ -139,12 +139,14 @@
 
     <div id="info">
         <div id="text">
-            <h3> <?php echo $product->the_product_name(); ?></h3>
-            <p><b>Giá: <?php echo $product->the_product_price(); ?> <?php echo $product->the_product_currency(); ?></b></p>
-            <p><b><?php echo $product->the_product_description(); ?></b></p>
+            <h3 > <?php echo $product->the_product_name(); ?></h3>
+            <span><strong>Giá: </strong><?php echo $product->the_product_price(); ?> <?php echo $product->the_product_currency(); ?></span><br/>
+            <span><strong>Description: </strong>
+                <?php  echo $product->the_product_description(); ?>
+            </span>
         </div>
         <div id="order">
-            <form method="POST" action="<?php echo base_url() ?>/list-cart">
+            <form method="POST" action="<?php echo base_url() ?>list-cart">
                 <input type="hidden" name="h_category" value="<?php echo $product->the_image_link_thumb(); ?>"/>
                 <input type="hidden" name="h_image" value="<?php echo $product->the_image_link_thumb(); ?>"/>
                 <input type="hidden" name="h_id" value="<?php echo $product->the_product_id(); ?>"/>
@@ -155,7 +157,7 @@
                 <input type="hidden" name="h_description" value="<?php echo $product->the_product_description(); ?>"/>
                 <input type="hidden" name="h_curency" value="<?php echo $product->the_product_currency(); ?>"/>
                 <input type="hidden" name="click_access" value="click_access"/>
-                <input type="submit" name="orderSubmit" value="ORDER"/>
+                <input style="border: none;" type="submit" name="orderSubmit" value="ORDER"/>
             </form>
         </div>
     </div>

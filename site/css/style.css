@@ -2,7 +2,6 @@
 *{	font-family:Arial, Helvetica, sans-serif;
    padding:0px;
    margin:0;
-   border:0;
    list-style: none;
 }
 /* Header */
@@ -29,6 +28,7 @@
 #navMenu{
     width:1000px;
     height:50px;
+    line-height: 12px;
     margin:0 auto;
     list-style:none
 }
@@ -161,11 +161,16 @@
 /**/
 table tr td{text-align:center}
 #image{
-    width:600px;
-
+    width:550px;
     float:left;
     margin:15px 0px 20px 0px;}
-#info{float:left}
+#info{
+    float:right;
+    width: 400px;
+}
+#info #text{
+    padding: 0px;
+}
 #order{width:180px;
        height:31px;
        background:url(../images/site/order.png) no-repeat;
@@ -375,67 +380,142 @@ table tr td{text-align:center}
     margin-top: 4px;
 }
 
+.contact-wrapper{
+        margin: 0px auto;
+        padding: 20px;
+        width: 770px;
+    }
+    .contact-wrapper h1{
+        background: gray;
+        color: white;
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+    .contact-main{
+        border: solid 1px gray;
+    }
+    .contact-main span{
+        padding: 0px 0px 0px 20px;
+    }
+    .contact-main select{
+        width: 150px;
+        padding: 3px;
+        
+    }
+    .contact-main input{
+        padding: 3px;
+    }
+
+    .ul-main{
+        padding:  20px;
+    }
 
 
-#contact-wrapper{
-    width: 1000px;
-    margin:  0px auto;
-    border: solid 1px gray;
-}
-.ul-contact{
-    margin: 20px 0px 20px 0px;
-    float:left;
-}
-.ul-contact li{
-    width: 300px;
+    input{
+        margin: 3px;
+    }
+    .orderbutton{
+        margin-top: 10px;
+        text-align: right;
+    }
+    .orderbutton input{
+        background: gray;
+        border: solid 1px gray;
+        padding: 5px 20px;
+        cursor: pointer;
+        color: white;
+        -moz-border-radius: 5px 5px 5px 5px;
+        
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .ul-right{
+        width: 500px;
+        margin: 0px auto;
+    }
+    .ul-right li{
+        text-align: right;
+        width: 400px;
+        padding: 3px 0px;
+    }
+    .message textarea{
+        width: 400px;
+        height: 100px;
+        padding: 10px;
+    }
+    .h-top{
+        padding-left: 148px;
+    }
     
-}   
-.ul-contact li.item input{
-    padding: 5px 5px 5px 5px;
-    border : solid 1px gray;
-    -moz-border-radius: 5px 5px 5px 5px;
-    margin: 5px 0px 5px 0px;
-    width: 200px !important;
-    color: gray;
-}
-#description{
-    border: solid 1px gray;
-    -moz-border-radius: 5px 5px 5px 5px;
-    padding: 5px;
-    font-size: 12px;
-    width:250px;
-    color: gray;
-    height:50px;
-}
-
-#bnt_contact{
-    margin: 10px 100px 10px 10px;;
-    cursor: pointer;
-    font-weight: bold;
-    width: auto;
-    padding: 5px;
-    background: gray;
-    color: white;
-    -moz-border-radius: 5px 5px 5px 5px;    
-}
-
-.main-title{
-    font-size: 14px;
-    height: 25px;
-    line-height: 25px;
-    padding: 0px 0px 0px 10px;
-    background: gray;
-    color: white;
-}
-
-.contact-logo{
-    width: 150px;
-    height: 300px;
-    float:left;
-}
-.contact-content{
-    float:right;
-    width: 640px;
-    padding: 20px 100px 20px 100px;
-                
-}
+    #list td {
+        border: solid 1px gray;
+        padding: 5px 10px;
+    }
+    
+    #list td.title{
+        height: 30px;
+        color: white;
+        font-weight: bold;    
+        background: gray;
+    }
+    img{
+        border: none;
+    }
+    .updae_input{
+        padding: 5px;
+        width: 50px;
+    }
+    #language-wrapper input{
+        border: none;
+    }
+    .del-gio{
+        text-decoration: none;
+        color:#0000FF;
+        font-weight: bold;
+    }
+    .wrapper-popup:hover .p-popup{
+        display: block;
+    }
+    .wrapper-popup{
+        position: relative;
+        box-shadow: 3px 3px 3px 3px gray;
+        -moz-box-shadow: 3px 3px 3px 3px gray;
+        -webkit-box-shadow: 3px 3px 3px 3px gray;
+        border: solid 1px white;
+    }
+    
+    .wrapper-popup .p-popup a{
+        margin: 0px;
+        top: -5px;
+        box-shadow: 0px 0px 3px 3px gray;
+        -moz-box-shadow: 0px 0px 3px 3px gray;
+        -webkit-box-shadow: 0px 0px 3px 3px gray;
+        padding: 5px 10px;
+        background: white;
+        position: absolute;
+    }
+    .wrapper-popup .p-popup{
+        padding: 20px;
+        z-index: 10000;
+        display:  none;
+        position: absolute;
+        top: -20px;
+        left: 100px;
+        width: 200px;
+        color: gray;
+        
+    }
+    
+    #showimage{
+        
+    }
+    #searchbox input{
+        padding: 2px 5px;
+        border: none;
+    }
+    #searchbox{
+        float:right;
+        margin: 90px 0px 0px 0px;
+        
+    }
+    

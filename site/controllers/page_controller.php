@@ -4,7 +4,7 @@
 
 		function __construct(){
 			parent::__construct();
-			// Your own construction code here
+			set_system_language();
 		}
                 
                 public function index(){

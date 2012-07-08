@@ -1,43 +1,45 @@
-<script language="javascript">
-    $(document).ready(function(){
-        jQuery('#list tr td a').click(function(){
-            if (confirm('Bạn có muốn xóa sản phẩm này ?')){
-                return true;
-            }
-            return false;
-        });
-    });
-</script>
+<?php if (!empty($shopping)): ?>
+<script language="javascript" src="<?php echo base_url() . 'js/ajax.js'; ?>"></script>
+<h4 style="height: 30px; width: 1000px; "> Your Order</h4>
 
-<h4> Bạn đã chọn mua</h4>
-<table width="1000" id="list">
+<table width="1000" id="list" style="border:  solid 1px gray;" cellspacing="0" cellpadding="0">
     <tr>
-        <td>&nbsp;</td>
-        <td>Tên sản phẩm</td>
-        <td>Mã sản phẩm</td>
-        <td>Giá sản phẩm</td>
-        <td>Số lượng</td>
-        <td>Xóa</td>
+        <td class="title" width="5%">&nbsp;</td>
+        <td class="title" width="20%">Tên sản phẩm</td>
+        <td class="title" width="10%">Mã sản phẩm</td>
+        <td class="title" width="15%">Giá sản phẩm</td>
+        <td class="title" width="6%">Số lượng</td>
+        <td class="title" width="5%">Xóa</td>
     </tr>
-    <?php if (!empty($shopping)): ?>
+    
         <?php
         $total = count($shopping);
         for ($i = 0; $i < $total; $i++):
             ?>
-            <tr>
+            <tr id="tr_<?php echo $shopping[$i]->get_id_product(); ?>">
                 <td><img src="<?php echo $shopping[$i]->get_image_product(); ?>" width="80" height="50" alt="" /></td>
-                <td><?php echo $shopping[$i]->get_id_product(); ?></td>
+                <td><?php echo $shopping[$i]->get_name_product(); ?></td>
                 <td><?php echo $shopping[$i]->get_code_product(); ?></td>
                 <td><b style="color:#F00"><?php echo $shopping[$i]->get_price_product(); ?></b></td>
-                <td><b style="color:#F00"><?php echo $shopping[$i]->get_number(); ?></b></td>
+                <td>
+                    <form method="post" action="">
+                        <input type="hidden" name="id_prods<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_id_product(); ?>" onchange="update_giohang()"/>
+                        <input class="updae_input" type="text" name="num_prod<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_number(); ?>" onchange="update_giohang('id_prods<?php echo $shopping[$i]->get_id_product(); ?>', this, '<?php echo base_url() . 'products/update_shop' ?>');"/>
+                    </form>
+                </td>
+                <td class="del"><a onclick="return delete_shop('tr_<?php echo $shopping[$i]->get_id_product(); ?>',<?php echo $shopping[$i]->get_id_product(); ?>,'<?php echo base_url() . 'products/delete_shop'; ?>'  )" href="#" class="del-gio">Xóa</a></td>
             </tr>
         <?php endfor; ?>
-    <?php endif; ?>
+    
 </table>
 
 <div id="order_box">
-    <?php if (!empty($shopping)): ?>
-    <div class="button"><a href="products/interior">Tiếp tục mua</a></div>
-    <div class="button"><a href="<?php echo base_url() . '/products/contact';  ?>">Đặt hàng</a></div>
-    <?php endif; ?>
+    <div class="button"><a href="<?php echo base_url() . 'index' ?>">Tiếp tục mua</a></div>
+    <div class="button"><a href="<?php echo base_url() . 'products/contact';  ?>">Đặt hàng</a></div>
 </div>
+<?php else: ?>
+<h1 style="text-align: center; color: gray; font-size: 20px;">Bạn chưa có sản phẩm nào</h1>
+
+
+<?php endif; ?>
+

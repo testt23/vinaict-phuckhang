@@ -8,9 +8,15 @@
         <?php if (($i % 4) !=0 ): ?>
          <li class="space"></li>
          <?php endif; ?>
-            <li><a href="<?php echo $product->the_product_link(); ?>">
-                    <img src="<?php echo $product->the_image_link_thumb(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
-                </a>
+            <li>
+                <div class="wrapper-popup">
+                    <a href="<?php echo $product->the_product_link(); ?>">
+                        <img src="<?php echo $product->the_image_link_thumb(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
+                    </a>
+                    <div class="p-popup">
+                        <a><?php echo $product->the_product_name(); ?></a>
+                    </div>
+                </div>
             </li>     
         <?php $i++; ?>    
         <?php endwhile;?>

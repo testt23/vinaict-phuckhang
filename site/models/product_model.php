@@ -13,7 +13,7 @@
 		var $price;	//float unsigned			NULL
 		var $currency;	//varchar(3)			NULL
 		var $link;	//varchar(50)			NOT NULL
-		var $id_def_image;	//int(10) unsigned			NULL
+		var $id_def_image;	//int(11)			NULL
 		var $is_disabled = 0;	//tinyint(1) unsigned			NOT NULL
 		var $id_prod_category;	//varchar(100)			NULL
 		var $is_deleted = 0;	//tinyint(1) unsigned			NOT NULL
