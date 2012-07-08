@@ -7,7 +7,7 @@
 </script>
 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container" >
     <div class="portlet-header ui-widget-header">
-    <?php echo SITE_NAME; ?>
+    <?php echo getI18n(SITE_NAME); ?>
     </div>
     <div class="portlet-content">
         
