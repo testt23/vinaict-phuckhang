@@ -14,12 +14,9 @@
                     </div>
                 </div>
                 <div id="copyright">
-                    <p>© Copyright 2012 NoiThatDatVang.com, All rights reserved Designed by VinaICT</p>
-                    <p>Hỗ trợ trực tuyến:<br/>
-                        
-                    </p>
-                    <p>Lượt truy cập: <br/>
-                    </p>
+                    <p><?php echo lang('site_footer_copy_right'); ?></p>
+                    <p><?php echo lang('site_footer_online_support'); ?>:<br/></p>
+                    <p><?php echo lang('site_footer_visit'); ?>: <br/></p>
                 </div>
             </div>
         </div>

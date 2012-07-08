@@ -14,38 +14,40 @@ class ShoppingCart {
         return $this->shop_name;
     }
 
+    public function update_number($id, $num) {
+        $Shopping = $this->get_list();
+        if (!empty($Shopping)) {
+            $total = count($Shopping);
+            for ($i = 0; $i < $total; $i++) {
+
+                if ($Shopping[$i]->get_id_product() == $id) {
+                    echo 'success';
+                    $Shopping[$i]->set_number($num);
+                    break;
+                }
+            }
+        }
+        $this->ci->session->set_userdata(array($this->shop_name => $Shopping));
+    }
+
     public function insert(
-            $id_purchase_order, 
-            $id_product, 
-            $code_product, 
-            $name_product, 
-            $price_product, 
-            $currency_product, 
-            $description_product, 
-            $image_product, 
-            $number, 
-            $is_deleted, 
-            $link_product) 
-    {
-        
+    $id_purchase_order, $id_product, $code_product, $name_product, $price_product, $currency_product, $description_product, $image_product, $number, $is_deleted, $link_product) {
+
         $cart = new Order_object();
         $Shopping = $this->get_list();
-        $this->ci->session->set_userdata(array('test'=>'test'));
-       
+        $this->ci->session->set_userdata(array('test' => 'test'));
+
         $flag = 'yes';
         if ($Shopping != false) {
-            foreach ($Shopping as $item){
+            foreach ($Shopping as $item) {
                 if ($item->get_id_product() == $id_product) {
                     $item->set_number($item->get_number() + 1);
-                    if (($item->get_price_product() * 1) != 0) {
-                        $item->set_name_product($item->get_price_product() + $price_product);
-                    }
                     $flag = 'no';
                     break;
                 }
             }
         }
-        if ($flag == 'yes'){
+        if ($flag == 'yes') {
             $cart->set_id_purchase_order($id_purchase_order);
             $cart->set_id_product($id_product);
             $cart->set_code_product($code_product);
@@ -58,19 +60,22 @@ class ShoppingCart {
             $cart->set_link_product($link_product);
             $Shopping[] = $cart;
         }
-        
+
         $this->ci->session->set_userdata(array($this->shop_name => $Shopping));
     }
 
     public function delete($id) {
         $Shopping = $this->ci->session->userdata($this->shop_name);
-        $total = count($Shopping);
-        for ($i = 0; $i < $total; $i++) {
-            if ($Shopping[$i]->get_id() != $id) {
-                unset($Shopping[$i]);
+        $TMP = array();
+        if ($Shopping):
+            $total = count($Shopping);
+            for ($i = 0; $i < $total; $i++) {
+                if ($Shopping[$i]->get_id_product() != $id) {
+                    $TMP[] = $Shopping[$i];
+                }
             }
-        }
-        $this->ci->session->set_userdata(array($this->shop_name => $Shopping));
+            $this->ci->session->set_userdata(array($this->shop_name => $TMP));
+        endif;
     }
 
     public function get_list() {

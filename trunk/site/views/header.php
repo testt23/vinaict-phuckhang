@@ -23,9 +23,16 @@
                     </form>
                 
             </div>
+            <div id="searchbox">
+                <form method="post" action="<?php echo base_url() ?>products/search">
+                    <input type="text" value="<?php if (isset($_POST['txt-search']) ){echo $_POST['txt-search'];} ?>" name="txt-search"/>
+                    <input style="cursor: pointer;" type="submit" value="Search" name="bnt_search"/>
+                </form>
+            </div>
             <div id="logo">
                 <a href="#"><img src="<?php echo $image_path; ?>/Logo.png" alt="" /></a>
             </div>
+            
             
             <div id="menu">
                 <ul id="navMenu">
@@ -42,4 +49,4 @@
             </div>
         </div>
         <div id="container">
-      
+    
