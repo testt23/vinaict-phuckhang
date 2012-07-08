@@ -195,7 +195,7 @@ $lang['txt_edit_group']                 = 'Change user group infomation';
 /* Settings */
 $lang['txt_settings']                   = 'Settings';
 $lang['txt_system_configuration']       = 'System configuration';
-$lang['txt_param_group']                = 'The group parameter';
+$lang['txt_param_group']                = 'Parameter Group';
 $lang['txt_ungrouped']                  = 'Ungrouped';
 
 /* Article */
