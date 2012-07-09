@@ -44,7 +44,7 @@
                         </li>
                         <li>
                                 <label class="desc">
-                                        <?php echo lang('txt_parent'); ?>
+                                        <?php echo lang('txt_parent_category'); ?>
                                 </label>
                                 <div>
                                         <input type="text" tabindex="1" maxlength="255" class="field text medium" id="parent" name="parent" value="<?php echo $news_category->id_parent; ?>" />
