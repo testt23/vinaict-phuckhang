@@ -9,12 +9,17 @@ class Menu extends Menu_model {
     public function getList(){
         $Menu = new Menu();
         $Menu->addSelect();
-        $Menu->addSelect('menu.name, menu.link');
+        $Menu->addSelect('menu.name, menu.link, menu.id_parent');
         $Menu->addWhere('menu.disabled = 0');
         $Menu->addWhere('type = 1');
-        
         $Menu->find();
+        
         return $Menu;
+    }
+    
+    public function drawMenu(){
+        $menu = $this->getList();
+        var_dump($menu);
     }
     
     

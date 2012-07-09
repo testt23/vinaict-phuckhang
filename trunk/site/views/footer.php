@@ -4,7 +4,7 @@
             <div id="footer" >
                 <div id="linkbox">
                     <div class="box">
-                        <a href="<?php  echo base_url(); ?>product/prod_cate/souvenirs"><img src="<?php echo $image_path; ?>/PK.png"  alt=""/>SOUVENIRS</a>
+                        <a href="<?php  echo base_url(); ?>products/prod_cate/souvenirs"><img src="<?php echo $image_path; ?>/PK.png"  alt=""/>SOUVENIRS</a>
                     </div>
                     <div class="box">
                         <a href="<?php echo base_url(); ?>product/prod_cate/interior"><img src="<?php echo $image_path; ?>/PK.png"  alt=""/>INTERIOR</a>

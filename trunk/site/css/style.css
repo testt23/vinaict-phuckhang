@@ -24,7 +24,9 @@
 #menu{
     height:50px;
     background:#014109;
-    margin-top:15px;}
+    margin-top:15px;
+    z-index: 98;
+}
 #navMenu{
     width:1000px;
     height:50px;
@@ -163,7 +165,9 @@ table tr td{text-align:center}
 #image{
     width:550px;
     float:left;
-    margin:15px 0px 20px 0px;}
+    margin:15px 0px 20px 0px;
+    
+}
 #info{
     float:right;
     width: 400px;
@@ -507,15 +511,55 @@ table tr td{text-align:center}
     }
     
     #showimage{
-        
+        box-shadow: 0px 0px 3px 3px gray;
     }
-    #searchbox input{
-        padding: 2px 5px;
-        border: none;
-    }
-    #searchbox{
+   
+    .searchbox{
         float:right;
-        margin: 90px 0px 0px 0px;
+        position: relative;
+        margin: 22px 20px 0px 0px;
+        border: solid 1px gray;
+        background: gray;
+        cursor: pointer;
+        padding: 3px 0px;
+        line-height: 20px;
+        text-align: center;
+        width: 80px;
+        height: 20px;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px 5px 5px 5px;
+        z-index: 999999;
+    }
+   
+    #box-search input{
+        padding: 3px 5px;
+    }
+    #box-search input.bt{
+        border: solid 1px gray;
+        cursor: pointer;
+    }
+    .none{
+        display: none;
+    }
+    .show{
+        display: block;
+    }
+    #box-search div{
         
     }
-    
+    #box-search{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        box-shadow: 0px 0px 3px 3px gray;
+        width: 250px;
+        height: 115px;
+        background: white;
+        z-index: 9999;
+        cursor: auto;
+        text-align: right;
+        padding: 20px;
+        color: black;
+        font-weight: normal;
+    }

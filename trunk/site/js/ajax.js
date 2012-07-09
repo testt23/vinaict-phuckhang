@@ -4,7 +4,6 @@
             var  id = jQuery('input[name="' + id_prod + '"]').val();
             var  num = jQuery(obj).val();
             $.post(url + '/' + id + '/' + num,function(result){
-                console.log(result);
             });
             
             
@@ -19,9 +18,6 @@
                         $(this).remove();
                     });
                 });
-                
-                
-                
             }
             return false;
         }
