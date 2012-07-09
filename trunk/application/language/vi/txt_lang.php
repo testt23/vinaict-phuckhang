@@ -204,11 +204,12 @@ $lang['txt_ungrouped']                  = 'Chưa phân nhóm';
 
 /* News Category*/
 $lang['txt_add_news']                = 'Thêm tin tức';
-$lang['txt_edit_news']               = 'Sửa thông tin tin tức';
-$lang['txt_news_category']           = 'Tin tức';
+$lang['txt_edit_news']               = 'Sửa thông tin Danh Mục Tin Tức';
+$lang['txt_news_category']           = 'Danh Mục Tin Tức';
 $lang['txt_add_news_category']       = 'Thêm tin tức mới';
 $lang['txt_edit_news_category']      = 'Sửa thông tin tin tức';
 $lang['txt_parent_news_category']    = 'Nhóm tin tức cấp trên';
+$lang['txt_parent_category']         = 'Danh mục cấp trên';
 
 /* Article */
 $lang['txt_article']                    = 'Danh sách các bài viết';
