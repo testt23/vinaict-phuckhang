@@ -128,13 +128,13 @@
         
         function lang(){
             
-            $lang = $this->input->get_post('lang');
+            $lang = $this->input->get_post('lang') ? $this->input->get_post('lang'):'en';
             $logged_user = new User();
             
             if ($logged_user->get($this->session->userdata("userID"))) {
                 $logged_user->lang = $lang;
                 $logged_user->update();
-                $this->session->set_userdata('lang',  utf8_escape_html($logged_user->lang));
+                $this->session->set_userdata('lang',$logged_user->lang);
             }
             redirect($this->session->userdata('url_lang'));            
         }
