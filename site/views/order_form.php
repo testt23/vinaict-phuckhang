@@ -28,12 +28,12 @@
             var mcho =  jQuery('select[name="muacho"]').val();
             var email = jQuery('input[name="email"]').val();
             if (email == ''){
-                alert('Vui lòng nhập email');
+                alert('<?php echo lang('show_empty_email');?>');
                 return false;
             }
         
             if (!KiemTra_Email(email)){
-                alert('Email không đúng định dạng');
+                alert('<?php echo lang('show_format_email');?>');
                 return false;
             }
         
@@ -57,17 +57,17 @@
                     var phone = trim(jQuery('input[name="phone"]').val());
             
                     if ( phone == ''){
-                        alert("Vui long nhap Phone");
+                        alert("<?php echo lang('show_empty_phone');?>");
                         return false;
                     }
             
                     if ( billing == ''){
-                        alert("Vui long nhap billing");
+                        alert("<?php echo lang('show_empty_billing');?>");
                         return false;
                     }
             
                     if ( shipping == ''){
-                        alert("Vui long nhap shipping");
+                        alert("<?php echo lang('show_empty_shipping');?>");
                         return false;
                     }
             
@@ -77,12 +77,12 @@
                         var company = trim(jQuery('input[name="company"]').val());
                         var contact_person = trim(jQuery('input[name="contact_person"]').val());
                         if (company == ''){
-                            alert("Vui long nhap ten cong ty");
+                            alert("<?php echo lang('show_empty_company');?>");
                             return false;
                         }
                 
                         if (contact_person == ''){
-                            alert("Vui long nhap nguoi dai dien cong ty");
+                            alert("<?php echo lang('show_empty_personal');?>");
                             return false;
                         }
                     }
@@ -92,12 +92,12 @@
                         var lastname = trim(jQuery('input[name="lastname"]').val());
                         
                         if (firstname == ''){
-                            alert("Vui long nhap firstname");
+                            alert("<?php echo lang('show_empty_firstname');?>");
                             return false;
                         }
                 
                         if (lastname == ''){
-                            alert("Vui long nhap last name");
+                            alert("<?php echo lang('show_empty_lastname');?>");
                             return false;
                         }
                     }
@@ -105,7 +105,7 @@
             }else{
                 var message = trim(jQuery('textarea[name="message"]').val());
                 if (message == ''){
-                    alert("Vui long nhap message");
+                    alert("<?php echo lang('show_empty_message');?>");
                     return false;
                 }
             }
@@ -118,93 +118,93 @@
     <div class="contact-wrapper">
 
         <div class="contact-main">
-            <h1>Please type your info below</h1>
+            <h1><?php echo lang('note_form');?></h1>
 
             <div class="ul-main">
                 <center style="font-style: italic; color: blue;">  <?php echo $mess; ?><br/></center> 
-                <center style="font-style: italic;">   (Nếu bạn đã từng mua hàng thì bạn có thể nhập email và để trống các ô còn lại, nếu bạn muốn thay đổi thông tin nào thì nhập vào thông tin đó)<br/></center> 
+                <center style="font-style: italic;">   (<?php echo lang('note_content');?>)<br/></center> 
                 <ul class="ul-right">
                     <li>
-                        Mục đích: 
+                        <?php echo lang('lbl_purpose');?> 
                         <select name="mucdich" onchange="check_mucdich()">
-                            <option value="1" <?php if ($filter['mucdich'] == '1') echo 'selected="true"'; ?>>Liên hệ</option>
-                            <option value="2" <?php if ($filter['mucdich'] == '2') echo 'selected="true"'; ?>>Mua hàng</option>
+                            <option value="1" <?php if ($filter['mucdich'] == '1') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_contact');?></option>
+                            <option value="2" <?php if ($filter['mucdich'] == '2') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_buy');?></option>
                         </select>
                     </li>
                     <li class="muahang">
-                        Mua cho:
+                        <?php echo lang('lbl_buy_by');?>
                         <select name="muacho" onchange="check_muacho()" >
-                            <option value="1" <?php if ($filter['is_business'] == '1') echo 'selected="true"'; ?>>Công ty</option>
-                            <option value="0" <?php if ($filter['is_business'] == '0') echo 'selected="true"'; ?>>Cá nhân</option>
+                            <option value="1" <?php if ($filter['is_business'] == '1') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_for_company');?></option>
+                            <option value="0" <?php if ($filter['is_business'] == '0') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_for_personal');?></option>
                         </select>
                     </li>
                     <li>
-                        MR <input type="radio" name="gender" value="0" <?php if ($filter['gender'] == '0') echo 'checked="checked"'; ?>/>
-                        MS <input type="radio" name="gender" value="1" <?php if ($filter['gender'] == '1') echo 'checked="checked"'; ?>/>
+                        <?php echo lang('rdb_gender_mr');?> <input type="radio" name="gender" value="0" <?php if ($filter['gender'] == '0') echo 'checked="checked"'; ?>/>
+                        <?php echo lang('rdb_gender_ms');?> <input type="radio" name="gender" value="1" <?php if ($filter['gender'] == '1') echo 'checked="checked"'; ?>/>
                     </li>
                     <li  class="muahang">
-                        Chưa mua hàng <input type="radio" name="not-buy" value="1" <?php if ($filter['not_buy'] == '1') echo 'checked="checked"'; ?> />
-                        Từng mua hàng <input type="radio" name="not-buy" value="2" <?php if ($filter['not_buy'] == '2') echo 'checked="checked"'; ?>/>
+                        <?php echo lang('rdb_no_purchases');?> <input type="radio" name="not-buy" value="1" <?php if ($filter['not_buy'] == '1') echo 'checked="checked"'; ?> />
+                        <?php echo lang('rdb_having_a_purchase');?> <input type="radio" name="not-buy" value="2" <?php if ($filter['not_buy'] == '2') echo 'checked="checked"'; ?>/>
                     </li>
                     <li>
-                        Email:   (*)
+                        <?php echo lang('lbl_email_address');?>   (*)
                         <input type="text" name="email" value="<?php echo $filter['email']; ?>" size="30" />
                     </li>
                     <li>
-                        Phone:     (*)
+                        <?php echo lang('lbl_phone');?>  (*)
                         <input type="text" name="phone" value="<?php echo $filter['phone']; ?>" size="30"/>
                     </li>
                     <li class="muahang">
-                        Billing Address: (*)  
+                        <?php echo lang('lbl_billing_address');?> (*)  
                         <input type="text" name="billing_address" value="<?php echo $filter['billing_address']; ?>" size="30"/>
                     </li>
                     <li  class="muahang">
-                        Shipping Address:   (*)
+                        <?php echo lang('lbl_shipping_address');?> (*)
                         <input type="text" name="shipping_address" value="<?php echo $filter['shipping_address']; ?>" size="30"/>
                     </li>
 
                     <li class="canhan">
-                        First Name: (*)
+                        <?php echo lang('lbl_firstname');?> (*)
                         <input type="text" name="firstname" value="<?php echo $filter['firstname']; ?>" size="30"/>
                     </li>
 
                     <li class="canhan">
-                        Last Name:  (*)
+                        <?php echo lang('lbl_lastname');?>  (*)
                         <input type="text" name="lastname" value="<?php echo $filter['lastname']; ?>" size="30"/>
                     </li>
                     <li class="congty">
-                        Company:    (*)
+                        <?php echo lang('lbl_company');?>    (*)
                         <input type="text" name="company" value="<?php echo $filter['company']; ?>" size="30"/>
                     </li>
                     <li  class="congty">
-                        Contact Person:    (*)
+                        <?php echo lang('lbl_contact_with');?>    (*)
                         <input type="text" name="contact_person" value="<?php echo $filter['contact_person']; ?>" size="30"/>
                     </li>
 
                     <li  class="congty">
-                        Website: 
+                        <?php echo lang('lbl_website_address');?>
                         <input type="text" name="website" value="<?php echo $filter['website']; ?>" size="30"/>
                     </li>
                     <li  class="congty">
-                        Tax code: 
+                        <?php echo lang('lbl_tax_code');?>
                         <input type="text" name="tax_code" value="<?php echo $filter['tax_code']; ?>" size="30"/>
                     </li>
                     <li>
-                        Address:  
+                        <?php echo lang('lbl_home_address');?>  
                         <input type="text" name="address" value="<?php echo $filter['address']; ?>" size="30"/>
                     </li>
 
                     <li>
-                        Yahoo:  
+                        <?php echo lang('lbl_yahoo_address');?>  
                         <input type="text" name="yahoo" value="<?php echo $filter['yahoo']; ?>" size="30"/>
                     </li>
                     <li>
-                        Skype:  
+                        <?php echo lang('lbl_skype_address');?>  
                         <input type="text" name="skype" value="<?php echo $filter['skype']; ?>" size="30"/>
                     </li>
 
                     <li  class="canhan">
-                        Career:  
+                        <?php echo lang('lbl_career');?>  
                         <input type="text" name="career" value="<?php echo $filter['career']; ?>" size="30"/>
                     </li>
 
@@ -212,9 +212,9 @@
                         <textarea name="message"><?php echo $filter['message']; ?></textarea>
                     </li>
                     <li class="orderbutton">
-                        <input type="reset" name="" value ="Clear"/>
+                        <input type="reset" name="" value ="<?php echo lang('btn_clear');?>"/>
                         <input type="hidden" name="ok-click" value="ok-click"/>
-                        <input type="submit" name="ok-submit" value ="Order"/>
+                        <input type="submit" name="" value ="<?php echo lang('btn_order');?>"/>
                     </li>
                 </ul>
 

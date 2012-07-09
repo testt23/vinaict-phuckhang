@@ -140,8 +140,8 @@
     <div id="info">
         <div id="text">
             <h3 > <?php echo $product->the_product_name(); ?></h3>
-            <span><strong>Giá: </strong><?php echo $product->the_product_price(); ?> <?php echo $product->the_product_currency(); ?></span><br/>
-            <span><strong>Description: </strong>
+            <span><strong><?php echo lang('lbl_price');?></strong><?php echo $product->the_product_price(); ?> <?php echo $product->the_product_currency(); ?></span><br/>
+            <span><strong><?php echo lang('lbl_description');?></strong>
                 <?php  echo $product->the_product_description(); ?>
             </span>
         </div>
@@ -157,11 +157,11 @@
                 <input type="hidden" name="h_description" value="<?php echo $product->the_product_description(); ?>"/>
                 <input type="hidden" name="h_curency" value="<?php echo $product->the_product_currency(); ?>"/>
                 <input type="hidden" name="click_access" value="click_access"/>
-                <input style="border: none;" type="submit" name="orderSubmit" value="ORDER"/>
+                <input style="border: none;" type="submit" name="orderSubmit" value="<?php echo lang('btn_order');?>"/>
             </form>
         </div>
     </div>
 
 <?php else: ?>
-    <h2>Không có sản phẩm nào</h2>
+    <h2><?php echo lang('show_message_product');?></h2>
 <?php endif; ?>
