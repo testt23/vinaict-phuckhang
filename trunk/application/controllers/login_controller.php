@@ -126,7 +126,7 @@
             
         }
         
-        function lang(){
+        function switchLang(){
             
             $lang = $this->input->get_post('lang') ? $this->input->get_post('lang'):'en';
             $logged_user = new User();
