@@ -126,8 +126,9 @@
             
         }
         
-        function lang($lang = 'en'){
+        function lang(){
             
+            $lang = $this->input->get_post('lang');
             $logged_user = new User();
             
             if ($logged_user->get($this->session->userdata("userID"))) {
