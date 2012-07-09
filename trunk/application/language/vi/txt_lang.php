@@ -26,6 +26,7 @@ $lang['txt_hold_ctrl_to_select_many']   = 'Giữ phím Ctrl để chọn nhiều
 $lang['txt_detail_information']         = 'Thông tin chi tiết';
 $lang['txt_upload']                     = 'Upload';
 $lang['txt_code']                       = 'Mã';
+$lang['txt_id']                         = 'Mã tin';
 
 /* User */
 $lang['txt_user']                       = 'User';
@@ -108,6 +109,7 @@ $lang['txt_web_page']                   = 'Trang web';
 $lang['txt_title']                      = 'Tiêu đề';
 $lang['txt_content']                    = 'Nội dung';
 $lang['txt_keyword']                    = 'Từ khóa';
+$lang['txt_parent']                     = 'Cấp trên';
 $lang['txt_status']                     = 'Trạng thái';
 $lang['txt_publishing']                 = 'Đang hiển thị';
 $lang['txt_disabled']                   = 'Đang ẩn';
@@ -199,6 +201,14 @@ $lang['txt_settings']                   = 'Cài đặt';
 $lang['txt_system_configuration']       = 'Cấu hình hệ thống';
 $lang['txt_param_group']                = 'Nhóm tham số';
 $lang['txt_ungrouped']                  = 'Chưa phân nhóm';
+
+/* News Category*/
+$lang['txt_add_news']                = 'Thêm tin tức';
+$lang['txt_edit_news']               = 'Sửa thông tin tin tức';
+$lang['txt_news_category']           = 'Tin tức';
+$lang['txt_add_news_category']       = 'Thêm tin tức mới';
+$lang['txt_edit_news_category']      = 'Sửa thông tin tin tức';
+$lang['txt_parent_news_category']    = 'Nhóm tin tức cấp trên';
 
 /* Article */
 $lang['txt_article']                    = 'Danh sách các bài viết';
