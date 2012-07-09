@@ -40,14 +40,15 @@
     <body>
         <div id="header">
             <div id="language-wrapper">
-                <form method="post" action="<?php echo base_url() . 'language/index/en' ?>" id="form-en">
-                    <input type="hidden" value="en" name="display-lang"/>
-                    <input id="lang-en" type="submit" value="" name="language"/>
-                </form>
-                <form method="post" action="<?php echo base_url() . 'language/index/vi' ?>" id="form-vi">
-                    <input type="hidden" value="vi" name="display-lang"/>
-                    <input id="lang-vi" type="submit" value="" name="language"/>
-                </form>
+                <?php 
+                   if($lang = Language::getArraylangIso()){
+                           for($i = 0; $i < count($lang); $i ++){
+                ?>
+                            <a href="<?php echo base_url(); ?>language/index/?lang=<?php echo $lang[$i] ?>" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $lang[$i] ?>.png" /></a>	 
+                 <?php 
+                            } 
+                      } 
+                  ?>
             </div>
             <div id="searchbox" class="searchbox">
                 Search
