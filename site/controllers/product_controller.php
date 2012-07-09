@@ -19,6 +19,14 @@ class Product_controller extends CI_Controller {
             $data['content'] = 'index';
             $data['product'] = $info['product'];
             $data['paging'] = $info['paging'];
+            
+            $array_menus = array();
+            $filter = array();
+            $filter['parent_id'] = 0;
+            Menu::getMenuTree($array_menus, $filter);
+
+            $data['array_menus'] = $array_menus;
+
             $this->load->view('temp', $data);
         } else {
             redirec('index');
@@ -38,6 +46,13 @@ class Product_controller extends CI_Controller {
             $data['content'] = 'index';
             $data['product'] = $info['product'];
             $data['paging'] = $info['paging'];
+            
+            $array_menus = array();
+            $filter = array();
+            $filter['parent_id'] = 0;
+            Menu::getMenuTree($array_menus, $filter);
+
+            $data['array_menus'] = $array_menus;
             $this->load->view('temp', $data);
         }else{
             
@@ -61,6 +76,13 @@ class Product_controller extends CI_Controller {
 
 
             $data['content'] = 'prod_details';
+            
+            $array_menus = array();
+            $filter = array();
+            $filter['parent_id'] = 0;
+            Menu::getMenuTree($array_menus, $filter);
+
+            $data['array_menus'] = $array_menus;
 
             $this->load->view('temp', $data);
         } else {
@@ -90,6 +112,14 @@ class Product_controller extends CI_Controller {
 
         $data['shopping'] = $Shopping->get_list();
         $data['content'] = 'order_list';
+        
+        $array_menus = array();
+        $filter = array();
+        $filter['parent_id'] = 0;
+        Menu::getMenuTree($array_menus, $filter);
+
+        $data['array_menus'] = $array_menus;
+        
         $this->load->view('temp', $data);
     }
     
@@ -344,6 +374,14 @@ class Product_controller extends CI_Controller {
         $data['mess'] = $result;
         $data['filter'] = $filter;
         $data['content'] = 'order_form';
+        
+        $array_menus = array();
+        $filter = array();
+        $filter['parent_id'] = 0;
+        Menu::getMenuTree($array_menus, $filter);
+
+        $data['array_menus'] = $array_menus;
+        
         $this->load->view('temp', $data);
     }
     public function update_shopping($id, $number){

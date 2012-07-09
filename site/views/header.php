@@ -64,19 +64,10 @@
             <div id="logo">
                 <a href="#"><img src="<?php echo $image_path; ?>/Logo.png" alt="" /></a>
             </div>
-            
-            
+            <?php //include_once 'menu.php'; ?>
             <div id="menu">
-                <ul id="navMenu">
-                    
-                   <?php $M = new Menu();
-                        $Menu = $M->getList();
-                    while ($Menu->fetchNext()): ?>
-                    <li>
-                    <a href="<?php echo $Menu->the_link(); ?>"><?php echo $Menu->the_name(); ?></a>
-                    </li>
-                    <?php endwhile;
-                   ?>
+                <ul>
+                    <?php Menu::drawMenu($array_menus, 'home'); ?>
                 </ul>
             </div>
         </div>
