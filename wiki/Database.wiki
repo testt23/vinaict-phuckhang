@@ -475,7 +475,7 @@ ALTER TABLE `usr_group_user`
 ALTER TABLE `permission` 
    CHANGE `id_group` `id_usr_group` SMALLINT(5) UNSIGNED DEFAULT '0' NULL ;
 
-UPDATE `phuckhang`.`permission` SET `uri` = 'usr_group' WHERE `permission`.`id` =43;
+UPDATE `permission` SET `uri` = 'usr_group' WHERE `permission`.`id` =43;
 
 INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_usr_group`, `value`) VALUES
 (121, 'usr_group/delete', 0, 1, '1,2,3,4'),
