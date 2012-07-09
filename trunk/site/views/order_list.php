@@ -27,18 +27,18 @@
                         <input class="updae_input" type="text" name="num_prod<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_number(); ?>" onchange="update_giohang('id_prods<?php echo $shopping[$i]->get_id_product(); ?>', this, '<?php echo base_url() . 'products/update_shop' ?>');"/>
                     </form>
                 </td>
-                <td class="del"><a onclick="return delete_shop('tr_<?php echo $shopping[$i]->get_id_product(); ?>',<?php echo $shopping[$i]->get_id_product(); ?>,'<?php echo base_url() . 'products/delete_shop'; ?>'  )" href="#" class="del-gio">Xóa</a></td>
+                <td class="del"><a onclick="return delete_shop('tr_<?php echo $shopping[$i]->get_id_product(); ?>',<?php echo $shopping[$i]->get_id_product(); ?>,'<?php echo base_url() . 'products/delete_shop'; ?>'  )" href="#" class="del-gio"><?php echo lang('site_product_delete'); ?></a></td>
             </tr>
         <?php endfor; ?>
     
 </table>
 
 <div id="order_box">
-    <div class="button"><a href="<?php echo base_url() . 'index' ?>">Tiếp tục mua</a></div>
-    <div class="button"><a href="<?php echo base_url() . 'products/contact';  ?>">Đặt hàng</a></div>
+    <div class="button"><a href="<?php echo base_url() . 'index' ?>"><?php echo lang('site_product_continue'); ?></a></div>
+    <div class="button"><a href="<?php echo base_url() . 'products/contact';  ?>"><?PHP echo lang('site_product_order'); ?></a></div>
 </div>
 <?php else: ?>
-<h1 style="text-align: center; color: gray; font-size: 20px;">Bạn chưa có sản phẩm nào</h1>
+<h1 style="text-align: center; color: gray; font-size: 20px;"><?php echo lang('show_message');?></h1>
 
 
 <?php endif; ?>
