@@ -18,6 +18,13 @@
                         }
                         $data['page'] = $info;
                         $data['content'] = 'webpage';
+                        
+                        $filter = array();
+                        $filter['parent_id'] = 0;
+                        Menu::getMenuTree($array_menus, $filter);
+
+                        $data['array_menus'] = $array_menus;
+                        
                         $this->load->view('temp', $data);
                     }else{
                         redirect('index');
