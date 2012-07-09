@@ -4,7 +4,6 @@
 
 		function __construct(){
 			parent::__construct();
-                        set_system_language();
 		}
 
 		function index($page = 1){

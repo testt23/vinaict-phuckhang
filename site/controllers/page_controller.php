@@ -4,7 +4,6 @@
 
 		function __construct(){
 			parent::__construct();
-			set_system_language();
 		}
                 
                 public function index(){
@@ -24,6 +23,7 @@
                         redirect('index');
                     }
                 }
-                
+                public function get_content(){
+                }
 
 	}

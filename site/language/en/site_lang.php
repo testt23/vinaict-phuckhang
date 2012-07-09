@@ -6,6 +6,7 @@ $lang['site_footer_copy_right']                 = '© Copyright 2012 NoiThatDatV
 
 $lang['site_product_order'] = 'order';
 
+$lang['site_product_title_order'] = 'Your Order';
 $lang['site_product_name'] = 'Product name';
 $lang['site_product_code'] = 'Product code';
 $lang['site_product_price'] = 'Product price';

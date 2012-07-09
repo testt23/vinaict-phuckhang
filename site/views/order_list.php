@@ -1,15 +1,15 @@
 <?php if (!empty($shopping)): ?>
 <script language="javascript" src="<?php echo base_url() . 'js/ajax.js'; ?>"></script>
-<h4 style="height: 30px; width: 1000px; "> Your Order</h4>
+<h4 style="height: 30px; width: 1000px; "><?PHP echo lang('site_product_title_order'); ?></h4>
 
 <table width="1000" id="list" style="border:  solid 1px gray;" cellspacing="0" cellpadding="0">
     <tr>
         <td class="title" width="5%">&nbsp;</td>
-        <td class="title" width="20%">Tên sản phẩm</td>
-        <td class="title" width="10%">Mã sản phẩm</td>
-        <td class="title" width="15%">Giá sản phẩm</td>
-        <td class="title" width="6%">Số lượng</td>
-        <td class="title" width="5%">Xóa</td>
+        <td class="title" width="20%"><?PHP echo lang('site_product_name'); ?></td>
+        <td class="title" width="10%"><?PHP echo lang('site_product_code'); ?></td>
+        <td class="title" width="15%"><?PHP echo lang('site_product_price'); ?></td>
+        <td class="title" width="6%"><?PHP echo lang('site_product_number'); ?></td>
+        <td class="title" width="5%"><?PHP echo lang('site_product_delete'); ?></td>
     </tr>
     
         <?php
