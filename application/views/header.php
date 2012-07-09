@@ -8,8 +8,8 @@
             
 		<div id="sitename">
 			<a href="<?php echo base_url(); ?>" class="logo float-left" title="<?php echo getI18n(SITE_NAME); ?>"><?php echo getI18n(SITE_NAME); ?></a>
-                        <a href="login/lang/vi" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/vi.png" /></a>
-		        <a href="login/lang/en" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/en.png" /></a>
+                        <a href="login/lang/?lang=vi" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/vi.png" /></a>
+		        <a href="login/lang/?lang=en" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/en.png" /></a>
                 </div>
 		<?php include_once 'menu.php'; ?>
 	</div>
