@@ -20,7 +20,7 @@
                     Menu::getMenuTree($array_menus, $filter);
    
                     $data['array_menus'] = $array_menus;
-                    
+                    $data['selected'] = 'home';
                     $this->load->view('temp', $data);
 		}
                 public function page($page){
