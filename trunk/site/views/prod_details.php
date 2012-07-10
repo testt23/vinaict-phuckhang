@@ -111,6 +111,7 @@
             <div style="height: 350px;">
                 <img id="showimage" src="<?php echo base_url() . $this->config->item('image_defailt_thum'); ?>" height="350"/>
             </div>
+        <?php if ($image): ?>
             <div id="slide-images">
                 <div class="slide">
                     <a class="prev browse left" id="prev-pointer" src="images/left_btn_blue.png" alt=" "><img src="<?php echo base_url(); ?>/images/site/left_btn_blue.png" /></a>
@@ -140,6 +141,7 @@
                     </div><!--end wrp-info-img-postname -->                              
                 </div><!--end slide -->
             </div><!--end slide-images -->
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 
