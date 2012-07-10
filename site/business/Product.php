@@ -362,7 +362,7 @@ class Product extends Product_model {
     }
 
     public function the_product_price() {
-        return $this->{$this->if->_product_as_price};
+        return number_format($this->{$this->if->_product_as_price},0,'.','.') ;
     }
 
     public function the_product_name($lang_true_false = false) {
