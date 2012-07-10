@@ -454,6 +454,8 @@ ALTER TABLE `parameter`
    ADD COLUMN `data` TEXT AFTER `data_type`;
 
 /* 04-07-2012 15:30 - Huynh Ba An - News_Category */
+DROP TABLE IF EXISTS `news_category`;
+
 CREATE TABLE `news_category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
@@ -531,5 +533,10 @@ alter table `purchase_order`
 
 /* 10-07-2012 - Phạm Thanh Nam - Load menu frontend*/
 UPDATE `menu` SET `section` = 'interior' WHERE `menu`.`id` =26;
+
+
+/* 10-07-2012 - Phạm Thanh Nam - Manager News Category*/
+alter table `phuckhang`.`news_category` 
+   add column `is_deleted` tinyint(1) DEFAULT '0' NOT NULL after `link`
 
 }}}
