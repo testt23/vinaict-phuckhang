@@ -150,7 +150,7 @@
             <ul>
                 <li><h2><?php echo $product->the_product_name(); ?></h2></li>
                 <li>
-                    <strong>Price:</strong>
+                    <strong><?php echo lang('lbl_price');?></strong>
                     <span class="call-price">
                     <?php 
                     if ($product->the_product_price() == '0' || $product->the_product_price() == ''){
@@ -162,7 +162,7 @@
                  </span>
                 </li>
                 <li>
-                    <strong>Description:</strong>
+                    <strong><?php echo lang('lbl_description');?></strong>
                         <?php echo $product->the_product_description(); ?>
                 </li>
             </ul>
