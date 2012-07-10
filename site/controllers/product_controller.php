@@ -102,6 +102,9 @@ class Product_controller extends CI_Controller {
             $Product_tmp = $Product->getProductByLink($url_link);
             $Product_tmp->fetchFirst();
             $data['product'] = $Product_tmp;
+//            echo '<pre>';
+//            var_dump($Product_tmp); die;
+//            echo '</pre>';
             if ($Product_tmp->countRows() > 0) {
                 $data['image'] = $Image->getListImageByListId($Product_tmp->the_product_id_prod_image());
             } else {

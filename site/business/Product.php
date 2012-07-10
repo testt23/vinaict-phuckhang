@@ -389,6 +389,7 @@ class Product extends Product_model {
 
     public function the_image_link_thumb() {
         $url = base_url() . '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+       
         if (!file_exists($url)) {
             return $this->image_default;
         }

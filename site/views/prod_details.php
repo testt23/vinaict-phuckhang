@@ -1,12 +1,5 @@
-<?php $show = 'no'; ?>
 
-<?php if (isset($image) && !empty($image)): ?>
-<?php if ($image->countRows() > 1 ):?>
-<?php $show = 'yes';?>
-<?php endif; ?>
-<?php endif; ?>
-
-<?php if ($show == 'yes'): ?>
+<?php if ($image->countRows() > 0 and $product->countRows() > 0): ?>
 <script language="javascript">
     
     $(document).ready(function(){
@@ -17,6 +10,7 @@
         var images = $(".scrollable .items img");
         var width = parseInt(images.length);
         var totalWidth = width * 110;
+        var no_click = 0;
         jQuery('.items').css('width', totalWidth);
         
         
@@ -40,21 +34,23 @@
         //  $(".scrollable").scrollable();
         next.click(function(){
             //$('.wrp-info-img-postname li:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('.wrp-info-img-postname ul')
-            if (width > 4){
-                var sec = $(".scrollable .items img:nth-child(1)");
-                sec.hide(300,"linear",function(){
-                    items.append($(this));//chen img vua an vao cuoi
-                    $(this).css({'display':'block'});
-                });
-            }
+                if (width > 4){
+                    var sec = $(".scrollable .items img:nth-child(1)");
+                    sec.hide(300,"linear",function(){
+                        items.append($(this));//chen img vua an vao cuoi
+                        $(this).css({'display':'block'});
+                    });
+                }
             changeNumber(1);
         });
         prev.click(function(){
-            if (width > 4){
+            if (width > 4 ){
+                
                 var sec = $(".scrollable .items img:last");
                 sec.css({'display':'none'});
                 items.prepend(sec);
-                sec.show(300,'linear');
+                sec.show(300,'linear', function(){
+                });
                 sec.css({'display':'block'});
             }
             
@@ -105,23 +101,16 @@
 <?php endif;?>
 
 
-<?php if (!empty($product) && $product->countRows() > 0): $product->fetchFirst(); ?>
-    
+
+
+<?php if ($product->countRows() > 0): $product->fetchFirst(); ?>
 <h1 class="title-main">
     Detail Product
 </h1>
-    
     <div id="image">
-        
-        <?php if ($show == 'yes'):?> 
-        <div style="height: 350px;">
-        <img id="showimage" src="" height="350"/>
-        </div>
-        <?php else:?>
-        <img id="showimage" src="<?php echo $product->the_image_link_large(); ?>" height="350"/>
-        <?php endif;?>
-        
-        <?php if ($show == 'yes') : ?>
+            <div style="height: 350px;">
+                <img id="showimage" src="<?php echo base_url() . $this->config->item('image_defailt_thum'); ?>" height="350"/>
+            </div>
             <div id="slide-images">
                 <div class="slide">
                     <a class="prev browse left" id="prev-pointer" src="images/left_btn_blue.png" alt=" "><img src="<?php echo base_url(); ?>/images/site/left_btn_blue.png" /></a>
@@ -129,15 +118,24 @@
                     <div class="scrollable" id="scrollable">
                         <!-- root element for the items -->
                         <div class="items">
-                            <?php $i = 0; ?>
-                            <?php while($image->fetchNext()): ?>
-
-                            <?php if ($image->the_image_id() == $product->the_product_id_def_image()):?>
-                                     <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
-                            <?php else:?>
-                                      <img alt="<?php echo $i; ?>" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
-                            <?php endif; $i++;?>
-                            <?php endwhile; ?>
+                            <?php $i = 0; $flag = 'no'; ?>
+                            <?php if ($product->the_product_id_def_image() != '0'): ?>
+                                <?php while($image->fetchNext()): ?> 
+                                    <?php if ($image->the_image_id() == $product->the_product_id_def_image()):?>
+                                             <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                    <?php else:?>
+                                              <img alt="<?php echo $i; ?>" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                    <?php endif; $i++;?>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                   <?php while($image->fetchNext()): echo $i; ?> 
+                                    <?php if ($i == 0):?>
+                                             <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                    <?php else:?>
+                                              <img alt="<?php echo $i; ?>" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                    <?php endif; $i++;?>
+                                <?php endwhile; ?>                  
+                             <?php endif; ?>
                         </div>
                     </div><!--end wrp-info-img-postname -->                              
                 </div><!--end slide -->
@@ -183,7 +181,3 @@
             </form>
         </div>
     </div>
-
-<?php else: ?>
-    <h2><?php echo lang('show_message_product');?></h2>
-<?php endif; ?>
