@@ -1087,7 +1087,6 @@ alter table `news_category`
 
 INSERT INTO `permission` (`id` ,`uri` ,`id_user` ,`id_usr_group` ,`value`)VALUES ('134', 'news_category', '0', '1', '1,2,3,4') ,('135' , 'news_category/add', '0', '1', '1,2,3,4'),('136', 'news_category/edit', '0', '1', '1,2,3,4'),('137', 'news_category/delete', '0', '1', '1,2,3,4');
 
-}}}
 
 /* 10-07-2012 - Nguyễn Văn Cường - Manager site paramter*/
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('60','default page when loaded','SITE_PAGE_DEFAULT_STRING','index','1','0','2012-07-10 17:41:39',NULL,'1',NULL,'0','1',NULL);
@@ -1108,3 +1107,7 @@ insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`,
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('76','Company Email','COMPANY_MAIL','TheHalfHeart@gmail.com','1','0','2012-07-10 18:01:18',NULL,'1',NULL,'0','1',NULL);
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('77','Object\'s Title Email','OBJECT_NAME_EMAIL','<vi>Đơn đăt hàng của bạn</vi><en>your order</en>','1','0','2012-07-10 18:02:14',NULL,'1',NULL,'0','1',NULL);
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('78','Message when user active ','COMPANY_TITLE_EMAIL','<e>Verify order information</en><vi>Xác nhận thông tin đặt hàng</vi>','1','0','2012-07-10 18:03:17',NULL,'1',NULL,'0','1',NULL);
+
+
+
+}}}
