@@ -78,7 +78,7 @@ class Contact_controller extends CI_Controller {
                     // neu khach hang da ton tai
 
                     if ($List_customer->countRows() == 0 && $not_buy == '2') {
-                        $result = 'Ban chua phai la khach hang. vui long chon khach hang binh thuong va dien day du thong tin';
+                        $result = "<?php echo lang('show_message_info_1');?>";
                     } else {
 
 
@@ -179,7 +179,7 @@ class Contact_controller extends CI_Controller {
                             $purchase->billing_address = $billing_address;
                             $purchase->shipping_address = $shipping_address;
                             $purchase->insert();
-                            $result = 'Câu hỏi của bạn đã được gửi đi';
+                            $result = "<?php echo lang('show_message_info_2');?>";
 
                             $text = '';
                             if (isset($purchase->id) && $Cus_update->id && $mucdich == '2') {
@@ -220,16 +220,16 @@ class Contact_controller extends CI_Controller {
                                 $filter['billing_address'] = $billing_address;
                                 $mail = new Mailer();
                                 $mail->sendmail($filter);
-                                $result = 'Đơn đặt hàng đã được lưu. vui lòng kiểm tra email đễ xác nhận thông tin đặt hàng';
+                                $result = "<?php echo lang('show_message_info_3');?>";
                                 $Shopping->clear_all();
                             }
                         }
                     }
                 } else {
-                    $result = '<span style="color: red;">Ban chua co mon hang nao<span>';
+                    $result = "<span style='color: red;'><?php echo lang('show_message_info_4');?><span>";
                 }
             } else {
-                $result = 'Email nhập không đúng hoặc bạn chưa nhập ';
+                $result = "<?php echo lang('show_message_info_5');?>";
             }
         }
 

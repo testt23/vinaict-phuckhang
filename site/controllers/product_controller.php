@@ -345,7 +345,7 @@ class Product_controller extends CI_Controller {
                             $purchase->billing_address = $billing_address;
                             $purchase->shipping_address = $shipping_address;
                             $purchase->insert();
-                            $result = 'Câu hỏi của bạn đã được gửi đi';
+                            $result = "<?php echo lang('show_message_info_2');?>";
 
                             $text = '';
                             if (isset($purchase->id) && $Cus_update->id && $mucdich == '2') {
@@ -388,16 +388,16 @@ class Product_controller extends CI_Controller {
                                 $filter['billing_address'] = $billing_address;
                                 $mail = new Mailer();
                                 $mail->sendmail($filter);
-                                $result = 'Đơn đặt hàng đã được lưu. vui lòng kiểm tra email đễ xác nhận thông tin đặt hàng';
+                                $result = "<?php echo lang('show_message_info_3');?>";
                                 $Shopping->clear_all();
                             }
                         }
                     }
                 } else {
-                    $result = '<span style="color: red;">Ban chua co mon hang nao<span>';
+                    $result = "<span style='color: red;'><?php echo lang('show_message_info_4');?><span>";
                 }
             } else {
-                $result = 'Email nhập không đúng hoặc bạn chưa nhập ';
+                $result = "<?php echo lang('show_message_info_5');?>";
             }
         }
 
@@ -453,9 +453,9 @@ class Product_controller extends CI_Controller {
     public function active_cat(){
         $Product = new Product();
         if ($Product->activeCartShop()){
-            $mess = 'Đặt hàng thành công';
+            $mess = "<?php echo lang('show_message_info_6');?>";
         }else{
-            $mess = 'Đơn đặt hàng này không tồn tại';
+            $mess = "<?php echo lang('show_message_info_7');?>";
         }
         // menu
         $array_menus = array();
