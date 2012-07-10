@@ -292,6 +292,7 @@ table tr td{text-align:center}
 #slide-images{
     width: 467px;
     height: 110px;
+    margin: 0px auto;
 }
 
 #slide-images .slide{
