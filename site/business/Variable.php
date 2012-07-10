@@ -11,9 +11,43 @@ class Variable {
     // SETTING MAILER AND HOST AND DOMAIN
     
     public function getDomainName(){
-        return defined('DOMAIN_NAME') ? DOMAIN_NAME : base_url() . '/' . Variable::getDefaultPageString();
+        return defined('DOMAIN_NAME') ? DOMAIN_NAME : 'www.DatVangNgheThuat.com';
     }
     
+    public function getSiteName(){
+        return defined('SITE_NAME') ? SITE_NAME : '<en>Phuc Khang Gilding Store</en><vi>Cửa Hàng Dát Vàng Phúc Khang</vi>';
+    }
+    
+    public function getCompanyName(){
+        return defined('COMPANY_NAME') ? COMPANY_NAME : 'Công ty TNHH Dát Vàng Phúc Khang';
+    }
+    
+    public function getCompanyAddress(){
+        return defined('COMPANY_ADDRESS') ? COMPANY_ADDRESS : '207 Huỳnh Văn Nghệ, P.12, Q. Gò Vấp';
+    }
+    
+    public function getCompanyPhone(){
+        return defined('COMPANY_PHONE') ? COMPANY_PHONE : '(08)66806108';
+    }
+    
+    public function getCompanyHotline(){
+        return defined('COMPANY_HOTLINE') ? COMPANY_HOTLINE : '0973513579';
+    }
+    
+     public function getCompanyFax(){
+        return defined('COMPANY_FAX') ? COMPANY_FAX : '(08)66806108';
+    }
+    
+    public function getCompanyMail(){
+        return defined('COMPANY_MAIL') ? COMPANY_MAIL : 'TheHalfHeart@gmail.com';
+    }
+    public function getObjectNameEmail(){
+        return defined('OBJECT_NAME_EMAIL') ? OBJECT_NAME_EMAIL : 'Đơn đăt hàng của bạn';
+    }
+    
+    public function getTitelMail(){
+        return defined('COMPANY_TITLE_EMAIL') ? COMPANY_MAIL : '<em>Verify order information</en><vi>Xác nhận thông tin đặt hàng</vi>';
+    }
     /***************************************************************/
     /******************** DEFAULT PAGE******************************/
     /***************************************************************/
@@ -26,6 +60,10 @@ class Variable {
     /*******************VARRIABLE PAGES*****************************/
     /***************************************************************/
     
+    // active product page string route
+    public function getActiveShopPageString(){
+        return defined('SITE_PAGE_ACTIVE_SHOP_STRING') ? SITE_PAGE_ACTIVE_SHOP_STRING : 'active.html';
+    }
     
     // index page string route
     public function getIndexPageString(){
@@ -120,6 +158,9 @@ class Variable {
     // search link
     public function getLinkSearch(){
         return base_url()  . Variable::getProductPageString() . '/' . Variable::getProductPageSearchString();
+    }
+    public function getLinkActive($code, $id){
+        return base_url()  . Variable::getActiveShopPageString() . '?code='.$code . '&id='. $id;
     }
 }
 

@@ -45,6 +45,8 @@ $route['404_override'] = '';
 $route['directory'] = '';
 // index page
 
+$route['^'.Variable::getActiveShopPageString()] =  'product/active_cat';
+
 $route['^'.Variable::getIndexPageString().'/(:num)'] =  'index/page/$1';
 
 // order
