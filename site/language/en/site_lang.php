@@ -64,3 +64,15 @@ $lang['cobx_for_personal'] = 'Personal';
 
 // page product detail
 $lang['show_message_product'] = 'No product updates';
+$lang['lbl_price'] = 'Price:';
+$lang['lbl_description'] = 'Description:';
+
+// page contact_controller
+$lang['show_message_info_1'] = 'You are not yet customers. Please choose a normal customer and complete information.';
+$lang['show_message_info_2'] = 'Your question has been sent.';
+$lang['show_message_info_3'] = 'Orders have been saved. Please check your email to confirm order information.';
+$lang['show_message_info_4'] = 'You have not selected any products.';
+$lang['show_message_info_5'] = 'Email entered is incorrect or you may import format.';
+
+$lang['show_message_info_6'] = 'This order is successful.';
+$lang['show_message_info_7'] = 'This order does not exist.';

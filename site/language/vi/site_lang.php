@@ -68,4 +68,15 @@ $lang['cobx_for_personal'] = 'Cá nhân';
 
 // page product detail
 $lang['show_message_product'] = 'Chưa cập nhật sản phẩm';
+$lang['lbl_price'] = 'Giá:';
+$lang['lbl_description'] = 'Mô tả:';
 
+// page contact_controller
+$lang['show_message_info_1'] = 'Bạn chưa phải là khách hàng. Vui lòng chọn khách hàng bình thường và điền đầy đủ thông tin.';
+$lang['show_message_info_2'] = 'Câu hỏi của bạn đã được gửi đi.';
+$lang['show_message_info_3'] = 'Đơn đặt hàng đã được lưu. Vui lòng kiểm tra email đễ xác nhận thông tin đặt hàng';
+$lang['show_message_info_4'] = 'Bạn chưa chọn sản phẩm nào.';
+$lang['show_message_info_5'] = 'Email nhập không đúng định dạng hoặc bạn chưa nhập.';
+
+$lang['show_message_info_6'] = 'Đặt hàng thành công.';
+$lang['show_message_info_7'] = 'Đơn đặt hàng này không tồn tại.';
