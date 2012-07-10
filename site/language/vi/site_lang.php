@@ -80,3 +80,10 @@ $lang['show_message_info_5'] = 'Email nhập không đúng định dạng hoặc
 
 $lang['show_message_info_6'] = 'Đặt hàng thành công.';
 $lang['show_message_info_7'] = 'Đơn đặt hàng này không tồn tại.';
+
+// page heager
+$lang['show_form_search_1'] = 'Tìm kiếm';
+$lang['show_form_search_2'] = 'Mở rộng';
+$lang['show_form_search_3'] = 'Từ giá:';
+$lang['show_form_search_4'] = 'Đến giá:';
+$lang['show_form_search_5'] = 'Mệnh giá';

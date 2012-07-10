@@ -76,3 +76,10 @@ $lang['show_message_info_5'] = 'Email entered is incorrect or you may import for
 
 $lang['show_message_info_6'] = 'This order is successful.';
 $lang['show_message_info_7'] = 'This order does not exist.';
+
+// page heager
+$lang['show_form_search_1'] = 'Search';
+$lang['show_form_search_2'] = 'Option';
+$lang['show_form_search_3'] = 'Price from:';
+$lang['show_form_search_4'] = 'Price to:';
+$lang['show_form_search_5'] = 'Currency';
