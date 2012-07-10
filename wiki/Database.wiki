@@ -528,4 +528,8 @@ ALTER TABLE `purchase_order` CHANGE `status` `status` TINYINT( 2 ) UNSIGNED NOT 
 alter table `purchase_order` 
    add column `currency` varchar(3) DEFAULT 'VND' NULL after `modification_date`;
 
+
+/* 10-07-2012 - Phạm Thanh Nam - Load menu frontend*/
+UPDATE `menu` SET `section` = 'interior' WHERE `menu`.`id` =26;
+
 }}}
