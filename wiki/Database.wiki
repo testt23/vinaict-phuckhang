@@ -544,6 +544,552 @@ INSERT INTO `permission` (`id` ,`uri` ,`id_user` ,`id_usr_group` ,`value`)VALUES
 }}}
 
 /* 10-07-2012 - Nguyễn Văn Cường - Manager site paramter*/
+{{{
+
+SET NAMES utf8;
+
+/*Table structure for table `currency` */
+
+DROP TABLE IF EXISTS `currency`;
+
+CREATE TABLE `currency` (
+  `id` tinyint(2) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `sign` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `rate` float unsigned NOT NULL DEFAULT '1',
+  `is_default` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `currency` */
+
+insert  into `currency`(`id`,`code`,`name`,`sign`,`rate`,`is_default`,`is_deleted`) values (1,'VND','<en>Vietnam Dong</en><vi>Đồng Việt Nam</vi>','đ',22000,0,0),(2,'USD','<en>US Dollar</en><vi>Đô la Mỹ</vi>','$',1,1,0);
+
+/*Table structure for table `customer` */
+
+DROP TABLE IF EXISTS `customer`;
+
+CREATE TABLE `customer` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `company` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gender` char(1) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'M:Male|F:Female',
+  `birthdate` date DEFAULT NULL,
+  `billing_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `shipping_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `contact_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `home_phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `work_phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile_phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `yahoo_id` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `skype_id` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `id_user` int(10) unsigned DEFAULT NULL,
+  `is_business` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `tax_code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fax` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `career` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contact_person` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `position` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `customer` */
+
+insert  into `customer`(`id`,`email`,`firstname`,`lastname`,`company`,`gender`,`birthdate`,`billing_address`,`shipping_address`,`contact_address`,`home_phone`,`work_phone`,`mobile_phone`,`website`,`yahoo_id`,`skype_id`,`is_deleted`,`id_user`,`is_business`,`tax_code`,`fax`,`career`,`contact_person`,`position`) values (1,'truong.ly@gmail.com','Vĩnh Trường','Lý','Vina ICT','M','0000-00-00','170/46 Lê Đức Thọ, P.6, Q. Gò Vấp','170/46 Lê Đức Thọ, P.6, Q. Gò Vấp','170/46 Lê Đức Thọ, P.6, Q. Gò Vấp','','','','www.vinaICT.com','','',0,NULL,0,'123456',NULL,NULL,NULL,NULL),(2,'test@gmail.com','Văn A','Nguyễn','Test','M','0000-00-00','123 AAA','123 AAA','123456 ABC DEF','08123456','08654321','090123456','www.test.com','testym','testskype',0,NULL,0,'',NULL,NULL,NULL,NULL),(4,'test@abcdef.com','','','Test','M','0000-00-00','test','y=test','test','','','','','','',0,4,1,'123456789',NULL,'','Tester',NULL),(5,'truong@rubygraphic.com','','','Test Công ty','M','0000-00-00','123 ABC','123 ABC','123 ABD','','','','','','',0,5,1,'123456767',NULL,'','Tester',NULL);
+
+/*Table structure for table `group` */
+
+DROP TABLE IF EXISTS `group`;
+
+CREATE TABLE `group` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex2` (`code`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `group` */
+
+insert  into `group`(`id`,`code`,`name`,`disabled`) values (15,'CUS','<en>Customers</en><vi>Khách hàng</vi>',0),(1,'ADM','<en>Administrators</en><vi>Quản trị hệ thống</vi>',0);
+
+/*Table structure for table `image` */
+
+DROP TABLE IF EXISTS `image`;
+
+CREATE TABLE `image` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `id_image_group` tinyint(2) DEFAULT NULL,
+  `file` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `image` */
+
+insert  into `image`(`id`,`code`,`name`,`description`,`id_image_group`,`file`,`creation_date`) values (1,'6579eb365589b2865b50ad48e919d5f5','22-06-2012 12:22:24','',NULL,'6579eb365589b2865b50ad48e919d5f5.jpg','2012-06-22 05:22:24'),(2,'44c5734f0f5500060d33754a5a499cf1','22-06-2012 12:24:15','',1,'44c5734f0f5500060d33754a5a499cf1.jpg','2012-06-22 05:24:15'),(3,'6f2fac9034d38833f18b1143904eae5c','22-06-2012 12:24:15','',1,'6f2fac9034d38833f18b1143904eae5c.jpg','2012-06-22 05:24:15'),(4,'ec1c17c4c26f8ce37a591931d679618c','22-06-2012 12:28:46','',3,'ec1c17c4c26f8ce37a591931d679618c.jpg','2012-06-22 05:28:46'),(5,'7bf07246187acbcc0797ef2da1762d9e','22-06-2012 12:32:02','',NULL,'7bf07246187acbcc0797ef2da1762d9e.jpg','2012-06-22 05:32:02'),(6,'22c75ea0e7f4ac6faca6ccd255bd1fd4','22-06-2012 12:32:02','',NULL,'22c75ea0e7f4ac6faca6ccd255bd1fd4.jpg','2012-06-22 05:32:02'),(7,'5b4b986af1ccdc8e7d7e5c57ea672c22','22-06-2012 12:32:40','',3,'5b4b986af1ccdc8e7d7e5c57ea672c22.jpg','2012-06-22 05:32:40'),(8,'eb43590e24d16f960b24b2448bbaeef4','22-06-2012 12:32:40','',3,'eb43590e24d16f960b24b2448bbaeef4.jpg','2012-06-22 05:32:40'),(11,'76c5d4555fc2626a506d31e9c87d1641','25-06-2012 23:03:22','',1,'76c5d4555fc2626a506d31e9c87d1641.jpg','2012-06-25 16:03:22'),(12,'6a6580727c7b62210eecf4a59e5351eb','25-06-2012 23:03:22','',1,'6a6580727c7b62210eecf4a59e5351eb.jpg','2012-06-25 16:03:22'),(13,'4b8f10453fc50d370187a3f2a9c4d416','A','Quà Lưu Niệm',3,'4b8f10453fc50d370187a3f2a9c4d416.jpg','2012-06-26 07:26:23'),(15,'cc0e02d5c1874e256f6893cfd649de37','B','Nội Thất - Tượng',3,'cc0e02d5c1874e256f6893cfd649de37.jpg','2012-06-26 07:37:19'),(17,'e578c888b137770542d67b7d3288447b','C','Phụ Liệu Spa',3,'e578c888b137770542d67b7d3288447b.jpg','2012-06-26 07:40:53'),(27,'2be9bf1e613dd70efbb4361c18fe50be','C1','Mặt nạ dát vàng',3,'2be9bf1e613dd70efbb4361c18fe50be.jpg','2012-06-26 08:21:07'),(28,'a4ba494f9a864271a3173cabaf7755b8','A1','Quà Tặng Cao Cấp',3,'a4ba494f9a864271a3173cabaf7755b8.jpg','2012-06-26 08:21:24'),(29,'433cc242d62b3757d0d2f604dc6fcf05','A2','Quà Tặng Giáng Sinh',3,'433cc242d62b3757d0d2f604dc6fcf05.jpg','2012-06-26 08:21:40'),(30,'17edebe4b2eff1e18aae3fa1ffbadfdc','A3','Khung Hình Dát Vàng',3,'17edebe4b2eff1e18aae3fa1ffbadfdc.jpg','2012-06-26 08:21:58'),(31,'5e390328a3bc149c9041fd8609a2448f','A4','Vật Để Bàn',3,'5e390328a3bc149c9041fd8609a2448f.jpg','2012-06-26 08:22:33'),(32,'39f10ea06d6719e8fdc316ca7668a1e2','A5','Khay trà, rượu',3,'39f10ea06d6719e8fdc316ca7668a1e2.jpg','2012-06-26 08:25:16'),(33,'48b4ff68025bb57daaa9c406c9e8d304','B1','Bàn trang điểm',3,'48b4ff68025bb57daaa9c406c9e8d304.jpg','2012-06-26 08:26:46'),(34,'6f3ec2e641548361a37e03f25ff85bd7','B2','Ghế Cao Cấp',3,'6f3ec2e641548361a37e03f25ff85bd7.jpg','2012-06-26 08:30:19'),(35,'369f999adca9bcd79487cfa15f6154dc','B3','Kệ Tivi',3,'369f999adca9bcd79487cfa15f6154dc.jpg','2012-06-26 08:34:48'),(36,'9e49c4f647977524b8dc170883e62ab1','B4','Khung Gương',3,'9e49c4f647977524b8dc170883e62ab1.jpg','2012-06-26 08:37:34'),(37,'1f34e38a54b38d4ae7d6c8f9f482860a','B5','Tượng Dát Vàng',3,'1f34e38a54b38d4ae7d6c8f9f482860a.jpg','2012-06-26 08:38:16'),(44,'a5674c963f14a501fd40a0211b2605fe','A100002','Bàn dát vàng',1,'a5674c963f14a501fd40a0211b2605fe.jpg','2012-06-26 10:11:13'),(45,'92d7ce7b639fef483acef47fbbe2a97e','A100002','Bàn dát vàng',1,'92d7ce7b639fef483acef47fbbe2a97e.jpg','2012-06-26 10:17:07'),(46,'fe2a8f1b19b5f192b6af344a12476961','A100002','Bàn dát vàng',1,'fe2a8f1b19b5f192b6af344a12476961.jpg','2012-06-26 10:18:04'),(48,'774d1cc1a28549253f5d39b6da41c51e','A100002','Bàn dát vàng',1,'774d1cc1a28549253f5d39b6da41c51e.jpg','2012-06-26 10:45:09'),(50,'f080966187782b34194f0c8065314b09','A100002','Bàn dát vàng',1,'f080966187782b34194f0c8065314b09.jpg','2012-06-26 10:48:58'),(51,'4445d15a135186337abc5b6b26f30205','27-06-2012 13:36:59','',NULL,'4445d15a135186337abc5b6b26f30205.jpg','2012-06-27 06:36:59');
+
+/*Table structure for table `image_group` */
+
+DROP TABLE IF EXISTS `image_group`;
+
+CREATE TABLE `image_group` (
+  `id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
+  `id_image_size` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `use_wm` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `image_group` */
+
+insert  into `image_group`(`id`,`code`,`name`,`id_image_size`,`use_wm`) values (1,'prod','Product Images','1,2,5',1),(2,'article','Article','1,3',0),(3,'prod_category','Product Category','3',0);
+
+/*Table structure for table `image_size` */
+
+DROP TABLE IF EXISTS `image_size`;
+
+CREATE TABLE `image_size` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `image_size` */
+
+insert  into `image_size`(`id`,`code`,`name`,`value`) values (1,'thumb','Thumbnail','200x200'),(2,'avatar','Avatar','100x100'),(3,'small','Small','150x150'),(4,'medium','Medium','300x300'),(5,'large','Large','800x800'),(6,'tiny','Tiny','50x50');
+
+/*Table structure for table `language` */
+
+DROP TABLE IF EXISTS `language`;
+
+CREATE TABLE `language` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `is_disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `language` */
+
+insert  into `language`(`id`,`code`,`name`,`is_disabled`,`is_deleted`) values (1,'en','English',0,0),(2,'vi','Tiếng Việt',0,0);
+
+/*Table structure for table `menu` */
+
+DROP TABLE IF EXISTS `menu`;
+
+CREATE TABLE `menu` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `position` int(2) NOT NULL DEFAULT '0',
+  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `section` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id_parent` int(11) NOT NULL DEFAULT '0',
+  `disabled` tinyint(1) NOT NULL DEFAULT '0',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT 'type=1: front_office; type=2: back_office',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `menu` */
+
+insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disabled`,`type`) values (1,'<en>Dashboard</en><vi>Bảng điều khiển</vi>',1,'dashboard','dashboard',0,0,2),(2,'<en>Products</en><vi>Sản phẩm</vi>',2,'product','product',0,0,2),(3,'<en>System</en><vi>Hệ thống</vi>',10,'system','system',0,0,2),(4,'<en>Users</en><vi>Người dùng</vi>',9,'user','user',0,0,2),(5,'<en>Settings</en><vi>Cài đặt</vi>',1,'setting','setting',3,0,2),(6,'<en>Menu</en><vi>Menu</vi>',2,'menu','menu',3,0,2),(7,'<en>Users Groups</en><vi>Nhóm người dùng</vi>',1,'group','group_list',4,0,2),(8,'<en>Users</en><vi>Người dùng</vi>',2,'user','user_list',4,0,2),(23,'<en>Product Categories</en><vi>Nhóm sản phẩm</vi>',1,'prod_category','prod_category',2,0,2),(24,'<en>Home</en><vi>Trang chủ</vi>',1,'index.html','home',0,0,1),(25,'<en>About Us</en><vi>Giới thiệu</vi>',2,'about.html','about',0,0,1),(26,'<en>Interiors</en><vi>Nội thất - Tượng</vi>',4,'products/interior','products',0,0,1),(27,'<en>Souvenirs</en><vi>Quà lưu niệm</vi>',3,'products/souvenirs','souvenirs',0,0,1),(28,'<en>Spa</en><vi>Phụ liệu Spa</vi>',5,'products/spa','spa',0,0,1),(29,'<en>CMS</en><vi>Quản trị nội dung</vi>',5,'','cms',0,0,2),(30,'<en>Web page</en><vi>Trang web</vi>',1,'webpage','webpage',29,0,2),(31,'<en>News</en><vi>Tin tức</vi>',2,'news','news',29,0,2),(32,'<en>32_Just test&lt;/&gt;&lt;test&gt;&lt;/test&gt;</en><vi>32_Thử nghiệm thôi&lt;/&gt;&lt;thử nghiệm&gt;&lt;/thử nghiệm&gt;</vi>',6,'test','test',0,1,1),(33,'<en>Customers</en><vi>Khách hàng</vi>',4,'customer','customer',0,0,2),(34,'<en>Orders</en><vi>Đơn đặt hàng</vi>',3,'order','order',0,0,2),(35,'<en>Images gallery</en><vi>Thư viện ảnh</vi>',6,'image_gallery','image_gallery',0,0,2),(36,'<en>36_Languages</en><vi>36_Ngôn ngữ</vi>',2,'language','language',3,1,2),(37,'<en>37_Currencies</en><vi>37_Tiền tệ</vi>',2,'currency','currency',3,1,2),(38,'<en>38_24k Gilding Products</en><vi>38_Sản Phẩm Dát Vàng 24k</vi>',3,'24k-gilding-products','products',0,1,1),(39,'<en>News</en><vi>Tin Tức</vi>',6,'news','news',0,0,1),(40,'<en>Contact Us</en><vi>Liên Hệ</vi>',7,'contact-us.html','contact',0,0,1);
+
+/*Table structure for table `param_group` */
+
+DROP TABLE IF EXISTS `param_group`;
+
+CREATE TABLE `param_group` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `disabled` tinyint(1) unsigned NOT NULL,
+  `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_user_created` int(10) unsigned NOT NULL,
+  `modification_date` datetime DEFAULT NULL,
+  `id_user_modified` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `param_group_code_idx` (`code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `param_group` */
+
+/*Table structure for table `param_group_parameter` */
+
+DROP TABLE IF EXISTS `param_group_parameter`;
+
+CREATE TABLE `param_group_parameter` (
+  `id_parameter` int(10) unsigned NOT NULL,
+  `id_param_group` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_parameter`,`id_param_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `param_group_parameter` */
+
+/*Table structure for table `parameter` */
+
+DROP TABLE IF EXISTS `parameter`;
+
+CREATE TABLE `parameter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `category` tinyint(2) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modification_date` datetime DEFAULT NULL,
+  `id_user_created` int(11) NOT NULL,
+  `id_user_modified` int(11) DEFAULT NULL,
+  `disabled` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+
+/*Data for the table `parameter` */
+
+insert  into `parameter`(`id`,`name`,`code`,`value`,`category`,`status`,`creation_date`,`modification_date`,`id_user_created`,`id_user_modified`,`disabled`) values (1,'Allow admin access project','ALLOW_ADMIN','1',1,0,'2012-03-24 21:36:58',NULL,0,NULL,0),(2,'Allow access login ittempts','ALLOWED_LOGIN_ATTEMPTS','5',1,0,'2012-03-24 21:36:59',NULL,0,NULL,0),(3,'Allow admin support access project','ALLOW_ADMIN_SUPPORT','1',1,0,'2012-03-24 21:37:00',NULL,0,NULL,0),(4,'Allow manager access project','ALLOW_MANAGER','1',1,0,'2012-03-24 21:37:00',NULL,0,NULL,0),(5,'Number of items per page in pagination','PAGINATION_ROWS_PER_PAGE','5',1,0,'2012-04-01 22:19:40',NULL,0,NULL,0),(6,'Query string segment used as current page parameter','PAGINATION_QUERY_STRING_SEGMENT','page',1,0,'2012-03-24 21:36:56',NULL,0,NULL,0),(7,'Number of &quotes;digit&quotes; pages displayed on pages bar','PAGINATION_DIGIT_PAGES_DISPLAYED','4',1,0,'2012-03-27 08:42:17',NULL,0,NULL,0),(8,'Max length of the name','MAX_LENGTH_NAME','50',1,0,'2012-03-31 16:30:04',NULL,0,NULL,0),(9,'Max length of password','MAX_LENGTH_PASSWORD','20',1,0,'2012-03-31 16:39:08',NULL,0,NULL,0),(10,'Min length of password','MIN_LENGTH_PASSWORD','6',1,0,'2012-04-01 16:39:44',NULL,0,NULL,0),(11,'Allow viewing','PERM_VIEW','1',1,0,'2012-04-12 14:35:57',NULL,0,NULL,0),(12,'Allow to add','PERM_ADD','2',1,0,'2012-04-12 14:37:30',NULL,0,NULL,0),(13,'Allow to modify','PERM_EDIT','3',1,0,'2012-04-12 14:37:31',NULL,0,NULL,0),(14,'Allow to delete','PERM_DELETE','4',1,0,'2012-04-12 14:37:31',NULL,0,NULL,0),(15,'Site name','SITE_NAME','Phuc Khang Gilding Store',1,0,'2012-04-14 11:11:00',NULL,0,NULL,0),(16,'Back Office','BO','2',1,0,'2012-04-27 23:43:23',NULL,1,NULL,0),(17,'Front Office','FO','1',1,0,'2012-04-27 23:43:43',NULL,1,NULL,0),(18,'Upload image URL','UPLOAD_IMAGE_URL','../uploads/images/',1,0,'2012-06-01 01:12:34',NULL,1,NULL,0),(19,'Image suffix for product list in BO','BO_PROD_IMG_SUFFIX','_avatar',1,0,'2012-06-01 16:20:57',NULL,1,NULL,0),(20,'Image suffix for product list in FO Gallery','FO_PROD_GALLERY_IMG_SUFFIX','_thumb',1,0,'2012-06-01 16:23:21',NULL,1,NULL,0),(21,'Image suffix for product in shopping cart of FO','FO_PROD_CART_IMG_SUFFIX','_small',1,0,'2012-06-01 16:24:52',NULL,1,NULL,0),(22,'Image suffix for product detail in BO','BO_PROD_DETAIL_IMG_SUFFIX','_thumb',1,0,'2012-06-01 16:28:38',NULL,1,NULL,0),(23,'Image suffix for product category list in BO','BO_PROD_CATEGORY_IMG_SUFFIX','_small',1,0,'2012-06-03 15:55:14',NULL,1,NULL,0),(24,'Image product code','IMG_PRODUCT_CODE','prod',1,0,'2012-06-03 17:52:47',NULL,1,NULL,0),(25,'Image product category code','IMG_PRODUCT_CATEGORY_CODE','prod_category',1,0,'2012-06-03 17:53:38',NULL,1,NULL,0),(26,'Male','MALE','M',1,0,'2012-06-08 15:35:40',NULL,1,NULL,0),(27,'Female','FEMALE','F',1,0,'2012-06-08 15:35:54',NULL,1,NULL,0),(28,'Age to be allowed to access website','ALLOWED_AGE','18',1,0,'2012-06-08 16:24:43',NULL,1,NULL,0),(29,'Admin\'s email','ADMIN_EMAIL','truong@vinaict.com',1,0,'2012-06-13 12:31:34',NULL,1,NULL,0),(30,'Watermark enabled','WM_ENABLED','1',1,0,'2012-06-20 10:25:46',NULL,1,NULL,0),(31,'Watermark type','WM_TYPE','overlay',1,0,'2012-06-20 10:26:28',NULL,1,NULL,0),(32,'Watermark text','WM_TEXT','Phuc Khang Gilding Store',1,0,'2012-06-20 10:28:54',NULL,1,NULL,0),(33,'Vertical alignment for the watermark image','WM_VRT_ALIGNMENT','middle',1,0,'2012-06-20 10:32:54',NULL,1,NULL,0),(34,'Horizontal alignment for the watermark image','WM_HOR_ALIGNMENT','center',1,0,'2012-06-20 10:33:50',NULL,1,NULL,0),(35,'Path of image to use as your watermark','WM_OVERLAY_PATH','../uploads/images/icon/watermark.png',1,0,'2012-06-20 10:36:27',NULL,1,NULL,0),(36,'Watermark opacity','WM_OPACITY','70',1,0,'2012-06-20 11:34:43',NULL,1,NULL,0),(37,'The server path to the True Type Font to use for wartermark','WM_FONT_PATH','../uploads/fonts/',1,0,'2012-06-20 11:36:52',NULL,1,NULL,0),(38,'Watermark font size','WM_FONT_SIZE','16',1,0,'2012-06-20 11:37:31',NULL,1,NULL,0),(39,'Watermark font color','WM_FONT_COLOR','ffffff',1,0,'2012-06-20 11:38:00',NULL,1,NULL,0),(40,'Watermark shadow color','WM_SHADOW_COLOR','None',1,0,'2012-06-20 11:39:28',NULL,1,NULL,0),(41,'The distance (in pixels) from the font that the drop shadow should appear','WM_SHADOW_DISTANCE','3',1,0,'2012-06-20 11:42:33',NULL,1,NULL,0),(42,'URI pattern','URI_PATTERN','([A-Za-z0-9]+)((\\/|-)([A-Za-z0-9]+))*',1,0,'2012-06-22 17:44:38',NULL,1,NULL,0),(43,'Product category URI prefix','PROD_CATEGORY_URI_PREFIX','products',1,0,'2012-06-22 17:45:58',NULL,1,NULL,0),(47,'News URI prefix','NEWS_URI_PREFIX','news',1,0,'2012-06-22 19:38:53',NULL,1,NULL,0),(46,'Product category URI suffix','PROD_CATEGORY_URI_SUFFIX','/',1,0,'2012-06-22 19:37:07',NULL,1,NULL,0),(44,'Product URI prefix','PRODUCT_URI_PREFIX','products',1,0,'2012-06-22 19:30:22',NULL,1,NULL,0),(45,'Product URI suffix','PRODUCT_URI_SUFFIX','.html',1,0,'2012-06-22 19:31:03',NULL,1,NULL,0),(48,'News post URI suffix','NEWS_POST_URI_SUFFIX','.html',1,0,'2012-06-22 19:43:10',NULL,1,NULL,0),(49,'News category URI suffix','NEWS_CATEGORY_URI_SUFFIX','/',1,0,'2012-06-22 19:44:26',NULL,1,NULL,0),(50,'Page URI suffix','PAGE_URI_SUFFIX','.html',1,0,'2012-06-23 21:20:30',NULL,1,NULL,0),(51,'Protocol for sending email','MAIL_PROTOCOL','sendmail',1,0,'2012-06-27 12:47:45',NULL,1,NULL,0),(52,'	The server path to Sendmail.','MAIL_PATH','/usr/sbin/sendmail',1,0,'2012-06-27 12:49:28',NULL,1,NULL,0);
+
+/*Table structure for table `permission` */
+
+DROP TABLE IF EXISTS `permission`;
+
+CREATE TABLE `permission` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `uri` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id_user` int(10) unsigned DEFAULT '0',
+  `id_group` smallint(5) unsigned DEFAULT '0',
+  `value` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=117 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `permission` */
+
+insert  into `permission`(`id`,`uri`,`id_user`,`id_group`,`value`) values (1,'dashboard',0,1,'1,2,3'),(66,'menu/edit',0,1,'1,2,3,4'),(54,'user',0,1,'1,2,3,4'),(88,'product/deleteImage',0,1,'1,2,3,4'),(70,'home',0,1,'1,2,3,4'),(69,'product',0,1,'1,2,3,4'),(81,'webpage/edit',0,1,'1,2,3,4'),(80,'webpage/add',0,1,'1,2,3,4'),(79,'webpage',0,1,'1,2,3,4'),(78,'test',0,1,'1,2,3,4'),(77,'news',0,1,'1,2,3,4'),(68,'prod_category',0,1,'1,2,3,4'),(67,'menu/delete',0,1,'1,2,3,4'),(58,'user/change_password',0,1,'1,2,3,4'),(87,'image/process',0,1,'1,2,3,4'),(86,'product/detail',0,1,'1,2,3,4'),(85,'product/edit',0,1,'1,2,3,4'),(84,'product/add',0,1,'1,2,3,4'),(83,'webpage/toggleStatus',0,1,'1,2,3,4'),(82,'webpage/delete',0,1,'1,2,3,4'),(76,'webpage',0,1,'1,2,3,4'),(75,'cms',0,1,'1,2,3,4'),(74,'spa-accessories',0,1,'1,2,3,4'),(73,'souvenirs',0,1,'1,2,3,4'),(72,'interior',0,1,'1,2,3,4'),(71,'about-us',0,1,'1,2,3,4'),(43,'group',0,1,'1,2,3,4'),(65,'menu/add',0,1,'1,2,3,4'),(64,'system',0,1,'1,2,3,4'),(63,'menu',0,1,'1,2,3,4'),(62,'menu/delete',0,1,'1,2,3,4'),(61,'menu/edit',0,1,'1,2,3,4'),(60,'menu/add',0,1,'1,2,3,4'),(59,'menu',0,1,'1,2,3,4'),(55,'user/add',0,1,'1,2,3,4'),(56,'user/edit',0,1,'1,2,3,4'),(57,'user/delete',0,1,'1,2,3,4'),(89,'product/setDefaultImage',0,1,'1,2,3,4'),(90,'product/recreateImage',0,1,'1,2,3,4'),(91,'prod_category/add',0,1,'1,2,3,4'),(92,'prod_category/edit',0,1,'1,2,3,4'),(93,'prod_category/delete',0,1,'1,2,3,4'),(94,'prod_category/recreateImage',0,1,'1,2,3,4'),(95,'prod_category/deleteImage',0,1,'1,2,3,4'),(101,'customer',0,1,'1,2,3,4'),(97,'customer/add',0,1,'1,2,3,4'),(98,'customer/edit',0,1,'1,2,3,4'),(99,'customer/delete',0,1,'1,2,3,4'),(100,'customer',0,15,'1,2,3,4'),(102,'order',0,15,'1,2,3,4'),(103,'order',0,1,'1,2,3,4'),(104,'image_gallery',0,15,'1,2,3,4'),(105,'image_gallery',0,1,'1,2,3,4'),(106,'setting',0,1,'1,2,3,4'),(107,'language',0,15,'1,2,3,4'),(108,'language',0,1,'1,2,3,4'),(109,'currency',0,15,'1,2,3,4'),(110,'currency',0,1,'1,2,3,4'),(111,'san-pham-dat-vang-24k',0,15,'1,2,3,4'),(112,'san-pham-dat-vang-24k',0,1,'1,2,3,4'),(113,'tin-tuc',0,15,'1,2,3,4'),(114,'tin-tuc',0,1,'1,2,3,4'),(115,'contact-us',0,15,'1,2,3,4'),(116,'contact-us',0,1,'1,2,3,4');
+
+/*Table structure for table `product` */
+
+DROP TABLE IF EXISTS `product`;
+
+CREATE TABLE `product` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `short_description` tinytext COLLATE utf8_unicode_ci,
+  `description` text COLLATE utf8_unicode_ci,
+  `price` float unsigned DEFAULT NULL,
+  `currency` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `id_def_image` int(11) DEFAULT NULL,
+  `is_disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `id_prod_category` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `keywords` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_featured` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `id_prod_image` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_primary_prod_category` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`code`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `product` */
+
+insert  into `product`(`id`,`code`,`name`,`short_description`,`description`,`price`,`currency`,`link`,`id_def_image`,`is_disabled`,`id_prod_category`,`is_deleted`,`keywords`,`is_featured`,`id_prod_image`,`id_primary_prod_category`) values (1,'D00004','<en>Product 1</en><vi>Sản Phẩm 1</vi>','<en>Short description of Product 1</en><vi>Mô tả ngắn gọn sản phẩm 1</vi>','<en>&lt;p&gt; Long description of Product 1&lt;/p&gt;</en><vi>&lt;p&gt; Mô tả chi tiết sản phẩm 1&lt;/p&gt;</vi>',0,'VND','san-pham-1',NULL,0,NULL,0,'san pham 1, product 1',1,NULL,3),(2,'A100002','<en>Gilding table</en><vi>Bàn dát vàng</vi>','<en>This is gilding table</en><vi>Đây là bàn dát vàng</vi>','<en>&lt;h3 style=&quot;color:red;&quot;&gt; This is the best gilding table&lt;/h3&gt;</en><vi>&lt;h3 style=&quot;color:blue;&quot;&gt; Đây là bàn dát vàng đẹp nhất&lt;/h3&gt;</vi>',1000,'USD','san-pham-2',0,0,'2',0,'gilding table, ban dat vang',1,'44,45,46,48,50',2),(3,'A200003','<en>Gilding chair</en><vi>Ghế dát vàng</vi>','<en>This is a gilding chair</en><vi>Đây là ghế dát vàng</vi>','<en>&lt;h3 style=&quot;color:blue;&quot;&gt; This is the luxury gilding chair&lt;/h3&gt;</en><vi>&lt;h3 style=&quot;color:red;&quot;&gt; Đây là ghế dát vàng sang trọng&lt;/h3&gt;</vi>',10500000,'VND','san-pham-3',NULL,0,NULL,0,'gilding chair, ghe dat vang',1,NULL,3),(4,'A00004','<en>Gilding cabinet</en><vi>Tủ dát vàng</vi>','<en>This is a gilding cabinet</en><vi>Đây là cái tủ dát vàng</vi>','<en>&lt;p&gt; &lt;span style=&quot;background-color:yellow;&quot;&gt;Detail information about gilding cabinet&lt;/span&gt;&lt;/p&gt;</en><vi>&lt;p&gt; &lt;span style=&quot;background-color:lime;&quot;&gt;Thông tin chi tiết về cái tủ dát vàng&lt;/span&gt;&lt;/p&gt;</vi>',0,'VND','san-pham-4',NULL,0,NULL,0,'',1,'24',3),(5,'A###','<en>test</en><vi>no pro</vi>',NULL,NULL,22,'VND','sanpham5',NULL,0,NULL,0,NULL,0,NULL,3);
+
+/*Table structure for table `product_category` */
+
+DROP TABLE IF EXISTS `product_category`;
+
+CREATE TABLE `product_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `is_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `id_parent` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `keywords` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_image` int(11) DEFAULT NULL,
+  `link` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`code`)
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `product_category` */
+
+insert  into `product_category`(`id`,`code`,`name`,`is_deleted`,`id_parent`,`description`,`keywords`,`id_image`,`link`) values (2,'A','<en>Souvenirs</en><vi>Quà Lưu Niệm</vi>',0,NULL,'','',13,'products/qua-luu-niem'),(3,'C','<en>Spa</en><vi>Phụ Liệu Spa</vi>',0,NULL,'','',17,'products/spa'),(4,'B','<en>Interiors</en><vi>Nội Thất - Tượng</vi>',0,NULL,'','',15,'products/noi-that'),(22,'C1','<en>Gilding Mask</en><vi>Mặt nạ dát vàng</vi>',0,'3','','',27,'products/spa/mat-na-dat-vang'),(12,'A1','<en>Luxury Gifts</en><vi>Quà Tặng Cao Cấp</vi>',0,'2','','',28,'products/qua-luu-niem/qua-tang-cao-cap'),(13,'A2','<en>Christmas Gifts</en><vi>Quà Tặng Giáng Sinh</vi>',0,'2','','',29,'products/qua-luu-niem/qua-giang-sinh'),(14,'A3','<en>Gilding Picture Frame</en><vi>Khung Hình Dát Vàng</vi>',0,'2','','',30,'products/qua-luu-niem/khung-hinh'),(15,'A4','<en>Things On Table</en><vi>Vật Để Bàn</vi>',0,'2','','',31,'products/qua-luu-niem/vat-de-ban'),(16,'A5','<en>Tray of tea, wine</en><vi>Khay trà, rượu</vi>',0,'2','','',32,'products/qua-luu-niem/khay-tra-ruou'),(17,'B1','<en>Bàn trang điểm</en><vi>Bàn trang điểm</vi>',0,'4','','',33,'products/noi-that/ban-trang-diem'),(18,'B2','<en>Special Chairs</en><vi>Ghế Cao Cấp</vi>',0,'4','','',34,'products/noi-that/ghe-cao-cap'),(19,'B3','<en>TV Shelf</en><vi>Kệ Tivi</vi>',0,'4','','',35,'products/noi-that/ke-tivi'),(20,'B4','<en>Mirror Frame</en><vi>Khung Gương</vi>',0,'4','','',36,'products/noi-that/khung-guong'),(21,'B5','<en>Gilding Statues</en><vi>Tượng Dát Vàng</vi>',0,'4','','',37,'products/noi-that/tuong-dat-vang');
+
+/*Table structure for table `session` */
+
+DROP TABLE IF EXISTS `session`;
+
+CREATE TABLE `session` (
+  `session_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `session` */
+
+insert  into `session`(`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) values ('27338cfa34b5ef2f38b878e34042be56','0.0.0.0','Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/201001',1337165699,'a:4:{s:13:\"last_login_id\";b:0;s:6:\"userID\";s:1:\"1\";s:12:\"logged_email\";s:18:\"truong@vinaict.com\";s:10:\"stored_url\";s:48:\"http://localhost/phuckhang/application/dashboard\";}'),('babf3604cba09eaf0c8b79ca275b42ec','0.0.0.0','Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/201001',1337234289,'a:4:{s:13:\"last_login_id\";b:0;s:6:\"userID\";s:1:\"1\";s:12:\"logged_email\";s:18:\"truong@vinaict.com\";s:10:\"stored_url\";s:46:\"http://localhost/phuckhang/application/webpage\";}'),('bcdd248e8af61161a4339ea9dc5d573e','0.0.0.0','Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/201001',1337095068,'a:4:{s:13:\"last_login_id\";b:0;s:6:\"userID\";s:1:\"1\";s:12:\"logged_email\";s:18:\"truong@vinaict.com\";s:10:\"stored_url\";s:46:\"http://localhost/phuckhang/application/webpage\";}');
+
+/*Table structure for table `user` */
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `date_last_login` datetime DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `disabled` tinyint(1) DEFAULT '0',
+  `login_attempts` smallint(3) DEFAULT '0',
+  `deactived` tinyint(1) DEFAULT '0',
+  `is_controller` tinyint(1) NOT NULL DEFAULT '0',
+  `home_phone` varchar(15) DEFAULT NULL,
+  `work_phone` varchar(15) DEFAULT NULL,
+  `mobile_phone` varchar(15) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `is_business` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+/*Data for the table `user` */
+
+insert  into `user`(`id`,`email`,`pass`,`date_last_login`,`last_name`,`first_name`,`disabled`,`login_attempts`,`deactived`,`is_controller`,`home_phone`,`work_phone`,`mobile_phone`,`address`,`name`,`is_business`) values (1,'truong@vinaict.com','1c84eef95efa8cfe106394a660da8a12929b18f0','2012-07-04 08:30:25','Lý','Vĩnh Trường',0,0,0,0,'','','0908 080 656',NULL,NULL,0),(5,'phamthanhnam@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Pham','Thanh Nam',0,0,0,0,NULL,NULL,NULL,NULL,NULL,0),(4,'nguyenvancuong@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Nguyen','van Cuong',0,0,0,0,NULL,NULL,NULL,NULL,NULL,0),(3,'lehoangchanh@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Le','Hoang Chanh',0,0,0,0,NULL,NULL,NULL,NULL,NULL,0),(2,'huynhbaan@vinaict.com','7c4a8d09ca3762af61e59520943dc26494f8941b',NULL,'Huynh','Ba An',0,0,0,0,'','','','',NULL,0);
+
+/*Table structure for table `user_group` */
+
+DROP TABLE IF EXISTS `user_group`;
+
+CREATE TABLE `user_group` (
+  `id_user` int(10) unsigned NOT NULL,
+  `id_group` smallint(5) unsigned NOT NULL,
+  PRIMARY KEY (`id_user`,`id_group`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `user_group` */
+
+insert  into `user_group`(`id_user`,`id_group`) values (1,1),(2,1),(3,1),(4,1),(5,1);
+
+/*Table structure for table `web_page` */
+
+DROP TABLE IF EXISTS `web_page`;
+
+CREATE TABLE `web_page` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `keywords` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `id_parent` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`link`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `web_page` */
+
+insert  into `web_page`(`id`,`title`,`content`,`link`,`keywords`,`is_disabled`,`id_parent`) values (2,'<en>About Us</en><vi>Giới thiệu</vi>','<en>&lt;p&gt; &lt;strong&gt;- Grand Home was established with a goal to providing customer with high quality interior product. Grand Home’s product are combinations of culture and art with sophisticated shapes, luxurious designs and modern designing ideas.&lt;/strong&gt;&lt;/p&gt;&lt;div&gt; &lt;em&gt;- With continuous attempts and with the strength of, we have created the most sophistcated and best quality product for all customers.&lt;/em&gt;&lt;/div&gt;&lt;div&gt; &lt;em&gt;- The message Grand Home would like to send to the customers is “with all respects, Grand Home commits to provide customers best products and services”.&lt;/em&gt;&lt;/div&gt;&lt;div&gt; - We are proud and strive restlessly to make Grand Home’s saff experts on their fields. Whith a team of and professionlly trained decorators, artists and skillful workers Grand Home surely satify all customers.&lt;/div&gt;</en><vi>&lt;p align=&quot;justify&quot;&gt; &lt;big&gt;Được thành lập từ năm 2000, sau hơn một thập kỷ ra đời và phát triển, GrandHome chính thức trở thành một trong những nhà thiết kế và trang trí nội thất hàng đầu tại Việt Nam. Hiện GrandHome có trụ sở chính đặt tại 81 Hồ Văn Huê - Phường 9 - Quận Phú Nhuận - TP.Hồ Chí Minh. Trong hơn một thập kỷ qua, chúng tôi đã không ngừng cố gắng để vượt qua sự mong đợi của Quý khách hàng với phương châm “Sự hài lòng của khách hàng là thành công của chúng tôi”.&lt;/big&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Thế mạnh của GrandHome là mang đến cho Quý khách hàng những sản phẩm nội thất cổ điển cao cấp mang hơi thở của thời gian. Những sản phẩm được các nhà thiết kế, họa sỹ và công nhân lành nghề thổi hồn vào thông qua những đôi tay chuyên nghiệp. Không chỉ chăm chút vẻ đẹp bên ngoài, sản phẩm của GrandHome còn đa dạng về thiết kế nhờ sự hết hợp tinh tế giữa văn hóa và nghệ thuật của các nước Ý, Pháp, Nga...&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Với bản lĩnh của người tiên phong trong lĩnh vực thiết kế và trang trí nội thất cổ điển tại Việt Nam. Đội ngũ chuyên gia và công nhân của GrandHome không ngừng sáng tạo, không chỉ cho ra đời những sản phẩm tốt nhất cho khách hàng mà còn biến mỗi thiết kế là một phong cách riêng cho từng ngôi nhà của Quý khách.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; “Nhìn sản phẩm nhớ đến GrandHome” – đó là mục tiêu chúng tôi luôn hướng đến.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; &amp;nbsp;&lt;/p&gt;&lt;h3 align=&quot;justify&quot; style=&quot;color:red;&quot;&gt; &lt;strong&gt;CAM KẾT CỦA CHÚNG TÔI&lt;/strong&gt;&lt;/h3&gt;&lt;p align=&quot;justify&quot;&gt; &lt;u&gt;Không ngừng tạo ra những sản phẩm mới, độc đáo, riêng biệt.&lt;/u&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Chất lượng luôn cao hơn giá thành.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Lấy sự hài lòng của khách hàng làm thước đo cho sự phát triển của công ty.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt; Đồng hành cùng Quý khách hàng trên từng sản phẩm.&lt;/p&gt;</vi>','about','about, gioi thieu',0,NULL);
+
+/* 28-06-2012: Pham Thanh Nam: Order Management */
+
+DROP TABLE IF EXISTS `purchase_order`;
+
+CREATE TABLE `purchase_order` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `code` VARCHAR(12) COLLATE utf8_unicode_ci NOT NULL,
+  `id_customer` BIGINT(20) UNSIGNED NOT NULL,
+  `order_date` DATE DEFAULT NULL,
+  `amount` FLOAT UNSIGNED NOT NULL,
+  `is_deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
+  `status` TINYINT(2) UNSIGNED NOT NULL,
+  `description` TEXT COLLATE utf8_unicode_ci,
+  `shipping_address` VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
+  `billing_address` VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
+  `shipping_date` DATE DEFAULT NULL,
+  `payment_date` DATE DEFAULT NULL,
+  `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modification_date` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`code`)
+) ENGINE=MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+/* 29-06-2012: Pham Thanh Nam: Order Management */
+
+DROP TABLE IF EXISTS `purchase_order_detail`;
+
+create table `purchase_order_detail`( 
+   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT , 
+   `id_purchase_order` bigint UNSIGNED NOT NULL , 
+   `id_product` bigint UNSIGNED NOT NULL , 
+   `code_product` varchar(15) NOT NULL , 
+   `name_product` varchar(250) NOT NULL , 
+   `price_product` float NOT NULL , 
+   `currency_product` varchar(3) NOT NULL , 
+   `desciption_product` text , 
+   `image_product` varchar(300) , 
+   `number` bigint UNSIGNED NOT NULL , 
+   `is_deleted` tinyint(1) UNSIGNED DEFAULT '0' , 
+   PRIMARY KEY (`id`)
+ )ENGINE=MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `purchase_order_status`;
+
+CREATE TABLE `purchase_order_status` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `purchase_order_status`
+--
+
+INSERT INTO `purchase_order_status` (`id`, `name`) VALUES
+(1, '<en>Unactive</en><vi>Chưa kích hoạt</vi>'),
+(2, '<en>Pending</en><vi>Đang đợi</vi>'),
+(3, '<en>Shipping</en><vi>Đang vận chuyển</vi>'),
+(4, '<en>Done</en><vi>Hoàn thành</vi>');
+
+/* 30-06-2012 : Ly Vinh Truong : Order Management */
+
+INSERT  INTO `parameter`(`id`,`name`,`code`,`value`,`category`,`status`,`creation_date`,`modification_date`,`id_user_created`,`id_user_modified`,`disabled`) VALUES (53,'Unaccepted order status','ORD_STT_UNACCEPTED','1',1,0,'2012-06-30 19:00:16',NULL,1,NULL,0),(54,'Pending order status','ORD_STT_PENDING','2',1,0,'2012-06-30 19:01:53',NULL,1,NULL,0),(55,'Shipping order status','ORD_STT_SHIPPING','3',1,0,'2012-06-30 19:02:40',NULL,1,NULL,0),(56,'Completed order status','ORD_STT_COMPLETED','4',1,0,'2012-06-30 19:04:16',NULL,1,NULL,0),(57,'System timezone name','SYSTEM_TIMEZONE','Asia/Ho_Chi_Minh',1,0,'2012-06-30 19:47:00',NULL,1,NULL,0);
+
+/* 01-07-2012 21:26 - Ly Vinh Truong - Menu Management */
+
+ALTER TABLE `menu` 
+   ADD COLUMN `relation` VARCHAR(100) NULL AFTER `type`;
+
+/* 02-07-2012 16:15 - Ly Vinh Truong - Settings */
+ALTER TABLE `parameter` 
+   CHANGE `category` `always_load` TINYINT(1) DEFAULT '0' NOT NULL;
+
+/* 02-07-2012 - Pham Thanh Nam - Manager Order */
+INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_group`, `value`) VALUES
+(117, 'order/delete', 0, 1, '1,2,3,4'),
+(118, 'order/detail', 0, 1, '1,2,3,4'),
+(119, 'order/status', 0, 1, '1,2,3,4'),
+(120, 'order/deleteOrderDetail', 0, 1, '1,2,3,4');
+
+/* 03-07-2012 23:30 - Ly Vinh Truong - Settings */
+ALTER TABLE `parameter` 
+   ADD COLUMN `data_type` TINYINT(1) DEFAULT '1' NOT NULL AFTER `disabled`,
+   ADD COLUMN `data` TEXT AFTER `data_type`;
+
+/* 04-07-2012 15:30 - Huynh Ba An - News_Category */
+DROP TABLE IF EXISTS `news_category`;
+
+CREATE TABLE `news_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `description` text,
+  `id_parent` varchar(50) DEFAULT NULL,
+  `keyword` varchar(200) DEFAULT NULL,
+  `link` varchar(400) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `news_category`(`id`,`name`,`description`,`id_parent`,`keyword`,`link`) VALUES (1,'test','Test is test for me, but me I don\'t know....\r\n','1','test','test_news_category'),(2,'Code function for back end page','This is function test. I am ..............','2','code','news_category');
+
+/* 04-07-2012 - Pham Thanh Nam - Manager user group */
+
+RENAME TABLE `group` TO `usr_group`;
+RENAME TABLE `user_group` TO `usr_group_user`;
+ALTER TABLE `usr_group_user` 
+   CHANGE `id_group` `id_usr_group` SMALLINT(5) UNSIGNED NOT NULL;
+ALTER TABLE `permission` 
+   CHANGE `id_group` `id_usr_group` SMALLINT(5) UNSIGNED DEFAULT '0' NULL ;
+
+UPDATE `permission` SET `uri` = 'usr_group' WHERE `permission`.`id` =43;
+
+INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_usr_group`, `value`) VALUES
+(121, 'usr_group/delete', 0, 1, '1,2,3,4'),
+(122, 'usr_group/edit', 0, 1, '1,2,3,4'),
+(123, 'usr_group/add', 0, 1, '1,2,3,4'),
+(133, 'article', 0, 1, '1,2,3,4'),
+(125, 'article/add', 0, 1, '1,2,3,4'),
+(126, 'article/delete', 0, 1, '1,2,3,4'),
+(127, 'article/edit', 0, 1, '1,2,3,4');
+
+INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES
+(58, 'max length of the code', 'MAX_LENGTH_CODE', '10', 1, 0, '2012-07-04 11:59:59', NULL, 1, NULL, 0, 1, NULL),
+(59, 'max length of the name group', 'MAX_LENGTH_NAME_GROUP', '200', 1, 0, '2012-07-05 12:05:02', NULL, 1, NULL, 0, 1, NULL);
+
+
+/* 05-07-2012 - Pham Thanh Nam - Manager article */
+
+DROP TABLE IF EXISTS `article`;
+
+CREATE TABLE `article` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `keywords` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_news_category` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`link`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disabled`,`type`,`relation`) values (42,'<en>Article</en><vi>Bài viết</vi>',2,'article','article_list',31,0,2,NULL);
+
+/* 05-07-2012 12:00 - Ly Vinh Truong - Settings */
+
+UPDATE `parameter` SET `data_type` = 12, `value` = '<en>Phuc Khang Gilding Store</en><vi>Cửa Hàng Dát Vàng Phúc Khang</vi>' WHERE `id` = 15;
+
+/* 05-07-2012 - Pham Thanh Nam - User (add field lang) */
+
+alter table `user` 
+   add column `lang` varchar(5) DEFAULT 'vi' NOT NULL after `is_business`;
+
+/* 06-07-2012 - Huynh Ba An - Manager News category*/
+insert  into `menu`(`id`,`name`,`position`,`link`,`section`,`id_parent`,`disabled`,`type`,`relation`)values
+(44,'<en>Categories</en><vi>Danh mục tin</vi>',1,'news_category','news_category',31,0,2,NULL);
+
+
+/* 06-07-2012 - Phạm Thanh Nam - Manager Purchase_order*/
+ALTER TABLE `purchase_order` CHANGE `status` `status` TINYINT( 2 ) UNSIGNED NOT NULL DEFAULT '1';
+
+alter table `purchase_order` 
+   add column `currency` varchar(3) DEFAULT 'VND' NULL after `modification_date`;
+
+
+/* 10-07-2012 - Phạm Thanh Nam - Load menu frontend*/
+UPDATE `menu` SET `section` = 'interior' WHERE `menu`.`id` =26;
+
+
+/* 10-07-2012 - Phạm Thanh Nam - Manager News Category*/
+alter table `news_category` 
+   add column `is_deleted` tinyint(1) DEFAULT '0' NOT NULL after `link`;
+
+INSERT INTO `permission` (`id` ,`uri` ,`id_user` ,`id_usr_group` ,`value`)VALUES ('134', 'news_category', '0', '1', '1,2,3,4') ,('135' , 'news_category/add', '0', '1', '1,2,3,4'),('136', 'news_category/edit', '0', '1', '1,2,3,4'),('137', 'news_category/delete', '0', '1', '1,2,3,4');
+
+}}}
+
+/* 10-07-2012 - Nguyễn Văn Cường - Manager site paramter*/
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('60','default page when loaded','SITE_PAGE_DEFAULT_STRING','index','1','0','2012-07-10 17:41:39',NULL,'1',NULL,'0','1',NULL);
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('61','Active Shopping Cart URI ','SITE_PAGE_ACTIVE_SHOP_STRING','active.html','1','0','2012-07-10 17:42:39',NULL,'1',NULL,'0','1',NULL);
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('63','Prefix of Page Controller URI','SITE_PAGE_PAGE_STRING','page','1','0','2012-07-10 17:53:16',NULL,'1',NULL,'0','1',NULL);
