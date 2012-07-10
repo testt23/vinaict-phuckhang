@@ -27,13 +27,14 @@
     margin-top:15px;
     z-index: 98;
 }
-#menu ul {
+#menu ul{
     width:1000px;
     height:50px;
     line-height: 12px;
     margin:0 auto;
     list-style:none
 }
+
 #menu ul ul{
     position: absolute;
 }
@@ -145,16 +146,17 @@
     margin: 0px auto;
 }
 #product-container ul li{
-    width:160px;
-    height:100px;
+    width:150px;
+    height:130px;
     float:left;
     padding:0px 20px 20px 20px;
     margin: 0px;
-
 }
+
 #product-container ul li img{
-    width: 100%;
-    height: 100%;
+    box-shadow: 3px 3px 3px 3px gray;
+    -moz-box-shadow: 3px 3px 3px 3px gray;
+    -webkit-box-shadow: 3px 3px 3px 3px gray;
 }
 #product-container ul li.space{
     width: 0px !important;
@@ -163,6 +165,19 @@
     height:57px !important;
 }
 
+.name-pro{
+    height: 50px;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+    overflow: hidden;
+}
+    
+
+.name-pro a, .name-pro strong{
+    font-weight: bold;
+    color: gray;
+    text-decoration: none;
+}
 /**/
 table tr td{text-align:center}
 #image{
@@ -180,10 +195,13 @@ table tr td{text-align:center}
 }
 #order{width:180px;
        height:31px;
+       line-height: 20px;
        background:url(../images/site/order.png) no-repeat;
        padding-top:15px;
-       text-align:center}
+       text-align:center
+}
 #order input{text-decoration:none;
+             margin-top:  -2px;
              color:#fff;
              cursor: pointer;
              background: none;
@@ -365,12 +383,17 @@ table tr td{text-align:center}
     display: inline;
     background: red;
     width: 20px;
+    
     height: 15px;
 }
-#language-wrapper input#lang-en{
+#language-wrapper a.en{
     background:url(../images/site/en.jpg) no-repeat top left;
+    padding: 2px 12px;
+    text-decoration: none;
 }
-#language-wrapper input#lang-vi{
+#language-wrapper a.vi{
+    padding: 2px 12px;
+    text-decoration: none;
     background:url(../images/site/vi.jpg) no-repeat top left;
 }
 #language-wrapper form{
@@ -485,10 +508,6 @@ table tr td{text-align:center}
     }
     .wrapper-popup{
         position: relative;
-        box-shadow: 3px 3px 3px 3px gray;
-        -moz-box-shadow: 3px 3px 3px 3px gray;
-        -webkit-box-shadow: 3px 3px 3px 3px gray;
-        border: solid 1px white;
     }
     
     .wrapper-popup .p-popup a{
@@ -512,57 +531,97 @@ table tr td{text-align:center}
         color: gray;
         
     }
-    
-    #showimage{
-        box-shadow: 0px 0px 3px 3px gray;
-    }
-   
-    .searchbox{
+ 
+    #searchbox{
         float:right;
         position: relative;
-        margin: 22px 20px 0px 0px;
-        border: solid 1px gray;
-        background: gray;
-        cursor: pointer;
-        padding: 3px 0px;
-        line-height: 20px;
-        text-align: center;
-        width: 80px;
-        height: 20px;
-        color: white;
-        font-weight: bold;
-        border-radius: 5px 5px 5px 5px;
+        margin: 90px 20px 0px 0px;
+        width: 350px;
+        height: 30px;
+        color: gray;
         z-index: 999999;
+        text-align: right;
     }
-   
-    #box-search input{
-        padding: 3px 5px;
+    .name-search{
+        margin: 0px;
+        height: 20px;
     }
-    #box-search input.bt{
-        border: solid 1px gray;
-        cursor: pointer;
+    .button-search{
+        margin: 0px;
     }
-    .none{
+    #advance{
+        margin: 3px 0px 0px 0px;
+        padding: 3px 20px;
+        -moz-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+        text-decoration: none;
+        color: white;
+        background: gray;
+    }
+    .hide{
         display: none;
     }
     .show{
         display: block;
     }
-    #box-search div{
-        
+    .search-popup input{
+        width: 100px;
+        padding: 2px 5px;
+        border: solid 1px gray; 
     }
-    #box-search{
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        box-shadow: 0px 0px 3px 3px gray;
-        width: 250px;
-        height: 115px;
+    .search-popup select{
+        width: 100px;
+        border: solid 1px gray; 
+    }
+    .search-popup{
+        padding: 0px 0px 15px 15px;
         background: white;
-        z-index: 9999;
-        cursor: auto;
-        text-align: right;
-        padding: 20px;
+        box-shadow: 0px 0px 3px 3px gray;
+        position: absolute;
+        top: 30px;
+        right: 0px;
+        width: 220px;
+        height: 100px;
+
+    }
+    
+    .close-search-pop{
+        text-align: center;
+        border-radius: 5px 5px 5px 5px;
+        color: white;
+        cursor: pointer;
+        background: #0066cc;
+        float:right;
+        width: 20px;
+        height: 20px;
+    }
+    
+    #text ul li h2{
+        color: orangered;
+        font-size: 1.0em;
+    }
+    
+    
+    #text ul li{
+        list-style: none;
+        padding: 5px
+    }
+    #text ul li strong{
+        color: gray;
+    }
+    #text ul li .call-price{
+        color: brown;
+        font-weight: bold;  
+    }
+    
+    .shp td a{
+        text-decoration: none;
         color: black;
-        font-weight: normal;
+    }
+    .shp td a:hover{
+        text-decoration: underline;
+    }
+    
+    .title-main{
+         height: 30px; font-size: 1.0em; text-transform: uppercase;
     }

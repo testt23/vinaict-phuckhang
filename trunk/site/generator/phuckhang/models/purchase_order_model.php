@@ -6,7 +6,7 @@
 		protected $__dbconf = 'default';
 
 		var $id;	//bigint(20) unsigned	Primary Key	Auto Increment	NOT NULL
-		var $code;	//varchar(12)			NOT NULL
+		var $code;	//varchar(12)	Unique Key		NOT NULL
 		var $id_customer;	//bigint(20) unsigned			NOT NULL
 		var $order_date;	//date			NULL
 		var $amount;	//float unsigned			NOT NULL
@@ -23,7 +23,7 @@
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'bigint', 'null' => FALSE, 'auto_increment' => TRUE),
-			'code' => array('type' => 'varchar', 'size' => 12, 'null' => FALSE),
+			'code' => array('key' => 'UNI', 'type' => 'varchar', 'size' => 12, 'null' => FALSE),
 			'id_customer' => array('type' => 'bigint', 'null' => FALSE),
 			'order_date' => array('type' => 'date', 'null' => TRUE),
 			'amount' => array('type' => 'float unsigned', 'null' => FALSE),

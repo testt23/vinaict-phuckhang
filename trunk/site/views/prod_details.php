@@ -103,7 +103,14 @@
     });
 </script>
 <?php endif;?>
+
+
 <?php if (!empty($product) && $product->countRows() > 0): $product->fetchFirst(); ?>
+    
+<h1 class="title-main">
+    Detail Product
+</h1>
+    
     <div id="image">
         
         <?php if ($show == 'yes'):?> 
@@ -124,6 +131,7 @@
                         <div class="items">
                             <?php $i = 0; ?>
                             <?php while($image->fetchNext()): ?>
+
                             <?php if ($image->the_image_id() == $product->the_product_id_def_image()):?>
                                      <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
                             <?php else:?>
@@ -139,11 +147,25 @@
 
     <div id="info">
         <div id="text">
-            <h3 > <?php echo $product->the_product_name(); ?></h3>
-            <span><strong><?php echo lang('lbl_price');?></strong><?php echo $product->the_product_price(); ?> <?php echo $product->the_product_currency(); ?></span><br/>
-            <span><strong><?php echo lang('lbl_description');?></strong>
-                <?php  echo $product->the_product_description(); ?>
-            </span>
+            <ul>
+                <li><h2><?php echo $product->the_product_name(); ?></h2></li>
+                <li>
+                    <strong>Price:</strong>
+                    <span class="call-price">
+                    <?php 
+                    if ($product->the_product_price() == '0' || $product->the_product_price() == ''){
+                        echo 'Call';
+                    }else{
+                        echo $product->the_product_price() . ' ' . $product->the_product_currency();
+                    }
+                    ?>
+                 </span>
+                </li>
+                <li>
+                    <strong>Description:</strong>
+                        <?php echo $product->the_product_description(); ?>
+                </li>
+            </ul>
         </div>
         <div id="order">
             <form method="POST" action="<?php echo base_url() ?>list-cart">
@@ -152,9 +174,9 @@
                 <input type="hidden" name="h_id" value="<?php echo $product->the_product_id(); ?>"/>
                 <input type="hidden" name="h_link" value="<?php echo $product->the_product_link(); ?>" />
                 <input type="hidden" name="h_code" value="<?php echo $product->the_product_code(); ?>" />
-                <input type="hidden" name="h_name" value="<?php echo $product->the_product_name(); ?>"/>
+                <input type="hidden" name="h_name" value="<?php echo $product->the_product_name(true); ?>"/>
                 <input type="hidden" name="h_price" value="<?php echo $product->the_product_price(); ?>"/>
-                <input type="hidden" name="h_description" value="<?php echo $product->the_product_description(); ?>"/>
+                <input type="hidden" name="h_description" value="<?php echo $product->the_product_description(true); ?>"/>
                 <input type="hidden" name="h_curency" value="<?php echo $product->the_product_currency(); ?>"/>
                 <input type="hidden" name="click_access" value="click_access"/>
                 <input style="border: none;" type="submit" name="orderSubmit" value="<?php echo lang('btn_order');?>"/>

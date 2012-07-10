@@ -3,11 +3,12 @@
 class ShoppingCart {
 
     var $ci;
-    var $shop_name = 'cart';
+    var $shop_name;
 
     function __construct() {
         $this->ci = & get_instance();
         $this->ci->load->library('session');
+        $this->shop_name = Variable::getSessionShopping();
     }
 
     public function get_shop_name() {

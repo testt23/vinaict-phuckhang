@@ -10,62 +10,95 @@ class Product_controller extends CI_Controller {
     public function index() {
         redirect('index');
     }
+
+    
     
     // function display a list products by page
-    public function prod_list_by_category($url_cate = '', $url_page = 1) {
+    public function prod_list_by_category($url_cate = '') {
         if (!empty($url_cate)) {
             $Product = new Product();
-            $info = $Product->getProductByCategory($url_cate, $url_page);
+            $info = $Product->getProductByCategory($url_cate);
             $data['content'] = 'index';
             $data['product'] = $info['product'];
             $data['paging'] = $info['paging'];
-            
             $data['selected'] = $url_cate;
+            
             $array_menus = array();
             $filter = array();
+
             $filter['parent_id'] = 0;
             Menu::getMenuTree($array_menus, $filter);
 
             $data['array_menus'] = $array_menus;
+            $data['title'] = 'Danh sách sản phẩm';
 
             $this->load->view('temp', $data);
         } else {
-            redirec('index');
+            redirect(Variable::getDefaultPageString());
         }
     }
-    
-    
-    //
-    //
-    
-    public function prod_search($page = 1){
-        if ($this->input->post('bnt_search') != null){
-            $name = $this->input->post('txt-search');
-            $Product = new Product();
-            $info = $Product->getProductByname($name, $page);
-            
-            $data['content'] = 'index';
-            $data['product'] = $info['product'];
-            $data['paging'] = $info['paging'];
-            
-            $array_menus = array();
-            $filter = array();
-            $filter['parent_id'] = 0;
-            Menu::getMenuTree($array_menus, $filter);
 
-            $data['array_menus'] = $array_menus;
-            $this->load->view('temp', $data);
-        }else{
-            
-            redirect('index');
+    
+    public function prod_search() {
+
+        $name = '';
+        $pric_from = '';
+        $pric_to = '';
+        $currency = '';
+        if ($this->session->userdata('search_name')) {
+            $name = $this->session->userdata('search_name');
         }
+
+        if ($this->session->userdata('search_pric_from')) {
+            $pric_from = $this->session->userdata('search_pric_from');
+        }
+
+        if ($this->session->userdata('search_pric_to')) {
+            $pric_to = $this->session->userdata('search_pric_to');
+        }
+
+        if ($this->session->userdata('search_currency')) {
+            $currency = $this->session->userdata('search_currency');
+        }
+
+        if ($this->input->post('button-search') != null) {
+            $name = $this->input->post('search-name');
+            $pric_from = $this->input->post('price-from-search');
+            $pric_to = $this->input->post('price-to-search');
+            $currency = $this->input->post('currency-search');
+            $this->session->set_userdata('search_currency', $currency);
+            $this->session->set_userdata('search_pric_to', $pric_to);
+            $this->session->set_userdata('search_pric_from', $pric_from);
+            $this->session->set_userdata('search_name', $name);
+        }
+
+        $Product = new Product();
+        $info = $Product->getProductByname($name, $pric_from, $pric_to, $currency);
+        
+        // menu tree
+        $array_menus = array();
+        $filter = array();
+        $filter['parent_id'] = 0;
+        Menu::getMenuTree($array_menus, $filter);
+        
+        // 
+        $data['selected'] = '';
+        $data['content'] = 'index';
+        $data['product'] = $info['product'];
+        $data['paging'] = $info['paging'];
+        $data['array_menus'] = $array_menus;
+        $data['title'] = 'Ket qua tim kiem';
+        $this->load->view('temp', $data);
     }
+
+    
+    
     // function display detail a product
     public function prod_detail($url_link = null) {
         if (!empty($url_link)) { // neu link khong ton tai hay bi trong
+
             $Product = new Product();
             $Image = new Image();
-
             $Product_tmp = $Product->getProductByLink($url_link);
             $Product_tmp->fetchFirst();
             $data['product'] = $Product_tmp;
@@ -75,23 +108,26 @@ class Product_controller extends CI_Controller {
                 $data['image'] = '';
             }
 
-
-            $data['content'] = 'prod_details';
+            // menu tree
             
-            $data['selected'] = $url_link;
             $array_menus = array();
             $filter = array();
             $filter['parent_id'] = 0;
             Menu::getMenuTree($array_menus, $filter);
-
+            
+            $data['selected'] = '';
             $data['array_menus'] = $array_menus;
-
+            $data['content'] = 'prod_details';
             $this->load->view('temp', $data);
+            
         } else {
-            redirect('index');
+            redirect(Variable::getDefaultPageString());
         }
     }
 
+    
+    
+    // function get list cart and order cart
     public function prod_list_cart() {
         $Shopping = new ShoppingCart();
 
@@ -110,22 +146,22 @@ class Product_controller extends CI_Controller {
 
             $Shopping->insert($id_purchase_order, $id_product, $code_product, $name_product, $price_product, $currency_product, $description_product, $image_product, $number, $is_deleted, $link_product);
         }
-
-
-        $data['shopping'] = $Shopping->get_list();
-        $data['content'] = 'order_list';
         
+        // menu
         $array_menus = array();
         $filter = array();
         $filter['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter);
-
-        $data['array_menus'] = $array_menus;
         
+        $data['selected'] = '';
+        $data['array_menus'] = $array_menus;
+        $data['shopping'] = $Shopping->get_list();
+        $data['content'] = 'order_list';
         $this->load->view('temp', $data);
     }
+
     
-    
+    // function contact and buy product
     public function prod_order_contact() {
         $result = '';
         $is_business = '';
@@ -170,7 +206,7 @@ class Product_controller extends CI_Controller {
             $skype = $this->input->post('skype');
             $career = $this->input->post('career');
             $message = $this->input->post('message');
-            if ($message == 'message'){
+            if ($message == 'message') {
                 $message = '';
             }
 
@@ -187,8 +223,8 @@ class Product_controller extends CI_Controller {
                     $Customer = new Customer();
                     $List_customer = $Customer->findByEmail($email);
                     $total_price = '';
-                    for ($i = 0; $i < $total; $i++){
-                        $total_price += $list_cart[$i]->get_price_product()*1;
+                    for ($i = 0; $i < $total; $i++) {
+                        $total_price += $list_cart[$i]->get_price_product() * 1;
                     }
                     // neu khach hang da ton tai
 
@@ -295,18 +331,18 @@ class Product_controller extends CI_Controller {
                             $purchase->shipping_address = $shipping_address;
                             $purchase->insert();
                             $result = 'Câu hỏi của bạn đã được gửi đi';
-                            
+
                             $text = '';
                             if (isset($purchase->id) && $Cus_update->id && $mucdich == '2') {
                                 for ($i = 0; $i < $total; $i++) {
-                                    
-                                   $text = ' <td width="218" style="border-right:solid 1px #f5f5f5;">'.$list_cart[$i]->get_name_product().'</td>
-                                    <td width="218" style="border-right:solid 1px #f5f5f5;">'.$list_cart[$i]->get_code_product().'</td>
-                                    <td width="218" style="border-right:solid 1px #f5f5f5;">'.$list_cart[$i]->get_price_product().' ' . $list_cart[$i]->get_currency_product() .' </td>
-                                    <td width="218" style="border-right:none;">'.$list_cart[$i]->get_number().'</td>
+
+                                    $text = ' <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_name_product() . '</td>
+                                    <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_code_product() . '</td>
+                                    <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_price_product() . ' ' . $list_cart[$i]->get_currency_product() . ' </td>
+                                    <td width="218" style="border-right:none;">' . $list_cart[$i]->get_number() . '</td>
                                     </tr>';
-                                    
-                                    
+
+
                                     $details = new PurchaseOrderDetail();
                                     $details->id_purchase_order = $purchase->id;
                                     $details->id_product = $list_cart[$i]->get_id_product();
@@ -367,32 +403,36 @@ class Product_controller extends CI_Controller {
         $filter['yahoo'] = $yahoo;
         $filter['skype'] = $skype;
         $filter['career'] = $career;
-        if ($message == ''){
+        if ($message == '') {
             $filter['message'] = 'message';
-        }else{
+        } else {
             $filter['message'] = $message;
         }
-        
-        $data['mess'] = $result;
-        $data['filter'] = $filter;
-        $data['content'] = 'order_form';
-        
+
+        // menu
         $array_menus = array();
         $filter = array();
         $filter['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter);
-
-        $data['array_menus'] = $array_menus;
         
+        
+        $data['mess'] = $result;
+        $data['filter'] = $filter;
+        $data['content'] = 'order_form';
+        $data['array_menus'] = $array_menus;
+        $data['selected'] = '';
         $this->load->view('temp', $data);
     }
-    public function update_shopping($id, $number){
+
+    public function update_shopping($id, $number) {
         $Shopping = new ShoppingCart();
         $Shopping->update_number($id, $number);
     }
-    public function delete_shopping($id){
+
+    public function delete_shopping($id) {
         $Shopping = new ShoppingCart();
         $Shopping->delete($id);
     }
+
 }
 

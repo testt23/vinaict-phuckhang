@@ -31,8 +31,8 @@ class Order_object {
         return $this->code_product;
     }
 
-    public function get_name_product() {
-        return getI18n($this->name_product, $this->lang);
+    public function get_name_product($option = false) {
+            return getI18n($this->name_product, $this->lang);
     }
 
     public function get_price_product() {
@@ -40,7 +40,7 @@ class Order_object {
     }
 
     public function get_currency_product() {
-        return getI18n($this->currency_product, $this->lang);
+        return $this->currency_product;
     }
 
     public function get_description_product() {

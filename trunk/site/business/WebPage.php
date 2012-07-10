@@ -13,15 +13,12 @@ class WebPage extends Web_page_model {
 
     public function getPage($link = '') {
         $Webpage = new WebPage();
-
         $Webpage->addSelect();
         $Webpage->addSelect($this->if->_web_page_id . ' as ' . $this->if->_web_page_as_id);
         $Webpage->addSelect($this->if->_web_page_content . ' as ' . $this->if->_web_page_as_content);
-
         $Webpage->addWhere($this->if->_web_page_link . " = '" . $link . "'");
-
         $Webpage->find();
-
+        
         return $Webpage;
     }
 

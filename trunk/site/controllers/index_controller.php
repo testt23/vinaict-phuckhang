@@ -6,29 +6,25 @@
 			parent::__construct();
 		}
 
-		function index($page = 1){
+		function index(){
                     
                     $product = new Product();
-                    $info = $product->getNewProduct($page);
-                    $data['product'] = $info['product'];
-                    $data['paging'] = $info['paging'];
-                    $data['content'] = 'index';
+                    $info = $product->getNewProduct();
                     
+                    // Menu 
                     $array_menus = array();
                     $filter = array();
                     $filter['parent_id'] = 0;
                     Menu::getMenuTree($array_menus, $filter);
-   
-                    $data['array_menus'] = $array_menus;
+                    // end menu
                     $data['selected'] = 'home';
+                    $data['product'] = $info['product'];
+                    $data['paging'] = $info['paging'];
+                    $data['content'] = 'index';
+                    $data['array_menus'] = $array_menus;
+                    $data['title'] = '';
                     $this->load->view('temp', $data);
+                    
 		}
-                public function page($page){
-                    $this->index($page);
-                }
-                
-                
-                
-		// You can place some more methods code here
 
 	}

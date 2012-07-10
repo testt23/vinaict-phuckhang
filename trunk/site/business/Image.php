@@ -3,9 +3,14 @@
 class Image extends Image_model {
     
     var $if;
+    
+    var $image_default;
+    
+    
     function __construct() {
         parent::__construct();
         $this->if = new dbinfo();
+        $this->image_default = base_url() . $this->config->item('image_defailt_thum');
     }
     
     
@@ -74,33 +79,51 @@ class Image extends Image_model {
         return $this->{$this->if->_image_as_name};
     }
     
+    
+    
     public function the_image_link_thumb(){
-        return base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
     
+    
+    
+    
+    
     public function the_image_link_avata(){
-        return base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avata.jpg', '_avata.png', '_avata.gif'), $this->{$this->if->_image_as_file});
+        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avata.jpg', '_avata.png', '_avata.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
     
     public function the_image_link_small(){
-        return base_url() . '../uploads/images/'. $this{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
+        $url = base_url() . '../uploads/images/'. $this{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
     
     public function the_image_link_medium(){
-        return base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
+        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
     
     public function the_image_link_large(){
-        return base_url() . '../uploads/images/'. $this{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_large.jpg', '_large.png', '_large.gif'), $this->{$this->if->_image_as_file});
+        $url = base_url() . '../uploads/images/'. $this{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_large.jpg', '_large.png', '_large.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
     
     public function the_image_link_tiny(){
-        return base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_tiny.jpg', '_tiny.png', '_tiny.gif'), $this->{$this->if->_image_as_file});
+        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_tiny.jpg', '_tiny.png', '_tiny.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
     
     public function the_image_link(){
-        return base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . $this->{$this->if->_image_as_file};
+        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . $this->{$this->if->_image_as_file};
+        return $this->image_exists($url);
     }
     
-    
+    public function image_exists($url){
+        if (!file_exists($url)) {
+            return $this->image_default;
+        }
+        return $url;
+    }
 }   
