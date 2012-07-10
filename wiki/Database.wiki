@@ -536,7 +536,7 @@ UPDATE `menu` SET `section` = 'interior' WHERE `menu`.`id` =26;
 
 
 /* 10-07-2012 - Phạm Thanh Nam - Manager News Category*/
-alter table `phuckhang`.`news_category` 
-   add column `is_deleted` tinyint(1) DEFAULT '0' NOT NULL after `link`
+alter table `news_category` 
+   add column `is_deleted` tinyint(1) DEFAULT '0' NOT NULL after `link`;
 
 }}}
