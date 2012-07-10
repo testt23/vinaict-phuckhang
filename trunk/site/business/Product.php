@@ -307,6 +307,17 @@ class Product extends Product_model {
         return $data;
     }
 
+    
+    
+    public function getListThreeCateFooter(){
+        $filter = array();
+        $filter[0] = array('name' => 'SOUVENIRS', 'link' => base_url() . Variable::getProductPageString() .'/souvenirs' );
+        $filter[1] = array('name' => 'INTERIOR', 'link' => base_url() . Variable::getProductPageString() .'/souvenirs' );
+        $filter[2] = array('name' => 'SPA', 'link' => base_url() . Variable::getProductPageString() .'/souvenirs' );
+        return $filter;
+    }
+    
+    
     /* get data */
 
     public function the_product_id() {

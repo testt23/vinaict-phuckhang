@@ -168,7 +168,7 @@
             </ul>
         </div>
         <div id="order">
-            <form method="POST" action="<?php echo base_url() ?>list-cart">
+            <form method="POST" action="<?php echo Variable::getLinkShowListCart(); ?>">
                 <input type="hidden" name="h_category" value="<?php echo $product->the_image_link_thumb(); ?>"/>
                 <input type="hidden" name="h_image" value="<?php echo $product->the_image_link_thumb(); ?>"/>
                 <input type="hidden" name="h_id" value="<?php echo $product->the_product_id(); ?>"/>
