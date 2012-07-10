@@ -12,15 +12,15 @@ class Mailer {
         
         // info product and confirm
         // email confirm
-        $fil['self_company_name'] = 'Công ty TNHH Dát Vàng Phúc Khang';
-        $fil['self_address'] = '207 Huỳnh Văn Nghệ, P.12, Q. Gò Vấp';
-        $fil['self_phone'] = '(08)66806108';
-        $fil['self_hotline'] = '0973513579';
-        $fil['self_fax'] = '(08)66806108';
-        $fil['self_url_name'] = 'www.DatVangNgheThuat.com';
-        $fil['self_url'] = 'www.DatVangNgheThuat.com';
-        $fil['self_email'] = 'phuckhanggold@gmail.com';
-        $fil['title'] = 'Xác nhận thông tin đặt hàng';
+        $fil['self_company_name'] = getI18n(Variable::getCompanyName(), get_system_language());
+        $fil['self_address'] = getI18n(Variable::getCompanyAddress(), get_system_language());;
+        $fil['self_phone'] = Variable::getCompanyPhone();
+        $fil['self_hotline'] = Variable::getCompanyHotline();
+        $fil['self_fax'] = Variable::getCompanyFax();
+        $fil['self_url_name'] = Variable::getDomainName();
+        $fil['self_url'] = Variable::getDomainName();
+        $fil['self_email'] = Variable::getCompanyMail();
+        $fil['title'] = getI18n(Variable::getTitlMail(), get_system_language());
         
         $content = '';
         
@@ -45,11 +45,6 @@ class Mailer {
         $content = str_replace('{info_product}', $filter['info_product']     , $content);
         $content = str_replace('{url_confirm}',  $filter['url_confirm']     , $content);
         
-        
-        
-        
-        
-       
         $content = str_replace('{self_company_name}',    $fil['self_company_name']   , $content);
         $content = str_replace('{self_address}',   $fil['self_address']   , $content);
         $content = str_replace('{self_phone}',   $fil['self_phone']    , $content);
@@ -60,11 +55,10 @@ class Mailer {
         $content = str_replace('{self_email}',   $fil['self_email']     , $content);
      
         
-        
         $this->ci->load->library('email');
-        $this->ci->email->from('TheHalfHeart@gmail.com', 'Nguyen Van Cuong');
-        $this->ci->email->to('truong@vinaict.com');
-        $this->ci->email->subject('Công ty TNHH Dát Vàng Phúc Khang');
+        $this->ci->email->from(Variable::getCompanyMail(), Variable::getCompanyName());
+        $this->ci->email->to($filter['your_email']);
+        $this->ci->email->subject(getI18n(Variable::getObjectNameEmail(), get_system_language()));
         $this->ci->email->message($content);
 
         return @$this->ci->email->send();

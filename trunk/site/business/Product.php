@@ -317,6 +317,35 @@ class Product extends Product_model {
         return $filter;
     }
     
+    public function activeCartShop(){
+        $code = $this->input->get('code');
+        $id = $this->input->get('id');
+        if ($code && $id){
+            
+            $Purchase = new PurchaseOrder();
+            $Purchase->addSelect();
+            $Purchase->addSelect('id, status');
+            $Purchase->addWhere("code = '".$code."'" );
+            $Purchase->addWhere("id_customer = '".$id."'" );
+            $Purchase->find();
+            
+            if ($Purchase->countRows() > 0){
+                
+                $Purchase->fetchFirst();
+                if ($Purchase->status == '1'){  
+                    
+                    $id = $Purchase->id;    
+                    $Pur = new PurchaseOrder();
+                    $Pur->get($id);
+                    $Pur->status = '2';
+                    $Pur->update();
+                    return true;
+                }
+                
+            }
+        }
+        return false;
+    }
     
     /* get data */
 

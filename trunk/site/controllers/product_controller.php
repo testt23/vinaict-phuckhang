@@ -328,13 +328,15 @@ class Product_controller extends CI_Controller {
                         if ($Cus_update->id) {
                             // insert purchase order
                             $purchase = new PurchaseOrder();
-                            $purchase->code = '';
+                            $string_active = substr(md5(date("Y/m/d h:i:s") . $Cus_update->id . $email . rand(0, 1000000)), 0, 12);
+                           
+                            $purchase->code = $string_active;
                             $purchase->id_customer = $Cus_update->id;
                             $purchase->order_date = date('d/m/Y');
                             $purchase->creation_date = date('d/m/Y');
                             $purchase->amount = '';
                             $purchase->currency = '';
-                            $purchase->status = '';
+                            $purchase->status = '1';
                             $purchase->amount = '';
                             $purchase->description = $message;
                             $purchase->billing_address = $billing_address;
@@ -367,6 +369,8 @@ class Product_controller extends CI_Controller {
                                     $details->insert();
                                 }
                                 $filter = array();
+                                
+                                
                                 $filter['your_name'] = $firstname . ' ' . $lastname;
                                 $filter['website'] = $website;
                                 $filter['company'] = $company;
@@ -376,7 +380,7 @@ class Product_controller extends CI_Controller {
                                 $filter['skype'] = $skype;
                                 $filter['message'] = $message;
                                 $filter['info_product'] = $text;
-                                $filter['url_confirm'] = '';
+                                $filter['url_confirm'] = Variable::getLinkActive($string_active, $Cus_update->id);
                                 $filter['shipping_address'] = $shipping_address;
                                 $filter['billing_address'] = $billing_address;
                                 $mail = new Mailer();
@@ -442,6 +446,25 @@ class Product_controller extends CI_Controller {
     public function delete_shopping($id) {
         $Shopping = new ShoppingCart();
         $Shopping->delete($id);
+    }
+    public function active_cat(){
+        $Product = new Product();
+        if ($Product->activeCartShop()){
+            $mess = 'Đặt hàng thành công';
+        }else{
+            $mess = 'Đơn đặt hàng này không tồn tại';
+        }
+        // menu
+        $array_menus = array();
+        $filter1 = array();
+        $filter1['parent_id'] = 0;
+        Menu::getMenuTree($array_menus, $filter1);
+        $data['array_menus'] = $array_menus;
+        $data['selected'] = '';
+        $data['content'] = 'active';
+        $data['mess'] = $mess;
+        $this->load->view('temp', $data);
+        
     }
     
     
