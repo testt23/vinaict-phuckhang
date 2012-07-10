@@ -29,7 +29,7 @@ class Menu extends Menu_model {
         
         $menu = new Menu();
         
-        $logged_user = $menu->session->userdata("userID");
+        //$logged_user = $menu->session->userdata("userID");
         
         if (isset ($filter['parent_id'])) {
             $menu->addWhere("menu.id_parent = ".$filter['parent_id']);
@@ -64,7 +64,7 @@ class Menu extends Menu_model {
         }
     }
     
-     public static function drawMenu($array_menus, $selected_section) {
+     public static function drawMenu($array_menus, $selected_section = 'home') {
         
         $index = 0;
         $is_root = false;

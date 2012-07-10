@@ -107,6 +107,9 @@
     display: none !important;
 }
 
+.selected a{
+    color: #336600 !important;
+}
 
 /* Main */
 #container{

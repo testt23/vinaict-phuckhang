@@ -20,6 +20,7 @@ class Product_controller extends CI_Controller {
             $data['product'] = $info['product'];
             $data['paging'] = $info['paging'];
             
+            $data['selected'] = $url_cate;
             $array_menus = array();
             $filter = array();
             $filter['parent_id'] = 0;
@@ -77,6 +78,7 @@ class Product_controller extends CI_Controller {
 
             $data['content'] = 'prod_details';
             
+            $data['selected'] = $url_link;
             $array_menus = array();
             $filter = array();
             $filter['parent_id'] = 0;

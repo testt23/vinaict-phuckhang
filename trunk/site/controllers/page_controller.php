@@ -9,7 +9,7 @@
                 public function index(){
                     
                 }
-                public function the_page($link = ''){
+                public function the_page($link = ''){ 
                     if ($link != ''){
                         $Webpage = new WebPage();
                         $info = $Webpage->getPage($link);
@@ -19,7 +19,10 @@
                         $data['page'] = $info;
                         $data['content'] = 'webpage';
                         
+                        $data['selected'] = $link;
                         $filter = array();
+                        $array_menus = array();
+                        
                         $filter['parent_id'] = 0;
                         Menu::getMenuTree($array_menus, $filter);
 

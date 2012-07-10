@@ -68,7 +68,7 @@
             <?php //include_once 'menu.php'; ?>
             <div id="menu">
                 <ul>
-                    <?php Menu::drawMenu($array_menus, 'home'); ?>
+                    <?php Menu::drawMenu($array_menus, $selected); ?>
                 </ul>
             </div>
         </div>
