@@ -25,7 +25,7 @@ class Paging {
             }
 
             if ($current_page > 1) {
-                $s .='<a href="' . $url . '/' . ($current_page - 1) . '">Prev</a>';
+                $s .='<a href="' . $url .'?' . Variable::getPaginationQueryString() . '=' . ($current_page - 1) . '">Prev</a>';
             } elseif ($current_page == 1) {
                 $s .= '<a class="page-active" href="#">Prev</a>';
             }
@@ -35,11 +35,11 @@ class Paging {
                     $s .= ' class = "page-active" ';
                     $s .= ' href="#">' . $i . '</a>';
                 } else {
-                    $s .= ' href="' . $url . '/' . $i . '">' . $i . '</a>';
+                    $s .= ' href="' . $url .'?' . Variable::getPaginationQueryString() . '='  . $i . '">' . $i . '</a>';
                 }
             }
             if ($current_page < $total_page) {
-                $s .= '<a href="' . $url . '/' . ($current_page + 1) . '">Next</a>';
+                $s .= '<a href="'  . $url .'?' . Variable::getPaginationQueryString() . '=' . ($current_page + 1) . '">Next</a>';
             } elseif ($current_page == $total_page) {
                 $s .= '<a class="page-active" href="#">Next</a>';
             }

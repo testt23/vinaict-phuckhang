@@ -1,12 +1,12 @@
 <?php if (!empty($shopping)): ?>
 <script language="javascript" src="<?php echo base_url() . 'js/ajax.js'; ?>"></script>
-<h4 style="height: 30px; width: 1000px; "><?PHP echo lang('site_product_title_order'); ?></h4>
+<h4 class="title-main"><?PHP echo lang('site_product_title_order'); ?></h4>
 
 <table width="1000" id="list" style="border:  solid 1px gray;" cellspacing="0" cellpadding="0">
     <tr>
         <td class="title" width="5%">&nbsp;</td>
-        <td class="title" width="20%"><?PHP echo lang('site_product_name'); ?></td>
         <td class="title" width="10%"><?PHP echo lang('site_product_code'); ?></td>
+        <td class="title" width="20%"><?PHP echo lang('site_product_name'); ?></td>
         <td class="title" width="15%"><?PHP echo lang('site_product_price'); ?></td>
         <td class="title" width="6%"><?PHP echo lang('site_product_number'); ?></td>
         <td class="title" width="5%"><?PHP echo lang('site_product_delete'); ?></td>
@@ -16,11 +16,24 @@
         $total = count($shopping);
         for ($i = 0; $i < $total; $i++):
             ?>
-            <tr id="tr_<?php echo $shopping[$i]->get_id_product(); ?>">
+            <tr class="shp" id="tr_<?php echo $shopping[$i]->get_id_product(); ?>">
                 <td><img src="<?php echo $shopping[$i]->get_image_product(); ?>" width="80" height="50" alt="" /></td>
-                <td><?php echo $shopping[$i]->get_name_product(); ?></td>
                 <td><?php echo $shopping[$i]->get_code_product(); ?></td>
-                <td><b style="color:#F00"><?php echo $shopping[$i]->get_price_product(); ?></b></td>
+                <td>
+                    <a href="<?php echo $shopping[$i]->get_link_product(); ?>"><?php echo $shopping[$i]->get_name_product(); ?></a>
+                </td>
+                <td>
+                    <b style="color:brown;">
+                    <?php 
+                        if ($shopping[$i]->get_price_product() == '0' || $shopping[$i]->get_price_product() == ''){
+                            echo 'Call';
+                        }else{
+                            echo $shopping[$i]->get_price_product() .' ' .$shopping[$i]->get_currency_product(); ; 
+                        }
+                        
+                    ?>
+                    </b>
+                </td>
                 <td>
                     <form method="post" action="">
                         <input type="hidden" name="id_prods<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_id_product(); ?>" onchange="update_giohang()"/>
@@ -34,7 +47,14 @@
 </table>
 
 <div id="order_box">
-    <div class="button"><a href="<?php echo base_url() . 'index' ?>"><?php echo lang('site_product_continue'); ?></a></div>
+    <?php 
+        if ($this->session->userdata('link_continue_buy')){
+            $link = $this->session->userdata('link_continue_buy');
+        } else{
+            $link = base_url() . '/index';
+        }
+    ?>
+    <div class="button"><a href="<?php echo $link; ?>"><?php echo lang('site_product_continue'); ?></a></div>
     <div class="button"><a href="<?php echo base_url() . 'products/contact';  ?>"><?PHP echo lang('site_product_order'); ?></a></div>
 </div>
 <?php else: ?>

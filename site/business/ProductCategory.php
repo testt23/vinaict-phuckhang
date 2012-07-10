@@ -19,7 +19,6 @@ class ProductCategory extends Product_category_model {
         $Category->find();
         
         $Category->fetchNext();
-        
         return $Category;
         
     }
