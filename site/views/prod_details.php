@@ -1,5 +1,5 @@
 
-<?php if ($image->countRows() > 0 and $product->countRows() > 0): ?>
+<?php if ($image): ?>
 <script language="javascript">
     
     $(document).ready(function(){
