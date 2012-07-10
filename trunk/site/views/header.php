@@ -58,16 +58,16 @@
             <div id="searchbox">
                 <form method="post" action="<?php echo Variable::getLinkSearch(); ?>">
                     <input class="name-search" type="text" name="search-name" value=''/>
-                    <input class="button-search" type="submit" name="button-search" value='Search'/>
-                    <a href="#" id="advance">Option</a>
+                    <input class="button-search" type="submit" name="button-search" value='<?php echo lang('show_form_search_1');?>'/>
+                    <a href="#" id="advance"><?php echo lang('show_form_search_2');?></a>
                     <div class="search-popup hide">
                         <div class="close-search-pop">X</div>
                         <div class="clear"> </div>
                         <div style="margin-right: 15px;">
-                            Price From <input type="text" name="price-from-search" value=""/> <br/>
-                            Price To <input type="text" name="price-to-search" value=""/><br/>
+                            <?php echo lang('show_form_search_3');?> <input type="text" name="price-from-search" value=""/> <br/>
+                            <?php echo lang('show_form_search_4');?> <input type="text" name="price-to-search" value=""/><br/>
                             <select name="currency-search">
-                                <option value="">Currency</option>
+                                <option value=""><?php echo lang('show_form_search_5');?></option>
                             <?php $currency = new Currency();
                                 $list_currence = $currency->get_list();
                                 while($list_currence->fetchNext()):
@@ -89,5 +89,5 @@
                 </ul>
             </div>
         </div>
-        <div id="container">
+        <div id="container"></div>
     
