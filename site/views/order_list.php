@@ -48,14 +48,14 @@
 
 <div id="order_box">
     <?php 
-        if ($this->session->userdata('link_continue_buy')){
-            $link = $this->session->userdata('link_continue_buy');
+        if ($this->session->userdata(Variable::getSessionLinkContinueBuy())){
+            $link = $this->session->userdata(Variable::getSessionLinkContinueBuy());
         } else{
-            $link = base_url() . '/index';
+            $link = base_url() . '/' . Variable::getDefaultPageString();
         }
     ?>
     <div class="button"><a href="<?php echo $link; ?>"><?php echo lang('site_product_continue'); ?></a></div>
-    <div class="button"><a href="<?php echo base_url() . 'products/contact';  ?>"><?PHP echo lang('site_product_order'); ?></a></div>
+    <div class="button"><a href="<?php echo Variable::getLinkOrderContact(); ?>"><?PHP echo lang('site_product_order'); ?></a></div>
 </div>
 <?php else: ?>
 <h1 style="text-align: center; color: gray; font-size: 20px;"><?php echo lang('show_message');?></h1>

@@ -45,25 +45,29 @@ $route['404_override'] = '';
 $route['directory'] = '';
 // index page
 
-$route['^index/(:num)'] =  'index/page/$1';
-
+$route['^'.Variable::getIndexPageString().'/(:num)'] =  'index/page/$1';
 
 // order
-$route['^list-cart'] =  'product/prod_list_cart';
-$route['^order-contact'] =  'product/prod_order_contact';
+$route['^'.Variable::getProductListCartPageString().''] =  'product/prod_list_cart';
+        //$route['^product'] =  'product/prod_list_cart';
+$route['^'.Variable::getProductOrderPageString().''] =  'product/prod_order_contact';
+        //$route['^product/list-cart'] =  'product/prod_list_cart';
 
-//product page
-$route['^products/search/(:num)'] =  'product/prod_search/$1';
-$route['^products/search'] =  'product/prod_search';
-$route['^products/contact'] =  'product/prod_order_contact';
-$route['^products/update_shop/(:num)/(:num)'] =  'product/update_shopping/$1/$2';
-$route['^products/delete_shop/(:num)'] =  'product/delete_shopping/$1';
-$route['^products/(.+)/([a-zA-Z0-9-_]+).html'] =  'product/prod_detail/$2';
-$route['^products/(.+).html'] =  'product/prod_detail/$1';
-$route['^products/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$1/$2';
-$route['^products/(.+)/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$2/$3';
-$route['^products/(.+)/([a-zA-Z0-9-_]+)'] =  'product/prod_list_by_category/$2';
-$route['^products/([a-zA-Z0-9-_]+)'] =  'product/prod_list_by_category/$1';
+$route['^'.Variable::getProductPageString().'/'.Variable::getProductPageSearchString().''] =  'product/prod_search';
+//$route['^products/search'] =  'product/prod_search';
+
+$route['^'.Variable::getProductPageString().'/update_shop/(:num)/(:num)'] =  'product/update_shopping/$1/$2';
+$route['^'.Variable::getProductPageString().'/delete_shop/(:num)'] =  'product/delete_shopping/$1';
+
+// contact
+$route['^'.Variable::getProductContactPageString().''] =  'product/prod_contact';
+
+$route['^'.Variable::getProductPageString().'/(.+)/([a-zA-Z0-9-_]+).html'] =  'product/prod_detail/$2';
+$route['^'.Variable::getProductPageString().'/(.+).html'] =  'product/prod_detail/$1';
+$route['^'.Variable::getProductPageString().'/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$1/$2';
+$route['^'.Variable::getProductPageString().'/(.+)/([a-zA-Z0-9-_]+)/(:num)'] =  'product/prod_list_by_category/$2/$3';
+$route['^'.Variable::getProductPageString().'/(.+)/([a-zA-Z0-9-_]+)'] =  'product/prod_list_by_category/$2';
+$route['^'.Variable::getProductPageString().'/([a-zA-Z0-9-_]+)'] =  'product/prod_list_by_category/$1';
 
 
 $route['^([a-zA-Z0-9-_]+).html'] =  'page/the_page/$1';

@@ -30,7 +30,7 @@ class Product_controller extends CI_Controller {
             Menu::getMenuTree($array_menus, $filter);
 
             $data['array_menus'] = $array_menus;
-            $data['title'] = 'Danh sách sản phẩm';
+            $data['title'] = '';
 
             $this->load->view('temp', $data);
         } else {
@@ -87,7 +87,7 @@ class Product_controller extends CI_Controller {
         $data['product'] = $info['product'];
         $data['paging'] = $info['paging'];
         $data['array_menus'] = $array_menus;
-        $data['title'] = 'Ket qua tim kiem';
+        $data['title'] = '';
         $this->load->view('temp', $data);
     }
 
@@ -159,10 +159,16 @@ class Product_controller extends CI_Controller {
         $data['content'] = 'order_list';
         $this->load->view('temp', $data);
     }
-
     
+    
+    // contact
+    
+    public function prod_contact(){
+        $this->prod_order_contact('yes');
+    }
+
     // function contact and buy product
-    public function prod_order_contact() {
+    public function prod_order_contact($fil = '') {
         $result = '';
         $is_business = '';
         $gender = '0';
@@ -184,6 +190,10 @@ class Product_controller extends CI_Controller {
 
         $not_buy = '1';
         $mucdich = '2';
+        if ($fil != ''){
+            $mucdich = '1';
+        }
+        
 
         if ($this->input->post('ok-click') != null && $this->input->post('ok-click') == 'ok-click') {
 
@@ -411,9 +421,9 @@ class Product_controller extends CI_Controller {
 
         // menu
         $array_menus = array();
-        $filter = array();
-        $filter['parent_id'] = 0;
-        Menu::getMenuTree($array_menus, $filter);
+        $filter1 = array();
+        $filter1['parent_id'] = 0;
+        Menu::getMenuTree($array_menus, $filter1);
         
         
         $data['mess'] = $result;
@@ -433,6 +443,8 @@ class Product_controller extends CI_Controller {
         $Shopping = new ShoppingCart();
         $Shopping->delete($id);
     }
+    
+    
 
 }
 

@@ -56,7 +56,7 @@
             
             
             <div id="searchbox">
-                <form method="post" action="<?PHP echo base_url() . 'products/search'; ?>">
+                <form method="post" action="<?php echo Variable::getLinkSearch(); ?>">
                     <input class="name-search" type="text" name="search-name" value=''/>
                     <input class="button-search" type="submit" name="button-search" value='Search'/>
                     <a href="#" id="advance">Option</a>
