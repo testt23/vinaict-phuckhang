@@ -154,7 +154,7 @@
                     <span class="call-price">
                     <?php 
                     if ($product->the_product_price() == '0' || $product->the_product_price() == ''){
-                        echo 'Call';
+                        echo lang('lbl_call');
                     }else{
                         echo $product->the_product_price() . ' ' . $product->the_product_currency();
                     }

@@ -25,11 +25,11 @@
                 </div>
                 <div class="name-pro">
                     <a href="<?php echo $product->the_product_link(); ?>"><?php echo $product->the_product_code(); ?></a><br/>
-                    <strong>Price: </strong><span style="color: brown;"> 
+                    <strong><?php echo lang('lbl_price');?></strong><span style="color: brown;"> 
                         <?php 
                             
                             if ($product->the_product_price() == '' || $product->the_product_price() == '0'){
-                                echo 'Call';
+                                echo lang('lbl_call');
                             }else{
                                 echo $product->the_product_price() . ' ' .  $product->the_product_currency(); 
                             }
