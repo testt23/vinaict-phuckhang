@@ -13,7 +13,7 @@
                             if($lang = Language::getArraylangIso()){
                                 for($i = 0; $i < count($lang); $i ++){
                         ?>
-                            <a href="<?php echo base_url(); ?>/login/switchLang/?lang=<?php echo $lang[$i] ?>" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $lang[$i] ?>.png" /></a>
+                            <a href="<?php echo base_url(); ?>/login/switchlang/?lang=<?php echo $lang[$i] ?>" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $lang[$i] ?>.png" /></a>
 		        <?php 
                                 } 
                             } 

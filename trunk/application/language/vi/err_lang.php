@@ -105,6 +105,13 @@ $lang['err_empty_contact_person']           = 'Bạn chưa nhập tên ngư�?i
 /* Group */
 $lang['err_empty_code']                     = 'Bạn chưa nhập mã nhóm';
 $lang['err_code_too_long']                  = 'Mã nhóm nhập vào quá dài';
-$lang['err_empty_name']                     = 'Bạn chưa nhập tên nhóm';
 $lang['err_name_too_long']                  = 'Tên nhóm nhập vào quá dài';
 $lang['err_exit_user']                      = 'Có người dùng thuộc nhóm này bạn không thể xóa được ';
+
+/* News Category */
+$lang['err_already_parent']                 = 'Chủ đề này đang là chủ đề trên của chủ đề khác';
+$lang['err_empty_name_news_category']       = 'Bạn chư nhập tên chủ đề';
+$lang['err_empty_keywords']                 = 'Bạn chư nhập từ khóa';
+$lang['err_empty_link']                     = 'Bạn chư nhập link';
+$lang['err_empty_link']                     = 'Bạn chư nhập link';
+$lang['err_keywords_too_long']              = 'Bạn chư nhập từ khóa';

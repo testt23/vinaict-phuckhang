@@ -50,7 +50,7 @@
                                         <?php echo lang('txt_category'); ?>
                                 </label>
                                 <div>
-                                    <select id="id_news_category" name="id_news_category">
+                                    <select size="5" class="field select small" id="id_news_category" name="id_news_category">
                                         <?php while ($newscategory->fetchNext()) { ?>
                                         <option <?php if ($newscategory->id == $article->id_news_category) { echo "selected"; } ?> value="<?php echo $newscategory->id; ?>"><?php echo getI18n($newscategory->name); ?></option>
                                         <?php } ?>

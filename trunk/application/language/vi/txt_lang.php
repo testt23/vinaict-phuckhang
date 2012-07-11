@@ -203,16 +203,20 @@ $lang['txt_param_group']                = 'Nhóm tham số';
 $lang['txt_ungrouped']                  = 'Chưa phân nhóm';
 
 /* News Category*/
-$lang['txt_add_news']                = 'Thêm tin tức';
-$lang['txt_edit_news']               = 'Sửa thông tin Danh Mục Tin Tức';
-$lang['txt_news_category']           = 'Danh Mục Tin Tức';
-$lang['txt_add_news_category']       = 'Thêm tin tức mới';
-$lang['txt_edit_news_category']      = 'Sửa thông tin tin tức';
-$lang['txt_parent_news_category']    = 'Nhóm tin tức cấp trên';
-$lang['txt_parent_category']         = 'Danh mục cấp trên';
+$lang['txt_add_news']                   = 'Thêm chủ đề tin tức';
+$lang['txt_edit_news']                  = 'Sửa thông tin chủ đề tin tức';
+$lang['txt_news_category']              = 'Danh sách chủ đề tin tức';
+$lang['txt_add_news_category']          = 'Thêm chủ đề tin tức mới';
+$lang['txt_edit_news_category']         = 'Thay đổi thông tin chủ đề tin tức';
+$lang['txt_parent_news_category']       = 'Chủ đề cấp trên';
+$lang['txt_parent_category']            = 'Danh sách cấp trên';
+$lang['txt_delete_news_category']       = 'Các bài viết thuộc chủ đề này sẽ bị xóa theo, bạn có chắc muốn xóa không';
+$lang['txt_no_parent']                   = 'không có chủ để trên';
 
 /* Article */
 $lang['txt_article']                    = 'Danh sách các bài viết';
 $lang['txt_add_article']                = 'Thêm bài viết mới';
 $lang['txt_edit_article']               = 'Thay đổi thông tin bài viết';
 $lang['txt_category']                   = 'Chủ đề';
+
+

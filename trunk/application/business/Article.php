@@ -10,15 +10,17 @@ class Article extends Article_model {
         
         $article = new Article();
         
+        $article->addJoin(new NewsCategory);
+        
+        $article->addSelect();
+        $article->addSelect('article.*, news_category.name name_category');
+        
         if (isset($filter['title']) && $filter['title'])
             $article->addWhere("title LIKE '%".$filter['title']."%'");
         
         if (isset($filter['keywords']) && $filter['keywords'])
             $article->addWhere("keywords LIKE '%".$filter['keywords']."%'");
-        
-//        if (isset($filter['tag']) && $filter['tag'])
-//            $article->addWhere("FIND_IN_SET(keywords, '".$filter['tag']."')");
-//        
+         
         if (isset($filter['id_news_category']) && $filter['id_news_category'])
             $article->addWhere("id_news_category = ".$filter['id_news_category']);
         
@@ -66,5 +68,12 @@ class Article extends Article_model {
         return MessageHandler::countError() > 0 ? false : true;
     }
     
+    function deleteByIdNewsCategory($idNewsCategory = NULL){
+        $article = new Article();
+        
+        $article->id_news_category = $idNewsCategory;
+        $article->delete();
+        return TRUE;
+    }
         
 }
