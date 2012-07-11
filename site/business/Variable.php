@@ -147,7 +147,7 @@ class Variable {
     // number words of product title
     // 
     public function getNumberOfProductTitle(){
-        return defined('PRODUCT_TITLE_NUMBER_DISPLAY') ? PRODUCT_TITLE_NUMBER_DISPLAY : 10;
+        return defined('PRODUCT_TITLE_NUMBER_DISPLAY') ? PRODUCT_TITLE_NUMBER_DISPLAY : 9;
     }
     /// yahoo sopport online
     
@@ -196,7 +196,6 @@ class Variable {
             return $str_tmp;
         }
     }
-    
 }
 
 ?>

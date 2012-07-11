@@ -88,3 +88,4 @@ $lang['show_form_search_2'] = 'Mở rộng';
 $lang['show_form_search_3'] = 'Từ giá:';
 $lang['show_form_search_4'] = 'Đến giá:';
 $lang['show_form_search_5'] = 'Mệnh giá';
+$lang['image'] = 'Hình';
