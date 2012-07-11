@@ -69,6 +69,7 @@ $lang['cobx_for_personal'] = 'Cá nhân';
 // page product detail
 $lang['show_message_product'] = 'Chưa cập nhật sản phẩm';
 $lang['lbl_price'] = 'Giá:';
+$lang['lbl_call'] = 'Liên hệ';
 $lang['lbl_description'] = 'Mô tả:';
 
 // page contact_controller
