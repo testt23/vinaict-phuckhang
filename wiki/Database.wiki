@@ -1121,8 +1121,8 @@ insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`,
 insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('86','Yahoo Support online','YAHOO_SUPPORT_ONLINE','ngvancuong_thienduongmangtenem','1','0','2012-07-11 08:45:04',NULL,'1',NULL,'0','1',NULL);
 
 /* 11-07-2012 - Nguyễn Văn Cường - udpate value of image-size */
-UPDATE `image_size` SET `value` = '350x350' WHERE `id` = 3;
-
+UPDATE `image_size` SET `value` = '350x350' WHERE `id` = 4;
+UPDATE `image_group` SET `id_image_size` = '2,3,4' WHERE `id` = 1;
 
 
 
