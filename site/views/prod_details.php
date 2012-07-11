@@ -105,7 +105,7 @@
 
 <?php if ($product->countRows() > 0): $product->fetchFirst(); ?>
 <h1 class="title-main">
-    Detail Product
+    
 </h1>
     <div id="image">
             <div style="height: 350px;">
