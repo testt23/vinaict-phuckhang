@@ -9,106 +9,93 @@ class NewsCategory extends News_category_model {
     function getList($filter = array()) {
 
         $news_category = new NewsCategory();
-
-        $news_category->addSelect();
-        $news_category->addSelect('news_category.*');
-
-        if (isset($filter['name']) && $filter['name'])
-            $news_category->addWhere("news_category.name LIKE '%" . $filter['name'] . "%'");
-
-        if (isset($filter['keyword']) && $filter['keyword'])
-            $news_category->addWhere("FIND_IN_SET('" . $filter['keyword'] . "', news_category.keyword)");
-
-        $news_category->find();
-        return $news_category;
-    }
-
-    function getTree($filter = array(), $id_news_category_excluded = null) {
-
-        $arrNewsCategory = array();
-
-        $news_category = new NewsCategory();
-        $news_category->addSelect();
-        $news_category->addSelect('news_category.*');
-
-        if ($id_news_category_excluded)
-            $news_category->addWhere("news_category.id <> $id_news_category_excluded");
-
-        if (isset($filter['id_news_category_parent']) && $filter['id_news_category_parent'])
-            $news_category->addWhere("FIND_IN_SET('" . $filter['id_news_category_parent'] . "', id_parent)");
-        else
-            $news_category->addWhere("id_parent IS NULL");
-
-        if (!isset($filter['level']))
-            $filter['level'] = 0;
-        else
-            $filter['level'] += 1;
-
-        $news_category->find();
-
-        while ($news_category->fetchNext()) {
-            $arrNewsCategory[] = array(
-                'id' => $news_category->id,
-                'name' => $news_category->name,
-                'description' => $news_category->description,
-                'id_parent' => $news_category->id_parent,
-                'link' => $news_category->link,
-                'keyword' => $news_category->keyword,
-                'level' => $filter['level']
-            );
-            $filter['id_news_category_parent'] = $news_category->id;
-            $arrNewsCategory = array_merge($arrNewsCategory, NewsCategory::getTree($filter, $id_news_category_excluded));
-        }
-
-        return $arrNewsCategory;
+        
+        $sql = "SELECT news_category.*, parent_news_category.name name_parent
+                    FROM news_category
+                    LEFT JOIN (SELECT * FROM news_category) parent_news_category
+                    ON (news_category.id_parent = parent_news_category.id)
+                    WHERE news_category.is_deleted = ".IS_NOT_DISABLED;
+        
+       if (isset($filter['name']) && $filter['name'])
+            $sql .= " AND news_category.name LIKE '%".$filter['name']."%'";
+        
+       if (isset($filter['keyworks']) && $filter['keyworks'])
+            $sql .= " AND news_category.keywork LIKE '%".$filter['keyworks']."%'";
+        
+       if (isset($filter['id_parent']) && $filter['id_parent'])
+            $sql .= " AND news_category.id_parent = ".$filter['id_parent'];
+       
+       $news_category->query($sql);
+        
+       return $news_category;
     }
 
     function validateInput() {
 
         $this->name = trim($this->name);
-        $this->description = trim($this->description);
-        $this->keyword = trim(trim($this->keyword), ',');
         $this->link = trim($this->link);
-
+        $this->keyword = trim(trim($this->keyword),',');
+        
+        $lang = Language::getList();
+        
+        if ($this->name == "") {
+            MessageHandler::add (lang('err_empty_name_news_category'), MSG_ERROR, MESSAGE_ONLY);
+        }     
+        
+        if ($this->keyword == "") {
+            MessageHandler::add (lang('err_empty_keywords'), MSG_ERROR, MESSAGE_ONLY);
+        }
         
         if ($this->link == "") {
-            MessageHandler::add(lang('err_empty_news_category_link'), MSG_ERROR, MESSAGE_ONLY);
+            MessageHandler::add (lang('err_empty_link'), MSG_ERROR, MESSAGE_ONLY);
         }
-        elseif (!validate_uri($this->link, URI_PATTERN, NEWS_CATEGORY_URI_PREFIX, NEWS_CATEGORY_URI_SUFFIX)) {
-            MessageHandler::add(lang('err_invalid_link'), MSG_ERROR, MESSAGE_ONLY);
-        }
-
-        $lang = Language::getList();
-
+        
         while ($lang->fetchNext()) {
-
-            if (strlen(getI18n($this->description, $lang->id)) > MAX_LENGTH_NAME) {
-                MessageHandler::add(lang('err_desc_too_long') . ': ' . lang('msg_please_check') . ' "' . getI18n($this->description, $lang->id) . '"', MSG_ERROR, MESSAGE_ONLY);
+                
+            if (strlen(getI18n($this->name, $lang->code)) > MAX_LENGTH_NAME) {
+                MessageHandler::add (lang('err_name_too_long').': '.lang('msg_please_check'). '', MSG_ERROR, MESSAGE_ONLY);
+            }
+            
+            if (strlen(getI18n($this->link, $lang->code)) > MAX_LENGTH_NAME) {
+                MessageHandler::add (lang('err_url_too_long').': '.lang('msg_please_check'). '', MSG_ERROR, MESSAGE_ONLY);
+            }
+            
+            if (strlen(getI18n($this->keyword, $lang->code)) > MAX_LENGTH_NAME) {
+                MessageHandler::add (lang('err_keywords_too_long').': '.lang('msg_please_check'). '', MSG_ERROR, MESSAGE_ONLY);
             }
         }
-
+        
         return MessageHandler::countError() > 0 ? false : true;
     }
-
-    function isExistedByCode() {
-        $news_category = new NewsCategory();
-
-        if ($this->id)
-            $news_category->addWhere("id <> $this->id");
-
-        $news_category->addSelect();
-        $news_category->addSelect("COUNT(*) count");
-        $news_category->find();
-        $news_category->fetchNext();
-
-        return $news_category->count > 0 ? true : false;
+    
+    function delete($id = null){
+        $newcate = new NewsCategory();
+        
+        $newcate->get($id);
+        $newcate->is_deleted = IS_DISABLED;
+        $newcate->update();
+        return TRUE;
     }
-
-    function delete() {
-
-        $this->is_deleted = 1;
-        $this->name = appendIdtoName($this->id, $this->name);
-        $this->update();
+    
+    function testExitIdParent($id_parent = null){
+        
+        $newcate = new NewsCategory();
+        
+        $newcate->addWhere('id_parent ='. $id_parent);
+        $newcate->addWhere('is_deleted = '.IS_NOT_DISABLED);
+        
+        $newcate->find();
+        
+        $lang = Language::getList();
+        if($newcate->countRows() > 0){
+            //MessageHandler::add (lang('err_already_parent').': '.lang('msg_please_check'). '', MSG_ERROR, MESSAGE_ONLY);
+            //MessageHandler::add (lang('err_already_parent'), MSG_ERROR, MESSAGE_ONLY);
+            MessageHandler::add (lang('err_already_parent').': '.lang('msg_please_check'). '', MSG_ERROR, MESSAGE_ONLY);
+            return TRUE;
+        }else {
+            return FALSE;
+        }
+        
+        
     }
-
 }

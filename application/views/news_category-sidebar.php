@@ -1,9 +1,10 @@
 <script type="text/javascript">
     function search() {
         var name = document.getElementById("name");
-        var keyword = document.getElementById("keyword");
+        var id_parent = document.getElementById("id_parent");
+        var keywords = document.getElementById("keywords");
         var searchform = document.getElementById("searchform");
-        searchform.action = "?name="+name.value+"&keyword="+keyword.value;
+        searchform.action = "?name="+name.value+"&keywords="+keywords.value+"&id_parent="+id_parent.value;
         searchform.submit();
     }
 </script>
@@ -21,7 +22,21 @@
                 <li>
                     <label for="keyword"><?php echo lang('txt_keyword'); ?></label>
                     <div>
-                        <input type="text" id="content" name="keyword" value="<?php echo $filter['keyword']; ?>" />
+                        <input type="text" id="keywords" name="keywords" value="<?php echo $filter['keywords']; ?>" />
+                    </div>
+                </li>
+                <li>
+                    <label for="parent"><?php echo lang('txt_keyword'); ?></label>
+                    <div>
+                        <select name ="id_parent" id ="id_parent">
+                            <option value=""><?php echo lang('txt_all'); ?></option>   
+                            <?php $news_category->fetchFirst();?>
+                                <option value="<?php echo $news_category->id; ?>" <?php if($news_category->id == $filter['id_parent']) echo 'selected'; ?> ><?php echo clean_html(getI18n($news_category->name)); ?></option>
+                            <?php?>
+                            <?php while($news_category->fetchNext()){ ?>
+                                <option value="<?php echo $news_category->id; ?>" <?php if($news_category->id == $filter['id_parent']) echo 'selected'; ?>><?php echo clean_html(getI18n($news_category->name)); ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </li>
                 <li>

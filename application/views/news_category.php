@@ -3,7 +3,7 @@
 <script type="text/javascript">
     function deleteNewsCategory(id) {
         
-        if (confirm("<?php echo lang('txt_delete_confirm'); ?>")) {
+        if (confirm("<?php echo lang('txt_delete_news_category'); ?>")) {
             window.location = "<?php echo base_url('news_category/delete'); ?>/" + id;
         }
        
@@ -22,7 +22,6 @@
     <table> 
         <thead> 
             <tr>
-                <th width="40px"><?php echo lang('txt_id'); ?></th> 
                 <th width="200px"><?php echo lang('txt_name'); ?></th>                 
                 <th width="200px"><?php echo lang('txt_description'); ?></th> 
                 <th width="200px"><?php echo lang('txt_link'); ?></th> 
@@ -32,20 +31,18 @@
             </tr> 
         </thead> 
         <tbody> 
-            <?php foreach($arr_news_category as $id => $news_category) { ?>
+            <?php while($news_category->fetchNext()) { ?>
             <tr>
-                <td><?php echo $news_category['id']; ?></td>
-                <td><?php echo $news_category['name']; ?></td>
-                
-                <td><?php echo $news_category['description']; ?></td>
-                <td><?php echo $news_category['link']; ?></td>
-                <td><?php echo $news_category['keyword']; ?></td>
-                <td><?php echo $news_category['id_parent']; ?></td>
+                <td><?php echo clean_html(getI18n($news_category->name)); ?></td>
+                <td><?php echo clean_html(getI18n($news_category->description)); ?></td>
+                <td><?php echo $news_category->link; ?></td>
+                <td><?php echo $news_category->keyword; ?></td>
+                <td><?php echo clean_html(getI18n($news_category->name_parent)); ?></td>
                 <td>
-                    <a class="btn_no_text btn ui-state-ui-corner-all tooltip" title="<?php echo lang('txt_edit'); ?>" href="<?php echo base_url('news_category/edit/'.$id); ?>">
+                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_edit'); ?>" href="<?php echo base_url('news_category/edit/'.$news_category->id); ?>">
                             <span class="ui-icon ui-icon-wrench"></span>
                     </a>
-                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_delete'); ?>" href="#" onclick="deleteProdCategory(<?php echo $id; ?>)">
+                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="<?php echo lang('txt_delete'); ?>" href="#" onclick="deleteNewsCategory(<?php echo $news_category->id; ?>)">
                             <span class="ui-icon ui-icon-trash"></span>
                     </a>
                 </td>
