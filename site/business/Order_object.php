@@ -36,7 +36,7 @@ class Order_object {
     }
 
     public function get_price_product() {
-        return $this->price_product;
+        return number_format($this->price_product,0,'.','.') ; 
     }
 
     public function get_currency_product() {

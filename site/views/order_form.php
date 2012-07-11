@@ -147,46 +147,46 @@
                     </li>
                     <li>
                         <?php echo lang('lbl_email_address');?>   (*)
-                        <input type="text" name="email" value="<?php echo $filter['email']; ?>" size="30" />
+                        <input maxlength="100" type="text" name="email" value="<?php echo $filter['email']; ?>" size="30" />
                     </li>
                     <li>
                         <?php echo lang('lbl_phone');?>  (*)
-                        <input type="text" name="phone" value="<?php echo $filter['phone']; ?>" size="30"/>
+                        <input  maxlength="20" type="text" name="phone" value="<?php echo $filter['phone']; ?>" size="30"/>
                     </li>
                     <li class="muahang">
                         <?php echo lang('lbl_billing_address');?> (*)  
-                        <input type="text" name="billing_address" value="<?php echo $filter['billing_address']; ?>" size="30"/>
+                        <input  maxlength="255" type="text" name="billing_address" value="<?php echo $filter['billing_address']; ?>" size="30"/>
                     </li>
                     <li  class="muahang">
                         <?php echo lang('lbl_shipping_address');?> (*)
-                        <input type="text" name="shipping_address" value="<?php echo $filter['shipping_address']; ?>" size="30"/>
+                        <input  maxlength="255" type="text" name="shipping_address" value="<?php echo $filter['shipping_address']; ?>" size="30"/>
                     </li>
 
                     <li class="canhan">
                         <?php echo lang('lbl_firstname');?> (*)
-                        <input type="text" name="firstname" value="<?php echo $filter['firstname']; ?>" size="30"/>
+                        <input  maxlength="100" type="text" name="firstname" value="<?php echo $filter['firstname']; ?>" size="30"/>
                     </li>
 
                     <li class="canhan">
-                        <?php echo lang('lbl_lastname');?>  (*)
-                        <input type="text" name="lastname" value="<?php echo $filter['lastname']; ?>" size="30"/>
+                        <?php  echo lang('lbl_lastname');?>  (*)
+                        <input  maxlength="100" type="text" name="lastname" value="<?php echo $filter['lastname']; ?>" size="30"/>
                     </li>
                     <li class="congty">
                         <?php echo lang('lbl_company');?>    (*)
-                        <input type="text" name="company" value="<?php echo $filter['company']; ?>" size="30"/>
+                        <input  maxlength="200" type="text" name="company" value="<?php echo $filter['company']; ?>" size="30"/>
                     </li>
                     <li  class="congty">
                         <?php echo lang('lbl_contact_with');?>    (*)
-                        <input type="text" name="contact_person" value="<?php echo $filter['contact_person']; ?>" size="30"/>
+                        <input  maxlength="200" type="text" name="contact_person" value="<?php echo $filter['contact_person']; ?>" size="30"/>
                     </li>
 
                     <li  class="congty">
                         <?php echo lang('lbl_website_address');?>
-                        <input type="text" name="website" value="<?php echo $filter['website']; ?>" size="30"/>
+                        <input  maxlength="255" type="text" name="website" value="<?php echo $filter['website']; ?>" size="30"/>
                     </li>
                     <li  class="congty">
                         <?php echo lang('lbl_tax_code');?>
-                        <input type="text" name="tax_code" value="<?php echo $filter['tax_code']; ?>" size="30"/>
+                        <input  maxlength="20" type="text" name="tax_code" value="<?php echo $filter['tax_code']; ?>" size="30"/>
                     </li>
                     <li>
                         <?php echo lang('lbl_home_address');?>  
@@ -195,16 +195,16 @@
 
                     <li>
                         <?php echo lang('lbl_yahoo_address');?>  
-                        <input type="text" name="yahoo" value="<?php echo $filter['yahoo']; ?>" size="30"/>
+                        <input  maxlength="50" type="text" name="yahoo" value="<?php echo $filter['yahoo']; ?>" size="30"/>
                     </li>
                     <li>
                         <?php echo lang('lbl_skype_address');?>  
-                        <input type="text" name="skype" value="<?php echo $filter['skype']; ?>" size="30"/>
+                        <input  maxlength="50" type="text" name="skype" value="<?php echo $filter['skype']; ?>" size="30"/>
                     </li>
 
                     <li  class="canhan">
                         <?php echo lang('lbl_career');?>  
-                        <input type="text" name="career" value="<?php echo $filter['career']; ?>" size="30"/>
+                        <input  maxlength="50" type="text" name="career" value="<?php echo $filter['career']; ?>" size="30"/>
                     </li>
 
                     <li class="message">

@@ -27,7 +27,7 @@
         <!--[if IE]> 
         <style typte="text/css">
         #box-search, .search-popup, .wrapper-popup, #showimage{
-            border: solid 1px gray;
+           
         }
         #order input{margin-top:  0px;}
         </style>
@@ -89,5 +89,5 @@
                 </ul>
             </div>
         </div>
-        <div id="container"></div>
+        <div id="container">
     

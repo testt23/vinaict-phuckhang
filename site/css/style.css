@@ -147,9 +147,9 @@
 }
 #product-container ul li{
     width:150px;
-    height:130px;
+    height:150px;
     float:left;
-    padding:0px 20px 20px 20px;
+    padding:0px 20px 30px 20px;
     margin: 0px;
 }
 
@@ -166,7 +166,7 @@
 }
 
 .name-pro{
-    height: 50px;
+    height: 60px;
     margin: 10px 0px 0px 0px;
     text-align: center;
     overflow: hidden;

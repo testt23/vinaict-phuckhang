@@ -21,7 +21,7 @@
                     </p>
                     
                     <p><?php echo lang('site_footer_online_support'); ?>:<br/>
-                        <a href="ymsgr:sendim?ngvancuong_thienduongmangtenem" mce_href="ymsgr:sendim?ngvancuong_thienduongmangtenem" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" height="20px" width="80px"></a>
+                        <a href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" mce_href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=<?php echo Variable::getYahooSopportOnline(); ?>&t=1" height="20px" width="80px"></a>
                     </p>
                     <p>
                         <?php echo lang('site_footer_visit'); ?>: <br/>
