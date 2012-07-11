@@ -46,8 +46,14 @@ class Variable {
     }
     
     public function getTitelMail(){
-        return defined('COMPANY_TITLE_EMAIL') ? COMPANY_MAIL : '<em>Verify order information</en><vi>Xác nhận thông tin đặt hàng</vi>';
+        return defined('COMPANY_TITLE_EMAIL') ? COMPANY_TITLE_EMAIL : '<e>Verify order information</en><vi>Xác nhận thông tin đặt hàng</vi>';
     }
+    
+    
+    
+    
+    
+    
     /***************************************************************/
     /******************** DEFAULT PAGE******************************/
     /***************************************************************/
@@ -117,7 +123,7 @@ class Variable {
     
     // get how many record you want to display on screen
     public function getLimitRecordPerPage(){
-        return 20;
+        return defined('SITE_LIMIT_RECORD') ? SITE_LIMIT_RECORD : 20;
     }
     
     
@@ -138,6 +144,12 @@ class Variable {
     }
     
     
+    
+    /// yahoo sopport online
+    
+    public function getYahooSopportOnline(){
+        return defined('YAHOO_SUPPORT_ONLINE') ? YAHOO_SUPPORT_ONLINE : 'ngvancuong_thienduongmangtenem';
+    }
     
     
     /***************************************************************/
@@ -165,3 +177,6 @@ class Variable {
 }
 
 ?>
+
+
+

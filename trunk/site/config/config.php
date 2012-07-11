@@ -403,7 +403,7 @@ $config['height'] = 10000;
 
 // SITE APPLICATION
 $config['image_defailt_thum'] = 'images/site/Logo.png';
-$config['PAGINATION_QUERY_STRING_SEGMENT'] = 'page';
+
 
 /* Location: ./application/config/config.php */
 

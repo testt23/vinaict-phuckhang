@@ -20,7 +20,7 @@ class Mailer {
         $fil['self_url_name'] = Variable::getDomainName();
         $fil['self_url'] = Variable::getDomainName();
         $fil['self_email'] = Variable::getCompanyMail();
-        $fil['title'] = getI18n(Variable::getTitlMail(), get_system_language());
+        $fil['title'] = getI18n(Variable::getTitelMail(), get_system_language());
         
         $content = '';
         

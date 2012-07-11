@@ -442,8 +442,10 @@ class Product_controller extends CI_Controller {
     }
 
     public function update_shopping($id, $number) {
-        $Shopping = new ShoppingCart();
-        $Shopping->update_number($id, $number);
+        if ($number*1 > 0){
+            $Shopping = new ShoppingCart();
+            $Shopping->update_number($id, $number);
+        }
     }
 
     public function delete_shopping($id) {
