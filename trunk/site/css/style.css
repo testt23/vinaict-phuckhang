@@ -462,6 +462,9 @@ table tr td{text-align:center}
     }
     
     .wrapper-popup .p-popup a{
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
     }
     .wrapper-popup .p-popup{
         position: absolute;
