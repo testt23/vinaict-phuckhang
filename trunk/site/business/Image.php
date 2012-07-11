@@ -82,48 +82,44 @@ class Image extends Image_model {
     
     
     public function the_image_link_thumb(){
-        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        $url = $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
-    
-    
-    
-    
-    
     public function the_image_link_avata(){
-        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avata.jpg', '_avata.png', '_avata.gif'), $this->{$this->if->_image_as_file});
+        $url = $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avata.jpg', '_avata.png', '_avata.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
     
     public function the_image_link_small(){
-        $url = base_url() . '../uploads/images/'. $this{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
+        $url =  $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
     
     public function the_image_link_medium(){
-        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
+        $url = $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
     
     public function the_image_link_large(){
-        $url = base_url() . '../uploads/images/'. $this{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_large.jpg', '_large.png', '_large.gif'), $this->{$this->if->_image_as_file});
+        $url = $this{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_large.jpg', '_large.png', '_large.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
     
     public function the_image_link_tiny(){
-        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_tiny.jpg', '_tiny.png', '_tiny.gif'), $this->{$this->if->_image_as_file});
+        $url = $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_tiny.jpg', '_tiny.png', '_tiny.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
     
     public function the_image_link(){
-        $url = base_url() . '../uploads/images/'. $this->{$this->if->_image_group_as_code} . '/' . $this->{$this->if->_image_as_file};
+        $url = $this->{$this->if->_image_group_as_code} . '/' . $this->{$this->if->_image_as_file};
         return $this->image_exists($url);
     }
     
     public function image_exists($url){
-        if (!file_exists($url)) {
+        $url = trim($url, '/');
+        if (empty($url)){
             return $this->image_default;
         }
-        return $url;
+        return file_exists('../uploads/images/' . $url) ? base_url() .  '../uploads/images/' . $url : $this->image_default;
     }
 }   

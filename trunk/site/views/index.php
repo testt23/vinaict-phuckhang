@@ -1,4 +1,3 @@
-
 <?php if ($title != ''): ?>
 <h1 class="title-main">
         <?php echo $title; ?>
@@ -16,14 +15,13 @@
          <?php endif; ?>
             <li>
                 <div class="wrapper-popup">
-                    <a href="<?php echo $product->the_product_link(); ?>">
-                        <img src="<?php echo $product->the_image_link_thumb(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
+                    <a class="range-img" href="<?php echo $product->the_product_link(); ?>">
+                        <img src="<?php echo $product->the_image_link_small(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
                     </a>
-                    <div class="p-popup">
-                        <a><?php echo $product->the_product_name(); ?></a>
+                    <div class="p-popup none-hover" id="pop<?php echo $product->the_product_id(); ?>">
+                        <a><?php echo Variable::cut_string($product->the_product_name(), Variable::getNumberOfProductTitle()); ?></a>
                     </div>
-                </div>
-                <div class="name-pro">
+                    <div class="name-pro">
                     <a href="<?php echo $product->the_product_link(); ?>"><?php echo $product->the_product_code(); ?></a><br/>
                     <strong><?php echo lang('lbl_price');?></strong><span style="color: brown;"> 
                         <?php 
@@ -36,6 +34,8 @@
                         ?> 
                     </span>
                 </div>
+                </div>
+                
             </li>     
         <?php $i++; ?>    
         <?php endwhile;?>
