@@ -26,6 +26,7 @@
     background:#014109;
     margin-top:15px;
     z-index: 98;
+    
 }
 #menu ul{
     width:1000px;
@@ -109,7 +110,7 @@
 }
 
 .selected a{
-    color: #336600 !important;
+    color: yellow !important;
 }
 
 /* Main */
@@ -147,9 +148,9 @@
 }
 #product-container ul li{
     width:150px;
-    height:150px;
+    height:210px;
     float:left;
-    padding:0px 20px 30px 20px;
+    padding:0px 20px 0px 20px;
     margin: 0px;
 }
 
@@ -170,6 +171,7 @@
     margin: 10px 0px 0px 0px;
     text-align: center;
     overflow: hidden;
+    font-size: 0.7em;
 }
     
 
@@ -293,10 +295,10 @@ table tr td{text-align:center}
     width: 467px;
     height: 110px;
     margin: 0px auto;
+    
 }
 
 #slide-images .slide{
-
     width:100%;
     margin:5px auto;
     height:100%;
@@ -327,7 +329,9 @@ table tr td{text-align:center}
     width: 440px;
     height: 100px;
 }
-
+#scrollable .items {
+    margin: 0px auto;
+}
 #scrollable .items img{
     margin: 5px 5px 5px 5px;
     width: 100px;
@@ -354,6 +358,7 @@ table tr td{text-align:center}
 .paging a{
     padding: 5px 10px;
     -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
     text-decoration: none;
     background: gray;
     margin: 0px 2px;
@@ -365,13 +370,20 @@ table tr td{text-align:center}
 
 }
 
+.next-prev-active{
+    padding: 4.5px 10px;
+    font-size: 0.9em;
+    color: white;
+    background: #D7D7D7;
+    border-radius: 5px 5px 5px 5px;
+}
+
 .paging a:hover{
-    text-decoration: underline;
-    background: green;
+    color: yellow;
 }
 
 .paging a.page-active{
-    background: green;
+    color: yellow;
 }
 
 
@@ -510,27 +522,25 @@ table tr td{text-align:center}
     }
     .wrapper-popup{
         position: relative;
+        text-align: center;
+        width: 160px;
+        height: 150px;
     }
     
     .wrapper-popup .p-popup a{
-        margin: 0px;
-        top: -5px;
-        box-shadow: 0px 0px 3px 3px gray;
-        -moz-box-shadow: 0px 0px 3px 3px gray;
-        -webkit-box-shadow: 0px 0px 3px 3px gray;
-        padding: 5px 10px;
-        background: white;
-        position: absolute;
     }
     .wrapper-popup .p-popup{
-        padding: 20px;
-        z-index: 10000;
-        display:  none;
         position: absolute;
-        top: -20px;
-        left: 100px;
-        width: 200px;
-        color: gray;
+        padding: 10px 5px;
+        top: 0px;
+        left: 0px;
+        background: gray;
+        font-size: 0.6em;
+        opacity: 0.7;
+        width: 150px;
+        color: white;
+        display: none;
+        filter:alpha(opacity=70);
         
     }
  
@@ -579,6 +589,7 @@ table tr td{text-align:center}
         padding: 0px 0px 15px 15px;
         background: white;
         box-shadow: 0px 0px 3px 3px gray;
+        -moz-box-shadow: 0px 0px 3px 3px gray;
         position: absolute;
         top: 30px;
         right: 0px;

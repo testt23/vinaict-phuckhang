@@ -1,5 +1,8 @@
+<?php 
+    if ($product->countRows() > 0):
+?>
 
-<?php if ($image): ?>
+<?php if ($image != '' && $image->countRows() > 1 ): ?>
 <script language="javascript">
     
     $(document).ready(function(){
@@ -61,7 +64,7 @@
             $(".scrollable .items img").removeClass('active');
             $(this).addClass('active');
             var src = $(this).attr('src');
-            src = src.replace('_thumb', '_large');
+            src = src.replace('_small', '_medium');
             $('#showimage').fadeOut(0,function(){
                 $(this).attr('src', src).fadeIn(400);
             });
@@ -100,19 +103,16 @@
 </script>
 <?php endif;?>
 
-
-
-
 <?php if ($product->countRows() > 0): $product->fetchFirst(); ?>
 <h1 class="title-main">
     
 </h1>
     <div id="image">
-            <div style="height: 350px;">
-                <img id="showimage" src="<?php echo base_url() . $this->config->item('image_defailt_thum'); ?>" height="350"/>
+            <div style="text-align: center; height: 300px;">
+                <img id="showimage" src="<?php echo $product->the_image_link_medium(); ?>"/>
             </div>
-        <?php if ($image): ?>
-            <div id="slide-images">
+        <?php if ($image != '' && $image->countRows() > 1 ): ?>
+              <div id="slide-images">
                 <div class="slide">
                     <a class="prev browse left" id="prev-pointer" src="images/left_btn_blue.png" alt=" "><img src="<?php echo base_url(); ?>/images/site/left_btn_blue.png" /></a>
                     <a class="next browse right" id="next-pointer" src="images/right_btn_blue.png" alt=" " ><img src="<?php echo base_url(); ?>/images/site/right_btn_blue.png" /></a>
@@ -123,22 +123,22 @@
                             <?php if ($product->the_product_id_def_image() != '0'): ?>
                                 <?php while($image->fetchNext()): ?> 
                                     <?php if ($image->the_image_id() == $product->the_product_id_def_image()):?>
-                                             <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                             <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_small(); ?>" height="350"/>
                                     <?php else:?>
-                                              <img alt="<?php echo $i; ?>" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                              <img alt="<?php echo $i; ?>" src="<?php echo $image->the_image_link_small(); ?>" height="350"/>
                                     <?php endif; $i++;?>
                                 <?php endwhile; ?>
                             <?php else: ?>
                                    <?php while($image->fetchNext()): echo $i; ?> 
                                     <?php if ($i == 0):?>
-                                             <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                             <img alt="<?php echo $i; ?>" class="active" src="<?php echo $image->the_image_link_small(); ?>" height="350"/>
                                     <?php else:?>
-                                              <img alt="<?php echo $i; ?>" src="<?php echo $image->the_image_link_thumb(); ?>" height="350"/>
+                                              <img alt="<?php echo $i; ?>" src="<?php echo $image->the_image_link_small(); ?>" height="350"/>
                                     <?php endif; $i++;?>
                                 <?php endwhile; ?>                  
                              <?php endif; ?>
-                        </div>
-                    </div><!--end wrp-info-img-postname -->                              
+                    </div><!--end wrp-info-img-postname --> 
+                    </div>
                 </div><!--end slide -->
             </div><!--end slide-images -->
             <?php endif; ?>
@@ -175,7 +175,7 @@
                 <input type="hidden" name="h_link" value="<?php echo $product->the_product_link(); ?>" />
                 <input type="hidden" name="h_code" value="<?php echo $product->the_product_code(); ?>" />
                 <input type="hidden" name="h_name" value="<?php echo $product->the_product_name(true); ?>"/>
-                <input type="hidden" name="h_price" value="<?php echo $product->the_product_price(); ?>"/>
+                <input type="hidden" name="h_price" value="<?php echo $product->the_product_price(true); ?>"/>
                 <input type="hidden" name="h_description" value="<?php echo $product->the_product_description(true); ?>"/>
                 <input type="hidden" name="h_curency" value="<?php echo $product->the_product_currency(); ?>"/>
                 <input type="hidden" name="click_access" value="click_access"/>
@@ -183,3 +183,8 @@
             </form>
         </div>
     </div>
+<?php else: ?>
+
+<?php redirect(base_url() . Variable::getDefaultPageString()); ?>
+
+<?php endif; ?>

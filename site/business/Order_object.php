@@ -36,13 +36,13 @@ class Order_object {
     }
 
     public function get_price_product() {
-        return number_format($this->price_product,0,'.','.') ; 
+        return number_format(floatval($this->price_product),0,',',',') ; 
     }
 
     public function get_currency_product() {
         return $this->currency_product;
     }
-
+    
     public function get_description_product() {
         return getI18n($this->desciption_product, $this->lang);
     }

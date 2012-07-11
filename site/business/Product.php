@@ -361,8 +361,11 @@ class Product extends Product_model {
         return getI18n($this->{$this->if->_product_as_currency}, $this->lang);
     }
 
-    public function the_product_price() {
-        return number_format($this->{$this->if->_product_as_price},0,'.','.') ;
+    public function the_product_price($fm = false) {
+        if ($fm == false){
+            return number_format($this->{$this->if->_product_as_price},0,',',',') ;
+        }
+        return $this->{$this->if->_product_as_price};
     }
 
     public function the_product_name($lang_true_false = false) {
@@ -386,30 +389,21 @@ class Product extends Product_model {
     public function the_image_group_code() {
         return $this->{$this->if->_image_group_as_code};
     }
-
+    
+    // image
     public function the_image_link_thumb() {
-        $url = base_url() . '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
-       
-        if (!file_exists($url)) {
-            return $this->image_default;
-        }
-        return $url;
+        $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
 
-    public function the_image_link_large() {
-        $url = base_url() . '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_large.jpg', '_large.png', '_large.gif'), $this->{$this->if->_image_as_file});
-        if (!file_exists($url)) {
-            return $this->image_default;
-        }
-        return $url;
+    public function the_image_link_medium() {
+        $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
 
-    public function the_image_link_small() {
-        $url = base_url() . '../uploads/images/' . $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
-        if (!file_exists($url)) {
-            return $this->image_default;
-        }
-        return $url;
+    public function the_image_link_small() { 
+        $url =  $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
     }
 
     public function the_image_name($lang_true_false = false) {
@@ -425,6 +419,14 @@ class Product extends Product_model {
 
     public function the_product_id_def_image() {
         return $this->{$this->if->_product_as_id_def_image};
+    }
+    
+    public function image_exists($url){
+        $url = trim($url, '/');
+        if (empty($url)){
+            return $this->image_default;
+        }
+        return file_exists('../uploads/images/' . $url) ? base_url() .  '../uploads/images/' . $url : $this->image_default;
     }
 
 }

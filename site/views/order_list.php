@@ -25,7 +25,7 @@
                 <td>
                     <b style="color:brown;">
                     <?php 
-                        if ($shopping[$i]->get_price_product() == '0' || $shopping[$i]->get_price_product() == ''){
+                        if ($shopping[$i]->get_price_product()*1 == '0' || $shopping[$i]->get_price_product() == ''){
                             echo lang('lbl_call');
                         }else{
                             echo $shopping[$i]->get_price_product() .' ' .$shopping[$i]->get_currency_product(); ; 

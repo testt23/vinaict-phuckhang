@@ -27,7 +27,7 @@ class Paging {
             if ($current_page > 1) {
                 $s .='<a href="' . $url .'?' . Variable::getPaginationQueryString() . '=' . ($current_page - 1) . '">Prev</a>';
             } elseif ($current_page == 1) {
-                $s .= '<a class="page-active" href="#">Prev</a>';
+                $s .= '<span class="next-prev-active">Prev</span>';
             }
             for ($i = $min; $i <= $max; $i++) {
                 $s .='<a ';
@@ -41,7 +41,7 @@ class Paging {
             if ($current_page < $total_page) {
                 $s .= '<a href="'  . $url .'?' . Variable::getPaginationQueryString() . '=' . ($current_page + 1) . '">Next</a>';
             } elseif ($current_page == $total_page) {
-                $s .= '<a class="page-active" href="#">Next</a>';
+                $s .= '<span class="next-prev-active">Next</span>';
             }
         }
         return $s;

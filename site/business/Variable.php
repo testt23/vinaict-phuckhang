@@ -144,7 +144,11 @@ class Variable {
     }
     
     
-    
+    // number words of product title
+    // 
+    public function getNumberOfProductTitle(){
+        return defined('PRODUCT_TITLE_NUMBER_DISPLAY') ? PRODUCT_TITLE_NUMBER_DISPLAY : 10;
+    }
     /// yahoo sopport online
     
     public function getYahooSopportOnline(){
@@ -174,6 +178,25 @@ class Variable {
     public function getLinkActive($code, $id){
         return base_url()  . Variable::getActiveShopPageString() . '?code='.$code . '&id='. $id;
     }
+    
+    public function cut_string($string, $num){
+        $arr = explode(' ', $string);
+        $total = count($arr);
+        if ($total <= $num){
+            return $string;
+        }else{
+            $str_tmp = '';
+            for ($i = 0; $i < $num; $i++){
+                if ($i == ($num - 1)){
+                    $str_tmp .= $arr[$i] . ' ...';
+                }else{
+                    $str_tmp .= $arr[$i] . ' ';
+                }
+            }
+            return $str_tmp;
+        }
+    }
+    
 }
 
 ?>
