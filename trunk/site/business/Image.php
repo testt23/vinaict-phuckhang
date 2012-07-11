@@ -61,8 +61,19 @@ class Image extends Image_model {
             
             $Image->addWhere($dbinfo->_image_id.' in ('.$list_id.')');
             $Image->find();
-
-            return $Image;
+            if ($Image->countRows() > 0){
+                $return = '';
+                while($Image->fetchNext()){
+                    $file = $Image->{$this->if->_image_group_as_code} . '/' . $Image->{$this->if->_image_as_file};
+                        $tmp = array();
+                        $tmp['id'] = $Image->{$this->if->_image_as_id};
+                        $tmp['name'] = $Image->{$this->if->_image_as_name};
+                        $tmp['link'] = $Image->the_image_link();
+                        $return[] = $tmp;
+                }
+                return $return;
+            }
+            return '';
             
         }
             
@@ -121,5 +132,11 @@ class Image extends Image_model {
             return $this->image_default;
         }
         return file_exists('../uploads/images/' . $url) ? base_url() .  '../uploads/images/' . $url : $this->image_default;
+    }
+    public function have_image($url){
+        if ($url == '' || $url == '/'){
+            return false;
+        }
+        return file_exists(file_exists('../uploads/images/' . $url));
     }
 }   

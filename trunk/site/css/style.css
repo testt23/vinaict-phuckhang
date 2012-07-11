@@ -148,7 +148,7 @@
 }
 #product-container ul li{
     width:150px;
-    height:210px;
+    height:215px;
     float:left;
     padding:0px 20px 0px 20px;
     margin: 0px;
@@ -167,12 +167,15 @@
 }
 
 .name-pro{
-    height: 60px;
+    height: 45px;
+    overflow: hidden;
+    width: 160px;
     margin: 10px 0px 0px 0px;
     text-align: center;
     overflow: hidden;
     font-size: 0.7em;
 }
+
     
 
 .name-pro a, .name-pro strong{
@@ -182,19 +185,6 @@
 }
 /**/
 table tr td{text-align:center}
-#image{
-    width:550px;
-    float:left;
-    margin:15px 0px 20px 0px;
-    
-}
-#info{
-    float:right;
-    width: 400px;
-}
-#info #text{
-    padding: 0px;
-}
 #order{width:180px;
        height:31px;
        line-height: 20px;
@@ -288,71 +278,6 @@ table tr td{text-align:center}
     padding: 3px 10px 3px 10px;
     background: gray;
     color: white;
-}
-
-
-#slide-images{
-    width: 467px;
-    height: 110px;
-    margin: 0px auto;
-    
-}
-
-#slide-images .slide{
-    width:100%;
-    margin:5px auto;
-    height:100%;
-    position:relative;
-}
-#slide-images .slide #prev-pointer{
-    width:11px;
-    height:12px;
-    position:absolute;
-    left:0px;
-    top:47px;
-    cursor:pointer;
-}
-#slide-images .slide #next-pointer{
-    width:11px;
-    height:12px;
-    position:absolute;
-    right:0px;
-    top:47px;
-    cursor:pointer;
-}
-
-#scrollable{
-    position: absolute;
-    overflow: hidden;
-    top: 5px;
-    left: 14px;
-    width: 440px;
-    height: 100px;
-}
-#scrollable .items {
-    margin: 0px auto;
-}
-#scrollable .items img{
-    margin: 5px 5px 5px 5px;
-    width: 100px;
-    height: 90px;
-    float:left;
-    cursor: pointer;
-}
-
-#scrollable .items img:hover{
-    border: solid 5px gray;
-    width: 90px;
-    height: 80px;
-}
-#scrollable .items img.active{
-    border: solid 5px gray;
-    width: 90px;
-    height: 80px;
-}
-#slide-images .slide .items{
-
-    height: 110px;
 }
 
 .paging a{
@@ -520,28 +445,43 @@ table tr td{text-align:center}
     .wrapper-popup:hover .p-popup{
         display: block;
     }
+    
+    
+    .wrapper-popup img{
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+    }
+    
     .wrapper-popup{
         position: relative;
         text-align: center;
         width: 160px;
         height: 150px;
+        vertical-align: bottom;
     }
     
     .wrapper-popup .p-popup a{
     }
     .wrapper-popup .p-popup{
         position: absolute;
-        padding: 10px 5px;
-        top: 0px;
+        padding: 5px 5px;
+        top: 110px;
         left: 0px;
         background: gray;
         font-size: 0.6em;
-        opacity: 0.7;
-        width: 150px;
+        opacity: 0.8;
+        width: 140px;
+        height: 30px;
         color: white;
         display: none;
-        filter:alpha(opacity=70);
+        filter:alpha(opacity=80);
         
+    }
+    range-image-wrapper{
+        background: red;
+        height: 150px;
+        border : solid 1px;
     }
  
     #searchbox{
@@ -638,3 +578,67 @@ table tr td{text-align:center}
     .title-main{
          height: 30px; font-size: 1.0em; text-transform: uppercase;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /* detail prod*/
+    
+    #detail-prod{
+        width: 1000px;
+        margin: 0px auto;
+    }
+    #showimage{
+        position: relative;
+    }
+    
+    #slide-show-image{
+        
+        float:left;
+        width: 535px;
+    }
+    #slide-show-image .sliderelative{
+        position: relative;
+    }
+    #slide-show-image h2{
+        text-align: center;
+        border: solid;
+        height: 350px;
+        width: 350px;
+        margin: 0px auto;
+    }
+    
+    #wrapper-image-slider{
+        height: 100px;
+        width: 100%;
+        border: solid 1px;
+    }
+    /* info */
+    #info-show-image{
+        float:right;
+        width: 455px;
+    }
+    #info-show-image ul li{
+        padding: 5px 0px;
+    }
+    #info-show-image h1{
+        color: brown;
+        font-size: 1.0em;
+        
+    }
+    #info-show-image  strong{
+        
+    }
+    

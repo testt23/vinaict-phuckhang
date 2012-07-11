@@ -1,49 +1,49 @@
 <?php if ($title != ''): ?>
-<h1 class="title-main">
+    <h1 class="title-main">
         <?php echo $title; ?>
-</h1>
+    </h1>
 <?php endif; ?>
 
 
 <div id="product-container">
     <ul>
-     <?php if (isset($product) && $product): ?>
-     <?php $i = 0; ?>
-     <?php while($product->fetchNext()): ?>
-        <?php if (($i % 4) !=0 ): ?>
-         <li class="space"></li>
-         <?php endif; ?>
-            <li>
-                <div class="wrapper-popup">
-                    <a class="range-img" href="<?php echo $product->the_product_link(); ?>">
-                        <img src="<?php echo $product->the_image_link_small(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
-                    </a>
-                    <div class="p-popup none-hover" id="pop<?php echo $product->the_product_id(); ?>">
-                        <a><?php echo Variable::cut_string($product->the_product_name(), Variable::getNumberOfProductTitle()); ?></a>
+        <?php if (isset($product) && $product): ?>
+            <?php $i = 0; ?>
+            <?php while ($product->fetchNext()): ?>
+                <?php if (($i % 4) != 0): ?>
+                    <li class="space"></li>
+                <?php endif; ?>
+                <li>
+                    <div class="wrapper-popup">
+                        <a class="range-img" href="<?php echo $product->the_product_link(); ?>">
+                            <img src="<?php echo $product->the_image_link_small(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
+                        </a>
+                        <div class="p-popup none-hover" id="pop<?php echo $product->the_product_id(); ?>">
+                            <a href="<?php echo $product->the_product_link(); ?>"><?php echo Variable::cut_string($product->the_product_name(), Variable::getNumberOfProductTitle()); ?></a>
+                        </div>
                     </div>
                     <div class="name-pro">
-                    <a href="<?php echo $product->the_product_link(); ?>"><?php echo $product->the_product_code(); ?></a><br/>
-                    <strong><?php echo lang('lbl_price');?></strong><span style="color: brown;"> 
-                        <?php 
-                            
-                            if ($product->the_product_price() == '' || $product->the_product_price() == '0'){
+                        <a href="<?php echo $product->the_product_link(); ?>"><?php echo $product->the_product_code(); ?></a><br/>
+                        <strong><?php echo lang('lbl_price'); ?></strong><span style="color: brown;"> 
+                            <?php
+                            if ($product->the_product_price() == '' || $product->the_product_price() == '0') {
                                 echo lang('lbl_call');
-                            }else{
-                                echo $product->the_product_price() . ' ' .  $product->the_product_currency(); 
+                            } else {
+                                echo $product->the_product_price() . ' ' . $product->the_product_currency();
                             }
-                        ?> 
-                    </span>
-                </div>
-                </div>
-                
-            </li>     
-        <?php $i++; ?>    
-        <?php endwhile;?>
+                            ?> 
+                        </span>
+
+                    </div>
+
+                </li>     
+                <?php $i++; ?>    
+            <?php endwhile; ?>
         <?php endif; ?>
     </ul>
     <div class="clear"></div>
     <div class="paging" style="text-align: center; clear:both;">
-        <?php 
+        <?php
         echo $paging;
         ?>
     </div>

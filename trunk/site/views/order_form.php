@@ -211,7 +211,7 @@
                         <textarea name="message"><?php echo $filter['message']; ?></textarea>
                     </li>
                     <li class="orderbutton">
-                        <input type="reset" name="" value ="<?php echo lang('btn_clear');?>"/>
+                        <input type="reset" name="" value ="<?php echo lang('btn_clear');?>" onclick="check_mucdich();"/>
                         <input type="hidden" name="ok-click" value="ok-click"/>
                         <input type="submit" name="" value ="<?php echo lang('btn_order');?>"/>
                     </li>

@@ -395,7 +395,10 @@ class Product extends Product_model {
         $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
-
+    public function the_image_link() {
+        $url = $this->the_image_group_code() . '/' . $this->{$this->if->_image_as_file};
+        return $this->image_exists($url);
+    }
     public function the_image_link_medium() {
         $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);

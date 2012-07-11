@@ -1,3 +1,27 @@
+<script language="javascript">
+    function keypress(e){
+    //Hàm dùng để ngăn người dùng nhập các ký tự khác ký tự số vào TextBox
+    var keypressed = null;
+        if (window.event)
+        {
+            keypressed = window.event.keyCode; //IE
+        }
+        else
+        {
+            keypressed = e.which; //NON-IE, Standard
+        }
+
+        if (keypressed < 48 || keypressed > 57)
+        { 
+            if (keypressed == 8 || keypressed == 127)
+            {
+                return;
+            }
+            return false;
+        }
+    }
+</script>
+
 <?php if (!empty($shopping)): ?>
 <script language="javascript" src="<?php echo base_url() . 'js/ajax.js'; ?>"></script>
 <h4 class="title-main"><?PHP echo lang('site_product_title_order'); ?></h4>
@@ -35,10 +59,8 @@
                     </b>
                 </td>
                 <td>
-                    <form method="post" action="">
-                        <input type="hidden" name="id_prods<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_id_product(); ?>" onchange="update_giohang()"/>
-                        <input class="updae_input" type="text" name="num_prod<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_number(); ?>" onchange="update_giohang('id_prods<?php echo $shopping[$i]->get_id_product(); ?>', this, '<?php echo base_url() . 'products/update_shop' ?>');"/>
-                    </form>
+                    <input type="hidden" name="id_prods<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_id_product(); ?>" onchange="update_giohang()"/>
+                    <input class="updae_input" type="text" name="num_prod<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_number(); ?>" onchange="update_giohang('id_prods<?php echo $shopping[$i]->get_id_product(); ?>', this, '<?php echo base_url() . 'products/update_shop' ?>');" onkeypress="return keypress(event)" maxlength="3" style="text-align: center;" />
                 </td>
                 <td class="del"><a onclick="return delete_shop('tr_<?php echo $shopping[$i]->get_id_product(); ?>',<?php echo $shopping[$i]->get_id_product(); ?>,'<?php echo base_url() . 'products/delete_shop'; ?>'  )" href="#" class="del-gio"><?php echo lang('site_product_delete'); ?></a></td>
             </tr>

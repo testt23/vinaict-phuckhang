@@ -84,3 +84,6 @@ $lang['show_form_search_2'] = 'Option';
 $lang['show_form_search_3'] = 'Price from:';
 $lang['show_form_search_4'] = 'Price to:';
 $lang['show_form_search_5'] = 'Currency';
+
+//
+$lang['image'] = 'Image';
