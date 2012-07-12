@@ -69,6 +69,8 @@ class Image extends Image_model {
                         $tmp['id'] = $Image->{$this->if->_image_as_id};
                         $tmp['name'] = $Image->{$this->if->_image_as_name};
                         $tmp['link'] = $Image->the_image_link();
+                        $tmp['link_avata'] = $Image->the_image_link_avata();
+                        $tmp['link_medium'] = $Image->the_image_link_medium();
                         $return[] = $tmp;
                 }
                 return $return;

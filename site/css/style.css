@@ -26,7 +26,7 @@
     background:#014109;
     margin-top:15px;
     z-index: 98;
-    
+
 }
 #menu ul{
     width:1000px;
@@ -176,7 +176,7 @@
     font-size: 0.7em;
 }
 
-    
+
 
 .name-pro a, .name-pro strong{
     font-weight: bold;
@@ -322,7 +322,7 @@ table tr td{text-align:center}
     display: inline;
     background: red;
     width: 20px;
-    
+
     height: 15px;
 }
 #language-wrapper a.en{
@@ -350,298 +350,414 @@ table tr td{text-align:center}
 }
 
 .contact-wrapper{
-        margin: 0px auto;
-        padding: 20px;
-        width: 770px;
-    }
-    .contact-wrapper h1{
-        background: gray;
-        color: white;
-        font-size: 16px;
-        padding: 5px 10px;
-    }
-    .contact-main{
-        border: solid 1px gray;
-    }
-    .contact-main span{
-        padding: 0px 0px 0px 20px;
-    }
-    .contact-main select{
-        width: 150px;
-        padding: 3px;
-        
-    }
-    .contact-main input{
-        padding: 3px;
-    }
+    margin: 0px auto;
+    padding: 20px;
+    width: 770px;
+}
+.contact-wrapper h1{
+    background: gray;
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+.contact-main{
+    border: solid 1px gray;
+}
+.contact-main span{
+    padding: 0px 0px 0px 20px;
+}
+.contact-main select{
+    width: 150px;
+    padding: 3px;
 
-    .ul-main{
-        padding:  20px;
-    }
+}
+.contact-main input{
+    padding: 3px;
+}
+
+.ul-main{
+    padding:  20px;
+}
 
 
-    input{
-        margin: 3px;
-    }
-    .orderbutton{
-        margin-top: 10px;
-        text-align: right;
-    }
-    .orderbutton input{
-        background: gray;
-        border: solid 1px gray;
-        padding: 5px 20px;
-        cursor: pointer;
-        color: white;
-        -moz-border-radius: 5px 5px 5px 5px;
-        
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-    .ul-right{
-        width: 500px;
-        margin: 0px auto;
-    }
-    .ul-right li{
-        text-align: right;
-        width: 400px;
-        padding: 3px 0px;
-    }
-    .message textarea{
-        width: 400px;
-        height: 100px;
-        padding: 10px;
-    }
-    .h-top{
-        padding-left: 148px;
-    }
-    
-    #list td {
-        border: solid 1px gray;
-        padding: 5px 10px;
-    }
-    
-    #list td.title{
-        height: 30px;
-        color: white;
-        font-weight: bold;    
-        background: gray;
-    }
-    img{
-        border: none;
-    }
-    .updae_input{
-        padding: 5px;
-        width: 50px;
-    }
-    #language-wrapper input{
-        border: none;
-    }
-    .del-gio{
-        text-decoration: none;
-        color:#0000FF;
-        font-weight: bold;
-    }
-    .wrapper-popup:hover .p-popup{
-        display: block;
-    }
-    
-    
-    .wrapper-popup img{
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-    }
-    
-    .wrapper-popup{
-        position: relative;
-        text-align: center;
-        width: 160px;
-        height: 150px;
-        vertical-align: bottom;
-    }
-    
-    .wrapper-popup .p-popup a{
-        color: white;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    .wrapper-popup .p-popup{
-        position: absolute;
-        padding: 5px 5px;
-        top: 110px;
-        left: 0px;
-        background: gray;
-        font-size: 0.6em;
-        opacity: 0.8;
-        width: 140px;
-        height: 30px;
-        color: white;
-        display: none;
-        filter:alpha(opacity=80);
-        
-    }
-    range-image-wrapper{
-        background: red;
-        height: 150px;
-        border : solid 1px;
-    }
- 
-    #searchbox{
-        float:right;
-        position: relative;
-        margin: 90px 20px 0px 0px;
-        width: 350px;
-        height: 30px;
-        color: gray;
-        z-index: 999999;
-        text-align: right;
-    }
-    .name-search{
-        margin: 0px;
-        height: 20px;
-    }
-    .button-search{
-        margin: 0px;
-    }
-    #advance{
-        margin: 3px 0px 0px 0px;
-        padding: 3px 20px;
-        -moz-border-radius: 5px 5px 5px 5px;
-        border-radius: 5px 5px 5px 5px;
-        text-decoration: none;
-        color: white;
-        background: gray;
-    }
-    .hide{
-        display: none;
-    }
-    .show{
-        display: block;
-    }
-    .search-popup input{
-        width: 100px;
-        padding: 2px 5px;
-        border: solid 1px gray; 
-    }
-    .search-popup select{
-        width: 100px;
-        border: solid 1px gray; 
-    }
-    .search-popup{
-        padding: 0px 0px 15px 15px;
-        background: white;
-        box-shadow: 0px 0px 3px 3px gray;
-        -moz-box-shadow: 0px 0px 3px 3px gray;
-        position: absolute;
-        top: 30px;
-        right: 0px;
-        width: 220px;
-        height: 100px;
+input{
+    margin: 3px;
+}
+.orderbutton{
+    margin-top: 10px;
+    text-align: right;
+}
+.orderbutton input{
+    background: gray;
+    border: solid 1px gray;
+    padding: 5px 20px;
+    cursor: pointer;
+    color: white;
+    -moz-border-radius: 5px 5px 5px 5px;
 
-    }
-    
-    .close-search-pop{
-        text-align: center;
-        border-radius: 5px 5px 5px 5px;
-        color: white;
-        cursor: pointer;
-        background: #0066cc;
-        float:right;
-        width: 20px;
-        height: 20px;
-    }
-    
-    #text ul li h2{
-        color: orangered;
-        font-size: 1.0em;
-    }
-    
-    
-    #text ul li{
-        list-style: none;
-        padding: 5px
-    }
-    #text ul li strong{
-        color: gray;
-    }
-    #text ul li .call-price{
-        color: brown;
-        font-weight: bold;  
-    }
-    
-    .shp td a{
-        text-decoration: none;
-        color: black;
-    }
-    .shp td a:hover{
-        text-decoration: underline;
-    }
-    
-    .title-main{
-         height: 30px; font-size: 1.0em; text-transform: uppercase;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /* detail prod*/
-    
-    #detail-prod{
-        width: 1000px;
-        margin: 0px auto;
-    }
-    #showimage{
-        position: relative;
-    }
-    
-    #slide-show-image{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.ul-right{
+    width: 500px;
+    margin: 0px auto;
+}
+.ul-right li{
+    text-align: right;
+    width: 400px;
+    padding: 3px 0px;
+}
+.message textarea{
+    width: 400px;
+    height: 100px;
+    padding: 10px;
+}
+.h-top{
+    padding-left: 148px;
+}
+
+#list td {
+    border: solid 1px gray;
+    padding: 5px 10px;
+}
+
+#list td.title{
+    height: 30px;
+    color: white;
+    font-weight: bold;    
+    background: gray;
+}
+img{
+    border: none;
+}
+.updae_input{
+    padding: 5px;
+    width: 50px;
+}
+#language-wrapper input{
+    border: none;
+}
+.del-gio{
+    text-decoration: none;
+    color:#0000FF;
+    font-weight: bold;
+}
+.wrapper-popup:hover .p-popup{
+    display: table-cell !important;
+    width: 140px; height: 30px;
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+
+.wrapper-popup img{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.wrapper-popup{
+    position: relative;
+    text-align: center;
+    width: 160px;
+    height: 150px;
+    vertical-align: bottom;
+}
+
+.wrapper-popup .p-popup a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+.wrapper-popup .p-popup{
+    position: absolute;
+    padding: 5px 5px;
+    top: 110px;
+    left: 0px;
+    background: gray;
+    font-size: 0.6em;
+    opacity: 0.8;
+    width: 140px;
+    height: 30px;
+    color: white;
+    display: none;
+    filter:alpha(opacity=80);
+    display: none;
+    vertical-align: middle;
+    text-align: center;
+}
+range-image-wrapper{
+    background: red;
+    height: 150px;
+    border : solid 1px;
+}
+
+#searchbox{
+    float:right;
+    position: relative;
+    margin: 90px 20px 0px 0px;
+    width: 350px;
+    height: 30px;
+    color: gray;
+    z-index: 999999;
+    text-align: right;
+}
+.name-search{
+    margin: 0px;
+    height: 20px;
+}
+.button-search{
+    margin: 0px;
+}
+#advance{
+    margin: 3px 0px 0px 0px;
+    padding: 3px 20px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    text-decoration: none;
+    color: white;
+    background: gray;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.search-popup input{
+    width: 100px;
+    padding: 2px 5px;
+    border: solid 1px gray; 
+}
+.search-popup select{
+    width: 100px;
+    border: solid 1px gray; 
+}
+.search-popup{
+    padding: 0px 0px 15px 15px;
+    background: white;
+    box-shadow: 0px 0px 3px 3px gray;
+    -moz-box-shadow: 0px 0px 3px 3px gray;
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    width: 220px;
+    height: 100px;
+
+}
+
+.close-search-pop{
+    text-align: center;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    cursor: pointer;
+    background: #0066cc;
+    float:right;
+    width: 20px;
+    height: 20px;
+}
+
+#text ul li h2{
+    color: orangered;
+    font-size: 1.0em;
+}
+
+
+#text ul li{
+    list-style: none;
+    padding: 5px
+}
+#text ul li strong{
+    color: gray;
+}
+#text ul li .call-price{
+    color: brown;
+    font-weight: bold;  
+}
+
+.shp td a{
+    text-decoration: none;
+    color: black;
+}
+.shp td a:hover{
+    text-decoration: underline;
+}
+
+.title-main{
+    height: 30px; font-size: 1.0em; text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* detail prod*/
+
+#detail-prod{
+    width: 1000px;
+    margin: 0px auto;
+}
+#showimage{
+    position: relative;
+}
+
+#slide-show-image{
+
+    float:left;
+    width: 535px;
+}
+
+#slide-show-image h2{
+    height: 350px;
+    width: 350px;
+    margin: 0px auto;
+}
+
+/* info */
+#info-show-image{
+    float:right;
+    width: 455px;
+}
+#info-show-image ul li{
+    padding: 5px 0px;
+}
+#info-show-image h1{
+    color: brown;
+    font-size: 1.0em;
+
+}
+#info-show-image  strong{
+
+}
+#image-next{
+    background: url('../images/site/right_btn_blue.png') no-repeat center center;
+    width: 20px;
+    height: 100px;
+    top: 5px; right: 75px;
+    position: absolute;
+    cursor: pointer;
         
-        float:left;
-        width: 535px;
-    }
-    #slide-show-image .sliderelative{
-        position: relative;
-    }
-    #slide-show-image h2{
-        text-align: center;
-        border: solid;
-        height: 350px;
-        width: 350px;
-        margin: 0px auto;
-    }
+}
+#image-prev{
+    background: url('../images/site/left_btn_blue.png') no-repeat center center;
+    width: 20px;
+    height: 100px;
+    top: 5px; left: 75px;
+    position: absolute;
+    cursor: pointer;
+}
+
+
+#wrapper-item{
+    padding: 0px 0px;
+    width: 330px;
+    margin: 0px auto;
     
-    #wrapper-image-slider{
-        height: 100px;
-        width: 100%;
-        border: solid 1px;
-    }
-    /* info */
-    #info-show-image{
-        float:right;
-        width: 455px;
-    }
-    #info-show-image ul li{
-        padding: 5px 0px;
-    }
-    #info-show-image h1{
-        color: brown;
-        font-size: 1.0em;
+}
+#items{
+    height: 110px;
+}
+
+#items img{
+    cursor: pointer;
+    width: 100px; height: 100px;
+    border: solid 5px white;
+}
+#items img:hover{
+    border: solid 5px gray;
+}
+.active-slide{
+    border: solid 5px gray !important;
+}
+
+#wrapper-image-slider{
+    margin-top: 10px;
+    height: 110px;
+    width: 100%;
+    position: relative;
+}
+
+.showimage-wrap{
+    display: table-cell; 
+    vertical-align: middle; 
+    width: 350px; height: 350px;
+    text-align: center;
+    border: solid 1px;
+}
+
+#container-slide{
+    height: 500px;
+    width: 500px;
+    border: solid 1px;
+    padding-top: 20px;
+}
+
+
+
+
+.t-slide-wrapper-1{
+   margin: 0px 20px 0px 0px; background: #000000; 
+   width: 380px; height: 530px; float: right; 
+}
+.t-slide-wrapper-1 h1{
+    color: white;
+    font-size: 1.0em;
+    text-transform: uppercase;
+    height: 30px;
+    padding: 5px 20px 5px 20px;
+    line-height: 30px;
+}
+
+.t-slide{
+    width: 360px;
+    height: 360px;
+    margin: 0px auto;
+    background: white;
+}
+
+.wrap-tslide{
+    height: 360px;
+    width: 360px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background: green;
         
-    }
-    #info-show-image  strong{
-        
-    }
+}
+
+.wrapper-t-list-slide{
+    width: 330px;
+}
+.t-list-slide{
     
+    position: relative;
+    height: 120px;
+    width:360px;
+    background: red;
+    margin: 10px auto;
+    background: #333534;
+}
+#slide-ul{
+    margin-left: 25px;
+}
+#slide-ul li{
+    height: 70px;
+    width: 98px;
+    float:left;
+    border: solid 1px white;
+}
+#slide-ul li img{
+    height: 70px;
+    width: 90px;
+}

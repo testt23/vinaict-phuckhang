@@ -242,7 +242,7 @@ class Product_controller extends CI_Controller {
                     // neu khach hang da ton tai
 
                     if ($List_customer->countRows() == 0 && $not_buy == '2') {
-                        $result = 'Ban chua phai la khach hang. vui long chon khach hang binh thuong va dien day du thong tin';
+                        $result = '<span style="color: red;">'.lang('show_message_info_1') .'</span>';
                     } else {
 
 
@@ -345,7 +345,7 @@ class Product_controller extends CI_Controller {
                             $purchase->billing_address = $billing_address;
                             $purchase->shipping_address = $shipping_address;
                             $purchase->insert();
-                            $result = "<?php echo lang('show_message_info_2');?>";
+                            $result = lang('show_message_info_2');
 
                             $text = '';
                             if (isset($purchase->id) && $Cus_update->id && $mucdich == '2') {
@@ -388,16 +388,16 @@ class Product_controller extends CI_Controller {
                                 $filter['billing_address'] = $billing_address;
                                 $mail = new Mailer();
                                 $mail->sendmail($filter);
-                                $result = "<?php echo lang('show_message_info_3');?>";
+                                $result = lang('show_message_info_3');;
                                 $Shopping->clear_all();
                             }
                         }
                     }
                 } else {
-                    $result = "<span style='color: red;'><?php echo lang('show_message_info_4');?><span>";
+                    $result = '<span style="color: red;">' .lang('show_message_info_4') . '<span>';
                 }
             } else {
-                $result = "<?php echo lang('show_message_info_5');?>";
+                $result = '<span style="color: red;">' .lang('show_message_info_5') . '<span>';
             }
         }
 
@@ -434,6 +434,7 @@ class Product_controller extends CI_Controller {
         
         
         $data['mess'] = $result;
+        //echo $result;
         $data['filter'] = $filter;
         $data['content'] = 'order_form';
         $data['array_menus'] = $array_menus;
@@ -455,9 +456,9 @@ class Product_controller extends CI_Controller {
     public function active_cat(){
         $Product = new Product();
         if ($Product->activeCartShop()){
-            $mess = "<?php echo lang('show_message_info_6');?>";
+            $mess = lang('show_message_info_6');
         }else{
-            $mess = "<?php echo lang('show_message_info_7');?>";
+            $mess = lang('show_message_info_7');
         }
         // menu
         $array_menus = array();
