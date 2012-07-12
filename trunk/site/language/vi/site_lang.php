@@ -31,7 +31,7 @@ $lang['show_empty_shipping'] = 'Vui lòng nhập vào địa chỉ giao hàng.';
 $lang['show_empty_company'] = 'Vui lòng nhập vào tên công ty.';
 $lang['show_empty_personal'] = 'Vui lòng nhập vào người đại diện công ty.';
 $lang['show_empty_firstname'] = 'Vui lòng nhập vào đầy đủ Họ và Tên.';
-$lang['show_empty_lastname'] = 'Vui lòng nhập vào địa chỉ Email.';
+$lang['show_empty_lastname'] = 'Vui lòng nhập vào đầy đủ Họ và Tên.';
 $lang['show_empty_message'] = 'Vui lòng nhập vào nội dung tin nhắn.';
 
 
