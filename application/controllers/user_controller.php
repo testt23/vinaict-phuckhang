@@ -170,7 +170,7 @@
             
         }
         
-        $group = Usr_group::getList();
+        $group = UsrGroup::getList();
 
         $array_menus = array();
         $filter = array();
@@ -257,7 +257,7 @@
             
         }
         
-        $group = Usr_group::getList();
+        $group = UsrGroup::getList();
 
         $array_menus = array();
         $filter = array();
