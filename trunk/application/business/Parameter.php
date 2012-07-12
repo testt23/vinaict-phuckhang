@@ -39,7 +39,7 @@
                     
                 }
                 
-                public static function loadParams($group_code = '', $category = 0) {
+                public static function loadParams($group_code = '', $always_load = TRUE) {
                     
                     $param = new Parameter();
                     
@@ -50,8 +50,8 @@
                         $param->addWhere('param_group.disabled = '.IS_NOT_DISABLED);
                     }
                     
-                    if ($category != 0)
-                        $param->addWhere('parameter.category = '.$category);
+                    if ($always_load == TRUE)
+                        $param->addWhere('parameter.always_load = 1');
                     
                     $param->addWhere('parameter.disabled = '.IS_NOT_DISABLED);
                     $param->addSelect();
