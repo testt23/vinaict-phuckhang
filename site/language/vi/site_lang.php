@@ -87,5 +87,5 @@ $lang['show_form_search_1'] = 'Tìm kiếm';
 $lang['show_form_search_2'] = 'Mở rộng';
 $lang['show_form_search_3'] = 'Từ giá:';
 $lang['show_form_search_4'] = 'Đến giá:';
-$lang['show_form_search_5'] = 'Mệnh giá';
+$lang['show_form_search_5'] = 'Tiền tệ';
 $lang['image'] = 'Hình';
