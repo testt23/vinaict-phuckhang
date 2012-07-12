@@ -56,6 +56,7 @@ class News_category_controller extends CI_Controller {
         if ($id && !$news_category->get($id)) {
             redirect($back);
         }
+        
         if(!$news_category->testExitIdParent($news_category->id)){
             
                 if($news_category->delete($news_category->id)){
@@ -63,10 +64,10 @@ class News_category_controller extends CI_Controller {
                     Article::deleteByIdNewsCategory($news_category->id);
 
                 }
-                
+               redirect($back); 
         }
         
-        redirect($back);
+        redirect($back,null,null,$error_message = lang('err_already_parent'),MSG_ERROR);
     
     }
     
