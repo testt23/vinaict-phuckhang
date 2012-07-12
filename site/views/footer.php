@@ -25,7 +25,7 @@
                     </p>
                     <p>
                         <?php echo lang('site_footer_visit'); ?>: <br/>
-                        <img src="http://hitwebcounter.com/counter/counter.php?page=4497634&style=0006&nbdigits=5&type=ip&initCount=0" title="Free Stats" Alt="<?php echo Variable::getDomainName(); ?>"   border="0" >
+                        <?php include_once 'counter.php'; ?>
                     </p>
                 </div>
             </div>
