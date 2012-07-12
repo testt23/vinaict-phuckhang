@@ -4,6 +4,7 @@
    margin:0;
    list-style: none;
 }
+
 /* Header */
 
 #header {
@@ -116,7 +117,8 @@
 /* Main */
 #container{
     width:1000px;
-    margin:20px auto;
+    padding:20px auto;
+    background: url('../images/site/background.png');
 }
 #container p{
     margin:20px;
