@@ -141,34 +141,36 @@
                         <span accesskey="<?php echo $product->the_image_link(); ?>">
                             <img id="showimage" src="<?php echo $product->the_image_link_medium(); ?>"/>
                         </span>
-                        <?php foreach($image as $item): ?>
-                            <?php if ($item['id'] != $product->the_product_id()): ?>
-                                <span accesskey="<?php echo $item['link']; ?>" style="display: none;"></span>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                        <?php if ($image != ''): ?>
+                            <?php foreach($image as $item): ?>
+                                <?php if ($item['id'] != $product->the_product_id()): ?>
+                                        <span accesskey="<?php echo $item['link']; ?>" style="display: none;"></span>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <?php if (count($image) > 1): ?>
-                <div class="t-list-slide">
-                    <div id="image-prev"></div>
-                    <div id="image-next"></div>
-                    
-                    <div id="slide-wrap-ul">
-                        <ul id="items">
-                            <?php $i = 0;
-                            foreach ($image as $item): ?>
-                                <li class="<?php
-                                if ($i == 0) {
-                                    echo "slide-ul-wrap-active";
-                                }
-                                        ?>" >
-                                    <img title="<?php echo $i + 1; ?>" 
-                                         src="<?php echo $item['link_avata']; ?>" alt="<?php echo $item['link_medium']; ?>" /></li>
-                                    <?php $i++;
-                                endforeach; ?>
-                        </ul>
+                    <div class="t-list-slide">
+                        <div id="image-prev"></div>
+                        <div id="image-next"></div>
+
+                        <div id="slide-wrap-ul">
+                            <ul id="items">
+                                <?php $i = 0;
+                                foreach ($image as $item): ?>
+                                    <li class="<?php
+                                    if ($i == 0) {
+                                        echo "slide-ul-wrap-active";
+                                    }
+                                            ?>" >
+                                        <img title="<?php echo $i + 1; ?>" 
+                                             src="<?php echo $item['link_avata']; ?>" alt="<?php echo $item['link_medium']; ?>" /></li>
+                                        <?php $i++;
+                               endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 <?php endif; ?>
             </div>
             <div class="clear"></div>
@@ -177,9 +179,9 @@
             <ul>
                 <li><h1><?php echo $product->the_product_name(); ?></h1></li>
                 <li>
-                    <strong>Price:</strong> <font style="color: tomato;">
+                    <strong><?php echo lang('lbl_price');?></strong> <font style="color: tomato;">
                     <?php if ($product->the_product_price(true) == '' || $product->the_product_price(true) == '0'): ?> 
-                                Call
+                                <?php echo lang('lbl_call');?>
                     <?php else: ?>
                                 <?php echo $product->the_product_price() . ' '; ?>
                                 <?php echo $product->the_product_currency(); ?>
@@ -187,9 +189,9 @@
                     
                     </font> 
                 </li>
-                <li><strong>Keywords:</strong> <?php echo $product->the_product_keywords(); ?></li>
+                <li><strong><?php echo lang('lbl_keywords');?></strong> <?php echo $product->the_product_keywords(); ?></li>
                 <li>
-                    <strong>Description </strong>:
+                    <strong><?php echo lang('lbl_description');?> </strong>
                     <?php echo $product->the_product_description(); ?>
                 </li>
                 <li>
