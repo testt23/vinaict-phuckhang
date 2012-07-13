@@ -1,5 +1,6 @@
 <?php $image_path = base_url() . $this->config->item('image_temp'); ?>        
-</div>
+    </div>
+    </div>
         <div class="clear" id="footer-wrapper">
             <div id="footer" >
                 <div id="linkbox">
