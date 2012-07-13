@@ -65,6 +65,7 @@ $lang['cobx_for_personal'] = 'Personal';
 // page product detail
 $lang['show_message_product'] = 'No product updates';
 $lang['lbl_price'] = 'Price:';
+$lang['lbl_keywords'] = 'Keywords:';
 $lang['lbl_call'] = 'Call';
 $lang['lbl_description'] = 'Description:';
 
