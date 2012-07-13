@@ -24,9 +24,9 @@
 
 <?php if (!empty($shopping)): ?>
 <script language="javascript" src="<?php echo base_url() . 'js/ajax.js'; ?>"></script>
-<h4 class="title-main"><?PHP echo lang('site_product_title_order'); ?></h4>
-
-<table width="1000" id="list" style="border:  solid 1px gray;" cellspacing="0" cellpadding="0">
+<div class="clear"></div>
+<h2 class="title-main"><?PHP  echo lang('site_product_title_order'); ?></h2>
+<table width="100%" id="list" style="border:  solid 1px gray;" cellspacing="0" cellpadding="0">
     <tr>
         <td class="title" width="10%"><?PHP echo lang('site_product_code'); ?></td>
         <td class="title" width="20%"><?PHP echo lang('site_product_name'); ?></td>
@@ -65,7 +65,6 @@
         <?php endfor; ?>
     
 </table>
-
 <div id="order_box">
     <?php 
         if ($this->session->userdata(Variable::getSessionLinkContinueBuy())){
@@ -79,7 +78,6 @@
 </div>
 <?php else: ?>
 <h1 style="text-align: center; color: gray; font-size: 20px;"><?php echo lang('show_message');?></h1>
-
-
 <?php endif; ?>
+<div class="clear"></div>
 
