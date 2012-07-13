@@ -82,6 +82,7 @@ $lang['show_message_info_5'] = 'Email nhập không đúng định dạng hoặc
 
 $lang['show_message_info_6'] = 'Đặt hàng thành công.';
 $lang['show_message_info_7'] = 'Đơn đặt hàng này không tồn tại.';
+$lang['show_message_info_8'] = 'Thao tác đặt hàng thất bại.';
 
 // page heager
 $lang['show_form_search_1'] = 'Tìm kiếm';

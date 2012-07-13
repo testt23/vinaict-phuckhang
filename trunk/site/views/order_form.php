@@ -120,7 +120,7 @@
             <h1><?php echo lang('note_form');?></h1>
                 
             <div class="ul-main">
-                <center style="font-style: italic; color: blue;">  <?php echo $mess; ?><br/></center> 
+                    <center style="font-style: italic; color: blue;">  <?php echo $mess?><br/></center> 
                 <center style="font-style: italic;">   (<?php echo lang('note_content');?>)<br/></center> 
                 <ul class="ul-right">
                     <li>
