@@ -2,26 +2,18 @@
 
 class Order_object {
 
-    var $id_purchase_order;
     var $id_product;
     var $code_product;
     var $name_product;
     var $price_product;
     var $currency_product;
-    var $desciption_product;
-    var $image_product;
     var $number;
     
-    var $link_product;
     var $lang;
     function __construct() {
         $this->lang = get_system_language();
     }
     
-
-    public function get_id_purchase_order() {
-        return $this->id_purchase_order;
-    }
 
     public function get_id_product() {
         return $this->id_product;
@@ -42,27 +34,11 @@ class Order_object {
     public function get_currency_product() {
         return $this->currency_product;
     }
-    
-    public function get_description_product() {
-        return getI18n($this->desciption_product, $this->lang);
-    }
-
-    public function get_image_product() {
-        return $this->image_product;
-    }
 
     public function get_number() {
         return $this->number;
     }
 
-    public function get_link_product() {
-        return $this->link_product;
-    }
-
-
-    public function set_id_purchase_order($value) {
-        $this->id_purchase_order = $value;
-    }
 
     public function set_id_product($value) {
         $this->id_product = $value;
@@ -84,20 +60,9 @@ class Order_object {
         $this->currency_product = $value;
     }
 
-    public function set_description_product($value) {
-        $this->desciption_product = $value;
-    }
-
-    public function set_image_product($value) {
-        $this->image_product = $value;
-    }
 
     public function set_number($value) {
         $this->number = $value;
-    }
-
-    public function set_link_product($value) {
-        $this->link_product = $value;
     }
 
 }

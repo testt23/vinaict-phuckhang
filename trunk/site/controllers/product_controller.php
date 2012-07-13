@@ -135,19 +135,13 @@ class Product_controller extends CI_Controller {
         $Shopping = new ShoppingCart();
 
         if ($this->input->post('click_access') != null && $this->input->post('click_access') == 'click_access') {
-            $id_purchase_order = '';
             $id_product = $this->input->post('h_id');
             $code_product = $this->input->post('h_code');
             $name_product = $this->input->post('h_name');
             $price_product = $this->input->post('h_price');
             $currency_product = $this->input->post('h_curency');
-            $description_product = $this->input->post('h_description');
-            $image_product = $this->input->post('h_image');
             $number = 1;
-            $is_deleted = 0;
-            $link_product = $this->input->post('h_link');
-
-            $Shopping->insert($id_purchase_order, $id_product, $code_product, $name_product, $price_product, $currency_product, $description_product, $image_product, $number, $is_deleted, $link_product);
+            $Shopping->insert($id_product, $code_product, $name_product, $price_product, $currency_product, $number);
         }
         
         // menu
@@ -155,6 +149,8 @@ class Product_controller extends CI_Controller {
         $filter = array();
         $filter['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter);
+        
+        
         
         $data['selected'] = '';
         $data['array_menus'] = $array_menus;
@@ -365,8 +361,8 @@ class Product_controller extends CI_Controller {
                                     $details->name_product = $list_cart[$i]->get_name_product();
                                     $details->price_product = $list_cart[$i]->get_price_product();
                                     $details->currency_product = $list_cart[$i]->get_currency_product();
-                                    $details->description_product = $list_cart[$i]->get_description_product();
-                                    $details->image_product = $list_cart[$i]->get_image_product();
+                                    $details->description_product = '';
+                                    $details->image_product = '';
                                     $details->number = $list_cart[$i]->get_number();
                                     $details->is_deleted = 0;
                                     $details->insert();
@@ -387,8 +383,12 @@ class Product_controller extends CI_Controller {
                                 $filter['shipping_address'] = $shipping_address;
                                 $filter['billing_address'] = $billing_address;
                                 $mail = new Mailer();
-                                $mail->sendmail($filter);
-                                $result = lang('show_message_info_3');;
+                                if ($mail->sendmail($filter)){
+                                    $result = 'thanh cong';
+                                }else{
+                                    $result = 'that bai';
+                                }
+                                //$result = lang('show_message_info_3');;
                                 $Shopping->clear_all();
                             }
                         }

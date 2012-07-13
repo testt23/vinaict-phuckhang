@@ -28,7 +28,7 @@ class Mailer {
          
         $content = str_replace('{date_time}', date('d-m-Y'), $content);
         $content = str_replace('{title}',    $fil['title']   , $content);
-        
+        echo $fil['title'];
         // info customer
         $content = str_replace('{customer_name}',       $filter['your_name'], $content);
         $content = str_replace('{website_url}',       $fil['self_url_name'], $content);
@@ -53,14 +53,15 @@ class Mailer {
         $content = str_replace('{self_url_name}', $fil['self_url_name']      , $content);
         $content = str_replace('{self_url}',   $fil['self_url']    , $content);
         $content = str_replace('{self_email}',   $fil['self_email']     , $content);
-     
+            
+        
+
         
         $this->ci->load->library('email');
         $this->ci->email->from(Variable::getCompanyMail(), Variable::getCompanyName());
         $this->ci->email->to($filter['your_email']);
         $this->ci->email->subject(getI18n(Variable::getObjectNameEmail(), get_system_language()));
         $this->ci->email->message($content);
-
         return @$this->ci->email->send();
     }
     
