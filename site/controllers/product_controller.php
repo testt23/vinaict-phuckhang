@@ -314,7 +314,7 @@ class Product_controller extends CI_Controller {
                         $Cus_update->contact_address = $address;
                         $Cus_update->id_yahoo = $yahoo;
                         $Cus_update->id_skype = $skype;
-                        $Cus_update->$career = $career;
+                        $Cus_update->career = $career;
                         $Cus_update->description = $message;
 
                         if ($List_customer->countRows() > 0) {
@@ -384,11 +384,10 @@ class Product_controller extends CI_Controller {
                                 $filter['billing_address'] = $billing_address;
                                 $mail = new Mailer();
                                 if ($mail->sendmail($filter)){
-                                    $result = 'thanh cong';
+                                    $result = lang('show_message_info_3');
                                 }else{
-                                    $result = 'that bai';
-                                }
-                                //$result = lang('show_message_info_3');;
+                                    $result = lang('show_message_info_8');
+                                }                                
                                 $Shopping->clear_all();
                             }
                         }

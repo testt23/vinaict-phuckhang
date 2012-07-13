@@ -28,7 +28,7 @@ class Mailer {
          
         $content = str_replace('{date_time}', date('d-m-Y'), $content);
         $content = str_replace('{title}',    $fil['title']   , $content);
-        echo $fil['title'];
+        //echo $fil['title'];
         // info customer
         $content = str_replace('{customer_name}',       $filter['your_name'], $content);
         $content = str_replace('{website_url}',       $fil['self_url_name'], $content);
