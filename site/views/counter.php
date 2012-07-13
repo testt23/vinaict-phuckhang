@@ -1,4 +1,3 @@
-<div>
     <?php 
         $count = Counter::add();
         $string = '';
@@ -9,5 +8,4 @@
         <li><?php echo $string[$i]; ?></li>
         <?php } ?>
     </ul>
-    
-</div>
+   
