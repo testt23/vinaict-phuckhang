@@ -47,13 +47,23 @@ class Product extends Product_model {
 
         // initial page
         $page = ($this->input->get(Variable::getPaginationQueryString())) ? $this->input->get(Variable::getPaginationQueryString()) : 1;
-        $page = ($page * 1 == 0) ? 1 : $page;
-
+        
+        if ($page * 1 == 0){
+            $page = 1;
+        }
+        
         $limit = Variable::getLimitRecordPerPage();
         $total_page = ceil($total_record / $limit);
-        $page = ($total_page < $page) ? $total_page : $page;
+        if ($total_page <= 0){
+            $total_page = 1;
+        }
+        
+        if ($total_page < $page){
+            $page = $total_page;
+        }
         $start = ($page - 1) * $limit;
-
+        
+        
         // continue buy link
         $link_continue = base_url() . Variable::getIndexPageString() . '?' . Variable::getPaginationQueryString() . '=' . $page;
         $this->session->set_userdata(Variable::getSessionLinkContinueBuy(), $link_continue);
@@ -71,6 +81,7 @@ class Product extends Product_model {
         $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
         $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
         $Product->addSelect($this->if->_product_code . ' as ' . $this->if->_product_as_code);
+        $Product->addSelect($this->if->_product_keywords . ' as ' . $this->if->_product_as_keywords);
         $Product->addSelect($this->if->_product_name . ' as ' . $this->if->_product_as_name);
         $Product->addSelect('p.' . $this->if->_image_as_name);
         $Product->addSelect('p.' . $this->if->_image_as_file);
@@ -147,6 +158,7 @@ class Product extends Product_model {
         $Product->addSelect($this->if->_product_id . ' as ' . $this->if->_product_as_id);
         $Product->addSelect($this->if->_product_link . ' as ' . $this->if->_product_as_link);
         $Product->addSelect($this->if->_product_name . ' as ' . $this->if->_product_as_name);
+        $Product->addSelect($this->if->_product_keywords . ' as ' . $this->if->_product_as_keywords);
         $Product->addSelect($this->if->_product_code . ' as ' . $this->if->_product_as_code);
         $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
         $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
@@ -198,6 +210,7 @@ class Product extends Product_model {
         $Product->addSelect($this->if->_product_link . ' as ' . $this->if->_product_as_link);
         $Product->addSelect($this->if->_product_name . ' as ' . $this->if->_product_as_name);
         $Product->addSelect($this->if->_product_code . ' as ' . $this->if->_product_as_code);
+        $Product->addSelect($this->if->_product_keywords . ' as ' . $this->if->_product_as_keywords);
         $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
         $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
         $Product->addSelect($this->if->_product_description . ' as ' . $this->if->_product_as_description);
@@ -254,13 +267,20 @@ class Product extends Product_model {
 
                     // initial page
                     $page = ($this->input->get(Variable::getPaginationQueryString())) ? $this->input->get(Variable::getPaginationQueryString()) : 1;
-                    $page = ($page * 1 == 0) ? 1 : $page;
-
+                    
+                    if ($page * 1 == 0){
+                        $page = 1;
+                    }
                     $total_record = $Product_count->{$this->if->_count};
                     $limit = Variable::getLimitRecordPerPage();
                     $total_page = ceil($total_record / $limit);
-
-                    $page = ($total_page < $page) ? $total_page : $page;
+                    if ($total_page < 0){
+                        $total_page = 1;
+                    }
+                    
+                    if ($page < $total_page){
+                        $page = $total_page;
+                    }
                     $start = ($page - 1) * $limit;
 
                     $Paging = new Paging();
@@ -280,6 +300,7 @@ class Product extends Product_model {
                     $Product->addSelect($this->if->_product_link . ' as ' . $this->if->_product_as_link);
                     $Product->addSelect($this->if->_product_name . ' as ' . $this->if->_product_as_name);
                     $Product->addSelect($this->if->_product_code . ' as ' . $this->if->_product_as_code);
+                    $Product->addSelect($this->if->_product_keywords . ' as ' . $this->if->_product_as_keywords);
                     $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
                     $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
                     $Product->addSelect('p.' . $this->if->_image_as_name);
@@ -317,6 +338,35 @@ class Product extends Product_model {
         return $filter;
     }
     
+    public function getListByListId(){
+        $Shopping = new Shopping();
+        $List = $Shopping->get_list();
+        if ($List){
+            $total = count($List);
+            $list_id = '';
+            for ($i = 0; $i < $total; $i++){
+                if ($i == $total - 1){
+                    $List_id = $List[$i]->get_produc_id();
+                }else{
+                    $List_id = $List[$i]->get_produc_id() . ',';
+                }
+                $Product = new Product();
+                $Product->addSelect();
+                $Product->adSelect($this->if->_product_as_id);
+                $Product->adSelect($this->if->_product_as_code);
+                $Product->adSelect($this->if->_product_as_name);
+                $Product->adSelect($this->if->_product_as_price);
+                $Product->adSelect($this->if->_product_as_currency);
+                $Product->addWhere($this->if->_product_id . 'IN('.$list_id.')');
+                
+                $Product->find();
+                
+                return $Product();
+            }
+        }
+        return '';
+    }
+    
     public function activeCartShop(){
         $code = $this->input->get('code');
         $id = $this->input->get('id');
@@ -338,6 +388,7 @@ class Product extends Product_model {
                     $Pur = new PurchaseOrder();
                     $Pur->get($id);
                     $Pur->status = '2';
+                    $Pur->code = $id;
                     $Pur->update();
                     return true;
                 }
@@ -367,7 +418,9 @@ class Product extends Product_model {
         }
         return $this->{$this->if->_product_as_price};
     }
-
+    public function the_product_keywords(){
+        return $this->{$this->if->_product_as_keywords};
+    }
     public function the_product_name($lang_true_false = false) {
         if ($lang_true_false == false) {
             return getI18n($this->{$this->if->_product_as_name}, $this->lang);
@@ -391,14 +444,15 @@ class Product extends Product_model {
     }
     
     // image
-    public function the_image_link_thumb() {
-        $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+    public function the_image_link_avatar() {
+        $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avatar.jpg', '_avatar.png', '_avatar.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
     public function the_image_link() {
         $url = $this->the_image_group_code() . '/' . $this->{$this->if->_image_as_file};
         return $this->image_exists($url);
     }
+    
     public function the_image_link_medium() {
         $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);

@@ -28,34 +28,32 @@
 
 <table width="1000" id="list" style="border:  solid 1px gray;" cellspacing="0" cellpadding="0">
     <tr>
-        <td class="title" width="5%">&nbsp;</td>
         <td class="title" width="10%"><?PHP echo lang('site_product_code'); ?></td>
         <td class="title" width="20%"><?PHP echo lang('site_product_name'); ?></td>
         <td class="title" width="15%"><?PHP echo lang('site_product_price'); ?></td>
         <td class="title" width="6%"><?PHP echo lang('site_product_number'); ?></td>
         <td class="title" width="5%"><?PHP echo lang('site_product_delete'); ?></td>
     </tr>
-    
+   
         <?php
+        
         $total = count($shopping);
         for ($i = 0; $i < $total; $i++):
             ?>
             <tr class="shp" id="tr_<?php echo $shopping[$i]->get_id_product(); ?>">
-                <td><img src="<?php echo $shopping[$i]->get_image_product(); ?>" width="80" height="50" alt="" /></td>
-                <td><?php echo $shopping[$i]->get_code_product(); ?></td>
+                <td style="vertical-align: middle; text-align: center;"><?php echo $shopping[$i]->get_code_product(); ?></td>
                 <td>
-                    <a href="<?php echo $shopping[$i]->get_link_product(); ?>"><?php echo $shopping[$i]->get_name_product(); ?></a>
+                    <?php echo $shopping[$i]->get_name_product(); ?>
                 </td>
                 <td>
                     <b style="color:brown;">
-                    <?php 
-                        if ($shopping[$i]->get_price_product()*1 == '0' || $shopping[$i]->get_price_product() == ''){
-                            echo lang('lbl_call');
-                        }else{
-                            echo $shopping[$i]->get_price_product() .' ' .$shopping[$i]->get_currency_product(); ; 
-                        }
-                        
-                    ?>
+                        <?php 
+                            if ($shopping[$i]->get_price_product()*1 == '0' || $shopping[$i]->get_price_product() == ''){
+                                echo lang('lbl_call');
+                            }else{
+                                echo $shopping[$i]->get_price_product() .' ' .$shopping[$i]->get_currency_product(); ; 
+                            }
+                        ?>
                     </b>
                 </td>
                 <td>

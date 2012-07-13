@@ -15,11 +15,13 @@
                 <?php endif; ?>
                 <li>
                     <div class="wrapper-popup">
-                        <a class="range-img" href="<?php echo $product->the_product_link(); ?>">
-                            <img src="<?php echo $product->the_image_link_small(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
-                        </a>
-                        <div class="p-popup none-hover" id="pop<?php echo $product->the_product_id(); ?>">
-                            <a href="<?php echo $product->the_product_link(); ?>"><?php echo Variable::cut_string($product->the_product_name(), Variable::getNumberOfProductTitle()); ?></a>
+                        <div class="list-image-wrapper">
+                            <a class="range-img" href="<?php echo $product->the_product_link(); ?>">
+                                <img src="<?php echo $product->the_image_link_small(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
+                            </a>
+                            <div class="p-popup none-hover" id="pop<?php echo $product->the_product_id(); ?>">
+                                <a href="<?php echo $product->the_product_link(); ?>"><?php echo Variable::cut_string($product->the_product_name(), Variable::getNumberOfProductTitle()); ?></a>
+                            </div>
                         </div>
                     </div>
                     <div class="name-pro">

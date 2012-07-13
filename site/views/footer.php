@@ -25,7 +25,7 @@
                     </p>
                     <p>
                         <?php echo lang('site_footer_visit'); ?>: <br/>
-                        <?php include_once 'counter.php'; ?>
+                        <?php // include_once 'counter.php'; ?>
                     </p>
                 </div>
             </div>

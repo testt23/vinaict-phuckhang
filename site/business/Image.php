@@ -99,7 +99,7 @@ class Image extends Image_model {
         return $this->image_exists($url);
     }
     public function the_image_link_avata(){
-        $url = $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avata.jpg', '_avata.png', '_avata.gif'), $this->{$this->if->_image_as_file});
+        $url = $this->{$this->if->_image_group_as_code} . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avatar.jpg', '_avatar.png', '_avatar.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
     
