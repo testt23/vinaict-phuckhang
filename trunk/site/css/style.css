@@ -12,21 +12,32 @@
 
 
 /* Counter */
-    .counter{
-        font-size: 16px;
-        height: 20px;
-        padding: 5px;
-        width: auto;
-        background: #ffffff;
-        font-weight: bold;
-    }
+#counter {
+    width: 230px;
+    text-align:center;
+    font-size: 12px;
+    color:  #ffffff;
+    float: left;
     
-    .counter li{
-        float: left;
-        color: #000000;
-        border: 1px solid #cccccc;
-        padding: 3px 5px;
-    }
+}
+
+.counter {
+    height: 20px;
+    padding: 5px;
+    font-weight: bold;
+    width: 230px;
+    margin: 0px auto;
+}
+    
+.counter li{
+    float: left;
+    color: #12701d;
+    border: 1px solid #ced2ce;
+    padding: 1px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    background:#f1f5f1 ;
+}
     
 #header {
     background:url(../images/site/bg-header.png) repeat-x;

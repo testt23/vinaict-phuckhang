@@ -1,3 +1,12 @@
+<script language="javascript">
+    $(document).ready(function(){
+        var list = jQuery('#counter li');
+        var width = list.length * 11;
+        jQuery('#show-counter').css('width', width);
+        jQuery('#show-counter').css('margin', '0px auto');
+    });
+</script>
+
 <?php $image_path = base_url() . $this->config->item('image_temp'); ?>        
     </div>
     </div>
@@ -24,12 +33,15 @@
                     <p><?php echo lang('site_footer_online_support'); ?>:<br/>
                         <a href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" mce_href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=<?php echo Variable::getYahooSopportOnline(); ?>&t=1" height="20px" width="80px"></a>
                     </p>
-                    <p>
+                    <div id="counter">
                         <?php echo lang('site_footer_visit'); ?>: <br/>
-                        <?php // include_once 'counter.php'; ?>
-                    </p>
+                        <div id="show-counter">
+                            <?php include_once 'counter.php'; ?>
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
+
