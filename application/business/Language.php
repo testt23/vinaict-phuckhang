@@ -18,7 +18,7 @@
                     $lang = self::getList();
                     $arr_lang = array();
                     while($lang->fetchNext()) {
-                        $arr_lang[] = $lang->code;
+                        $arr_lang[$lang->name] = $lang->code;
                     }
                     return $arr_lang;
                 }
