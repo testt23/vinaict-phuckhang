@@ -1130,4 +1130,8 @@ DROP TABLE IF EXISTS `counter`;
 
 CREATE TABLE `counter` (`id` INT NOT NULL AUTO_INCREMENT ,`count` INT NOT NULL , PRIMARY KEY ( `id` )) ENGINE = MYISAM ;
 
+/* 14-07-2012 - Ly Vinh Truong - Product Management */
+
+INSERT  INTO `permission`(`id`,`uri`,`id_user`,`id_usr_group`,`value`) VALUES (138,'product/delete',0,1,'1,2,3,4');
+
 }}}
