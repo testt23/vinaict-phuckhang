@@ -10,20 +10,19 @@
 <?php $image_path = base_url() . $this->config->item('image_temp'); ?>        
     </div>
     </div>
+</div>
         <div class="clear" id="footer-wrapper">
             <div id="footer" >
                 <div id="linkbox">
-                    <?php 
-                    $Product = new Product();
-                    $List = $Product->getListThreeCateFooter();
-                    $total = count($List);
-                    for ($i = 0; $i < $total; $i++):
-                        $Ar = $List[$i];
-                    ?>
-                        <div class="box">
-                            <a href="<?php echo $Ar['link'];  ?>"><img src="<?php echo $image_path; ?>/PK.png"  alt=""/><?php echo $Ar['name'];  ?></a>
-                        </div>
-                    <?php endfor; ?>
+                    <div class="box">
+                        <a href="<?php echo base_url('products/souvenirs/');  ?>"><img src="<?php echo $image_path; ?>/pk-souvenirs.png"  alt=""/></a>
+                    </div>
+                    <div class="box" style="margin-left:112px;">
+                        <a href="<?php echo base_url('products/interior/');  ?>"><img src="<?php echo $image_path; ?>/pk-interior.png"  alt=""/></a>
+                    </div>
+                    <div class="box" style="float:right;">
+                        <a href="<?php echo base_url('products/spa/');  ?>"><img src="<?php echo $image_path; ?>/pk-spa.png"  alt=""/></a>
+                    </div>
                 </div>
                 <div id="copyright">
                     <p>
