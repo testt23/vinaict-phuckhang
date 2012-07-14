@@ -43,53 +43,58 @@
     ?>
     <body>
         <div id="header">
-            <div id="language-wrapper">
-                <?php 
-                   if($lang = Language::getArraylangIso()){ 
-                           for($i = 0; $i < count($lang); $i ++){
-                ?>
-                            <a href="<?php echo base_url(); ?>language/index/?lang=<?php echo $lang[$i] ?>" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $lang[$i] ?>.png" /></a>	 
-                 <?php 
-                            } 
-                      } 
-                  ?>
-            </div>
+            <div id="header-container">
+                <div id="language-wrapper">
+                    <?php 
+                       if($lang = Language::getArraylangIso()){
+                               foreach($lang as $k => $l){
+                    ?>
+                        <a href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
+                     <?php 
+                                } 
+                          } 
+                      ?>
+                </div>
             
-            
-            <div id="searchbox">
-                <form method="post" action="<?php echo Variable::getLinkSearch(); ?>">
-                    <input class="name-search" type="text" name="search-name" value=''/>
-                    <input class="button-search" type="submit" name="button-search" value='<?php echo lang('show_form_search_1');?>'/>
-                    <a href="#" id="advance"><?php echo lang('show_form_search_2');?></a>
-                    <div class="search-popup hide">
-                        <div class="close-search-pop">X</div>
-                        <div class="clear"> </div>
-                        <div style="margin-right: 15px;">
-                            <?php echo lang('show_form_search_3');?> <input type="text" name="price-from-search" value=""/> <br/>
-                            <?php echo lang('show_form_search_4');?> <input type="text" name="price-to-search" value=""/><br/>
-                            <select name="currency-search">
-                                <option value=""><?php echo lang('show_form_search_5');?></option>
-                            <?php $currency = new Currency();
-                                $list_currence = $currency->get_list();
-                                while($list_currence->fetchNext()):
-                            ?>
-                            <option value="<?php echo $list_currence->code; ?>"><?php echo $list_currence->code; ?></option>
-                            <?php endwhile; ?>
-                            </select>
+                <!--
+                <div id="searchbox">
+                    <form method="post" action="<?php echo Variable::getLinkSearch(); ?>">
+                        <input class="name-search" type="text" name="search-name" value=''/>
+                        <input class="button-search" type="submit" name="button-search" value='<?php echo lang('show_form_search_1');?>'/>
+                        <a href="#" id="advance"><?php echo lang('show_form_search_2');?></a>
+                        <div class="search-popup hide">
+                            <div class="close-search-pop">X</div>
+                            <div class="clear"> </div>
+                            <div style="margin-right: 15px;">
+                                <?php echo lang('show_form_search_3');?> <input type="text" name="price-from-search" value=""/> <br/>
+                                <?php echo lang('show_form_search_4');?> <input type="text" name="price-to-search" value=""/><br/>
+                                <select name="currency-search">
+                                    <option value=""><?php echo lang('show_form_search_5');?></option>
+                                <?php $currency = new Currency();
+                                    $list_currence = $currency->get_list();
+                                    while($list_currence->fetchNext()):
+                                ?>
+                                <option value="<?php echo $list_currence->code; ?>"><?php echo $list_currence->code; ?></option>
+                                <?php endwhile; ?>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </form>
-                
-            </div>
-            <div id="logo">
-                <a href="#"><img src="<?php echo $image_path; ?>/Logo.png" alt="" /></a>
+                    </form>
+
+                </div>
+                -->
+                <div id="logo">
+                    <a href="#"><img src="<?php echo $image_path; ?>/Logo.png" alt="" /></a>
+                </div>
+                <div class="clear"></div>
             </div>
             <div id="menu">
                 <ul>
                     <?php Menu::drawMenu($array_menus, $selected); ?>
                 </ul>
             </div>
+            <div class="clear"></div>
         </div>
-        <div id="wrapper-container">
-         <div id="container">
+        <div id="page-container">
+        <div id="container">
     
