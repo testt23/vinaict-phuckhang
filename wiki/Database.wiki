@@ -1134,4 +1134,10 @@ CREATE TABLE `counter` (`id` INT NOT NULL AUTO_INCREMENT ,`count` INT NOT NULL ,
 
 INSERT  INTO `permission`(`id`,`uri`,`id_user`,`id_usr_group`,`value`) VALUES (138,'product/delete',0,1,'1,2,3,4');
 
+/* 15-07-2012 - Ly Vinh Truong - Image Size */
+ALTER TABLE `image_group` 
+   CHANGE `id_image_size` `id_image_size` VARCHAR(100);
+   
+UPDATE `image_group` SET `id_image_size` = '1,2,3,4' WHERE `id` = 1;
+
 }}}
