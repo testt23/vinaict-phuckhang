@@ -73,9 +73,8 @@
             $link = base_url() . '/' . Variable::getDefaultPageString();
         }
     ?>
-    <div class="button"><a href="<?php echo $link; ?>"><?php echo lang('site_product_continue'); ?></a></div>
-    <div class="button"><a href="<?php echo Variable::getLinkOrderContact(); ?>"><?PHP echo lang('site_product_order'); ?></a></div>
-</div>
+    <div class="button"><a href="<?php echo $link; ?>"><img src="<?php echo base_url(); ?>images/site/<?php echo lang('txt_btn_buymore'); ?>" /></a></div>
+    <div class="button"><a href="<?php echo Variable::getLinkOrderContact(); ?>"><img src="<?php echo base_url(); ?>images/site/<?php echo lang('txt_btn_order'); ?>" /></a></div>
 <?php else: ?>
 <h1 style="text-align: center; color: gray; font-size: 20px;"><?php echo lang('show_message');?></h1>
 <?php endif; ?>

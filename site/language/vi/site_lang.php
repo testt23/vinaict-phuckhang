@@ -20,6 +20,7 @@ $lang['site_product_continue'] = 'Tiếp tục mua';
 $lang['lbl_price'] = 'Giá: ';
 $lang['lbl_description'] = 'Mô tả: ';
 $lang['show_message'] = 'Bạn chưa có sản phẩm nào trong giỏ hàng';
+$lang['txt_btn_buymore'] = 'btn-buymore-vi.png';
 
 // contact form
 
@@ -72,7 +73,8 @@ $lang['lbl_price'] = 'Giá:';
 $lang['lbl_keywords'] = 'Từ khóa:';
 $lang['lbl_call'] = 'Liên hệ';
 $lang['lbl_description'] = 'Mô tả:';
-$lang['txt_orther_pictures'] = 'Các hình ảnh khác của sản phẩm này';
+$lang['txt_other_pictures'] = 'Các hình ảnh khác của sản phẩm này';
+$lang['txt_btn_order'] = 'btn-order-vi.png';
 
 // page contact_controller
 $lang['show_message_info_1'] = 'Bạn chưa phải là khách hàng. Vui lòng chọn khách hàng bình thường và điền đầy đủ thông tin.';
