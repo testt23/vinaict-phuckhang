@@ -683,11 +683,7 @@ range-image-wrapper{
 #info-show-image ul li{
     padding: 5px 0px;
 }
-#info-show-image h1{
-    color: brown;
-    font-size: 1.0em;
 
-}
 #info-show-image  strong{
 
 }
@@ -712,6 +708,12 @@ range-image-wrapper{
     margin: 0px auto;
 }
 
+.t-slide h1{
+    color: brown;
+    font-size: 1.4em;
+
+}
+
 .wrap-tslide{
     height: 360px;
     width: 360px;
@@ -725,7 +727,7 @@ range-image-wrapper{
     position: relative;
     height: 100px;
     width:360px;
-    margin: 10px auto 0px auto;
+    margin: 40px auto 0px auto;
     
 }
 /* edit */
