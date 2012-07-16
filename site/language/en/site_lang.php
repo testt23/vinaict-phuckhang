@@ -68,6 +68,7 @@ $lang['lbl_price'] = 'Price:';
 $lang['lbl_keywords'] = 'Keywords:';
 $lang['lbl_call'] = 'Call';
 $lang['lbl_description'] = 'Description:';
+$lang['txt_orther_pictures'] = 'Orther pictures';
 
 // page contact_controller
 $lang['show_message_info_1'] = 'You are not yet customers. Please choose a normal customer and complete information.';

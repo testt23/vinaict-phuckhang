@@ -72,6 +72,7 @@ $lang['lbl_price'] = 'Giá:';
 $lang['lbl_keywords'] = 'Từ khóa:';
 $lang['lbl_call'] = 'Liên hệ';
 $lang['lbl_description'] = 'Mô tả:';
+$lang['txt_orther_pictures'] = 'Các hình ảnh khác của sản phẩm này';
 
 // page contact_controller
 $lang['show_message_info_1'] = 'Bạn chưa phải là khách hàng. Vui lòng chọn khách hàng bình thường và điền đầy đủ thông tin.';

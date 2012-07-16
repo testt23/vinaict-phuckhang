@@ -28,7 +28,7 @@
                 </div>
                 <?php if (count($image) > 1): ?>
                     <div class="t-list-slide">
-                        
+                        <label><?php echo lang('txt_orther_pictures'); ?></label>
                         <div id="slide-wrap-ul">
                             
                             <?php foreach ($image as $item): ?>
