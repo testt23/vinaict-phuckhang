@@ -1,10 +1,14 @@
-<?php $this->load->view('lightbox'); ?>
+<link rel="stylesheet" href="<?php echo base_url('js/prettyPhoto/css/prettyPhoto.css'); ?>" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+<script src="<?php echo base_url('js/prettyPhoto/js/jquery.prettyPhoto.js'); ?>" type="text/javascript" charset="utf-8"></script>
 
 <script languag="javascript">
-    jQuery(function(){
-        jQuery('#lightbox span').lightBox();
-        jQuery('#slide-wrap-ul img').lightBox();
-    }); 
+  
+    $(document).ready(function(){
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            animation_speed: 'fast',
+            social_tools: false
+        });
+    });
 </script>
 
 <?php if ($product->countRows() > 0): ?>
@@ -17,18 +21,9 @@
                 <div class="t-slide">
                     <h1><?php echo $product->the_product_name(); ?></h1>
                     <div id="lightbox" class="wrap-tslide">
-                        <span accesskey="<?php echo $product->the_image_link(); ?>">
+                        <a rel="prettyPhoto[pp_gal]" href="<?php echo $product->the_image_link(); ?>" title="<?php echo $product->the_product_name(); ?>">
                             <img id="showimage" src="<?php echo $product->the_image_link_medium(); ?>"/>
-                        </span>
-                        <?php if ($image != ''): ?>
-                            <?php foreach($image as $item): ?>
-                                <?php if ($item['id'] != $product->the_product_id()) : ?>
-                                    <?php if($item['link'] != $product->the_image_link()): ?>
-                                        <span accesskey="<?php echo $item['link']; ?>" style="display: none;"></span>
-                                    <?php endif; ?>        
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        </a>
                     </div>
                 </div>
                 <?php if (count($image) > 1): ?>
@@ -37,9 +32,11 @@
                         <div id="slide-wrap-ul">
                             
                             <?php foreach ($image as $item): ?>
+                                <?php if($product->the_image_link() != $item['link']) : ?>
                             
-                                   <img accesskey="<?php echo $item['link']; ?>"  src="<?php echo $item['link_avata']; ?>" alt="<?php echo $item['link_medium']; ?>" />
-                                   
+                                    <a rel="prettyPhoto[pp_gal]" href="<?php echo $item['link']; ?>" title="<?php echo $product->the_product_name(); ?>" > <img src="<?php echo $item['link_avata']; ?>" /></a>
+                                    
+                                <?php endif; ?>       
                             <?php  endforeach; ?>
                         </div>
                     </div>
