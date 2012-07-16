@@ -214,7 +214,7 @@ body {
 .name-pro{
     height: 45px;
     overflow: hidden;
-    width: 160px;
+    width: 200px;
     margin: 10px 0px 0px 0px;
     text-align: center;
     overflow: hidden;
@@ -491,9 +491,17 @@ img{
     text-align: center;
 }
 
+.list-image-wrapper .product-name {
+    position: relative;
+    height: 40px;
+    background-color: #000;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+    color: #fff;
+}
 
 .wrapper-popup img{
-    position: absolute;
+    position: relative;
     bottom: 0px;
     left: 0px;
 }
