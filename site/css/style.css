@@ -363,7 +363,7 @@ table tr td{text-align:center}
 
     height: 15px;
 }
-#language-wrapper a {
+.language-wrapper-unactive {
     color: #fff;
     font-size: 12px;
     text-decoration: none;
@@ -380,7 +380,18 @@ table tr td{text-align:center}
     filter: alpha(opacity=100);
 }
 
+.language-wrapper-unactive:hover{
+    color:  #eadd11;
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+} 
+
 .language-wrapper-active{
+    font-size: 12px;
+    text-decoration: none;
+    margin-left: 10px;
+    float: left;
+    height: 30px;
     color:  #eadd11;
     opacity: 1.0;
     filter: alpha(opacity=100);

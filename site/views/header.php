@@ -21,10 +21,7 @@
                 jQuery('.close-search-pop').click(function(){
                     jQuery('.search-popup').removeClass('show').addClass('hide');
                 });
-                
-                $("#<?php echo $this->session->userdata('lang'); ?>").addClass('language-wrapper-active');
-                
-            });
+             
             
         </script>
         
@@ -52,10 +49,10 @@
                        if($lang = Language::getArraylangIso()){
                                foreach($lang as $k => $l){
                     ?>
-                        <a id="<?php echo $lang; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
+                        <a id="<?php echo $l; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right <?php echo (($this->session->userdata('lang') == $l )?"language-wrapper-active":"language-wrapper-unactive"); ?>"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
                      <?php 
                                 } 
-                          } 
+                          }
                       ?>
                 </div>
             
