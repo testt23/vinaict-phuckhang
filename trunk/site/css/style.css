@@ -722,15 +722,20 @@ range-image-wrapper{
     vertical-align: middle;
         
 }
-/* edit */
+
 .t-list-slide{
     position: relative;
     height: 100px;
     width:360px;
-    margin: 40px auto 0px auto;
+    margin: 35px auto 0px auto;
     
 }
-/* edit */
+
+.t-list-slide label{
+    color: #938e8e;
+    font-size: 1.2em;
+}
+
 #slide-wrap-ul{
     padding-top: 15px;
     margin-left: 21px;
