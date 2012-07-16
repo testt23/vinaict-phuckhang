@@ -1140,4 +1140,7 @@ ALTER TABLE `image_group`
    
 UPDATE `image_group` SET `id_image_size` = '1,2,3,4' WHERE `id` = 1;
 
+/* 16-07-2-12 - Huynh Ba An - Menu Management */
+UPDATE `menu` SET `link` = 'contact' WHERE `menu`.`id` =40;
+
 }}}
