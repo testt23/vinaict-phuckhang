@@ -9,15 +9,13 @@
 		<div id="sitename">
 			<a href="<?php echo base_url(); ?>" class="logo float-left" title="<?php echo getI18n(SITE_NAME); ?>"><?php echo getI18n(SITE_NAME); ?></a>
                         
-                        <?php 
-                            if($lang = Language::getArraylangIso()){
-                                for($i = 0; $i < count($lang); $i ++){
-                        ?>
-                            <a href="<?php echo base_url(); ?>/login/switchlang/?lang=<?php echo $lang[$i] ?>" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $lang[$i] ?>.png" /></a>
-		        <?php 
-                                } 
-                            } 
-                        ?>
+                        <?php if($lang = Language::getArraylangIso()) { ?>
+                        <ul id="lang-switcher">
+                        <?php foreach($lang as $k => $l){ ?>
+                            <li <?php if (get_system_language() == $l) echo 'class="selected"'; ?> ><a href="<?php echo base_url(); ?>/login/switchlang/?lang=<?php echo $l; ?>" title="<?php echo $k; ?>" class="float-right"><img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a></li>
+		        <?php } ?>
+                        </ul>
+                        <?php } ?>
                             
                 </div>
 		<?php include_once 'menu.php'; ?>

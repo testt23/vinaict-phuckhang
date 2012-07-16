@@ -13,6 +13,7 @@ class Product extends Product_model {
         $product->addJoin(new Image(), 'LEFT', 'image img', 'img.id = product.id_def_image');
         $product->addSelect();
         $product->addSelect('product.*, img.file picture');
+        $product->addWhere('product.is_deleted = '.IS_NOT_DELETED);
         
         if (isset($filter['code']) && $filter['code'])
             $product->addWhere("code LIKE '%".$filter['code']."%'");

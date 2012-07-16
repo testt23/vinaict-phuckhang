@@ -108,3 +108,14 @@ tr.row-disabled td {
 .float-right .ui-icon {
     margin-right: 0;
 }
+#lang-switcher {
+    float: right;
+}
+#lang-switcher li {
+    margin: 3px;
+    float: left;
+    opacity: 0.6;
+}
+#lang-switcher li.selected, #lang-switcher li:hover {
+    opacity: 1;
+}
