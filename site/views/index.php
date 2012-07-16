@@ -20,15 +20,12 @@
                     <div class="wrapper-popup">
                         <div class="list-image-wrapper">
                             <a class="range-img" href="<?php echo $product->the_product_link(); ?>">
-                                <img src="<?php echo $product->the_image_link_small(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
+                                <img src="<?php echo $product->the_image_link_thumb(); ?>" alt="<?php echo $product->the_image_name(); ?>" />
                             </a>
-                            <div class="p-popup none-hover" id="pop<?php echo $product->the_product_id(); ?>">
-                                <a href="<?php echo $product->the_product_link(); ?>"><?php echo Variable::cut_string($product->the_product_name(), Variable::getNumberOfProductTitle()); ?></a>
-                            </div>
                         </div>
                     </div>
                     <div class="name-pro">
-                        <h3><a href="<?php echo $product->the_product_link(); ?>"><?php echo $product->the_product_code(); ?></a></h3>
+                        <h3><a href="<?php echo $product->the_product_link(); ?>"><?php echo Variable::cut_string($product->the_product_name(), Variable::getNumberOfProductTitle()); ?></a></h3>
                         <strong><?php echo lang('lbl_price'); ?></strong><span style="color: #b41500;"> 
                             <?php
                             if ($product->the_product_price() == '' || $product->the_product_price() == '0') {

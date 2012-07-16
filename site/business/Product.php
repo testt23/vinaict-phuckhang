@@ -462,6 +462,11 @@ class Product extends Product_model {
         $url =  $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
+    
+    public function the_image_link_thumb() { 
+        $url =  $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
+    }
 
     public function the_image_name($lang_true_false = false) {
         if ($lang_true_false == false) {
