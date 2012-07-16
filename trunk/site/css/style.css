@@ -676,9 +676,11 @@ range-image-wrapper{
 
 /* info */
 #info-show-image{
-    float:right;
-    width: 485px;
-    margin-top: 20px;   
+    background-color: #F5F1A9;
+    float: right;
+    margin-top: 20px;
+    padding: 20px;
+    width: 500px;
 }
 #info-show-image ul li{
     padding: 5px 0px;
