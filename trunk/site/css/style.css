@@ -496,7 +496,7 @@ img{
     height: 40px;
     background-color: #000;
     opacity: 0.8;
-    filter: alpha(opacity = 80);
+    filter: alpha(opacity=80);
     color: #fff;
 }
 
@@ -665,7 +665,7 @@ range-image-wrapper{
 #slide-show-image{
 
     float:left;
-    width: 535px;
+    width: 435px;
 }
 
 #slide-show-image h2{
@@ -677,7 +677,7 @@ range-image-wrapper{
 /* info */
 #info-show-image{
     float:right;
-    width: 455px;
+    width: 485px;
 }
 #info-show-image ul li{
     padding: 5px 0px;
@@ -692,8 +692,8 @@ range-image-wrapper{
 }
 
 .t-slide-wrapper-1{
-   margin: 0px 20px 0px 0px; background: #000000; 
-   width: 380px; height: 530px; float: right; 
+   margin: 0px 20px 0px 0px;
+   width: 380px; float: right; 
    padding-bottom: 10px;
 }
 .t-slide-wrapper-1 h1{
@@ -719,7 +719,7 @@ range-image-wrapper{
     vertical-align: middle;
         
 }
-
+/* edit */
 .t-list-slide{
     position: relative;
     height: 100px;
@@ -727,11 +727,11 @@ range-image-wrapper{
     margin: 10px auto 0px auto;
     
 }
+/* edit */
 #slide-wrap-ul{
     padding-top: 15px;
     margin-left: 21px;
-    width: 315px;
-    overflow: hidden;
+    width: 340px;
 }
 #slide-wrap-ul li:hover{
     opacity: 1.0 !important;
@@ -747,9 +747,13 @@ range-image-wrapper{
     filter:alpha(opacity=40) !important;
 }
 
-#slide-wrap-ul li img{
+#slide-wrap-ul  img{
     height: 70px;
     width: 100px;
+    float: left;
+    border: 1px solid #d4cfcf;
+    padding: 1px;
+    margin: 2px;
 }
 
 #slide-wrap-ul li.slide-ul-wrap-active{
