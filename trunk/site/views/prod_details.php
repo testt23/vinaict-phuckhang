@@ -3,23 +3,30 @@
 
 <script languag="javascript">
   
+    function validate() {
+        
+        document.order_form.submit();
+       
+    }
+    
     $(document).ready(function(){
         $("a[rel^='prettyPhoto']").prettyPhoto({
             animation_speed: 'fast',
             social_tools: false
         });
     });
+    
 </script>
 
 <?php if ($product->countRows() > 0): ?>
     <?php $product->fetchFirst(); ?>
     <div id="detail-prod">
+        <div class="title-prod"><h1><?php echo $product->the_product_name(); ?></h1></div>
         <div id="slide-show-image">
 
 
             <div class="t-slide-wrapper-1">
                 <div class="t-slide">
-                    <h1><?php echo $product->the_product_name(); ?></h1>
                     <div id="lightbox" class="wrap-tslide">
                         <a rel="prettyPhoto[pp_gal]" href="<?php echo $product->the_image_link(); ?>" title="<?php echo $product->the_product_name(); ?>">
                             <img id="showimage" src="<?php echo $product->the_image_link_medium(); ?>"/>
@@ -28,7 +35,7 @@
                 </div>
                 <?php if (count($image) > 1): ?>
                     <div class="t-list-slide">
-                        <label><?php echo lang('txt_orther_pictures'); ?></label>
+                        <label><?php echo lang('txt_other_pictures'); ?></label>
                         <div id="slide-wrap-ul">
                             
                             <?php foreach ($image as $item): ?>
@@ -61,15 +68,15 @@
                     <?php echo $product->the_product_description(); ?>
                 </li>
                 <li>
-                    <div id="order">
-                        <form method="POST" action="<?php echo Variable::getLinkShowListCart(); ?>">
+                    <div id="order" style="background:url(<?php echo base_url(); ?>images/site/<?php echo lang('txt_btn_order'); ?>) no-repeat;" onclick="validate()">
+                        <form method="POST" name="order_form" action="<?php echo Variable::getLinkShowListCart(); ?>">
                             <input type="hidden" name="h_id" value="<?php echo $product->the_product_id(); ?>"/>
                             <input type="hidden" name="h_code" value="<?php echo $product->the_product_code(); ?>" />
                             <input type="hidden" name="h_name" value="<?php echo $product->the_product_name(true); ?>"/>
                             <input type="hidden" name="h_price" value="<?php echo $product->the_product_price(true); ?>"/>
                             <input type="hidden" name="h_curency" value="<?php echo $product->the_product_currency(); ?>"/>
                             <input type="hidden" name="click_access" value="click_access"/>
-                            <input style="border: none;" type="submit" name="orderSubmit" value="<?php echo lang('btn_order'); ?>"/>
+                            <input style="border: none;" type="submit" name="orderSubmit"  value=""/>
                         </form>
                     </div>
                 </li>
