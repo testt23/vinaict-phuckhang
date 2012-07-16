@@ -15,6 +15,7 @@
 
             <div class="t-slide-wrapper-1">
                 <div class="t-slide">
+                    <h1><?php echo $product->the_product_name(); ?></h1>
                     <div id="lightbox" class="wrap-tslide">
                         <span accesskey="<?php echo $product->the_image_link(); ?>">
                             <img id="showimage" src="<?php echo $product->the_image_link_medium(); ?>"/>
@@ -48,7 +49,6 @@
         </div>
         <div id="info-show-image">
             <ul>
-                <li><h1><?php echo $product->the_product_name(); ?></h1></li>
                 <li>
                     <strong><?php echo lang('lbl_price');?></strong> <font style="color: tomato;">
                     <?php if ($product->the_product_price(true) == '' || $product->the_product_price(true) == '0'): ?> 
