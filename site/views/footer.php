@@ -4,7 +4,13 @@
         var width = list.length * 11;
         jQuery('#show-counter').css('width', width);
         jQuery('#show-counter').css('margin', '0px auto');
+        
+        var element = document.getElementById('show-counter');
+        element.onselectstart = function () { return false; } // ie
+        element.onmousedown = function () { return false; } // mozilla
+        
     });
+    
 </script>
 
 <?php $image_path = base_url() . $this->config->item('image_temp'); ?>        
