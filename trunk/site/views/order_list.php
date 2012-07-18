@@ -26,7 +26,7 @@
 <script language="javascript" src="<?php echo base_url() . 'js/ajax.js'; ?>"></script>
 <div class="clear"></div>
 <h2 class="title-main"><?PHP  echo lang('site_product_title_order'); ?></h2>
-<table width="100%" id="list" style="border:  solid 1px gray;" cellspacing="0" cellpadding="0">
+<table class="cart" id="list" cellspacing="0" cellpadding="0">
     <tr>
         <td class="title" width="10%"><?PHP echo lang('site_product_code'); ?></td>
         <td class="title" width="20%"><?PHP echo lang('site_product_name'); ?></td>

@@ -258,9 +258,16 @@ table tr td{text-align:center}
          margin:15px 10px}
 #text p b{color:#000}
 #list{
-    border:solid 1px;}
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+    margin: 0 23px;
+}
 #list tr td{
-    text-align:left}
+    text-align: left;
+}
+#list tr td.del{
+    text-align: center;
+}
 #order_box{
     float:right;
     width:400px;
@@ -489,15 +496,16 @@ input{
 }
 
 #list td {
-    border: solid 1px gray;
+    border-right: solid 1px #333;
+    border-bottom: solid 1px #333;
     padding: 5px 10px;
 }
 
 #list td.title{
+    background-color: #117C1B;
+    color: #FDDB11;
+    text-align: center;
     height: 30px;
-    color: white;
-    font-weight: bold;    
-    background: gray;
 }
 img{
     border: none;
@@ -512,7 +520,6 @@ img{
 .del-gio{
     text-decoration: none;
     color:#0000FF;
-    font-weight: bold;
 }
 .wrapper-popup:hover .p-popup{
     display: table-cell !important;
@@ -655,7 +662,7 @@ range-image-wrapper{
 
 .shp td a{
     text-decoration: none;
-    color: black;
+    color: #527ff3;
 }
 .shp td a:hover{
     text-decoration: underline;
@@ -665,6 +672,7 @@ range-image-wrapper{
     font-size: 1.0em;
     height: 30px;
     line-height: 30px;
+    margin: 10px 23px;
 }
 
 
