@@ -148,10 +148,15 @@ body {
 /* Main */
 #page-container {
     background: url('../images/site/background.png');
+    padding: 20px 0;
 }
 #container{
+    background-color: #FDFDE8;
     width:980px;
+    min-height: 285px;
     margin: 0 auto;
+    padding-bottom: 20px;
+    border: 1px solid #e5b201;
 }
 #container p{
     margin:20px;
@@ -713,7 +718,6 @@ range-image-wrapper{
 
 /* info */
 #info-show-image{
-    background-color: #F5F1A9;
     float: right;
     margin-top: 20px;
     padding: 20px;

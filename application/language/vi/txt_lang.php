@@ -219,4 +219,4 @@ $lang['txt_add_article']                = 'Thêm bài viết mới';
 $lang['txt_edit_article']               = 'Thay đổi thông tin bài viết';
 $lang['txt_category']                   = 'Chủ đề';
 
-
+$lang['txt_hot_line']                   = 'Hot line';

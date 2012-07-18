@@ -86,6 +86,7 @@
                 <div id="logo">
                     <a href="#"><img src="<?php echo $image_path; ?>/Logo.png" alt="" /></a>
                 </div>
+                <div><?php echo lang('site_hot_line'); ?></div>
                 <div class="clear"></div>
             </div>
             <div id="menu">
