@@ -24,7 +24,6 @@
         <div class="title-prod"><h1><?php echo $product->the_product_name(); ?></h1></div>
         <div id="slide-show-image">
 
-
             <div class="t-slide-wrapper-1">
                 <div class="t-slide">
                     <div id="lightbox" class="wrap-tslide">
@@ -33,23 +32,9 @@
                         </a>
                     </div>
                 </div>
-                <?php if (count($image) > 1): ?>
-                    <div class="t-list-slide">
-                        <label><?php echo lang('txt_other_pictures'); ?></label>
-                        <div id="slide-wrap-ul">
-                            
-                            <?php foreach ($image as $item): ?>
-                                <?php if($product->the_image_link() != $item['link']) : ?>
-                            
-                                    <a rel="prettyPhoto[pp_gal]" href="<?php echo $item['link']; ?>" title="<?php echo $product->the_product_name(); ?>" > <img src="<?php echo $item['link_avata']; ?>" /></a>
-                                    
-                                <?php endif; ?>       
-                            <?php  endforeach; ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
+               
             </div>
-            <div class="clear"></div>
+                      
         </div>
         <div id="info-show-image">
             <ul>
@@ -82,6 +67,25 @@
                 </li>
             </ul>
         </div>
+        
+        <div class="clear"></div>
+        
+         <?php if (count($image) > 1): ?>
+                    <div class="t-list-slide">
+                        <label><?php echo lang('txt_other_pictures'); ?></label>
+                        <div id="slide-wrap-ul">
+                            
+                            <?php foreach ($image as $item): ?>
+                                <?php if($product->the_image_link() != $item['link']) : ?>
+                            
+                                    <a rel="prettyPhoto[pp_gal]" href="<?php echo $item['link']; ?>" title="<?php echo $product->the_product_name(); ?>" > <img src="<?php echo $item['link_avata']; ?>" /></a>
+                                   
+                                <?php endif; ?>       
+                            <?php  endforeach; ?>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <?php endif; ?>
     </div>
     <div class="clear"></div>
 <?php endif; ?>
