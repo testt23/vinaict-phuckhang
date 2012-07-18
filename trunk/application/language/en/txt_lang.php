@@ -204,6 +204,6 @@ $lang['txt_add_article']                = 'Add new article';
 $lang['txt_edit_article']               = 'Change infomation article';
 $lang['txt_category']                   = 'News category';
 
-
+$lang['txt_hot_line']                   = 'Hot line';
 
 ?>

@@ -1,5 +1,8 @@
 <?php
 
+// header
+$lang['site_hot_line']                          = 'Hot line';
+
 // footer 
 $lang['site_footer_online_support']             = 'Hỗ trợ trực tuyến';
 $lang['site_footer_visit']                      = 'Lượt truy cập';
