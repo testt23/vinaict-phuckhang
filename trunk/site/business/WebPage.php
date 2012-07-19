@@ -7,7 +7,7 @@ class WebPage extends Web_page_model {
 
     function __construct() {
         parent::__construct();
-        $this->if = new dbinfo();
+        $this->if = new DbInfo();
         $this->lang = get_system_language();
     }
 

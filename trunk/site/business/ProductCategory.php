@@ -6,7 +6,7 @@ class ProductCategory extends Product_category_model {
 
     function __construct() {
         parent::__construct();
-        $this->if = new dbinfo();
+        $this->if = new DbInfo();
     }
 
     public function get_category_id_by_link($link = '') {

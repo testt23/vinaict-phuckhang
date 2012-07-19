@@ -9,14 +9,14 @@ class Image extends Image_model {
     
     function __construct() {
         parent::__construct();
-        $this->if = new dbinfo();
+        $this->if = new DbInfo();
         $this->image_default = base_url() . $this->config->item('image_defailt_thum');
     }
     
     
     public function _join_image_group($filterSelect = array(), $join_type = 'INNER'){
         
-        $dbinfo = new dbinfo();
+        $DbInfo = new DbInfo();
         $Image = new Image();
         $Image_group = new ImageGroup();
         
@@ -32,8 +32,8 @@ class Image extends Image_model {
         }
         
         $Image->addJoin($Image_group, $join_type, 
-                        $dbinfo->_table_image_group, 
-                        $dbinfo->_image_id_image_group . ' = ' . $dbinfo->_image_group_id);
+                        $DbInfo->_table_image_group, 
+                        $DbInfo->_image_id_image_group . ' = ' . $DbInfo->_image_group_id);
         
         $Image->find();
         return $Image;
@@ -43,23 +43,23 @@ class Image extends Image_model {
     
     
     public function getListImageByListId($list_id){
-        $dbinfo = new dbinfo();
+        $DbInfo = new DbInfo();
         if (!empty($list_id)){
             
             $Image = new Image();
         
             $Image->addSelect();
-            $Image->addSelect($dbinfo->_image_id .' as '. $dbinfo->_image_as_id);
-            $Image->addSelect($dbinfo->_image_name .' as '. $dbinfo->_image_as_name);
-            $Image->addSelect($dbinfo->_image_file .' as '. $dbinfo->_image_as_file);
-            $Image->addSelect($dbinfo->_image_group_code .' as '. $dbinfo->_image_group_as_code);
+            $Image->addSelect($DbInfo->_image_id .' as '. $DbInfo->_image_as_id);
+            $Image->addSelect($DbInfo->_image_name .' as '. $DbInfo->_image_as_name);
+            $Image->addSelect($DbInfo->_image_file .' as '. $DbInfo->_image_as_file);
+            $Image->addSelect($DbInfo->_image_group_code .' as '. $DbInfo->_image_group_as_code);
 
             $Image->addJoin(new ImageGroup(), 
                             'INNER', 
-                            $dbinfo->_table_image_group, 
-                            $dbinfo->_image_id_image_group.' = '.$dbinfo->_image_group_id);
+                            $DbInfo->_table_image_group, 
+                            $DbInfo->_image_id_image_group.' = '.$DbInfo->_image_group_id);
             
-            $Image->addWhere($dbinfo->_image_id.' in ('.$list_id.')');
+            $Image->addWhere($DbInfo->_image_id.' in ('.$list_id.')');
             $Image->find();
             if ($Image->countRows() > 0){
                 $return = '';
