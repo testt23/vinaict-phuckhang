@@ -302,6 +302,7 @@
                         else {
                             
                             $file_info = pathinfo($file);
+                            $file_info['extension'] = pathinfo($file, PATHINFO_EXTENSION);
                             $extension = $file_info['extension'];
                             
                             $file_allowed = explode('|', config_item('allowed_types'));
