@@ -60,13 +60,18 @@
                     <br/>
                     <div id="hot-line-wrapper">                    
                         <?php echo lang('site_hot_line'); ?>
-                        <span><?php echo Variable::getHotLine().': '.Variable::getCompanyHotline(); ?></span>                    
+                        <span><?php echo Variable::getCompanyHotline(); ?></span>
                     </div>
                     <br/>
                     <div id="support-online-wrapper">                    
-                            <?php echo lang('site_footer_online_support'); ?>:<br/>
-                            <a href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" mce_href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=<?php echo Variable::getYahooSopportOnline(); ?>&t=1" height="20px" width="80px"></a>                    
-                    </div>                
+                            <a href="ymsgr:sendim?<?php echo Variable::getYahooSupport(); ?>" mce_href="ymsgr:sendim?<?php echo Variable::getYahooSupport(); ?>" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=<?php echo Variable::getYahooSupport(); ?>&t=1" height="20px" width="80px"></a>
+                            <!--
+                            Skype 'Chat with me' button
+                            http://www.skype.com/go/skypebuttons
+                            -->
+                            <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+                            <a href="skype:<?php echo SKYPE_SUPPORT; ?>?chat"><img src="http://download.skype.com/share/skypebuttons/buttons/chat_blue_transparent_97x23.png" style="border: none;" width="97" height="23" alt="Chat with me" /></a>
+                    </div>
                 
                 <!--
                 <div id="searchbox">

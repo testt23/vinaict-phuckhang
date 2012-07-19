@@ -60,17 +60,16 @@ body {
 }
 /* Hot line */
 #hot-line-wrapper {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     float: right;
     color: #fff;
     padding-top: 5px;
-    padding-right: 25px;
 }
 
 #hot-line-wrapper span {    
     color: #FDDB11;
-    font-size: 16px    
+    font-size: 18px;
 }
 
 /* End Hot line */
@@ -84,7 +83,6 @@ body {
     float: right;
     color: #fff;
     padding-top: 10px;
-    padding-right: 32px;
     
 }
 

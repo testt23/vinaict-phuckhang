@@ -1,6 +1,6 @@
 <?php
 
-class dbinfo {
+class DbInfo {
 
     
     function __construct() {
