@@ -40,7 +40,7 @@ $lang['show_empty_message'] = 'Vui lòng nhập vào nội dung tin nhắn.';
 
 
 $lang['note_form'] = 'Khách hàng vui lòng nhập thông tin của mình vào khung bên dưới ';
-$lang['note_content'] = 'Nếu bạn đã từng mua hàng thì bạn có thể nhập email và để trống các ô còn lại, nếu bạn muốn thay đổi thông tin nào thì nhập vào thông tin đó';
+$lang['note_content'] = 'Những mục có dấu (*) là những mục bắt buộc bạn phải nhập thông tin ';
 $lang['lbl_purpose'] = 'Mục đích:';
 $lang['lbl_buy_by'] = 'Mua bởi:';
 $lang['rdb_no_purchases'] = 'Chưa mua hàng';
@@ -50,7 +50,7 @@ $lang['lbl_billing_address'] = 'Địa chỉ thanh toán:';
 $lang['lbl_shipping_address'] = 'Địa chỉ giao hàng:';
 $lang['lbl_company'] = 'Công ty:';
 $lang['lbl_contact_with'] = 'Người liên hệ:';
-$lang['lbl_home_address'] = 'Địa chỉ nhà riêng:';
+$lang['lbl_home_address'] = 'Địa chỉ liên hệ:';
 $lang['lbl_website_address'] = 'Địa chỉ Website:';
 $lang['lbl_tax_code'] = 'Mã số thuế:';
 $lang['lbl_email_address'] = 'Địa chỉ Email:';
@@ -60,6 +60,7 @@ $lang['btn_clear'] = 'XÓA';
 $lang['btn_order'] = 'ĐẶT HÀNG';
 $lang['rdb_gender_mr'] = 'Ông';
 $lang['rdb_gender_ms'] = 'Bà';
+$lang['btn_sent'] = 'Gửi';
 
 $lang['lbl_firstname'] = 'Họ:';
 $lang['lbl_lastname'] = 'Tên:';
@@ -68,6 +69,20 @@ $lang['cobx_contact'] = 'Liên hệ';
 $lang['cobx_buy'] = 'Mua hàng';
 $lang['cobx_for_company'] = 'Công ty';
 $lang['cobx_for_personal'] = 'Cá nhân';
+
+$lang['txt_message'] = 'Thông tin liên hệ';
+
+/* Contact US */
+$lang['txt_name_contact']       = 'Họ tên người liên hệ';
+$lang['txt_company_contact']    = 'Tên công ty liên hệ';
+$lang['txt_website_contact']    = 'Website công ty';
+$lang['txt_tax_code_contact']   = 'Mã số thuế';
+$lang['txt_email_contact']      = 'Email';
+$lang['txt_yahoo_contact']      = 'Nick yahoo';
+$lang['txt_skype_contact']      = 'Nick skype';
+$lang['txt_message_contact']    = 'Nội dung liên hệ';
+$lang['txt_person_contact']     = 'Người liên hệ';
+$lang['txt_phone_contact']      = 'Số điện thoại';
 
 
 // page product detail
@@ -81,7 +96,7 @@ $lang['txt_btn_order'] = 'btn-order-vi.png';
 
 // page contact_controller
 $lang['show_message_info_1'] = 'Bạn chưa phải là khách hàng. Vui lòng chọn khách hàng bình thường và điền đầy đủ thông tin.';
-$lang['show_message_info_2'] = 'Câu hỏi của bạn đã được gửi đi.';
+$lang['show_message_info_2'] = 'Thông tin của bạn đã được gửi đi.';
 $lang['show_message_info_3'] = 'Đơn đặt hàng đã được lưu. Vui lòng kiểm tra email đễ xác nhận thông tin đặt hàng';
 $lang['show_message_info_4'] = 'Bạn chưa chọn sản phẩm nào.';
 $lang['show_message_info_5'] = 'Email nhập không đúng định dạng hoặc bạn chưa nhập.';
@@ -89,6 +104,7 @@ $lang['show_message_info_5'] = 'Email nhập không đúng định dạng hoặc
 $lang['show_message_info_6'] = 'Đặt hàng thành công.';
 $lang['show_message_info_7'] = 'Đơn đặt hàng này không tồn tại.';
 $lang['show_message_info_8'] = 'Thao tác đặt hàng thất bại.';
+$lang['show_message_contact_fail'] = 'Gửi thông tin liên hệ thất bại';
 
 // page heager
 $lang['show_form_search_1'] = 'Tìm kiếm';

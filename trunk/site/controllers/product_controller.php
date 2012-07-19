@@ -185,7 +185,7 @@ class Product_controller extends CI_Controller {
         $yahoo = '';
         $skype = '';
         $career = '';
-        $message = 'message';
+        $message = '';
 
         $not_buy = '1';
         $mucdich = '2';
@@ -215,9 +215,7 @@ class Product_controller extends CI_Controller {
             $skype = $this->input->post('skype');
             $career = $this->input->post('career');
             $message = $this->input->post('message');
-            if ($message == 'message') {
-                $message = '';
-            }
+            
 
             if ($email != '') {
 
@@ -312,8 +310,8 @@ class Product_controller extends CI_Controller {
                         $Cus_update->website = $website;
                         $Cus_update->tax_code = $tax_code;
                         $Cus_update->contact_address = $address;
-                        $Cus_update->id_yahoo = $yahoo;
-                        $Cus_update->id_skype = $skype;
+                        $Cus_update->yahoo_id = $yahoo;
+                        $Cus_update->skype_id = $skype;
                         $Cus_update->career = $career;
                         $Cus_update->description = $message;
 
@@ -347,7 +345,7 @@ class Product_controller extends CI_Controller {
                             if (isset($purchase->id) && $Cus_update->id && $mucdich == '2') {
                                 for ($i = 0; $i < $total; $i++) {
 
-                                    $text = ' <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_name_product() . '</td>
+                                    $text .= '<tr> <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_name_product() . '</td>
                                     <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_code_product() . '</td>
                                     <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_price_product() . ' ' . $list_cart[$i]->get_currency_product() . ' </td>
                                     <td width="218" style="border-right:none;">' . $list_cart[$i]->get_number() . '</td>
@@ -419,11 +417,8 @@ class Product_controller extends CI_Controller {
         $filter['yahoo'] = $yahoo;
         $filter['skype'] = $skype;
         $filter['career'] = $career;
-        if ($message == '') {
-            $filter['message'] = 'message';
-        } else {
-            $filter['message'] = $message;
-        }
+        $filter['message'] = $message;
+        
 
         // menu
         $array_menus = array();

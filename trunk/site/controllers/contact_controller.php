@@ -7,13 +7,13 @@ class Contact_controller extends CI_Controller {
     }
 
     public function index() {     
-        $data['content'] = 'contact ';
+        $data['content'] = 'contact';
         $this->load->view('temp', $data);
     }
     
     public function contact(){
         $result = '';
-        $is_business = '';
+        $is_business = '0';
         $gender = '0';
         $email = '';
         $phone = '';
@@ -29,7 +29,7 @@ class Contact_controller extends CI_Controller {
         $yahoo = '';
         $skype = '';
         $career = '';
-        $message = 'message';
+        $message = '';
 
         $not_buy = '1';
         $mucdich = '2';
@@ -42,8 +42,6 @@ class Contact_controller extends CI_Controller {
             $gender = $this->input->post('gender');
             $email = $this->input->post('email');
             $phone = $this->input->post('phone');
-            $billing_address = $this->input->post('billing_address');
-            $shipping_address = $this->input->post('shipping_address');
             $firstname = $this->input->post('firstname');
             $lastname = $this->input->post('lastname');
             $company = $this->input->post('company');
@@ -55,9 +53,7 @@ class Contact_controller extends CI_Controller {
             $skype = $this->input->post('skype');
             $career = $this->input->post('career');
             $message = $this->input->post('message');
-            if ($message == 'message') {
-                $message = '';
-            }
+           
 
             if ($email != '') {
 
@@ -65,16 +61,13 @@ class Contact_controller extends CI_Controller {
                 $list_cart = $Shopping->get_list();
 
 
-                if (!empty($list_cart) || $mucdich == '1') {
+                if ($mucdich == '1') {
 
 
                     $total = count($list_cart);
                     $Customer = new Customer();
                     $List_customer = $Customer->findByEmail($email);
-                    $total_price = '';
-                    for ($i = 0; $i < $total; $i++) {
-                        $total_price += $list_cart[$i]->get_price_product() * 1;
-                    }
+                    
                     // neu khach hang da ton tai
 
                     if ($List_customer->countRows() == 0 && $not_buy == '2') {
@@ -88,15 +81,7 @@ class Contact_controller extends CI_Controller {
                             if ($phone == '') {
                                 $phone = $List_customer->work_phone;
                             }
-
-                            if ($billing_address == '') {
-                                $billing_address = $List_customer->billing_address;
-                            }
-
-                            if ($shipping_address == '') {
-                                $shipping_address = $List_customer->shipping_address;
-                            }
-
+                           
                             if ($firstname == '') {
                                 $firstname = $List_customer->firstname;
                             }
@@ -142,8 +127,6 @@ class Contact_controller extends CI_Controller {
                         $Cus_update->gender = $gender;
                         $Cus_update->email = $email;
                         $Cus_update->work_phone = $phone;
-                        $Cus_update->billing_address = $billing_address;
-                        $Cus_update->shipping_address = $shipping_address;
                         $Cus_update->firstname = $firstname;
                         $Cus_update->is_business = $is_business;
                         $Cus_update->lastname = $lastname;
@@ -152,78 +135,43 @@ class Contact_controller extends CI_Controller {
                         $Cus_update->website = $website;
                         $Cus_update->tax_code = $tax_code;
                         $Cus_update->contact_address = $address;
-                        $Cus_update->id_yahoo = $yahoo;
-                        $Cus_update->id_skype = $skype;
-                        $Cus_update->$career = $career;
+                        $Cus_update->yahoo_id = $yahoo;
+                        $Cus_update->skype_id = $skype;
+                        $Cus_update->career = $career;
                         $Cus_update->description = $message;
-
+                        $Cus_update->billing_address = $billing_address;
+                        $Cus_update->shipping_address = $shipping_address;
+                                                
                         if ($List_customer->countRows() > 0) {
                             $Cus_update->id = $List_customer->id;
                             $Cus_update->update();
                         } else {
                             $Cus_update->insert();
+                            
                         }
-
-                        if ($Cus_update->id) {
-                            // insert purchase order
-                            $purchase = new PurchaseOrder();
-                            $purchase->code = '';
-                            $purchase->id_customer = $Cus_update->id;
-                            $purchase->order_date = date('d/m/Y');
-                            $purchase->creation_date = date('d/m/Y');
-                            $purchase->amount = '';
-                            $purchase->currency = '';
-                            $purchase->status = '';
-                            $purchase->amount = '';
-                            $purchase->description = $message;
-                            $purchase->billing_address = $billing_address;
-                            $purchase->shipping_address = $shipping_address;
-                            $purchase->insert();
-                            $result = "<?php echo lang('show_message_info_2');?>";
-
-                            $text = '';
-                            if (isset($purchase->id) && $Cus_update->id && $mucdich == '2') {
-                                for ($i = 0; $i < $total; $i++) {
-
-                                    $text = ' <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_name_product() . '</td>
-                                    <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_code_product() . '</td>
-                                    <td width="218" style="border-right:solid 1px #f5f5f5;">' . $list_cart[$i]->get_price_product() . ' ' . $list_cart[$i]->get_currency_product() . ' </td>
-                                    <td width="218" style="border-right:none;">' . $list_cart[$i]->get_number() . '</td>
-                                    </tr>';
-
-
-                                    $details = new PurchaseOrderDetail();
-                                    $details->id_purchase_order = $purchase->id;
-                                    $details->id_product = $list_cart[$i]->get_id_product();
-                                    $details->code_product = $list_cart[$i]->get_code_product();
-                                    $details->name_product = $list_cart[$i]->get_name_product();
-                                    $details->price_product = $list_cart[$i]->get_price_product();
-                                    $details->currency_product = $list_cart[$i]->get_currency_product();
-                                    $details->description_product = $list_cart[$i]->get_description_product();
-                                    $details->image_product = $list_cart[$i]->get_image_product();
-                                    $details->number = $list_cart[$i]->get_number();
-                                    $details->is_deleted = 0;
-                                    $details->insert();
-                                }
-                                $filter = array();
-                                $filter['your_name'] = $firstname . ' ' . $lastname;
-                                $filter['website'] = $website;
-                                $filter['company'] = $company;
-                                $filter['tax_code'] = $tax_code;
-                                $filter['your_email'] = $email;
-                                $filter['ym'] = $yahoo;
-                                $filter['skype'] = $skype;
-                                $filter['message'] = $message;
-                                $filter['info_product'] = $text;
-                                $filter['url_confirm'] = '';
-                                $filter['shipping_address'] = $shipping_address;
-                                $filter['billing_address'] = $billing_address;
-                                $mail = new Mailer();
-                                $mail->sendmail($filter);
-                                $result = "<?php echo lang('show_message_info_3');?>";
-                                $Shopping->clear_all();
-                            }
+                        
+                        $filter = Array();
+                        
+                        $filter['your_name'] = $firstname . ' ' . $lastname;
+                        $filter['website'] = $website;
+                        $filter['company'] = $company;
+                        $filter['contact_person'] = $contact_person;
+                        $filter['tax_code'] = $tax_code;
+                        $filter['your_email'] = $email;
+                        $filter['ym'] = $yahoo;
+                        $filter['skype'] = $skype;
+                        $filter['message'] = $message;
+                        $filter['is_business'] = $is_business; 
+                        $filter['phone'] = $phone;
+                        
+                        $mail = new Mailer();
+                        if($mail->sendContact($filter)){
+                            $result = lang('show_message_info_2');
+                        } else{
+                            $result = lang('show_message_contact_fail');
                         }
+                        
+
                     }
                 } else {
                     $result = "<span style='color: red;'><?php echo lang('show_message_info_4');?><span>";
@@ -232,7 +180,17 @@ class Contact_controller extends CI_Controller {
                 $result = "<?php echo lang('show_message_info_5');?>";
             }
         }
-
+        
+        if($is_business == 1){
+            $firstname = '';
+            $lastname  = '';
+        }else {
+            $company    = '';
+            $website    = '';
+            $contact_person = '';
+            $tax_code   = '';
+        }
+        
         $filter = array();
         $filter['mucdich'] = $mucdich;
         $filter['not_buy'] = $not_buy;
@@ -252,11 +210,8 @@ class Contact_controller extends CI_Controller {
         $filter['yahoo'] = $yahoo;
         $filter['skype'] = $skype;
         $filter['career'] = $career;
-        if ($message == '') {
-            $filter['message'] = 'message';
-        } else {
-            $filter['message'] = $message;
-        }
+        $filter['message'] = $message;
+        
 
         // menu
         $array_menus = array();
@@ -267,9 +222,9 @@ class Contact_controller extends CI_Controller {
         
         $data['mess'] = $result;
         $data['filter'] = $filter;
-        $data['content'] = 'order_form';
+        $data['content'] = 'contact';
         $data['array_menus'] = $array_menus;
-        $data['selected'] = '';
+        $data['selected'] = 'contact';
         $this->load->view('temp', $data);
     }
 

@@ -60,10 +60,39 @@ class Mailer {
         $this->ci->load->library('email');
         $this->ci->email->from(Variable::getCompanyMail(), Variable::getCompanyName());
         $this->ci->email->to($filter['your_email']);
-        $this->ci->email->subject(getI18n(Variable::getObjectNameEmail(), get_system_language()));
+        $this->ci->email->subject(getI18n(Variable::getObjectNameEmail(), get_system_language()).'('.date('H:i:s d-m-Y').')');
         $this->ci->email->message($content);
         return @$this->ci->email->send();
     }
     
+    public function sendContact($filter = Array()){
+        
+        $content = '';
+        $nameSubject ='';
+        
+        if($filter['is_business'] == 0){
+            $content .= lang('txt_name_contact') .': '. $filter['your_name'] .'<br />';
+            $nameSubject = $filter['your_name'];
+        } else {
+            $content .= lang('txt_company_contact') .': '. $filter['company'] .'<br />';
+            $content .= lang('txt_website_contact') .': '. $filter['website'] .'<br />';
+            $content .= lang('txt_person_contact')  .': '. $filter['contact_person'] .'<br />';
+            $content .= lang('txt_tax_code_contact')    .': '. $filter['tax_code'] .'<br />';
+            $nameSubject = $filter['company'];
+        }
+        $content .= lang('txt_phone_contact')       .': '. $filter['phone'] .'<br />';
+        $content .= lang('txt_email_contact')       .': '. $filter['your_email'] .'<br />';
+        $content .= lang('txt_yahoo_contact')       .': '. $filter['ym'] .'<br />';
+        $content .= lang('txt_skype_contact')       .': '. $filter['skype'] .'<br />';
+        $content .= lang('txt_message_contact')     .': '. $filter['message'] .'<br />';
+                
+        
+        $this->ci->load->library('email');
+        $this->ci->email->from($filter['your_email']);
+        $this->ci->email->to(Variable::getCompanyMail());
+        $this->ci->email->subject('('.date('H:i:s d-m-Y').')'.' '.$nameSubject.' '.getI18n(Variable::getTitleContact(), get_system_language()));
+        $this->ci->email->message($content);
+        return @$this->ci->email->send();
+   } 
 
 }

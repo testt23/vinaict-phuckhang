@@ -20,7 +20,7 @@
 (function($){
     check_muacho = function(){
         
-        var md = jQuery('select[name="muacho"]').val();
+        var md = jQuery('input[name="muacho"]:radio:checked').val();
         if (md == '1'){
             jQuery('.congty').show();
             jQuery('.canhan').hide();
@@ -28,17 +28,30 @@
             jQuery('.congty').hide();
             jQuery('.canhan').show();
         }
+        
     }
 })(jQuery);
 
 
 jQuery(document).ready(function(){
-    
-    var md = jQuery('select[name="mucdich"]').val();
-    check_mucdich();
-    if (md != '1'){
+        
         check_muacho();
-    }
-    
+        
+        $('#message').focus(function(){
+           
+            $('#message_mask').hide();
+           
+        });
+        
+        $('#message_mask').click(function(){
+           
+            $('#message_mask').hide();
+           
+        });
+        
+        var message = $('#message').val();
+        if(message.length > 0){
+            $('#message_mask').hide();
+        }
     
 });
