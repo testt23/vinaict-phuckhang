@@ -155,7 +155,10 @@ class Variable {
         return defined('YAHOO_SUPPORT_ONLINE') ? YAHOO_SUPPORT_ONLINE : 'ngvancuong_thienduongmangtenem';
     }
     
-    
+    /// hot line
+    public function getHotLine(){
+        return defined('HOT_LINE') ? HOT_LINE :'';
+    }
     /***************************************************************/
     /******************LINK*********************/
     /***************************************************************/
@@ -177,6 +180,17 @@ class Variable {
     }
     public function getLinkActive($code, $id){
         return base_url()  . Variable::getActiveShopPageString() . '?code='.$code . '&id='. $id;
+    }
+    
+    
+    // article page string route
+    public function getArticlePageString(){
+        return defined('SITE_PAGE_ARTICLE_STRING') ? SITE_PAGE_ARTICLE_STRING : 'articles';
+    }
+    
+    // article search string 
+    public function getArticlePageSearchString(){
+        return defined('SITE_PAGE_ARTICLE__SEARCH_STRING') ? SITE_PAGE_ARTICLE__SEARCH_STRING : 'search';
     }
     
     public function cut_string($string, $num){
