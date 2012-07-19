@@ -1,31 +1,12 @@
 <script language="javascript" src="<?php echo base_url() . 'js/contact.js' ?>">
 </script>
 <script language="javascript">
-    
-(function($){
-    check_mucdich = function(){
-        var md = jQuery('select[name="mucdich"]').val();
-        if (md == '1'){
-            jQuery('input[name="ok-submit"]').val('Contact');
-            jQuery('.canhan').hide();
-            jQuery('.congty').hide();
-            jQuery('.muahang').hide();
-            
-        }else{
-            jQuery('input[name="ok-submit"]').val('Order');
-            jQuery('.canhan').show();
-            jQuery('.congty').show();
-            jQuery('.muahang').show();
-            check_muacho();
-        }
-        
-    }
-})(jQuery);
+       
     (function($){
         check_submit = function(){
         
-            var mdich = jQuery('select[name="mucdich"]').val();
-            var mcho =  jQuery('select[name="muacho"]').val();
+            var mdich = 2;
+            var mcho =  jQuery('input[name="muacho"]:radio:checked').val();
             var email = jQuery('input[name="email"]').val();
             if (email == ''){
                 alert('<?php echo lang('show_empty_email');?>');
@@ -39,15 +20,9 @@
         
             if (mdich == '2'){
             
-                var not_buy = jQuery('input[name="not-buy"]');
-                var notb;
-                for (var i = 0; i< not_buy.length; i++){
-                    if(jQuery(not_buy[i]).attr('checked') == 'checked'){
-                        notb = jQuery(not_buy[i]).val();
-                        console.log(notb);
-                    }
-                }
-            
+                var not_buy = 1;
+                var notb =1 ;
+                           
             
                 if (notb == '1'){
                 
@@ -87,7 +62,7 @@
                         }
                     }
             
-                    if (mcho == 0){
+                    if (mcho == 0){ 
                         var firstname = trim(jQuery('input[name="firstname"]').val());
                         var lastname = trim(jQuery('input[name="lastname"]').val());
                         
@@ -121,31 +96,19 @@
                 
             <div class="ul-main">
                     <center style="font-style: italic; color: blue;">  <?php echo $mess?><br/></center> 
-                <center style="font-style: italic;">   (<?php echo lang('note_content');?>)<br/></center> 
+                <center style="font-style: italic; font-size: 14px;">   (<?php echo lang('note_content');?>)<br/><br/></center> 
                 <ul class="ul-right">
-                    <li>
-                        <?php echo lang('lbl_purpose');?> 
-                        <select name="mucdich" onchange="check_mucdich()">
-                            <option value="1" <?php if ($filter['mucdich'] == '1') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_contact');?></option>
-                            <option value="2" <?php if ($filter['mucdich'] == '2') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_buy');?></option>
-                        </select>
-                    </li>
                     <li class="muahang">
-                        <?php echo lang('lbl_buy_by');?>
-                        <select name="muacho" onchange="check_muacho()" >
-                            <option value="1" <?php if ($filter['is_business'] == '1') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_for_company');?></option>
-                            <option value="0" <?php if ($filter['is_business'] == '0') echo 'selected="true"'; ?>><?php echo lang('');?><?php echo lang('cobx_for_personal');?></option>
-                        </select>
+                        <input type="hidden" name="mucdich" id="mucdich" value="2" />
+                        <?php echo lang('cobx_for_company');?><input type="radio" name ="muacho"  value="1" id="muacho" onClick="check_muacho() "/>
+                        <?php echo lang('cobx_for_personal');?><input type="radio" name ="muacho" value="0" id="muacho" onClick="check_muacho()" checked="checked" />
                     </li>
-                    <li>
+                    <li class="canhan">
                         <?php echo lang('rdb_gender_mr');?> <input type="radio" name="gender" value="0" <?php if ($filter['gender'] == '0') echo 'checked="checked"'; ?>/>
                         <?php echo lang('rdb_gender_ms');?> <input type="radio" name="gender" value="1" <?php if ($filter['gender'] == '1') echo 'checked="checked"'; ?>/>
                     </li>
-                    <li  class="muahang">
-                        <?php echo lang('rdb_no_purchases');?> <input type="radio" name="not-buy" value="1" <?php if ($filter['not_buy'] == '1') echo 'checked="checked"'; ?> />
-                        <?php echo lang('rdb_having_a_purchase');?> <input type="radio" name="not-buy" value="2" <?php if ($filter['not_buy'] == '2') echo 'checked="checked"'; ?>/>
-                    </li>
                     <li>
+                        <input type="hidden" name="not-buy" value="1" >                        
                         <?php echo lang('lbl_email_address');?>   (*)
                         <input maxlength="100" type="text" name="email" value="<?php echo $filter['email']; ?>" size="30" />
                     </li>
@@ -208,10 +171,11 @@
                     </li>
 
                     <li class="message">
-                        <textarea name="message"><?php echo $filter['message']; ?></textarea>
+                        <div class="mask" id="message_mask"><?php echo lang('txt_message'); ?></div>
+                        <textarea name="message" id="message" ><?php echo $filter['message']; ?></textarea>
                     </li>
                     <li class="orderbutton">
-                        <input type="reset" name="" value ="<?php echo lang('btn_clear');?>" onclick="check_mucdich();"/>
+                        <input type="reset" name="" value ="<?php echo lang('btn_clear');?>"/>
                         <input type="hidden" name="ok-click" value="ok-click"/>
                         <input type="submit" name="" value ="<?php echo lang('btn_order');?>"/>
                     </li>

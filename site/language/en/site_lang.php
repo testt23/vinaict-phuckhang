@@ -56,6 +56,9 @@ $lang['btn_clear'] = 'CLEAR';
 $lang['btn_order'] = 'ORDER';
 $lang['rdb_gender_mr'] = 'Mr';
 $lang['rdb_gender_ms'] = 'Ms';
+$lang['btn_sent'] = 'Sent';
+
+$lang['txt_message'] = 'Message';
 
 $lang['lbl_firstname'] = 'Firstname:';
 $lang['lbl_lastname'] = 'Lastname:';
@@ -64,6 +67,18 @@ $lang['cobx_contact'] = 'Contact';
 $lang['cobx_buy'] = 'Buy';
 $lang['cobx_for_company'] = 'Company';
 $lang['cobx_for_personal'] = 'Personal';
+
+/* Contact US */
+$lang['txt_name_contact']       = 'Name of contact';
+$lang['txt_company_contact']    = 'Name of firm';
+$lang['txt_website_contact']    = 'Website';
+$lang['txt_tax_code_contact']   = 'Tax code';
+$lang['txt_email_contact']      = 'Email';
+$lang['txt_yahoo_contact']      = 'Nick yahoo';
+$lang['txt_skype_contact']      = 'Nick skype';
+$lang['txt_message_contact']    = 'Message contact';
+$lang['txt_person_contact']     = 'Contact';
+$lang['txt_phone_contact']      = 'Phone';
 
 // page product detail
 $lang['show_message_product'] = 'No product updates';
@@ -84,6 +99,7 @@ $lang['show_message_info_5'] = 'Email entered is incorrect or you may import for
 $lang['show_message_info_6'] = 'This order is successful.';
 $lang['show_message_info_7'] = 'This order does not exist.';
 $lang['show_message_info_8'] = 'Manipulate your order failure.';
+$lang['show_message_contact_fail'] = 'Send contact infomation failure';
 
 // page heager
 $lang['show_form_search_1'] = 'Search';

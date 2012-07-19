@@ -1,5 +1,4 @@
 <?php
-
 class Variable {
     // URL VARIABLES AND PAGING
     // SESSION VARIABLES
@@ -39,16 +38,19 @@ class Variable {
     }
     
     public function getCompanyMail(){
-        return defined('COMPANY_MAIL') ? COMPANY_MAIL : 'TheHalfHeart@gmail.com';
+        return defined('COMPANY_MAIL') ? COMPANY_MAIL : 'thehalfheart@gmail.com';
     }
     public function getObjectNameEmail(){
-        return defined('OBJECT_NAME_EMAIL') ? OBJECT_NAME_EMAIL : 'Đơn đăt hàng của bạn';
+        return defined('OBJECT_NAME_EMAIL') ? OBJECT_NAME_EMAIL : '<en>Your orders</en><vi>Đơn đăt hàng của bạn</vi>';
     }
     
     public function getTitelMail(){
-        return defined('COMPANY_TITLE_EMAIL') ? COMPANY_TITLE_EMAIL : '<e>Verify order information</en><vi>Xác nhận thông tin đặt hàng</vi>';
+        return defined('COMPANY_TITLE_EMAIL') ? COMPANY_TITLE_EMAIL : '<en>Verify order information</en><vi>Xác nhận thông tin đặt hàng</vi>';
     }
     
+    public function getTitleContact(){
+        return defined('CONTACT') ? CONTACT : '<en>contact</en><vi>liên hệ</vi>';
+    }
     
     
     
@@ -94,7 +96,7 @@ class Variable {
     
     //product contact
     public function getProductContactPageString(){
-        return defined('SITE_PAGE_PRODUCT_CONTACT_STRING') ? SITE_PAGE_PRODUCT_CONTACT_STRING : 'contact-us';
+        return defined('SITE_PAGE_PRODUCT_CONTACT_STRING') ? SITE_PAGE_PRODUCT_CONTACT_STRING : 'contact';
     }
     
     // product list cart 
@@ -213,6 +215,3 @@ class Variable {
 }
 
 ?>
-
-
-

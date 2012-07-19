@@ -60,7 +60,7 @@
                     <br/>
                     <div id="hot-line-wrapper">                    
                         <?php echo lang('site_hot_line'); ?>
-                            <span><?php echo Variable::getHotLine(); ?></span>                    
+                        <span><?php echo Variable::getHotLine().': '.Variable::getCompanyHotline(); ?></span>                    
                     </div>
                     <br/>
                     <div id="support-online-wrapper">                    
