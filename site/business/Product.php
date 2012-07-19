@@ -488,7 +488,8 @@ class Product extends Product_model {
         if (empty($url)){
             return $this->image_default;
         }
-        return file_exists('uploads/images/' . $url) ? base_url() .  'uploads/images/' . $url : $this->image_default;
+        
+        return file_exists(direct_url(APPLICATION_PATH.'/'.config_item('upload_path').'images/'.$url)) ? direct_url(base_url(config_item('upload_path').'images/'.$url)) : $this->image_default;
     }
 
 }

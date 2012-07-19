@@ -684,6 +684,7 @@ if ( ! function_exists('direct_url'))
 {
     function direct_url($url) {
 
+        $url = str_replace('\\', '/', $url);
         return preg_replace('/\/([A-Za-z0-9-_.]*)\/\../', '', $url);
 
     }
