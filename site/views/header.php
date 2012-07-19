@@ -44,18 +44,30 @@
     <body>
         <div id="header">
             <div id="header-container">
-                <div id="language-wrapper">
-                    <?php 
-                       if($lang = Language::getArraylangIso()){
-                               foreach($lang as $k => $l){
-                    ?>
-                        <a id="<?php echo $l; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right <?php if($this->session->userdata('lang')) { echo (($this->session->userdata('lang') == $l )?"language-wrapper-active":"language-wrapper-unactive"); } elseif($l == 'vi') echo "language-wrapper-active"; else echo "language-wrapper-unactive"; ?>"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
-                     <?php 
-                                } 
-                          }
-                      ?>
-                </div>
-            
+                <div id="header-right"> 
+                    <div id="language-wrapper">
+                        <?php 
+                           if($lang = Language::getArraylangIso()){
+                                   foreach($lang as $k => $l){
+                        ?>
+                            <a id="<?php echo $l; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right <?php if($this->session->userdata('lang')) { echo (($this->session->userdata('lang') == $l )?"language-wrapper-active":"language-wrapper-unactive"); } elseif($l == 'vi') echo "language-wrapper-active"; else echo "language-wrapper-unactive"; ?>"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
+                         <?php 
+                                    } 
+                              }
+                          ?>
+
+                    </div>
+                    <br/>
+                    <div id="hot-line-wrapper">                    
+                        <?php echo lang('site_hot_line'); ?>
+                            <span><?php echo Variable::getHotLine(); ?></span>                    
+                    </div>
+                    <br/>
+                    <div id="support-online-wrapper">                    
+                            <?php echo lang('site_footer_online_support'); ?>:<br/>
+                            <a href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" mce_href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=<?php echo Variable::getYahooSopportOnline(); ?>&t=1" height="20px" width="80px"></a>                    
+                    </div>                
+                
                 <!--
                 <div id="searchbox">
                     <form method="post" action="<?php echo Variable::getLinkSearch(); ?>">
@@ -83,10 +95,11 @@
 
                 </div>
                 -->
+                </div>
                 <div id="logo">
                     <a href="#"><img src="<?php echo $image_path; ?>/Logo.png" alt="" /></a>
                 </div>
-                <div><?php echo lang('site_hot_line'); ?></div>
+                
                 <div class="clear"></div>
             </div>
             <div id="menu">
@@ -98,4 +111,6 @@
         </div>
         <div id="page-container">
         <div id="container">
+    </body>
+</html>
     

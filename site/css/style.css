@@ -14,7 +14,6 @@ body {
 /* Header */
 
 
-
 /* Counter */
 #counter {
     width: 230px;
@@ -48,11 +47,48 @@ body {
     padding-top: 10px;
 }
 #logo{
-    width:160px;
-    height:120px;
+    width: 160px;
+    height: 120px;
     float: left;
 }
 
+#header-right {
+    float: right;
+    width: 200px;
+    height: 120px;
+    text-align: center;
+}
+/* Hot line */
+#hot-line-wrapper {
+    font-size: 12px;
+    font-weight: bold;
+    float: right;
+    color: #fff;
+    padding-top: 5px;
+    padding-right: 25px;
+}
+
+#hot-line-wrapper span {    
+    color: #FDDB11;
+    font-size: 16px    
+}
+
+/* End Hot line */
+
+/* Support Online */
+#support-online-wrapper{
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    float: right;
+    color: #fff;
+    padding-top: 10px;
+    padding-right: 32px;
+    
+}
+
+/* End Help Online */
 /*menu*/
 
 
@@ -365,7 +401,8 @@ table tr td{text-align:center}
     margin: 0 auto;
 }
 #language-wrapper{
-    float:right;
+    text-align: right;
+    float: right;
 }
 #language-wrapper input{
     cursor: pointer;
@@ -674,21 +711,6 @@ range-image-wrapper{
     line-height: 30px;
     margin: 10px 23px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* detail prod*/
 

@@ -35,9 +35,9 @@
                         <?php echo lang('site_footer_copy_right'); ?>
                     </p>
                     
-                    <p><?php echo lang('site_footer_online_support'); ?>:<br/>
+<!--                    <p><?php echo lang('site_footer_online_support'); ?>:<br/>
                         <a href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" mce_href="ymsgr:sendim?<?php echo Variable::getYahooSopportOnline(); ?>" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=<?php echo Variable::getYahooSopportOnline(); ?>&t=1" height="20px" width="80px"></a>
-                    </p>
+                    </p>-->
                     <div id="counter">
                         <?php echo lang('site_footer_visit'); ?>: <br/>
                         <div id="show-counter">
