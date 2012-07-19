@@ -64,13 +64,14 @@
                     </div>
                     <br/>
                     <div id="support-online-wrapper">                    
-                            <a href="ymsgr:sendim?<?php echo Variable::getYahooSupport(); ?>" mce_href="ymsgr:sendim?<?php echo Variable::getYahooSupport(); ?>" border="0"><img class="online-counter" src="http://opi.yahoo.com/online?u=ngvancuong_thienduongmangtenem&t=1" mce_src="http://opi.yahoo.com/online?u=<?php echo Variable::getYahooSupport(); ?>&t=1" height="20px" width="80px"></a>
+                            <a href="ymsgr:sendIM?<?php echo YAHOO_SUPPORT_ONLINE; ?>"><br /><img border=0 src="http://opi.yahoo.com/online?u=<?php echo YAHOO_SUPPORT_ONLINE; ?>&m=g&t=1" /> </a>
                             <!--
-                            Skype 'Chat with me' button
+                            Skype 'Skype Me™!' button
                             http://www.skype.com/go/skypebuttons
                             -->
                             <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
-                            <a href="skype:<?php echo SKYPE_SUPPORT; ?>?chat"><img src="http://download.skype.com/share/skypebuttons/buttons/chat_blue_transparent_97x23.png" style="border: none;" width="97" height="23" alt="Chat with me" /></a>
+                            <a href="skype:<?php echo SKYPE_SUPPORT; ?>?call"><img src="http://download.skype.com/share/skypebuttons/buttons/call_green_transparent_70x23.png" style="border: none;" width="70" height="23" alt="Skype Me™!" /></a>
+
                     </div>
                 
                 <!--
