@@ -133,12 +133,12 @@ class Image extends Image_model {
         if (empty($url)){
             return $this->image_default;
         }
-        return file_exists('uploads/images/' . $url) ? base_url() .  'uploads/images/' . $url : $this->image_default;
+        return file_exists(direct_url(APPLICATION_PATH.'/'.config_item('upload_path').'images/'.$url)) ? direct_url(base_url(config_item('upload_path').'images/'.$url)) : $this->image_default;
     }
     public function have_image($url){
         if ($url == '' || $url == '/'){
             return false;
         }
-        return file_exists(file_exists('uploads/images/' . $url));
+        return file_exists(direct_url(APPLICATION_PATH.'/'.config_item('upload_path').'images/'.$url));
     }
 }   
