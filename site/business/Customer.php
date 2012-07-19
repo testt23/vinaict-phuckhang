@@ -6,7 +6,7 @@ class Customer extends Customer_model {
 
     function __construct() {
         parent::__construct();
-        $this->if = new dbinfo();
+        $this->if = new DbInfo();
     }
     
     public function findByEmail($email){
