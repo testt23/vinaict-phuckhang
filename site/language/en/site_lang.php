@@ -1,4 +1,6 @@
 <?php
+// header
+$lang['site_hot_line']                          = 'Hot line: ';
 
 $lang['site_footer_online_support']             = 'Support online';
 $lang['site_footer_visit']                      = 'visitor';
