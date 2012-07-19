@@ -143,7 +143,7 @@
                 </h1>
                 <div class="t-slide">
                     <div class="wrap-tslide">
-                        <img src="http://localhost/phuckhang/trunk/site/../uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/>
+                        <img src="http://localhost/phuckhang/trunk/site/uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/>
                     </div>
                 </div>
                 <div class="t-list-slide">
@@ -151,9 +151,9 @@
                     <div class="prev"></div>
                     <div class="wrapper-t-list-slide">
                         <ul id="slide-ul">
-                            <li><img src="http://localhost/phuckhang/trunk/site/../uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/></li>
-                            <li><img src="http://localhost/phuckhang/trunk/site/../uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/></li>
-                            <li><img src="http://localhost/phuckhang/trunk/site/../uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/></li>
+                            <li><img src="http://localhost/phuckhang/trunk/site/uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/></li>
+                            <li><img src="http://localhost/phuckhang/trunk/site/uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/></li>
+                            <li><img src="http://localhost/phuckhang/trunk/site/uploads/images/prod/fa12b9aed1cf562b476b46f298762ae0_medium.jpg"/></li>
                         </ul>
                     </div>
                 </div>
