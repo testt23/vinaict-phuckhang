@@ -153,14 +153,11 @@ class Variable {
     }
     /// yahoo sopport online
     
-    public function getYahooSopportOnline(){
+    public function getYahooSupport(){
         return defined('YAHOO_SUPPORT_ONLINE') ? YAHOO_SUPPORT_ONLINE : 'ngvancuong_thienduongmangtenem';
     }
     
-    /// hot line
-    public function getHotLine(){
-        return defined('HOT_LINE') ? HOT_LINE :'';
-    }
+    
     /***************************************************************/
     /******************LINK*********************/
     /***************************************************************/
