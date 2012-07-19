@@ -9,7 +9,7 @@ class Product extends Product_model {
 
     function __construct() {
         parent::__construct();
-        $this->if = new dbinfo();
+        $this->if = new DbInfo();
         $this->lang = get_system_language();
         $this->image_default = base_url() . $this->config->item('image_defailt_thum');
         $this->pre_fix_product = isset($_SERVER['PATH_INFO']) ? trim(str_replace(array('products', 'index'), array('products', 'products'), $_SERVER['PATH_INFO']), '/') : trim(get_raw_app_uri(), '/');
