@@ -251,7 +251,7 @@ body {
 }
 
 .name-pro{
-    height: 45px;
+    height: 50px;
     overflow: hidden;
     width: 200px;
     margin: 10px 0px 0px 0px;
@@ -268,7 +268,18 @@ body {
     text-decoration: none;
 }
 .name-pro h3 {
-    font-size: 16px;
+    font-size: 14px;
+    height: 20px;
+}
+.name-pro .info {
+    font-size: 12px;
+}
+.name-pro .info .label {
+    color: #333;
+}
+.name-pro .info .value {
+    font-weight: bold;
+    color: #b41500;
 }
 /**/
 table tr td{text-align:center}
@@ -580,11 +591,11 @@ img{
 }
 
 .wrapper-popup{
-    position: relative;
     text-align: center;
     width: 200px;
     height: 200px;
     vertical-align: bottom;
+    display: table-cell;
 }
 
 .wrapper-popup .p-popup a{
