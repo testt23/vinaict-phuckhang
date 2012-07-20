@@ -472,7 +472,7 @@ class CI_Model {
 
 	public function insert(){
 		$data = $this->__get_properties_value();
-		if (!$data['id'] || $data['id'] == '')
+		if (isset($data['id']) && (!$data['id'] || $data['id'] == ''))
                     unset($data['id']);
                 
                 foreach ($data as $key => $value) {

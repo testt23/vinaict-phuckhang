@@ -21,8 +21,9 @@ $lang['site_product_delete'] = 'Xóa';
 
 
 $lang['site_product_continue'] = 'Tiếp tục mua';
-$lang['lbl_price'] = 'Giá: ';
+$lang['lbl_price'] = 'Giá:';
 $lang['lbl_description'] = 'Mô tả: ';
+$lang['lbl_prod_code'] = 'Mã SP';
 $lang['show_message'] = 'Bạn chưa có sản phẩm nào trong giỏ hàng';
 $lang['txt_btn_buymore'] = 'Mua thêm';
 

@@ -87,6 +87,7 @@ $lang['lbl_price'] = 'Price:';
 $lang['lbl_keywords'] = 'Keywords:';
 $lang['lbl_call'] = 'Call';
 $lang['lbl_description'] = 'Description:';
+$lang['lbl_prod_code'] = 'Code';
 $lang['txt_other_pictures'] = 'Other pictures';
 $lang['txt_btn_order'] = 'btn-order-en.png';
 
