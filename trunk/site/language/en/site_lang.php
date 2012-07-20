@@ -13,6 +13,7 @@ $lang['site_product_order'] = 'Order';
 $lang['site_product_name'] = 'Product name';
 $lang['site_product_code'] = 'Product code';
 $lang['site_product_price'] = 'Product price';
+$lang['site_product_amount'] = 'Amount';
 $lang['site_product_number'] = 'Number';
 $lang['site_product_delete'] = 'Delete';
 
@@ -20,7 +21,7 @@ $lang['site_product_continue'] = 'Continue';
 $lang['lbl_price'] = 'Price: ';
 $lang['lbl_description'] = 'Description: ';
 $lang['show_message'] = 'You do not have any products in your shopping cart';
-$lang['txt_btn_buymore'] = 'btn-buymore-en.png';
+$lang['txt_btn_buymore'] = 'Buy More';
 
 // contact form
 
@@ -36,7 +37,7 @@ $lang['show_empty_lastname'] = 'Please enter a valid lastname.';
 $lang['show_empty_message'] = 'Please enter a valid content message.';
 
 $lang['note_form'] = 'Please type your info below';
-$lang['note_content'] = 'If you ever purchase, you can import email and empty the remaining cells, if you want to change any information, then enter that information';
+$lang['note_content'] = ' Items with an asterisk (* ) Denotes required you to enter information ';
 $lang['lbl_purpose'] = 'Purpose:';
 $lang['lbl_buy_by'] = 'Buy by:';
 $lang['rdb_no_purchases'] = 'No purchases';

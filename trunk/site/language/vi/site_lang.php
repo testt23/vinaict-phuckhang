@@ -14,7 +14,8 @@ $lang['site_product_title_order'] = 'Danh sách sản phẩm bạn đã đặt';
 $lang['site_product_order'] = 'Đặt hàng';
 $lang['site_product_name'] = 'Tên sản phẩm';
 $lang['site_product_code'] = 'Mã sản phẩm';
-$lang['site_product_price'] = 'Giá sản phẩm';
+$lang['site_product_price'] = 'Đơn giá';
+$lang['site_product_amount'] = 'Thành tiền';
 $lang['site_product_number'] = 'Số lượng';
 $lang['site_product_delete'] = 'Xóa';
 
@@ -23,7 +24,7 @@ $lang['site_product_continue'] = 'Tiếp tục mua';
 $lang['lbl_price'] = 'Giá: ';
 $lang['lbl_description'] = 'Mô tả: ';
 $lang['show_message'] = 'Bạn chưa có sản phẩm nào trong giỏ hàng';
-$lang['txt_btn_buymore'] = 'btn-buymore-vi.png';
+$lang['txt_btn_buymore'] = 'Mua thêm';
 
 // contact form
 
@@ -40,7 +41,7 @@ $lang['show_empty_message'] = 'Vui lòng nhập vào nội dung tin nhắn.';
 
 
 $lang['note_form'] = 'Khách hàng vui lòng nhập thông tin của mình vào khung bên dưới ';
-$lang['note_content'] = 'Những mục có dấu (*) là những mục bắt buộc bạn phải nhập thông tin ';
+$lang['note_content'] = ' Những mục có dấu (*) là những mục bắt buộc bạn phải nhập thông tin ';
 $lang['lbl_purpose'] = 'Mục đích:';
 $lang['lbl_buy_by'] = 'Mua bởi:';
 $lang['rdb_no_purchases'] = 'Chưa mua hàng';

@@ -27,4 +27,17 @@
                     
 		}
 
+                public function switch_currency($code_currency = NULL){
+                    
+                    $currency = Currency::getCurrencyByCode($code_currency);
+                    $currency->fetchNext();
+                    $curr_array = Array(
+                        'code'  =>  $currency->code,
+                        'rate'  =>  $currency->rate,
+                        'id'    =>  $currency->id
+                    );
+                    $this->session->set_userdata('currency', $curr_array);
+                    redirect($this->session->userdata('lang_url'));
+                    
+                }
 	}
