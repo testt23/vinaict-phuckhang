@@ -220,16 +220,18 @@
 
                     }
 
-                    if (!$menu->id_parent || $menu->id_parent == "")
-                        $sql .= " AND id_parent = 0";
-                    else
-                        $sql .= " AND id_parent = $menu->id_parent";
+                    if (isset($sql) && $sql != '') {
+                        if (!$menu->id_parent || $menu->id_parent == "")
+                            $sql .= " AND id_parent = 0";
+                        else
+                            $sql .= " AND id_parent = $menu->id_parent";
 
-                    $sql .= " AND disabled = ".IS_NOT_DISABLED;
-                    $sql .= " AND type = ".$menu->type;
-                
-                    if ($menu->position != $mn->position) {
-                        $mn->query($sql);
+                        $sql .= " AND disabled = ".IS_NOT_DISABLED;
+                        $sql .= " AND type = ".$menu->type;
+
+                        if ($menu->position != $mn->position) {
+                            $mn->query($sql);
+                        }
                     }
                     
                 }

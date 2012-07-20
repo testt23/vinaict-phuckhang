@@ -165,7 +165,7 @@ class User extends User_model {
         
         $user = new User();
         $user->addJoin(new UsrGroupUser(), 'LEFT');
-        $user->addJoin(new Usrgroup(), 'LEFT');
+        $user->addJoin(new UsrGroup(), 'LEFT');
         
         if(isset($filter['name']) && $filter['name']) {
             $user->addWhere("(user.last_name LIKE '%".utf8_escape_textarea($filter['name'])."%'");
