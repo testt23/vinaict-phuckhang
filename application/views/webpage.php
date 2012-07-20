@@ -26,7 +26,7 @@
             <tr <?php if ($page->is_disabled == IS_DISABLED) { ?>class="row-disabled"<?php } ?> >
                 <td><?php echo clean_html(getI18n($page->title)); ?></td>
                 <td><?php echo truncateString(clean_html(getI18n($page->content)), 100); ?></td>
-                <td><?php echo clean_html(getI18n($page->link)); ?></td>
+                <td><?php echo $page->link; ?></td>
                 <td><?php echo $page->keywords; ?></td>
                 <td><?php echo $page->is_disabled == IS_DISABLED ? lang('txt_hidden') : lang('txt_publishing'); ?></td>
                 <td>
