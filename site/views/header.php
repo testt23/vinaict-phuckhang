@@ -2,6 +2,23 @@
 <html>
     <head>
         <?php
+            
+//            if(!$this->session->userdata('currency')){
+//                $id_currency = 1;
+//                $curr = new Currency();
+//                $curr->get($id_currency);
+//                
+//                $curr_array = Array(
+//                    'code' => $curr->code,
+//                    'rate' => $curr->rate,
+//                    'id'   => $curr->id
+//                );
+//                $this->session->set_userdata('currency',$curr_array);
+//                $currency = $this->session->userdata('currency');
+//            }else {
+//                $currency = $this->session->userdata('currency');
+//            }
+            
             $image_path = base_url() . $this->config->item('image_temp');
         ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,6 +27,10 @@
         <link href="<?php echo base_url(); ?>/css/lightbox.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
         <script language="javascript">
+            function switchCurrency(id_currency){
+                window.location.href=window.location.href + '?currency=' + id_currency;
+            }
+            
             $(document).ready(function(){
                 jQuery('#advance').click(function(){
                     if (jQuery('.search-popup').hasClass('hide')){
@@ -45,24 +66,39 @@
         <div id="header">
             <div id="header-container">
                 <div id="header-right"> 
+                    
                     <div id="language-wrapper">
                         <?php 
                            if($lang = Language::getArraylangIso()){
                                    foreach($lang as $k => $l){
                         ?>
-                            <a id="<?php echo $l; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right <?php if($this->session->userdata('lang')) { echo (($this->session->userdata('lang') == $l )?"language-wrapper-active":"language-wrapper-unactive"); } elseif($l == 'vi') echo "language-wrapper-active"; else echo "language-wrapper-unactive"; ?>"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
+                        <a id="<?php echo $l; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right <?php if($this->session->userdata('lang')) { echo (($this->session->userdata('lang') == $l )?"language-wrapper-active":"language-wrapper-unactive"); } elseif($l == 'vi') echo "language-wrapper-active"; else echo "language-wrapper-unactive"; ?>"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
                          <?php 
                                     } 
                               }
                           ?>
 
                     </div>
+                    
+<!--                    <div id="language-wrapper">
+                        <?php 
+//                           if($curren = Currency::getArrayCurrencyIso()){
+//                                   foreach($curren as $k => $l){
+                        ?>
+                        <a id="<?php // echo $l; ?>" href="<?php //echo base_url().'index/switch_currency/'.$l; ?>" class="float-right <?php //if(isset($currency['code'])) { echo ( $currency['code'] == $l ?"language-wrapper-active":"language-wrapper-unactive"); } elseif($l == 'VND') echo "language-wrapper-active"; else echo "language-wrapper-unactive"; ?>"><span><?php //echo (clean_html(getI18n($k))); ?></span></a>
+                         <?php 
+//                                    } 
+//                              }
+                          ?>
+                    </div>-->
+                    
+                    
                     <br/>
                     <div id="hot-line-wrapper">                    
                         <?php echo lang('site_hot_line'); ?>
                         <span><?php echo Variable::getCompanyHotline(); ?></span>
                     </div>
-                    <br/>
+                    <br/><br />
                     <div id="support-online-wrapper">                    
                             <a href="ymsgr:sendIM?<?php echo YAHOO_SUPPORT_ONLINE; ?>"><br /><img border=0 src="http://opi.yahoo.com/online?u=<?php echo YAHOO_SUPPORT_ONLINE; ?>&m=g&t=1" /> </a>
                             <!--

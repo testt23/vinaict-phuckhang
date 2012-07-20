@@ -13,4 +13,29 @@
                     $Currency->find();
                     return $Currency;
                 }
+                
+                function getList() {
+                    $currency = new Currency();
+                    $currency->addSelect();
+                    $currency->addSelect('*');
+                    $currency->find();
+                    return $currency;
+                }
+                
+                function getArrayCurrencyIso() {
+                    $currency = self::getList();
+                    $arr_currency = array();
+                    while($currency->fetchNext()) {
+                        $arr_currency[$currency->name] = $currency->code;
+                    }
+                    return $arr_currency;
+                }
+                
+                function getCurrencyByCode($code = NULL){
+                    $currency = new Currency();
+                    $currency->code = $code;
+                    $currency->find();
+                    
+                    return $currency;
+                }
 	}
