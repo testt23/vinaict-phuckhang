@@ -1149,4 +1149,8 @@ UPDATE `image_group` SET `id_image_size` = '1,2,3,4' WHERE `id` = 1;
 /* 18-07-2012 - Ly Vinh Truong - Parameter */
 INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES ('87','Skype Support','SKYPE_SUPPORT','truong_ly','1','0','2012-07-18 19:30:00','0000-00-00 00:00:00','1',NULL,'0','1',NULL);
 
+/* 20-07-2012 - Phạm Thanh Nam - Page News */
+ALTER TABLE `article` ADD `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
+
+
 }}}
