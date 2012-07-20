@@ -100,10 +100,10 @@
                     $page->content .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('content_'.$lang->code)).'</'.$lang->code.'>';
                 }
                 
-                if ($this->input->post('link_'.$lang->code)) {
-                    $page->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
+            }
+            
+            if ($this->input->post('link')) {
+                $page->link = $this->input->post('link');
             }
             
             if ($this->input->post('keywords')) {
@@ -164,7 +164,6 @@
             
             $page->title = '';
             $page->content = '';
-            $page->link = '';
             
             while($lang->fetchNext()) {
                 
@@ -176,10 +175,10 @@
                     $page->content .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('content_'.$lang->code)).'</'.$lang->code.'>';
                 }
                 
-                if ($this->input->post('link_'.$lang->code)) {
-                    $page->link .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('link_'.$lang->code)).'</'.$lang->code.'>';
-                }
-                
+            }
+            
+            if ($this->input->post('link')) {
+                $page->link = $this->input->post('link');
             }
             
             if ($this->input->post('keywords')) {
