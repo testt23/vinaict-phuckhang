@@ -30,16 +30,19 @@
                         <a href="<?php echo base_url('products/spa/');  ?>"><img src="<?php echo $image_path; ?>/pk-spa.png"  alt=""/></a>
                     </div>
                 </div>
-                <div id="copyright">
-                    <p>
-                        <?php echo lang('site_footer_copy_right'); ?>
-                    </p>
-                    <div id="counter">
-                        <?php echo lang('site_footer_visit'); ?>: <br/>
-                        <div id="show-counter">
-                            <?php include_once 'counter.php'; ?>
-                         </div>
+                <div id="footer-info">
+                    <ul id="footer-menu">
+                        <li><a href="<?php echo base_url(); ?>"><?php echo lang('site_home'); ?></a></li>
+                        <li><a href="<?php echo base_url('about-us.html'); ?>"><?php echo lang('site_about_us'); ?></a></li>
+                        <li><a href="<?php echo base_url('contact'); ?>"><?php echo lang('site_contact'); ?></a></li>
+                        <li><a href="<?php echo base_url('sitemap.html'); ?>"><?php echo lang('site_map'); ?></a></li>
+                    </ul>
+                    <div id="copyright">
+                        <p>
+                            &copy <b>Phuc Khang Gilding Store</b>. All rights reserved.<br/>Designed by VinaICT.com
+                        </p>
                     </div>
+                    
                 </div>
             </div>
         </div>

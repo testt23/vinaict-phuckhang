@@ -5,6 +5,10 @@ $lang['site_hot_line']                          = 'Hot line: ';
 $lang['site_footer_online_support']             = 'Support online';
 $lang['site_footer_visit']                      = 'visitor';
 $lang['site_footer_copy_right']                 = '© Copyright 2012 NoiThatDatVang.com, All rights reserved Designed by VinaICT';
+$lang['site_home']                              = 'Home';
+$lang['site_about_us']                          = 'About us';
+$lang['site_contact']                           = 'Contact';
+$lang['site_map']                               = 'Sitemap';
 
 $lang['site_product_order'] = 'order';
 
