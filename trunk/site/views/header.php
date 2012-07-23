@@ -21,8 +21,16 @@
             
             $image_path = base_url() . $this->config->item('image_temp');
         ?>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta http-equiv="content-language" content="vi" />
         <title><?php echo $this->config->item('app_name'); ?></title>
+        <meta name="description" content="mô tả" />
+        <meta name="keywords" content="từ khóa" />
+        <meta name="robots" content="noodp,index,follow" />
+        <meta name='revisit-after' content='1 days' />
+        
         <link href="<?php echo base_url(); ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="<?php echo base_url(); ?>/css/lightbox.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
