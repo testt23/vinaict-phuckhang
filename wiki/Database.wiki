@@ -1165,5 +1165,8 @@ PRIMARY KEY ( `id` )
 
 INSERT INTO `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) VALUES (45, '<en>Link</en><vi>Liên kết</vi>', 9, 'social_link', 'social_link', 0, 0, 2, NULL);
 
+/* 23-07-2012 - Huynh Ba An - web_page */
+
+ALTER TABLE `web_page` ADD COLUMN `description` TEXT;
 
 }}}
