@@ -1165,6 +1165,13 @@ PRIMARY KEY ( `id` )
 
 INSERT INTO `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) VALUES (45, '<en>Link</en><vi>Liên kết</vi>', 9, 'social_link', 'social_link', 0, 0, 2, NULL);
 
+INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_usr_group`, `value`) VALUES
+(139, 'social_link', 0, 15, '1,2,3,4'),
+(140, 'social_link', 0, 1, '1,2,3,4'),
+(141, 'social_link/add', 0, 1, '1,2,3,4'),
+(142, 'social_link/delete', 0, 1, '1,2,3,4'),
+(143, 'social_link/edit', 0, 1, '1,2,3,4');
+
 /* 23-07-2012 - Huynh Ba An - web_page */
 
 ALTER TABLE `web_page` ADD COLUMN `description` TEXT;
