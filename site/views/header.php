@@ -26,8 +26,19 @@
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta http-equiv="content-language" content="vi" />
         <title><?php echo $this->config->item('app_name'); ?></title>
-        <meta name="description" content="mô tả" />
-        <meta name="keywords" content="từ khóa" />
+        
+        <?php
+            $webpage = new WebPage();
+            $desc_web = $webpage->the_web_page_description();
+            $keys_web = $webpage->the_web_page_keywords();
+            
+            $product = new Product();
+            $desc_pro = $product->the_product_description();
+            $keys_pro = $product->the_product_keywords();
+        ?>
+        
+        <meta name="description" content="<?php echo $desc_web; ?>, <?php echo $desc_pro; ?>" />
+        <meta name="keywords" content="<?php echo $keys_web;?>, <?php echo $keys_pro;?>" />
         <meta name="robots" content="noodp,index,follow" />
         <meta name='revisit-after' content='1 days' />
         

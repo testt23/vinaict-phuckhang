@@ -131,6 +131,7 @@ class DbInfo {
     
     public $_web_page_id                            = 'web_page.id';
     public $_web_page_title                         = 'web_page.title';
+    public $_web_page_description                   = 'web_page.description';
     public $_web_page_content                       = 'web_page.content';
     public $_web_page_link                          = 'web_page.link';
     public $_web_page_keywords                      = 'web_page.keywords';
