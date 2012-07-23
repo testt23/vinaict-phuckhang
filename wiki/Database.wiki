@@ -1159,7 +1159,7 @@ CREATE TABLE `social_link` (
 `id` INT NOT NULL AUTO_INCREMENT ,
 `name` VARCHAR( 255 ) NOT NULL ,
 `url` VARCHAR( 255 ) NOT NULL ,
-`id_image` INT NOT NULL ,
+`id_image` INT  NULL ,
 PRIMARY KEY ( `id` )
 ) ENGINE = MYISAM ;
 
