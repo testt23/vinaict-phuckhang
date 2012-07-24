@@ -1174,8 +1174,12 @@ INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_usr_group`, `value`) VALUE
 
 INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES ('89', 'image social link code', 'IMG_SOCIAL_LINK_CODE', 'social', '1', '0', CURRENT_TIMESTAMP, NULL, '', 1, '0', '1', NULL);
 
-/* 23-07-2012 - Huynh Ba An - web_page */
+/* 23-07-2012 - Huynh Ba An - alter table add column meta_description */
 
-ALTER TABLE `web_page` ADD COLUMN `description` TEXT;
+ALTER TABLE `web_page` 
+   ADD COLUMN `meta_description` TEXT NULL AFTER `id_parent`;
+
+ALTER TABLE `article` 
+   ADD COLUMN `meta_description` TEXT NULL AFTER `date`;
 
 }}}
