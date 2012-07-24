@@ -1,9 +1,10 @@
-<?php if ($title != ''): ?>
+<!--
+<?php if ($title_page != ''): ?>
     <h1 class="title-main">
-        <?php echo $title; ?>
+        <?php echo $title_page; ?>
     </h1>
 <?php endif; ?>
-
+-->
 
 <div id="product-container">
     <ul>

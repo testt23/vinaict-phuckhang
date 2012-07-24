@@ -92,7 +92,7 @@ class DbInfo {
     public $_product_category_as_as_name            = 'product_category_name';
     public $_product_category_as_is_deleted         = 'product_category_is_deleted';
     public $_product_category_as_id_parent          = 'product_category_id_parent';
-    public $_product_category_as_as_description     = 'product_category_description';
+    public $_product_category_as_description        = 'product_category_description';
     public $_product_category_as_keywords           = 'product_category_keywords';
     public $_product_category_as_id_image           = 'product_category_id_image';
     public $_product_category_as_link               = 'product_category_link';
@@ -131,7 +131,7 @@ class DbInfo {
     
     public $_web_page_id                            = 'web_page.id';
     public $_web_page_title                         = 'web_page.title';
-    public $_web_page_description                   = 'web_page.description';
+    public $_web_page_meta_description              = 'web_page.meta_description';
     public $_web_page_content                       = 'web_page.content';
     public $_web_page_link                          = 'web_page.link';
     public $_web_page_keywords                      = 'web_page.keywords';
@@ -141,6 +141,7 @@ class DbInfo {
     public $_web_page_as_id                         = 'web_page_id';
     public $_web_page_as_title                      = 'web_page_title';
     public $_web_page_as_content                    = 'web_page_content';
+    public $_web_page_as_meta_description           = 'web_page_meta_description';
     public $_web_page_as_link                       = 'web_page_link';
     public $_web_page_as_keywords                   = 'web_page_keywords';
     public $_web_page_as_is_disabled                = 'web_page_is_disabled';

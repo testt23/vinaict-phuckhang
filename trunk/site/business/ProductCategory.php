@@ -15,6 +15,8 @@ class ProductCategory extends Product_category_model {
         $Category->addSelect($this->if->_product_category_id . ' as ' . $this->if->_product_category_as_id);
         $Category->addSelect($this->if->_product_category_link . ' as ' . $this->if->_product_category_as_link);
         $Category->addWhere($this->if->_product_category_link . " = '" . $link . "'");
+        $Category->addSelect($this->if->_product_category_description . ' as ' . $this->if->_product_category_as_description);
+        $Category->addSelect($this->if->_product_category_keywords . ' as ' . $this->if->_product_category_as_keywords);
 
         $Category->find();
         
@@ -25,6 +27,18 @@ class ProductCategory extends Product_category_model {
 
     public function the_prod_cate_id() {
         return $this->{$this->if->_product_category_as_id};
+    }
+    
+    public function the_prod_cate_link(){
+        return $this->{$this->if->_product_category_link};
+    }
+    
+    public function the_prod_cate_description() {
+        return getI18n($this->{$this->if->_product_category_as_description}, $this->lang);
+    }
+
+    public function the_prod_cate_keywords() {
+        return getI18n($this->{$this->if->_product_category_as_keywords}, $this->lang);
     }
 
 }

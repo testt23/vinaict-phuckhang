@@ -7,11 +7,13 @@ class Contact_controller extends CI_Controller {
     }
 
     public function index() {     
-        $data['content'] = 'contact';
+        $data['content'] = 'contact';        
         $this->load->view('temp', $data);
     }
     
     public function contact(){
+        $data['description'] = '';
+        $data['keywords'] = '';
         $result = '';
         $is_business = '0';
         $gender = '0';
@@ -59,7 +61,6 @@ class Contact_controller extends CI_Controller {
 
                 $Shopping = new ShoppingCart();
                 $list_cart = $Shopping->get_list();
-
 
                 if ($mucdich == '1') {
 
@@ -212,7 +213,6 @@ class Contact_controller extends CI_Controller {
         $filter['career'] = $career;
         $filter['message'] = $message;
         
-
         // menu
         $array_menus = array();
         $filter1 = array();
@@ -224,7 +224,7 @@ class Contact_controller extends CI_Controller {
         $data['filter'] = $filter;
         $data['content'] = 'contact';
         $data['array_menus'] = $array_menus;
-        $data['selected'] = 'contact';
+        $data['selected'] = 'contact';       
         $this->load->view('temp', $data);
     }
 

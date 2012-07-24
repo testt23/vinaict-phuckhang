@@ -17,14 +17,19 @@
                     $filter['parent_id'] = 0;
                     Menu::getMenuTree($array_menus, $filter);
                     // end menu
+                    
+                    
                     $data['selected'] = 'home';
                     $data['product'] = $info['product'];
                     $data['paging'] = $info['paging'];
                     $data['content'] = 'index';
                     $data['array_menus'] = $array_menus;
-                    $data['title'] = '';
-                    $this->load->view('temp', $data);
                     
+                    $data['title_page'] = lang('title_page_home');                    
+                    $data['description'] = '';
+                    $data['keywords'] = '';
+                    
+                    $this->load->view('temp', $data);
 		}
 
                 public function switch_currency($code_currency = NULL){
