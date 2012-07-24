@@ -2,13 +2,8 @@
 
 // header
 $lang['site_hot_line']                          = 'Hot line: ';
-$lang['title_page_home']                        = 'Trang Chủ';
-$lang['title_page_about_us']                    = 'Trang Giới Thiệu';
-$lang['title_page_souvenirs']                   = 'Trang Quà Lưu Niệm';
-$lang['title_page_interior']                    = 'Trang Nội Thất';
-$lang['title_page_spa']                         = 'Trang Phụ Liệu Spa';
-$lang['title_page_news']                        = 'Trang Tin Tức';
-$lang['title_page_contact_us']                  = 'Trang Liên Hệ';
+$lang['title_home_page']                        = 'Trang Chủ';
+$lang['title_page_contact_us']                  = 'Liên Hệ';
 
 // footer 
 $lang['site_footer_online_support']             = 'Hỗ trợ trực tuyến';

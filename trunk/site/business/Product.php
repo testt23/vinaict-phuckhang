@@ -234,9 +234,10 @@ class Product extends Product_model {
 
         $id = '';
         $link = trim($link);
+        
         if ($link != '') {
-            $Category = new ProductCategory();
-            $Cat_tmp = $Category->get_category_id_by_link($link);
+            
+            $Cat_tmp = ProductCategory::getProdCategoryByLink($link);
             
             if ($Cat_tmp->countRows() > 0) {
                 $id = $Cat_tmp->the_prod_cate_id();
@@ -324,14 +325,9 @@ class Product extends Product_model {
 
                     $data['paging'] = $string_paging;
                     $data['product'] = $Product;
-                    
-                    if($prod_cate_link == lang('title_page_souvenirs'))
-                    {
-                        $data['tilte_page'] = lang('title_page_souvenirs');
-                    }
-                    
-                    $data['description'] = $prod_cate_desc;
-                    $data['keywords'] = $prod_cate_keys;
+                    $data['tilte_page'] = getI18n($Cat_tmp->name);
+                    $data['description'] = getI18n($Cat_tmp->description);
+                    $data['keywords'] = $Cat_tmp->keywords;
 
                     return $data;
                 }

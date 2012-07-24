@@ -25,7 +25,7 @@
                     $data['content'] = 'index';
                     $data['array_menus'] = $array_menus;
                     
-                    $data['title_page'] = lang('title_page_home');                    
+                    $data['title_page'] = lang('title_home_page');
                     $data['description'] = '';
                     $data['keywords'] = '';
                     

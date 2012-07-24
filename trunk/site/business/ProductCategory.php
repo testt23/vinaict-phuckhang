@@ -9,7 +9,8 @@ class ProductCategory extends Product_category_model {
         $this->if = new DbInfo();
     }
 
-    public function get_category_id_by_link($link = '') {
+    public function getProdCategoryByLink($link = '') {
+        
         $Category = new ProductCategory();
         $Category->addSelect();
         $Category->addSelect($this->if->_product_category_id . ' as ' . $this->if->_product_category_as_id);
@@ -34,11 +35,11 @@ class ProductCategory extends Product_category_model {
     }
     
     public function the_prod_cate_description() {
-        return getI18n($this->{$this->if->_product_category_as_description}, $this->lang);
+        return getI18n($this->{$this->if->_product_category_as_description});
     }
 
     public function the_prod_cate_keywords() {
-        return getI18n($this->{$this->if->_product_category_as_keywords}, $this->lang);
+        return getI18n($this->{$this->if->_product_category_as_keywords});
     }
 
 }

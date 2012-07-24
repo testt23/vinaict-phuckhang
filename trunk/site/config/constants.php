@@ -61,6 +61,7 @@ define('BUSINESS', 2);
     $db_conf = $db['default'];
     
     $link = mysql_connect($db_conf['hostname'], $db_conf['username'], $db_conf['password']);
+    mysql_set_charset('utf8');
     mysql_select_db($db_conf['database']);
     
     $query = 'SELECT `code`, `value` FROM `parameter` WHERE `always_load` = 1';
