@@ -220,3 +220,9 @@ $lang['txt_edit_article']               = 'Thay đổi thông tin bài viết';
 $lang['txt_category']                   = 'Chủ đề';
 
 $lang['txt_hot_line']                   = 'Hot line';
+
+/* Social link */
+$lang['txt_social_link']                = 'Danh sách liên kết';
+$lang['txt_add_social_link']            = 'Thêm liên kết';
+$lang['txt_url']                        = 'Url';
+$lang['txt_edit_social_link']           = 'Sửa thông tin liên kết';

@@ -115,3 +115,8 @@ $lang['err_empty_keywords']                 = 'Bạn chư nhập từ khóa';
 $lang['err_empty_link']                     = 'Bạn chư nhập link';
 $lang['err_empty_link']                     = 'Bạn chư nhập link';
 $lang['err_keywords_too_long']              = 'Bạn chư nhập từ khóa';
+
+/* Social Link */
+$lang['err_empty_social_link_name']         = 'Bạn chưa nhập tên liên kết';
+$lang['err_empty_social_link_url']          = 'Bạn chưa nhập link liên kết';
+
