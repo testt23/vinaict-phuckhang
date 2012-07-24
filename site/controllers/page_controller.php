@@ -22,15 +22,9 @@ class Page_controller extends CI_Controller {
             $info->fetchNext();
             $data['page'] = $info->the_web_page_content();
             
-            $data['title_page'] = lang('title_page_about_us');
-            $data['description'] = $info->the_web_page_meta_description();
-            $data['keywords'] = $info->the_web_page_keywords();
-            
-            $data['content'] = 'webpage';
-            
-            $data['title'] = $Webpage->title;
-            $data['meta_description'] = $Webpage->meta_description;
-            $data['keywords'] = $Webpage->keywords;
+            $data['title_page'] = getI18n($info->title);
+            $data['description'] = getI18n($info->meta_description);
+            $data['keywords'] = $info->keywords;
 
             $data['selected'] = $link;
             $filter = array();

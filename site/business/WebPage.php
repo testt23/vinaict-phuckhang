@@ -8,7 +8,6 @@ class WebPage extends Web_page_model {
     function __construct() {
         parent::__construct();
         $this->if = new DbInfo();
-        $this->lang = get_system_language();
     }
 
     public function getPage($link = '') {
@@ -25,14 +24,14 @@ class WebPage extends Web_page_model {
     }
 
     public function the_web_page_content() {
-        return getI18n($this->{$this->if->_web_page_as_content}, $this->lang);
+        return getI18n($this->{$this->if->_web_page_as_content});
     }
     public function the_web_page_meta_description() {
-        return getI18n($this->{$this->if->_web_page_as_meta_description}, $this->lang);
+        return getI18n($this->{$this->if->_web_page_as_meta_description});
     }
 
     public function the_web_page_keywords() {
-        return getI18n($this->{$this->if->_web_page_as_keywords}, $this->lang);
+        return getI18n($this->{$this->if->_web_page_as_keywords});
     }
 
 }

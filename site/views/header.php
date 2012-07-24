@@ -25,8 +25,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
         
-        <meta http-equiv="content-language" content="<?php get_system_language(); ?>" />
-        <title><?php echo $this->config->item('app_name') . ' - '. $title_page ; ?></title>
+        <meta http-equiv="content-language" content="<?php echo get_system_language(); ?>" />
+        <title><?php echo getI18n(SITE_NAME) . ' - '. $title_page ; ?></title>
                         
         <meta name="description" content="<?php echo $description; ?>" />
         <meta name="keywords" content="<?php echo $keywords; ?>"/>
