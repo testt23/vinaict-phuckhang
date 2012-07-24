@@ -237,6 +237,7 @@ class Product extends Product_model {
         if ($link != '') {
             $Category = new ProductCategory();
             $Cat_tmp = $Category->get_category_id_by_link($link);
+            
             if ($Cat_tmp->countRows() > 0) {
                 $id = $Cat_tmp->the_prod_cate_id();
                 if ($id) {
@@ -300,6 +301,7 @@ class Product extends Product_model {
                     $Product->addSelect($this->if->_product_link . ' as ' . $this->if->_product_as_link);
                     $Product->addSelect($this->if->_product_name . ' as ' . $this->if->_product_as_name);
                     $Product->addSelect($this->if->_product_code . ' as ' . $this->if->_product_as_code);
+                    $Product->addSelect($this->if->_product_description . ' as ' . $this->if->_product_as_description);
                     $Product->addSelect($this->if->_product_keywords . ' as ' . $this->if->_product_as_keywords);
                     $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
                     $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
@@ -315,9 +317,21 @@ class Product extends Product_model {
                     $Product->limit(' ' . $start . ',' . $limit . ' ');
 
                     $Product->find();
+                    
+                    $prod_cate_link = $Cat_tmp->the_prod_cate_link();
+                    $prod_cate_desc = $Cat_tmp->the_prod_cate_description();
+                    $prod_cate_keys = $Cat_tmp->the_prod_cate_keywords();
 
                     $data['paging'] = $string_paging;
                     $data['product'] = $Product;
+                    
+                    if($prod_cate_link == lang('title_page_souvenirs'))
+                    {
+                        $data['tilte_page'] = lang('title_page_souvenirs');
+                    }
+                    
+                    $data['description'] = $prod_cate_desc;
+                    $data['keywords'] = $prod_cate_keys;
 
                     return $data;
                 }
@@ -430,6 +444,10 @@ class Product extends Product_model {
 
     public function the_product_link() {
         return base_url() . $this->pre_fix_product . '/' . $this->{$this->if->_product_as_link} . '.html';
+    }
+    
+    public function the_product_short_description() {
+        return getI18n($this->{$this->if->_product_as_short_description}, $this->lang); 
     }
 
     public function the_product_description($lang_true_false = false) {

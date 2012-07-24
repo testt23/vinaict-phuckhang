@@ -15,14 +15,19 @@ class Product_controller extends CI_Controller {
     
     // function display a list products by page
     public function prod_list_by_category($url_cate = '') {
+
         if (!empty($url_cate)) {
             $Product = new Product();
             $info = $Product->getProductByCategory($url_cate);
-            $data['content'] = 'index';
+            $data['content'] = 'index';            
             $data['product'] = $info['product'];
+            
+            $data['title_page'] = 'title_page';
+            $data['description'] = 'description';
+            $data['keywords'] = 'keywords';
+            
             $data['paging'] = $info['paging'];
             $data['selected'] = $url_cate;
-            
             $array_menus = array();
             $filter = array();
 
@@ -118,6 +123,9 @@ class Product_controller extends CI_Controller {
             $filter['parent_id'] = 0;
             Menu::getMenuTree($array_menus, $filter);
             
+            $data['description'] = $Product_tmp->the_product_short_description();
+            $data['keywords'] = $Product_tmp->the_product_keywords();
+            
             $data['selected'] = '';
             $data['array_menus'] = $array_menus;
             $data['content'] = 'prod_details';
@@ -168,6 +176,7 @@ class Product_controller extends CI_Controller {
 
     // function contact and buy product
     public function prod_order_contact($fil = '') {
+        
         $result = '';
         $is_business = '';
         $gender = '0';
@@ -433,6 +442,11 @@ class Product_controller extends CI_Controller {
         $data['content'] = 'order_form';
         $data['array_menus'] = $array_menus;
         $data['selected'] = '';
+        
+        $data['title_page'] = lang('title_page_contact_us');
+        $data['description'] = '';
+        $data['keywords'] = '';
+        
         $this->load->view('temp', $data);
     }
 

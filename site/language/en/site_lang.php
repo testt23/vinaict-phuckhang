@@ -1,6 +1,13 @@
 <?php
 // header
 $lang['site_hot_line']                          = 'Hot line: ';
+$lang['title_page_home']                        = 'Page Home';
+$lang['title_page_about_us']                    = 'Page About Us';
+$lang['title_page_souvenirs']                   = 'Page Souvenirs';
+$lang['title_page_interior']                    = 'Page Interior';
+$lang['title_page_spa']                         = 'Page Spa';
+$lang['title_page_news']                        = 'Page News';
+$lang['title_page_contact_us']                  = 'Page Contact Us';
 
 $lang['site_footer_online_support']             = 'Support online';
 $lang['site_footer_visit']                      = 'visitor';
