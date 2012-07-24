@@ -206,4 +206,10 @@ $lang['txt_category']                   = 'News category';
 
 $lang['txt_hot_line']                   = 'Hot line';
 
+
+/* Social link */
+$lang['txt_social_link']                = 'Linkes list';
+$lang['txt_add_social_link']            = 'Add a link';
+$lang['txt_url']                        = 'Url';
+
 ?>

@@ -107,3 +107,8 @@ $lang['err_code_too_long']                  = 'Group code entered is too long';
 $lang['err_empty_name']                     = 'You did not enter the group name';
 $lang['err_name_too_long']                  = 'Enter the group name is too long';
 $lang['err_exit_user']                      = 'There are users in this group you can not be deleted ';
+
+
+/* Social Link */
+$lang['err_empty_social_link_name']         = 'You did not enter a name associated';
+$lang['err_empty_social_link_url']          = 'You did not enter links';
