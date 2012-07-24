@@ -898,5 +898,109 @@ range-image-wrapper{
     font-size: 16px;
 }
 
-/* shopping */
+/* News */
 
+.news{
+    width: 100%;
+    font-family: array;
+    color: #333;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.news a:hover{
+    color: #f14119;
+}
+
+
+.rule{
+    width: 90%;
+    margin: 20px auto;
+    border-top: 1px solid #ebebf4;
+}
+
+.news .news-new{
+    width: 60%;
+    float: left;
+    border-right: 1px solid #ebebf4;
+}
+
+.news .news-category{
+    font-size: 18px !important;
+    color: #145d19; /*#e3a841;*/
+    font-weight: bold;
+    padding: 10px 30px;
+    background: #47aa4e; /*#f6e2c1;*/
+    border-radius: 10px 10px 10px 10px;
+    margin:5px;
+}
+
+.news .news-new .title{
+    font-size: 16px;
+    color: #3a5be2;
+}
+
+.news .news-new .content-news{
+    font-size: 14px !important;
+}
+
+.date{
+    font-size: 12px;
+    color: #757578;
+}
+
+.view-more{
+    float: right;
+    padding: 0px 20px;
+    
+}
+
+.view-more a{
+    text-decoration: none;
+    font-style: italic;
+    text-decoration: none;
+    font-size: 14px;
+    color: #3b6cf0;
+}
+
+.news .list-new-old{
+    width: 39%; 
+    float: left;
+}
+
+.news .list-new-old ul{
+    width: 95%;
+    padding: 15px 15px 0px ;
+}
+.news .list-new-old ul li{
+    background:url(../images/site/icon-ul.png) no-repeat;
+    padding:0px 20px;
+    background-position:5px 5px;
+    margin: 5px auto;
+}
+.news .list-new-old ul li a{
+    text-decoration: none;
+    margin-left: 5px;
+}
+.social-link-right{
+    float: right;
+    position: fixed;
+    top: 200px;
+    right: 0px;
+    font-size: 16px;
+}
+
+.social-link-right a{
+    text-decoration: none;
+    padding: 2px;
+}
+
+.social-link-right span{
+    opacity: 0.6;
+    filter:alpha(opacity=60);
+}
+
+.social-link-right span:hover{
+    opacity: 1.0;
+    filter:alpha(opacity=100);
+}
