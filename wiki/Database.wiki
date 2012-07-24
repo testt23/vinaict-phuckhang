@@ -1150,7 +1150,7 @@ UPDATE `image_group` SET `id_image_size` = '1,2,3,4' WHERE `id` = 1;
 INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES ('87','Skype Support','SKYPE_SUPPORT','truong_ly','1','0','2012-07-18 19:30:00','0000-00-00 00:00:00','1',NULL,'0','1',NULL);
 
 /* 20-07-2012 - Phạm Thanh Nam - Page News */
-ALTER TABLE `article` ADD `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
+ALTER TABLE `article` ADD `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* 23-07-2012 - Phạm Thanh Nam - Social Link */
 INSERT INTO `image_size` (`id`, `code`, `name`, `value`) VALUES (NULL, 'icon_32', 'Icon_32', '32x32');
@@ -1172,7 +1172,7 @@ INSERT INTO `permission` (`id`, `uri`, `id_user`, `id_usr_group`, `value`) VALUE
 (142, 'social_link/delete', 0, 1, '1,2,3,4'),
 (143, 'social_link/edit', 0, 1, '1,2,3,4');
 
-INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES ('89', 'image social link code', 'IMG_SOCIAL_LINK_CODE', 'social', '1', '0', CURRENT_TIMESTAMP, NULL, '', 1, '0', '1', NULL)
+INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES ('89', 'image social link code', 'IMG_SOCIAL_LINK_CODE', 'social', '1', '0', CURRENT_TIMESTAMP, NULL, '', 1, '0', '1', NULL);
 
 /* 23-07-2012 - Huynh Ba An - web_page */
 
