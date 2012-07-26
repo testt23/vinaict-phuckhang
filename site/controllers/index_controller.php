@@ -26,8 +26,8 @@
                     $data['array_menus'] = $array_menus;
                     
                     $data['title_page'] = lang('title_home_page');
-                    $data['description'] = '';
-                    $data['keywords'] = '';
+                    $data['description'] = getI18n(FO_META_DESCRIPTION);
+                    $data['keywords'] = FO_META_KEYWORDS;
                     
                     $this->load->view('temp', $data);
 		}
