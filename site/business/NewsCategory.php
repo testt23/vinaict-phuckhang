@@ -98,4 +98,26 @@ class NewsCategory extends News_category_model {
         
         
     }
+    
+    public function get_id(){
+        return $this->id;
+    }
+    
+    public function get_name(){
+        return $this->name;
+    }
+    
+    public function get_description(){
+        return $this->description;
+    }
+    
+    public function get_keyword(){
+        return $this->keyword;
+    }
+    
+    public function get_link(){
+        return $this->link;
+    }
+    
+    
 }

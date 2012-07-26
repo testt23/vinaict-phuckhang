@@ -133,7 +133,7 @@ class Product_controller extends CI_Controller {
             
             $data['description'] = $Product_tmp->get_product_short_description();
             $data['keywords'] = $Product_tmp->get_product_keywords();
-            $data['title_page'] = $Product_tmp->get_product_keywords();
+            $data['title_page'] = $Product_tmp->get_product_name();
             
             $data['selected'] = '';
             $data['array_menus'] = $array_menus;
@@ -168,9 +168,10 @@ class Product_controller extends CI_Controller {
         Menu::getMenuTree($array_menus, $filter);
         
         
-        $data['title_page'] = '';
-        $data['description'] = '';
-        $data['keywords'] = '';
+        $data['title_page']     = lang('title_page_order');
+        $data['description']    = lang('description_page_order');
+        $data['keywords']       = lang('keywords_page_order');
+        
         $data['selected'] = '';
         $data['array_menus'] = $array_menus;
         $data['shopping'] = $Shopping->get_list();

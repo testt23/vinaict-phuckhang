@@ -122,3 +122,20 @@ $lang['show_form_search_3'] = 'Từ giá:';
 $lang['show_form_search_4'] = 'Đến giá:';
 $lang['show_form_search_5'] = 'Tiền tệ';
 $lang['image'] = 'Hình';
+
+/* Meta in tag head */
+$lang['title_page_contact']         = 'Liên hệ';
+$lang['description_page_contact']   = 'liên hệ của cửa hàng dát vàng Phúc Khang';
+$lang['keywords_page_contact']      = 'liện hệ của cửa hàng dát vàng Phúc Khang';
+
+$lang['title_page_about']           = 'Giới thiệu';
+$lang['description_page_about']     = 'giới thiệu về của hàng dát vàng Phúc Khang';
+$lang['keywords_page_about']        = 'Giới thiệu về dát vàng Phúc Khang';
+
+$lang['title_page_order']           = 'Giỏ hàng';
+$lang['description_page_order']     = 'Các sản phẩm bạn đặt mua';
+$lang['keywords_page_order']        = 'Giỏ hàng, danh sách sản phẩm';
+
+$lang['title_news_page']       = 'Tin tức';
+$lang['description_news_page']      = 'Tín tức của cửa hàng dát vàng Phúc Khang';
+$lang['keywords_news_page']         = 'Tin tức, dát vàng Phúc Khang';

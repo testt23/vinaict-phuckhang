@@ -23,9 +23,9 @@ class Page_controller extends CI_Controller {
             $data['content'] = 'webpage';
             $data['page'] = $info->get_web_page_content();
             
-            $data['title_page'] = $info->get_web_page_title();
-            $data['description'] = $info->get_web_page_meta_description();
-            $data['keywords'] = $info->get_web_page_keywords();
+            $data['title_page'] = lang('title_page_about');
+            $data['description'] = lang('description_page_about');
+            $data['keywords'] = lang('keywords_page_about');
             
             $data['selected'] = $link;
             $filter = array();
