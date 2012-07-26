@@ -232,7 +232,6 @@ class Product extends Product_model {
     }
 
     public function getProductByCategory($link = '') {
-
         $id = '';
         $link = trim($link);
         if ($link != '') {
@@ -277,16 +276,14 @@ class Product extends Product_model {
                     $total_record = $Product_count->{$this->if->_count};
                     $limit = Variable::getLimitRecordPerPage();
                     $total_page = ceil($total_record / $limit);
-                    if ($total_page < 0){
+                    if ($total_page <= 0){
                         $total_page = 1;
                     }
                     
                     if ($page > $total_page){
                         $page = $total_page;
                     }
-                    echo $page;
                     $start = ($page - 1) * $limit;
-
                     $Paging = new Paging();
 
                     $string_paging = $Paging->paging_html(base_url() . Variable::getProductPageString() . '/' . $link . '', $total_page, $page, 7);
