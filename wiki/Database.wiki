@@ -1270,4 +1270,11 @@ UPDATE `menu` SET `link` = 'contact.html'	WHERE `id` = 40;
 
 INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES ('92', 'Social link image suffix', 'BO_SOCIAL_LINK_IMG_SUFFIX', '_icon_32', '1', '0', '2012-06-23 21:20:30', NULL, '', 1, '0', '1', NULL);
 
+/* 2012-07-26 - Ly Vinh Truong - META information in Homepage */
+
+INSERT  INTO `parameter`(`id`,`name`,`code`,`value`,`always_load`,`status`,`creation_date`,`modification_date`,`id_user_created`,`id_user_modified`,`disabled`,`data_type`,`data`) VALUES 
+(90,'Meta description in Front Office','FO_META_DESCRIPTION','<en>Come to Phuc Khang to own the best gilded items such as gilded frames, gilded souvenirs, the luxury gilded furnitures and the high quality gilded statues.</en><vi>Hãy đến với Phúc Khang để sở hữu những vật phẩm dát vàng đẳng cấp và tuyệt vời nhất như: Khung hình, quà lưu niệm dát vàng độc đáo, đồ nội thất dát vàng sang trọng và tượng dát vàng cao cấp</vi>',1,0,'2012-07-25 23:40:07','2012-07-25 17:04:46',1,1,0,12,NULL),
+(91,'Meta keywords in Front Office','FO_META_KEYWORDS','dat vang, ma vang, khung hinh, khung hinh dat vang, qua luu niem, qua luu niem dat vang, noi that, noi that dat vang, tuong, tuong dat vang, gilded, gilded frame, gilded souvenir, gilded interior, gilded furniture, gilded statue',1,0,'2012-07-26 00:13:19',NULL,1,NULL,0,1,NULL);
+
+
 }}}
