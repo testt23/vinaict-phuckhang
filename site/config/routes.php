@@ -47,7 +47,7 @@ $route['directory'] = '';
 
 $route['^'.Variable::getActiveShopPageString()] =  'product/active_cat';
 
-$route['^'.Variable::getIndexPageString().'/(:num)'] =  'index/page/$1';
+$route['^'.Variable::getIndexPageString().'.html'] =  'index';
 
 // order
 $route['^'.Variable::getProductListCartPageString().''] =  'product/prod_list_cart';
@@ -62,7 +62,7 @@ $route['^'.Variable::getProductPageString().'/update_shop/(:num)/(:num)'] =  'pr
 $route['^'.Variable::getProductPageString().'/delete_shop/(:num)'] =  'product/delete_shopping/$1';
 
 // contact
-$route['^'.Variable::getProductContactPageString().''] =  'product/prod_contact';
+//$route['^'.Variable::getProductContactPageString().''] =  'product/prod_contact';
 
 $route['^'.Variable::getProductPageString().'/(.+)/([a-zA-Z0-9-_]+).html'] =  'product/prod_detail/$2';
 $route['^'.Variable::getProductPageString().'/(.+).html'] =  'product/prod_detail/$1';
