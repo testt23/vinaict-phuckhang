@@ -1264,5 +1264,5 @@ insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `d
 insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('56','<en>Gilding Statues</en><vi>Tượng Dát Vàng</vi>','5','products/noi-that/tuong-dat-vang','tuong-dat-vang','26','0','1',NULL);
 
 UPDATE `menu` SET `section` = 'mat-na-dat-vang'	WHERE `id` = 46;
-
+UPDATE `menu` SET `link` = 'contact.html'	WHERE `id` = 40;
 }}}
