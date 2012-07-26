@@ -1265,4 +1265,9 @@ insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `d
 
 UPDATE `menu` SET `section` = 'mat-na-dat-vang'	WHERE `id` = 46;
 UPDATE `menu` SET `link` = 'contact.html'	WHERE `id` = 40;
+
+/* 2012-07-26 - Ly Vinh Truong - Social Links */
+
+INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES ('92', 'Social link image suffix', 'BO_SOCIAL_LINK_IMG_SUFFIX', '_icon_32', '1', '0', '2012-06-23 21:20:30', NULL, '', 1, '0', '1', NULL);
+
 }}}
