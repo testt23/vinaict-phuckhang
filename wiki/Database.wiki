@@ -1182,4 +1182,9 @@ ALTER TABLE `web_page`
 ALTER TABLE `article` 
    ADD COLUMN `meta_description` TEXT NULL AFTER `date`;
 
+/* 23-07-2012 - Nguyen VanCuong - alter table product_category */
+ALTER TABLE product_category 
+   ADD COLUMN meta_description TEXT NULL AFTER `link';
+
+
 }}}
