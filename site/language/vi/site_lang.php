@@ -111,7 +111,7 @@ $lang['show_message_info_4'] = 'Bạn chưa chọn sản phẩm nào.';
 $lang['show_message_info_5'] = 'Email nhập không đúng định dạng hoặc bạn chưa nhập.';
 
 $lang['show_message_info_6'] = 'Đặt hàng thành công.';
-$lang['show_message_info_7'] = 'Đơn đặt hàng này không tồn tại.';
+$lang['show_message_info_7'] = 'Đơn đặt hàng này không tồn tại hoặc đã được kích hoạt';
 $lang['show_message_info_8'] = 'Thao tác đặt hàng thất bại.';
 $lang['show_message_contact_fail'] = 'Gửi thông tin liên hệ thất bại';
 
