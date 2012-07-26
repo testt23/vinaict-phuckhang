@@ -1217,4 +1217,52 @@ INSERT INTO `product` (`id`, `code`, `name`, `short_description`, `description`,
 INSERT INTO `product` (`id`, `code`, `name`, `short_description`, `description`, `price`, `currency`, `link`, `id_def_image`, `is_disabled`, `id_prod_category`, `is_deleted`, `keywords`, `is_featured`, `id_prod_image`, `id_primary_prod_category`) VALUES('4','A00004','<en>Gilding cabinet</en><vi>Tủ dát vàng</vi>','<en>This is a gilding cabinet</en><vi>Đây là cái tủ dát vàng</vi>','<en>&lt;p&gt; &lt;span style=&quot;background-color:yellow;&quot;&gt;Detail information about gilding cabinet&lt;/span&gt;&lt;/p&gt;</en><vi>&lt;p&gt; &lt;span style=&quot;background-color:lime;&quot;&gt;Thông tin chi tiết về cái tủ dát vàng&lt;/span&gt;&lt;/p&gt;</vi>','0','VND','san-pham-4',NULL,'0','2','0','','1','24','2');
 INSERT INTO `product` (`id`, `code`, `name`, `short_description`, `description`, `price`, `currency`, `link`, `id_def_image`, `is_disabled`, `id_prod_category`, `is_deleted`, `keywords`, `is_featured`, `id_prod_image`, `id_primary_prod_category`) VALUES('5','A###','<en>test</en><vi>no pro</vi>',NULL,NULL,'22','VND','sanpham5',NULL,'0','2','0',NULL,'0',NULL,'2');
 
+
+
+/* 26-07-2012 - Nguyen VanCuong - truncate and insert data into table menu */
+
+TRUNCATE TABLE menu;
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('1','<en>Dashboard</en><vi>Bảng điều khiển</vi>','1','dashboard','dashboard','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('2','<en>Products</en><vi>Sản phẩm</vi>','2','product','product','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('3','<en>System</en><vi>Hệ thống</vi>','10','system','system','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('4','<en>Users</en><vi>Người dùng</vi>','9','user','user','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('5','<en>Settings</en><vi>Cài đặt</vi>','1','setting','setting','3','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('6','<en>Menu</en><vi>Menu</vi>','2','menu','menu','3','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('7','<en>Users Groups</en><vi>Nhóm người dùng</vi>','1','group','group_list','4','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('8','<en>Users</en><vi>Người dùng</vi>','2','user','user_list','4','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('23','<en>Product Categories</en><vi>Nhóm sản phẩm</vi>','1','prod_category','prod_category','2','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('24','<en>Home</en><vi>Trang chủ</vi>','1','index.html','home','0','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('25','<en>About Us</en><vi>Giới thiệu</vi>','2','about.html','about','0','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('26','<en>Interiors</en><vi>Nội thất - Tượng</vi>','4','products/noi-that','noi-that','0','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('27','<en>Souvenirs</en><vi>Quà lưu niệm</vi>','3','products/qua-luu-niem','qua-luu-niem','0','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('28','<en>Spa</en><vi>Phụ liệu Spa</vi>','5','products/spa','spa','0','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('29','<en>CMS</en><vi>Quản trị nội dung</vi>','5','','cms','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('30','<en>Web page</en><vi>Trang web</vi>','1','webpage','webpage','29','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('31','<en>News</en><vi>Tin tức</vi>','2','news','news','29','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('32','<en>32_Just test&lt;/&gt;&lt;test&gt;&lt;/test&gt;</en><vi>32_Thử nghiệm thôi&lt;/&gt;&lt;thử nghiệm&gt;&lt;/thử nghiệm&gt;</vi>','6','test','test','0','1','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('33','<en>Customers</en><vi>Khách hàng</vi>','4','customer','customer','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('34','<en>Orders</en><vi>Đơn đặt hàng</vi>','3','order','order','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('35','<en>Images gallery</en><vi>Thư viện ảnh</vi>','6','image_gallery','image_gallery','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('36','<en>36_Languages</en><vi>36_Ngôn ngữ</vi>','2','language','language','3','1','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('37','<en>37_Currencies</en><vi>37_Tiền tệ</vi>','2','currency','currency','3','1','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('38','<en>38_24k Gilding Products</en><vi>38_Sản Phẩm Dát Vàng 24k</vi>','3','24k-gilding-products','products','0','1','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('39','<en>News</en><vi>Tin Tức</vi>','6','news','news','0','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('40','<en>Contact Us</en><vi>Liên Hệ</vi>','7','contact','contact','0','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('42','<en>Article</en><vi>Bài viết</vi>','2','article','article_list','31','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('44','<en>Categories</en><vi>Danh mục tin</vi>','1','news_category','news_category','31','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('45','<en>Link</en><vi>Liên kết</vi>','9','social_link','social_link','0','0','2',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('46','<en>Gilding Mask</en><vi>Mặt nạ dát vàng</vi>','1','products/spa/mat-na-dat-vang','mat-na-vang','28','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('47','<en>Luxury Gifts</en><vi>Quà Tặng Cao Cấp</vi>','1','products/qua-luu-niem/qua-tang-cao-cap','qua-tang-cao-cap','27','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('48','<en>Christmas Gifts</en><vi>Quà Tặng Giáng Sinh</vi>','2','products/qua-luu-niem/qua-giang-sinh','qua-giang-sinh','27','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('49','<en>Gilding Picture Frame</en><vi>Khung Hình Dát Vàng</vi>','3','products/qua-luu-niem/khung-hinh','khung-hinh','27','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('50','<en>Things On Table</en><vi>Vật Để Bàn</vi>','4','products/qua-luu-niem/vat-de-ban','vat-de-ban','27','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('51','<en>Tray of tea, wine</en><vi>Khay trà, rượu</vi>','5','products/qua-luu-niem/khay-tra-ruou','khay-tra-ruou','27','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('52','<en>Bàn trang điểm</en><vi>Bàn trang điểm</vi>','1','products/noi-that/ban-trang-diem','ban-trang-diem','26','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('53','<en>Special Chairs</en><vi>Ghế Cao Cấp</vi>','2','products/noi-that/ghe-cao-cap','ghe-cao-cap','26','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('54','<en>TV Shelf</en><vi>Kệ Tivi</vi>','3','products/noi-that/ke-tivi','ke-tivi','26','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('55','<en>Mirror Frame</en><vi>Khung Gương</vi>','4','products/noi-that/khung-guong','khung-guong','26','0','1',NULL);
+insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('56','<en>Gilding Statues</en><vi>Tượng Dát Vàng</vi>','5','products/noi-that/tuong-dat-vang','tuong-dat-vang','26','0','1',NULL);
+
+
+
 }}}
