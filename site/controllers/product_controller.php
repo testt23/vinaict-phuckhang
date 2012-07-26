@@ -21,22 +21,30 @@ class Product_controller extends CI_Controller {
             $info = $Product->getProductByCategory($url_cate);
             $data['content'] = 'index';            
             $data['product'] = $info['product'];
-            
-            $data['title_page'] = 'title_page';
-            $data['description'] = 'description';
-            $data['keywords'] = 'keywords';
-            
             $data['paging'] = $info['paging'];
             $data['selected'] = $url_cate;
+            
+            //seo
+            
+            $Category = new ProductCategory();
+            $list_cate = $Category->getCategoryByLink($url_cate);
+            if ($list_cate->countRows() > 0){
+                $list_cate->fetchNext();
+                $data['title_page'] = $list_cate->get_prod_cate_name();
+                $data['description'] = $list_cate->get_prod_cate_meta_description();
+                $data['keywords'] = $list_cate->get_prod_cate_keywords();
+            }else{
+                $data['title_page'] = '';
+                $data['description'] = '';
+                $data['keywords'] = '';
+            }
+            
             $array_menus = array();
             $filter = array();
-
             $filter['parent_id'] = 0;
             Menu::getMenuTree($array_menus, $filter);
-
             $data['array_menus'] = $array_menus;
-            $data['title'] = '';
-
+            
             $this->load->view('temp', $data);
         } else {
             redirect(Variable::getDefaultPageString());
@@ -87,6 +95,9 @@ class Product_controller extends CI_Controller {
         Menu::getMenuTree($array_menus, $filter);
         
         // 
+        $data['title_page'] = 'search page';
+        $data['description'] = $name . ' ' . $pric_from . ' ' . $pric_to . ' ' . $currency;
+        $data['keywords'] = $name;
         $data['selected'] = '';
         $data['content'] = 'index';
         $data['product'] = $info['product'];
@@ -107,24 +118,23 @@ class Product_controller extends CI_Controller {
             $Product_tmp = $Product->getProductByLink($url_link);
             $Product_tmp->fetchFirst();
             $data['product'] = $Product_tmp;
-//            echo '<pre>';
-//            var_dump($Product_tmp); die;
-//            echo '</pre>';
+
             if ($Product_tmp->countRows() > 0) {
-                $data['image'] = $Image->getListImageByListId($Product_tmp->the_product_id_prod_image());
+                $data['image'] = $Image->getListImageByListId($Product_tmp->get_product_id_prod_image());
             } else {
                 $data['image'] = '';
             }
 
-            // menu tree
-            
+            // menu tree            
             $array_menus = array();
             $filter = array();
             $filter['parent_id'] = 0;
             Menu::getMenuTree($array_menus, $filter);
             
-            $data['description'] = $Product_tmp->the_product_short_description();
-            $data['keywords'] = $Product_tmp->the_product_keywords();
+            
+            $data['description'] = $Product_tmp->get_product_short_description();
+            $data['keywords'] = $Product_tmp->get_product_keywords();
+            $data['title_page'] = $Product_tmp->get_product_keywords();
             
             $data['selected'] = '';
             $data['array_menus'] = $array_menus;
@@ -159,7 +169,9 @@ class Product_controller extends CI_Controller {
         Menu::getMenuTree($array_menus, $filter);
         
         
-        
+        $data['title_page'] = '';
+        $data['description'] = '';
+        $data['keywords'] = '';
         $data['selected'] = '';
         $data['array_menus'] = $array_menus;
         $data['shopping'] = $Shopping->get_list();

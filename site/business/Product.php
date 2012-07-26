@@ -20,7 +20,6 @@ class Product extends Product_model {
 
     // this function use for get a list new product limited 20 products
     public function getNewProduct($page = 1) {
-
         // begin join image//
         // setting select field
         $filter = array(
@@ -92,6 +91,7 @@ class Product extends Product_model {
         $Product->addJoin($Image, 'LEFT', ' as p ', 'p.' . $this->if->_image_as_id . ' = ' . $this->if->_product_id_def_image);
         $Product->limit($start . ', ' . $limit);
         $Product->find();
+        
         $info['paging'] = $string_paging;
         $info['product'] = $Product;
         return $info;
@@ -214,6 +214,7 @@ class Product extends Product_model {
         $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
         $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
         $Product->addSelect($this->if->_product_description . ' as ' . $this->if->_product_as_description);
+        $Product->addSelect($this->if->_product_short_description . ' as ' . $this->if->_product_as_short_description);
         $Product->addSelect($this->if->_product_id_def_image . ' as ' . $this->if->_product_as_id_def_image);
         $Product->addSelect($this->if->_product_id_prod_image . ' as ' . $this->if->_product_as_id_prod_image);
         $Product->addSelect('p.' . $this->if->_image_as_name);
@@ -234,13 +235,12 @@ class Product extends Product_model {
 
         $id = '';
         $link = trim($link);
-        
         if ($link != '') {
-            
-            $Cat_tmp = ProductCategory::getProdCategoryByLink($link);
-            
+            $Category = new ProductCategory();
+            $Cat_tmp = $Category->getCategoryByLink($link); 
             if ($Cat_tmp->countRows() > 0) {
-                $id = $Cat_tmp->the_prod_cate_id();
+                $Cat_tmp->fetchFirst();
+                $id = $Cat_tmp->get_prod_cate_id();
                 if ($id) {
                     /**/
                     /* begin paging */
@@ -309,26 +309,15 @@ class Product extends Product_model {
                     $Product->addSelect('p.' . $this->if->_image_as_name);
                     $Product->addSelect('p.' . $this->if->_image_as_file);
                     $Product->addSelect('p.' . $this->if->_image_group_as_code);
-
                     $Product->addJoin($Image, 'LEFT', ' as p ', 'p.' . $this->if->_image_as_id . ' = ' . $this->if->_product_id_def_image);
-
                     $Product->addWhere($this->if->_product_is_deleted . ' = 0');
                     $Product->addWhere($this->if->_product_is_disabled . ' = 0');
                     $Product->addWhere("FIND_IN_SET('" . $id . "', " . $this->if->_product_id_prod_category . ")");
                     $Product->limit(' ' . $start . ',' . $limit . ' ');
-
                     $Product->find();
                     
-                    $prod_cate_link = $Cat_tmp->the_prod_cate_link();
-                    $prod_cate_desc = $Cat_tmp->the_prod_cate_description();
-                    $prod_cate_keys = $Cat_tmp->the_prod_cate_keywords();
-
                     $data['paging'] = $string_paging;
                     $data['product'] = $Product;
-                    $data['tilte_page'] = getI18n($Cat_tmp->name);
-                    $data['description'] = getI18n($Cat_tmp->description);
-                    $data['keywords'] = $Cat_tmp->keywords;
-
                     return $data;
                 }
             }
@@ -410,90 +399,90 @@ class Product extends Product_model {
     
     /* get data */
 
-    public function the_product_id() {
+    public function get_product_id() {
         return $this->{$this->if->_product_as_id};
     }
 
-    public function the_product_code() {
+    public function get_product_code() {
         return $this->{$this->if->_product_as_code};
     }
 
-    public function the_product_currency() {
+    public function get_product_currency() {
         return getI18n($this->{$this->if->_product_as_currency}, $this->lang);
     }
 
-    public function the_product_price($fm = false) {
+    public function get_product_price($fm = false) {
         if ($fm == false){
             return number_format($this->{$this->if->_product_as_price},0,',',',') ;
         }
         return $this->{$this->if->_product_as_price};
     }
-    public function the_product_keywords(){
+    public function get_product_keywords(){
         return $this->{$this->if->_product_as_keywords};
     }
-    public function the_product_name($lang_true_false = false) {
+    public function get_product_name($lang_true_false = false) {
         if ($lang_true_false == false) {
             return getI18n($this->{$this->if->_product_as_name}, $this->lang);
         }
         return $this->{$this->if->_product_as_name};
     }
 
-    public function the_product_link() {
+    public function get_product_link() {
         return base_url() . $this->pre_fix_product . '/' . $this->{$this->if->_product_as_link} . '.html';
     }
     
-    public function the_product_short_description() {
+    public function get_product_short_description() {
         return getI18n($this->{$this->if->_product_as_short_description}, $this->lang); 
     }
 
-    public function the_product_description($lang_true_false = false) {
+    public function get_product_description($lang_true_false = false) {
         if ($lang_true_false == false) {
             return getI18n($this->{$this->if->_product_as_description}, $this->lang);
         }
         return $this->{$this->if->_product_as_description};
     }
 
-    public function the_image_group_code() {
+    public function get_image_group_code() {
         return $this->{$this->if->_image_group_as_code};
     }
     
     // image
-    public function the_image_link_avatar() {
-        $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avatar.jpg', '_avatar.png', '_avatar.gif'), $this->{$this->if->_image_as_file});
+    public function get_image_link_avatar() {
+        $url = $this->get_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_avatar.jpg', '_avatar.png', '_avatar.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
-    public function the_image_link() {
-        $url = $this->the_image_group_code() . '/' . $this->{$this->if->_image_as_file};
-        return $this->image_exists($url);
-    }
-    
-    public function the_image_link_medium() {
-        $url = $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
-        return $this->image_exists($url);
-    }
-
-    public function the_image_link_small() { 
-        $url =  $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
+    public function get_image_link() {
+        $url = $this->get_image_group_code() . '/' . $this->{$this->if->_image_as_file};
         return $this->image_exists($url);
     }
     
-    public function the_image_link_thumb() { 
-        $url =  $this->the_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+    public function get_image_link_medium() {
+        $url = $this->get_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_medium.jpg', '_medium.png', '_medium.gif'), $this->{$this->if->_image_as_file});
         return $this->image_exists($url);
     }
 
-    public function the_image_name($lang_true_false = false) {
+    public function get_image_link_small() { 
+        $url =  $this->get_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
+    }
+    
+    public function get_image_link_thumb() { 
+        $url =  $this->get_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_thumb.jpg', '_thumb.png', '_thumb.gif'), $this->{$this->if->_image_as_file});
+        return $this->image_exists($url);
+    }
+
+    public function get_image_name($lang_true_false = false) {
         if ($lang_true_false == false) {
             return getI18n($this->{$this->if->_image_as_name}, $this->lang);
         }
         return $this->{$this->if->_image_as_name};
     }
 
-    public function the_product_id_prod_image() {
+    public function get_product_id_prod_image() {
         return $this->{$this->if->_product_as_id_prod_image};
     }
 
-    public function the_product_id_def_image() {
+    public function get_product_id_def_image() {
         return $this->{$this->if->_product_as_id_def_image};
     }
     
@@ -502,7 +491,6 @@ class Product extends Product_model {
         if (empty($url)){
             return $this->image_default;
         }
-        
         return file_exists(direct_url(APPLICATION_PATH.'/'.config_item('upload_path').'images/'.$url)) ? direct_url(base_url(config_item('upload_path').'images/'.$url)) : $this->image_default;
     }
 

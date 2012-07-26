@@ -92,7 +92,7 @@ body {
 
 #menu{
     background:#014109 url(../images/site/menu-bg.png) top left repeat-x;
-    z-index: 98;
+    z-index: 99;
 
 }
 #menu ul{
@@ -132,7 +132,7 @@ body {
 #menu ul li ul{
     display: none;
     background: #014109;
-    top: 50px;
+    top: 35px;
     left: 0px;
     width: 150px;
     height: auto;
@@ -175,7 +175,7 @@ body {
     display: none !important;
 }
 
-.selected a{
+#menu ul li ul li.selected a{
     color: #fdda11 !important;
 }
 

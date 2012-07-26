@@ -26,7 +26,7 @@
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
         
         <meta http-equiv="content-language" content="<?php echo get_system_language(); ?>" />
-        <title><?php echo getI18n(SITE_NAME) . ' - '. $title_page ; ?></title>
+        <title><?php echo getI18n(SITE_NAME, get_system_language()) . ' - '. $title_page ; ?></title>
                         
         <meta name="description" content="<?php echo $description; ?>" />
         <meta name="keywords" content="<?php echo $keywords; ?>"/>
@@ -53,6 +53,7 @@
                 jQuery('.close-search-pop').click(function(){
                     jQuery('.search-popup').removeClass('show').addClass('hide');
                 });
+            });
              
             
         </script>

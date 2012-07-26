@@ -86,16 +86,18 @@ class DbInfo {
     public $_product_category_keywords              = 'product_category.keywords';
     public $_product_category_id_image              = 'product_category.id_image';
     public $_product_category_link                  = 'product_category.link';
+    public $_product_category_meta_description      = 'product_category.meta_description';
     
     public $_product_category_as_id                 = 'product_category_id';
     public $_product_category_as_code               = 'product_category_code';
-    public $_product_category_as_as_name            = 'product_category_name';
+    public $_product_category_as_name               = 'product_category_name';
     public $_product_category_as_is_deleted         = 'product_category_is_deleted';
     public $_product_category_as_id_parent          = 'product_category_id_parent';
     public $_product_category_as_description        = 'product_category_description';
     public $_product_category_as_keywords           = 'product_category_keywords';
     public $_product_category_as_id_image           = 'product_category_id_image';
     public $_product_category_as_link               = 'product_category_link';
+    public $_product_category_as_meta_description      = 'product_category_meta_description';
     
     /*IMAGE*/
     public $_image_as_id                            = 'image_id';

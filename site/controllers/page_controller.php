@@ -20,12 +20,13 @@ class Page_controller extends CI_Controller {
             
             
             $info->fetchNext();
-            $data['page'] = $info->the_web_page_content();
+            $data['content'] = 'webpage';
+            $data['page'] = $info->get_web_page_content();
             
-            $data['title_page'] = getI18n($info->title);
-            $data['description'] = getI18n($info->meta_description);
-            $data['keywords'] = $info->keywords;
-
+            $data['title_page'] = $info->get_web_page_title();
+            $data['description'] = $info->get_web_page_meta_description();
+            $data['keywords'] = $info->get_web_page_keywords();
+            
             $data['selected'] = $link;
             $filter = array();
             $array_menus = array();

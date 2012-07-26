@@ -11,6 +11,8 @@
 		var $link;	//varchar(250)	Unique Key		NULL
 		var $keywords;	//varchar(250)			NULL
 		var $id_news_category;	//int(11)			NULL
+		var $date = 'CURRENT_TIMESTAMP';	//timestamp			NOT NULL
+		var $meta_description;	//text			NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'int', 'null' => FALSE, 'auto_increment' => TRUE),
@@ -18,7 +20,9 @@
 			'content' => array('type' => 'longtext', 'null' => FALSE),
 			'link' => array('key' => 'UNI', 'type' => 'varchar', 'size' => 250, 'null' => TRUE),
 			'keywords' => array('type' => 'varchar', 'size' => 250, 'null' => TRUE),
-			'id_news_category' => array('type' => 'int', 'null' => TRUE)
+			'id_news_category' => array('type' => 'int', 'null' => TRUE),
+			'date' => array('type' => 'timestamp', 'null' => FALSE),
+			'meta_description' => array('type' => 'text', 'null' => TRUE)
 		);
 
 		protected $__relation = array(
