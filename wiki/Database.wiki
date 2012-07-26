@@ -1182,9 +1182,28 @@ ALTER TABLE `web_page`
 ALTER TABLE `article` 
    ADD COLUMN `meta_description` TEXT NULL AFTER `date`;
 
-/* 23-07-2012 - Nguyen VanCuong - alter table product_category */
+/* 26-07-2012 - Nguyen VanCuong - alter table product_category */
 ALTER TABLE product_category 
    ADD COLUMN meta_description TEXT NULL AFTER `link';
 
+
+
+/* 26-07-2012 - Nguyen VanCuong - truncate and insert data into table product_category */
+
+TRUNCATE TABLE product_category;
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('2','A','<en>Souvenirs</en><vi>Quà Lưu Niệm</vi>','0',NULL,'','qua, qua luu niem, luu niem','13','qua-luu-niem','<en></en><vi>Quà luu niem</vi>');
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('3','C','<en>Spa</en><vi>Phụ Liệu Spa</vi>','0',NULL,'','','17','spa',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('4','B','<en>Interiors</en><vi>Nội Thất - Tượng</vi>','0',NULL,'','','15','noi-that',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('22','C1','<en>Gilding Mask</en><vi>Mặt nạ dát vàng</vi>','0','3','','','27','mat-na-dat-vang',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('12','A1','<en>Luxury Gifts</en><vi>Quà Tặng Cao Cấp</vi>','0','2','','','28','qua-tang-cao-cap',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('13','A2','<en>Christmas Gifts</en><vi>Quà Tặng Giáng Sinh</vi>','0','2','','','29','qua-giang-sinh',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('14','A3','<en>Gilding Picture Frame</en><vi>Khung Hình Dát Vàng</vi>','0','2','','','30','khung-hinh',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('15','A4','<en>Things On Table</en><vi>Vật Để Bàn</vi>','0','2','','','31','vat-de-ban',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('16','A5','<en>Tray of tea, wine</en><vi>Khay trà, rượu</vi>','0','2','','','32','khay-tra-ruou',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('17','B1','<en>Bàn trang điểm</en><vi>Bàn trang điểm</vi>','0','4','','','33','ban-trang-diem',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('18','B2','<en>Special Chairs</en><vi>Ghế Cao Cấp</vi>','0','4','','','34','ghe-cao-cap',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('19','B3','<en>TV Shelf</en><vi>Kệ Tivi</vi>','0','4','','','35','ke-tivi',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('20','B4','<en>Mirror Frame</en><vi>Khung Gương</vi>','0','4','','','36','khung-guong',NULL);
+INSERT INTO `product_category` (`id`, `code`, `name`, `is_deleted`, `id_parent`, `description`, `keywords`, `id_image`, `link`, `meta_description`) VALUES('21','B5','<en>Gilding Statues</en><vi>Tượng Dát Vàng</vi>','0','4','','','37','tuong-dat-vang',NULL);
 
 }}}
