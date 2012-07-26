@@ -2,10 +2,8 @@
 
 class Article extends Article_model {
 
-    public static $lang;
     function __construct() {
         parent::__construct();
-        self::$lang = get_system_language();
     }
 
     public function getList($filter = array()) {
@@ -40,7 +38,7 @@ class Article extends Article_model {
     }
     
     public function get_title(){
-        return getI18n($this->title, self::$lang);
+        return getI18n($this->title);
     }
     
     public function get_date(){
@@ -48,7 +46,15 @@ class Article extends Article_model {
     }
     
     public function get_content(){
-        return getI18n($this->id, self::$lang);
+        return getI18n($this->content);
     }
-
+    
+    public function get_meta_description(){
+        return getI18n($this->meta_description);
+    }
+    
+     public function get_keywords(){
+        return getI18n($this->keywords);
+    }
+    
 }

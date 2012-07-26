@@ -118,3 +118,21 @@ $lang['show_form_search_5'] = 'Currency';
 
 //
 $lang['image'] = 'Image';
+
+/* Meta in tag head */
+$lang['title_page_contact']         = 'Contact';
+$lang['description_page_contact']   = 'Contact of the gold shop Phuc Khang';
+$lang['keywords_page_contact']      = 'Contact of the gold shop Phuc Khang';
+
+$lang['title_page_about']         = 'About';
+$lang['description_page_about']   = 'Introduction of gold shop Phuc Khang';
+$lang['keywords_page_about']      = 'Introduction of gold shop Phuc Khang';
+
+$lang['title_page_order']         = 'Order';
+$lang['description_page_order']   = 'The products you ordered';
+$lang['keywords_page_order']      = 'Order, Product list';
+
+$lang['title_news_page']       = 'News';
+$lang['description_news_page']      = 'News of gold shop Phuc Khang';
+$lang['keywords_news_page']         = 'News, gold shop Phuc Khang';
+

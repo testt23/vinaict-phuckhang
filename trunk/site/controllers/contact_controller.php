@@ -219,6 +219,9 @@ class Contact_controller extends CI_Controller {
         $filter1['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter1);
         
+        $data['title_page'] = lang('title_page_contact');
+        $data['description'] = lang('description_page_contact');
+        $data['keywords'] = lang('keywords_page_contact');
         
         $data['mess'] = $result;
         $data['filter'] = $filter;

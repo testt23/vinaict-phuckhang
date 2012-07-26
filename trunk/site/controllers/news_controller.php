@@ -36,7 +36,11 @@ class News_controller extends CI_Controller {
         
         $data['content'] = 'news';
         $data['selected'] = 'news';
-
+        
+        $data['title_page'] = lang('title_news_page');
+        $data['description'] = lang('description_news_page');
+        $data['keywords'] = lang('keywords_news_page');
+        
         $array_menus = array();
         $filter = array();
 
@@ -44,11 +48,7 @@ class News_controller extends CI_Controller {
         Menu::getMenuTree($array_menus, $filter);
 
         $data['array_menus'] = $array_menus;
-        
-        $data['title_page'] = '';
-        $data['description'] = '';
-        $data['keywords'] = '';
-
+       
         $this->load->view('temp', $data);
     }
     
@@ -73,10 +73,11 @@ class News_controller extends CI_Controller {
 
         $filter['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter);
+        
         $article->fetchNext();
-        $data['title_page'] = '';
-        $data['description'] = '';
-        $data['keywords'] = '';
+        $data['title_page'] = $article->get_title();
+        $data['description'] = $article->get_meta_description();
+        $data['keywords'] = $article->get_keywords();
         
         $data['array_menus'] = $array_menus;
         $data['title'] = '';
@@ -108,7 +109,12 @@ class News_controller extends CI_Controller {
 
         $array_menus = array();
         $filter = array();
-
+        
+        $news_category->fetchNext();
+        $data['title_page'] = $news_category->get_name();
+        $data['description'] = $news_category->get_description();
+        $data['keywords'] = $news_category->get_keyword();
+        
         $filter['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter);
 
