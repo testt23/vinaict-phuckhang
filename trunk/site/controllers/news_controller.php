@@ -44,7 +44,10 @@ class News_controller extends CI_Controller {
         Menu::getMenuTree($array_menus, $filter);
 
         $data['array_menus'] = $array_menus;
-        $data['title'] = '';
+        
+        $data['title_page'] = '';
+        $data['description'] = '';
+        $data['keywords'] = '';
 
         $this->load->view('temp', $data);
     }
@@ -70,7 +73,11 @@ class News_controller extends CI_Controller {
 
         $filter['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter);
-
+        $article->fetchNext();
+        $data['title_page'] = '';
+        $data['description'] = '';
+        $data['keywords'] = '';
+        
         $data['array_menus'] = $array_menus;
         $data['title'] = '';
 
