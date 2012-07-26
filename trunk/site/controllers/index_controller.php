@@ -20,9 +20,9 @@
                     
                     
                     $data['selected'] = 'home';
-                    $data['product'] = $info['product'];
-                    $data['paging'] = $info['paging'];
-                    $data['content'] = 'index';
+                    $data['product']  = $info['product'];
+                    $data['paging']   = $info['paging'];
+                    $data['content']  = 'index';
                     $data['array_menus'] = $array_menus;
                     
                     $data['title_page'] = lang('title_home_page');
@@ -32,6 +32,7 @@
                     $this->load->view('temp', $data);
 		}
 
+                
                 public function switch_currency($code_currency = NULL){
                     
                     $currency = Currency::getCurrencyByCode($code_currency);

@@ -12,6 +12,7 @@
 		var $keywords;	//varchar(250)			NULL
 		var $is_disabled = 0;	//tinyint(1) unsigned			NOT NULL
 		var $id_parent;	//int(11)			NULL
+		var $meta_description;	//text			NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'int', 'null' => FALSE, 'auto_increment' => TRUE),
@@ -20,6 +21,7 @@
 			'link' => array('key' => 'UNI', 'type' => 'varchar', 'size' => 250, 'null' => TRUE),
 			'keywords' => array('type' => 'varchar', 'size' => 250, 'null' => TRUE),
 			'is_disabled' => array('type' => 'tinyint', 'null' => FALSE),
-			'id_parent' => array('type' => 'int', 'null' => TRUE)
+			'id_parent' => array('type' => 'int', 'null' => TRUE),
+			'meta_description' => array('type' => 'text', 'null' => TRUE)
 		);
 	}
