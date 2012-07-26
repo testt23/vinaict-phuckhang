@@ -26,6 +26,16 @@ class ProductCategory extends Product_category_model {
         
     }
     
+    /*don't use*/
+    public function getCategoryChildByParentId($id){
+        $Category = new ProductCategory();
+        $Category->addSelect();
+        $Category->addSelect($this->if->_product_category_id . 'as' . $this->if->_product_category_as_id);
+        $Category->addWhere($this->if->_product_category_id_parent . '=' . $id);
+        $Category->find();
+        return $Category;
+    }
+    
     public function get_prod_cate_name(){
         return getI18n($this->{$this->if->_product_category_as_name}, self::$lang);
     }

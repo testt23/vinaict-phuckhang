@@ -488,6 +488,10 @@ class Product_controller extends CI_Controller {
         $data['selected'] = '';
         $data['content'] = 'active';
         $data['mess'] = $mess;
+        
+        $data['title_page'] = 'active shopping cart';
+        $data['description'] = '';
+        $data['keywords'] = '';
         $this->load->view('temp', $data);
         
     }

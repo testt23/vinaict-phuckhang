@@ -290,6 +290,7 @@ table tr td{text-align:center}
        padding-top:15px;
        text-align:center;
        margin: 0px auto;
+       cursor: pointer;
 }
 #order input{text-decoration:none;
              margin-top:  -2px;

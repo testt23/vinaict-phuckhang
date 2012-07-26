@@ -12,7 +12,7 @@ class Product extends Product_model {
         $this->if = new DbInfo();
         $this->lang = get_system_language();
         $this->image_default = base_url() . $this->config->item('image_defailt_thum');
-        $this->pre_fix_product = isset($_SERVER['PATH_INFO']) ? trim(str_replace(array('products', 'index'), array('products', 'products'), $_SERVER['PATH_INFO']), '/') : trim(get_raw_app_uri(), '/');
+        $this->pre_fix_product = isset($_SERVER['PATH_INFO']) ? trim(str_replace(array('products', 'index.html'), array('products', 'products'), $_SERVER['PATH_INFO']), '/') : trim(get_raw_app_uri(), '/');
         if ($this->pre_fix_product == '') {
             $this->pre_fix_product = 'products';
         }
@@ -70,7 +70,7 @@ class Product extends Product_model {
 
         // call paging class to get string pagation
         $Paging = new Paging();
-        $string_paging = $Paging->paging_html(base_url() . Variable::getIndexPageString(), $total_page, $page, 7);
+        $string_paging = $Paging->paging_html(base_url() . Variable::getIndexPageString(). '.html', $total_page, $page, 7);
         
         // get list product
         $Product = new Product();
@@ -240,6 +240,7 @@ class Product extends Product_model {
             if ($Cat_tmp->countRows() > 0) {
                 $Cat_tmp->fetchFirst();
                 $id = $Cat_tmp->get_prod_cate_id();
+                
                 if ($id) {
                     /**/
                     /* begin paging */
@@ -255,11 +256,8 @@ class Product extends Product_model {
                     $Product_count->addSelect();
                     $Product_count->addSelect(' count(' . $this->if->_product_id . ') as ' . $this->if->_count);
                     $Product_count->addSelect('p.' . $this->if->_image_group_as_code);
-
                     $Product_count->addJoin($Image, 'LEFT', ' as p ', 'p.' . $this->if->_image_as_id . ' = ' . $this->if->_product_id_def_image);
-
                     $Product_count->addWhere($this->if->_product_is_deleted . ' = 0');
-
                     $Product_count->addWhere("FIND_IN_SET('" . $id . "', " . $this->if->_product_id_prod_category . ")");
                     $Product_count->addWhere($this->if->_product_is_disabled . ' = 0');
                     $Product_count->find();
