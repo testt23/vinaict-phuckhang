@@ -273,6 +273,7 @@ class Product extends Product_model {
                     if ($page * 1 == 0){
                         $page = 1;
                     }
+                    
                     $total_record = $Product_count->{$this->if->_count};
                     $limit = Variable::getLimitRecordPerPage();
                     $total_page = ceil($total_record / $limit);
@@ -280,9 +281,10 @@ class Product extends Product_model {
                         $total_page = 1;
                     }
                     
-                    if ($page < $total_page){
+                    if ($page > $total_page){
                         $page = $total_page;
                     }
+                    echo $page;
                     $start = ($page - 1) * $limit;
 
                     $Paging = new Paging();
