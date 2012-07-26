@@ -15,7 +15,6 @@ class Product_controller extends CI_Controller {
     
     // function display a list products by page
     public function prod_list_by_category($url_cate = '') {
-
         if (!empty($url_cate)) {
             $Product = new Product();
             $info = $Product->getProductByCategory($url_cate);
