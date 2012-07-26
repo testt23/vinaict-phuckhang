@@ -1184,7 +1184,7 @@ ALTER TABLE `article`
 
 /* 26-07-2012 - Nguyen VanCuong - alter table product_category */
 ALTER TABLE product_category 
-   ADD COLUMN meta_description TEXT NULL AFTER `link';
+   ADD COLUMN meta_description TEXT NULL AFTER `link`;
 
 
 
