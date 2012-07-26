@@ -21,10 +21,10 @@
             <div id="footer" >
                 <div id="linkbox">
                     <div class="box">
-                        <a href="<?php echo base_url('products/souvenirs/');  ?>"><img src="<?php echo $image_path; ?>/pk-souvenirs.png"  alt=""/></a>
+                        <a href="<?php echo base_url('products/qua-luu-niem/');  ?>"><img src="<?php echo $image_path; ?>/pk-souvenirs.png"  alt=""/></a>
                     </div>
                     <div class="box" style="margin-left:112px;">
-                        <a href="<?php echo base_url('products/interior/');  ?>"><img src="<?php echo $image_path; ?>/pk-interior.png"  alt=""/></a>
+                        <a href="<?php echo base_url('products/noi-that/');  ?>"><img src="<?php echo $image_path; ?>/pk-interior.png"  alt=""/></a>
                     </div>
                     <div class="box" style="float:right;">
                         <a href="<?php echo base_url('products/spa/');  ?>"><img src="<?php echo $image_path; ?>/pk-spa.png"  alt=""/></a>
