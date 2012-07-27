@@ -82,7 +82,6 @@
     
         $prod_category = new ProductCategory();
         $categories = ProductCategory::getTree();
-        $arr_parent = array();
         
         if ($act == ACT_SUBMIT) {
             
@@ -105,16 +104,14 @@
             $prod_category->keywords = utf8_escape_textarea($this->input->post('keywords'));
             $prod_category->id_parent = $this->input->post('id_parent');
             
-            if ($prod_category->id_parent) {
-                if (is_array($prod_category->id_parent)) {
-                    $arr_parent = $prod_category->id_parent;
-                    $prod_category->id_parent = implode(',', $arr_parent);
-                }
-                else {
-                    $arr_parent[] = $prod_category->id_parent;
-                }
+            
+            $prod_cate_parent = new ProductCategory();
+            $link_parent = $prod_cate_parent->getLinkById($prod_category->id_parent);
+            if ($link_parent == ''){
+                $link_parent = SITE_PAGE_PRODUCT_STRING;
             }
             
+            $prod_category->link = trim($link_parent . '/' .$prod_category->link, '/');
             if ($prod_category->validateInput()) {
                 $prod_category->insert();
                 
@@ -135,7 +132,7 @@
         
         $this->data['prod_category'] = $prod_category;
         $this->data['categories'] = $categories;
-        $this->data['arr_parent'] = $arr_parent;
+        $this->data['id_parent'] = $prod_category->id_parent;
         $this->data['array_menus'] = $array_menus;
         $this->data['cfer'] = $cfer;
         $this->data['backlink'] = $back;
@@ -168,9 +165,9 @@
         
         if (!$prod_category->id_image)
             MessageHandler::add(lang('msg_prod_category_has_no_picture_uploaded'), MSG_WARNING, MESSAGE_ONLY);
-        
         $categories = ProductCategory::getTree(null, $id);
-        $arr_parent = explode(',', $prod_category->id_parent);
+        
+        $id_parent = $prod_category->id_parent;
         
         
         $image = new Image();
@@ -203,17 +200,15 @@
             $prod_category->code = utf8_escape_textarea($this->input->post('code'));
             $prod_category->keywords = utf8_escape_textarea($this->input->post('keywords'));
             $prod_category->link = utf8_escape_textarea($this->input->post('link'));
+            $prod_category->id_parent = $this->input->post('id_parent');
             
-            if ($this->input->post('id_parent')) {
-                if (is_array($this->input->post('id_parent'))) {
-                    $arr_parent = $this->input->post('id_parent');
-                    $prod_category->id_parent = implode(',', $arr_parent);
-                }
-                else {
-                    $arr_parent[] = $prod_category->id_parent;
-                    $prod_category->id_parent = $this->input->post('id_parent');
-                }
+            
+            $prod_cate_parent = new ProductCategory();
+            $link_parent = $prod_cate_parent->getLinkById($prod_category->id_parent);
+            if ($link_parent == ''){
+                $link_parent = SITE_PAGE_PRODUCT_STRING;
             }
+            $prod_category->link = trim($link_parent . '/' .$prod_category->link, '/');
             
             if ($prod_category->validateInput()) {
                 $prod_category->update();
@@ -235,7 +230,7 @@
         
         $this->data['prod_category'] = $prod_category;
         $this->data['categories'] = $categories;
-        $this->data['arr_parent'] = $arr_parent;
+        $this->data['id_parent'] = $id_parent;
         $this->data['array_menus'] = $array_menus;
         $this->data['cfer'] = $cfer;
         $this->data['backlink'] = $back;

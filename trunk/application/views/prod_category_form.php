@@ -82,18 +82,27 @@
                                 <label class="desc">
                                         <?php echo lang('txt_link'); ?>
                                 </label>
-                                <div>
-                                        <input type="text" tabindex="1" maxlength="255" class="field text medium" id="link" name="link" value="<?php echo $prod_category->link; ?>" />
+                                <div>   
+                                        <?php 
+                                        $arr_link = explode('/', $prod_category->link);
+                                        $total_link = count($arr_link);
+                                        if ($total_link > 0){
+                                            $link = $arr_link[$total_link-1];
+                                        }else{
+                                            $link = $prod_category->link;
+                                        }
+                                        ?>
+                                        <input type="text" tabindex="1" maxlength="255" class="field text medium" id="link" name="link" value="<?php echo $link; ?>" />
                                 </div>
                         </li>
                         <li>
                             <label class="desc">
-                                    <?php echo lang('txt_parent_product_category'); ?> (<?php echo lang('txt_hold_ctrl_to_select_many'); ?>)
+                                    <?php echo lang('txt_parent_product_category'); ?> 
                             </label>
                             <div>
-                                <select id="id_parent" name="id_parent[]" class="field select medium" multiple size="10" >
+                                <select id="id_parent" name="id_parent" class="field select medium"  size="10" >
                                     <?php foreach ($categories as $category) { ?>
-                                    <option <?php if (in_array($category['id'], $arr_parent)) { echo 'selected'; } ?> value="<?php echo $category['id']; ?>">
+                                    <option <?php if ($category['id'] == $id_parent) { echo 'selected'; } ?> value="<?php echo $category['id']; ?>">
                                         <?php
                                         for($i=0; $i < $category['level']; $i++) {
                                             echo '--';
