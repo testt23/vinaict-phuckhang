@@ -137,6 +137,8 @@
             
             if ($product->validateInput()) {
                 $product->insert();
+                $product->link = $product->link . '-' . $product->id;
+                $product->update();
                 redirect('product/detail/'.$product->id);
             }
             
@@ -209,7 +211,7 @@
             }
             
             $product->code = utf8_escape_textarea($this->input->post('code'));
-            $product->link = utf8_escape_textarea($this->input->post('link'));
+            $product->link = utf8_escape_textarea($this->input->post('link')) . '-' . $product->id;
             $product->price = $this->input->post('price');
             $product->currency = $this->input->post('currency');
             $product->keywords = utf8_escape_textarea($this->input->post('keywords'));
