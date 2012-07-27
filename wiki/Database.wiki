@@ -1324,4 +1324,5 @@ insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `d
 
 UPDATE `parameter` SET `value` =  'san-pham' WHERE `id` = 64;
 
+UPDATE `parameter` SET `value` = 'gio-hang.html' WHERE `id` = 67
 }}}
