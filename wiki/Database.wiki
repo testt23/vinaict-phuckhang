@@ -1433,4 +1433,8 @@ UPDATE `menu` SET `link` = 'gioi-thieu.html', `section` = 'gioi-thieu' WHERE `id
 UPDATE `menu` SET `link` = 'tin-tuc', `section` = 'tin-tuc' WHERE `id` = 39;
 UPDATE `menu` SET `link` = 'lien-he.html', `section` = 'lien-he' WHERE `id` = 40;
 
+/* 27-07-2012 - Ly Vinh Truong - Parameter */
+ALTER TABLE `parameter` 
+   CHANGE `value` `value` TEXT NOT NULL;
+
 }}}
