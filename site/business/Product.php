@@ -235,7 +235,6 @@ class Product extends Product_model {
         $id = '';
         $link = trim($link);
         if ($link != '') {
-            echo $link;
             $Category = new ProductCategory();
             $Cat_tmp = $Category->getCategoryByLink($link); 
             if ($Cat_tmp->countRows() > 0) {
@@ -284,7 +283,7 @@ class Product extends Product_model {
                     $start = ($page - 1) * $limit;
                     $Paging = new Paging();
 
-                    $string_paging = $Paging->paging_html(base_url() . $link . '', $total_page, $page, 7);
+                    $string_paging = $Paging->paging_html(base_url() . $link . '', $total_page, $page, 7);  
                     
                     // link continue buy
                     $link_continue = base_url().$link . '?' . Variable::getPaginationQueryString() . '=' . $page;

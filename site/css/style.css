@@ -409,7 +409,7 @@ table tr td{text-align:center}
     background: gray;
     margin: 0px 2px;
     line-height: 25px;
-    color: white;
+    color: #ffffff !important;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
@@ -425,11 +425,11 @@ table tr td{text-align:center}
 }
 
 .paging a:hover{
-    color: yellow;
+    color: yellow !important;
 }
 
 .paging a.page-active{
-    color: yellow;
+    color: yellow !important;
 }
 #header-container {
     width: 980px;
