@@ -21,7 +21,7 @@ body {
     font-size: 12px;
     color:  #ffffff;
     float: left;
-    
+
 }
 
 .counter {
@@ -31,7 +31,7 @@ body {
     width: 230px;
     margin: 0px auto;
 }
-    
+
 .counter li{
     float: left;
     color: #12701d;
@@ -41,7 +41,7 @@ body {
     font-weight: bold;
     background:#f1f5f1 ;
 }
-    
+
 #header {
     background:url(../images/site/bg-header.png) repeat-x;
     padding-top: 10px;
@@ -83,7 +83,7 @@ body {
     float: right;
     color: #fff;
     padding-top: 10px;
-    
+
 }
 
 /* End Help Online */
@@ -797,9 +797,9 @@ range-image-wrapper{
 }
 
 .t-slide-wrapper-1{
-   margin: 0px 20px 0px 0px;
-   width: 380px; float: right; 
-   padding-bottom: 10px;
+    margin: 0px 20px 0px 0px;
+    width: 380px; float: right; 
+    padding-bottom: 10px;
 }
 .t-slide-wrapper-1 h1{
     color: white;
@@ -824,7 +824,7 @@ range-image-wrapper{
     text-align: center;
     display: table-cell;
     vertical-align: middle;
-        
+
 }
 
 .t-list-slide{
@@ -880,7 +880,7 @@ range-image-wrapper{
     top: 0px; right: 0px;
     position: absolute;
     cursor: pointer;
-        
+
 }
 #image-prev{
     background: url('../images/site/left_btn_blue.png') no-repeat center center;
@@ -966,7 +966,7 @@ range-image-wrapper{
 .view-more{
     float: right;
     padding: 0px 20px;
-    
+
 }
 
 .view-more a{
@@ -1050,4 +1050,86 @@ range-image-wrapper{
 
 .website-address:hover{
     color: #ff0033;
+}
+
+/* Site map */
+
+#sitemap a:link,a:visited {
+    color: #0180AF;
+    text-decoration: underline;
+}
+#sitemap a:hover {
+    color: #666;
+}
+#sitemap h1 {
+    background-color:#fff;
+    padding:20px;
+    color:#00AEEF;
+    text-align:left;
+    font-size:32px;
+    margin:0px;
+}
+#sitemap h3 {
+    font-size:12px;
+    background-color:#B8DCE9;
+    margin:0px;
+    padding:10px;
+}
+#sitemap h3 a {
+    float:right;
+    font-weight:normal;
+    display:block;
+}
+#sitemap th {
+    text-align:center;
+    background-color:#00AEEF;
+    color:#fff;
+    padding:4px;
+    font-weight:normal;
+    font-size:12px;
+}
+#sitemap td {
+    font-size:12px;
+    padding:3px;
+    text-align:left !important;
+}
+#sitemap tr {background: #fff}
+#sitemap tr:nth-child(odd) {background: #f0f0f0}
+#sitemap  .pager,.pager a {
+    background-color:#00AEEF;
+    color:#fff;
+    padding:3px;
+}
+#sitemap .lhead {
+    background-color:#fff;
+    padding:3px;
+    font-weight:bold;
+    font-size:16px;
+}
+#sitemap .lpart {
+    background-color:#f0f0f0;
+    padding:0px;
+}
+#sitemap .lpage {
+    font:normal 12px verdana;
+}
+#sitemap .lcount {
+    background-color:#00AEEF;
+    color:#fff;
+    padding:2px;
+    margin:2px;
+    font:bold 12px verdana;
+}
+#sitemap a.aemphasis {
+    color:#009;
+    font-weight:bold;
+}
+
+#sitemap .title-map{
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-family: array;
+    color: #0f56f7;
 }

@@ -46,4 +46,40 @@
                     redirect($this->session->userdata('lang_url'));
                     
                 }
+                
+                public function sitemap(){
+                    // Menu 
+                    $array_menus = array();
+                    $filter = array();
+                    $filter['parent_id'] = 0;
+                    Menu::getMenuTree($array_menus, $filter);
+                    // end menu
+                    
+                    @$sitemaps = file_get_contents(base_url().'sitemap.html');
+                    
+                    $sitemap = "";
+                    $temp = explode('<table', $sitemaps);
+                    
+                    for($i=1; $i<count($temp); $i++){
+                        $sitemap .= '<table '.trim($temp[$i]).' ';
+                    }
+                    
+                    $temp = explode('<div id="footer">', $sitemap);
+                    
+                    $sitemap = "";
+                    for($i=0; $i<count($temp)-1; $i++){
+                        $sitemap .= trim($temp[$i]).'';
+                    }
+                    $sitemap = str_replace('Cửa Hàng Dát Vàng Phúc Khang - ','',$sitemap);
+                    $data['sitemap'] = $sitemap;
+                    $data['selected'] = '';
+                    $data['content']  = 'site_map';
+                    $data['array_menus'] = $array_menus;
+                    
+                    $data['title_page'] = lang('title_home_page');
+                    $data['description'] = getI18n(FO_META_DESCRIPTION);
+                    $data['keywords'] = FO_META_KEYWORDS;
+                    
+                    $this->load->view('temp', $data);
+                }
 	}

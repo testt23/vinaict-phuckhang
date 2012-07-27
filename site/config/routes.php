@@ -48,6 +48,9 @@ $route['directory'] = '';
 // contact page
 $route['^contact.html'] =  'contact/index';
 
+// contact page
+$route['^site-map.html'] =  'index/sitemap';
+
 // index page
 $route['^sitemap.html'] =  'page/getSitemap';
 $route['^'.Variable::getActiveShopPageString()] =  'product/active_cat';
