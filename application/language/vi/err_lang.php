@@ -86,6 +86,7 @@ $lang['err_invalid_product_category_name']  = 'Tên nhóm sản phẩm không h�
 $lang['err_invalid_product_category_desc']  = 'Thông tin mô tả nhóm sản phẩm không hợp lệ';
 $lang['err_empty_product_category_link']    = 'Bạn chưa nhập liên kết cho nhóm sản phẩm này';
 $lNG['err_invalid_product_category_link']   = 'Liên kế nhóm sản phẩm không hợp lệ';
+$lang['err_desc_too_long'] = 'Nội dung mô tả quá dài';
 
 /* Customer */
 $lang['err_empty_company_name']             = 'Bạn chưa nhập tên công ty hoặc tổ chức';

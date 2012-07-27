@@ -86,6 +86,7 @@ $lang['err_invalid_product_category_name']  = 'Product group name is valid';
 $lang['err_invalid_product_category_desc']  = 'Infomation describing invalid product groups';
 $lang['err_empty_product_category_link']    = 'You did not enter a link for this product group';
 $lNG['err_invalid_product_category_link']   = 'Related product group invalid';
+$lang['err_desc_too_long'] = 'Content of Description too long';
 
 /* Customer */
 $lang['err_empty_company_name']             = 'You did not enter the companny name or organization';
@@ -112,3 +113,5 @@ $lang['err_exit_user']                      = 'There are users in this group you
 /* Social Link */
 $lang['err_empty_social_link_name']         = 'You did not enter a name associated';
 $lang['err_empty_social_link_url']          = 'You did not enter links';
+
+/*product category*/

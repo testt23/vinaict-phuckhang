@@ -68,7 +68,6 @@
     }
     
     function add() {
-        
         User::checkAccessable($this->session->userdata('userID'), 'prod_category/add');
         $back = base_url('prod_category');
         $section = 'prod_category_form';
@@ -82,7 +81,6 @@
     
         $prod_category = new ProductCategory();
         $categories = ProductCategory::getTree();
-        
         if ($act == ACT_SUBMIT) {
             
             $lang = Language::getList();
@@ -108,9 +106,8 @@
             $prod_cate_parent = new ProductCategory();
             $link_parent = $prod_cate_parent->getLinkById($prod_category->id_parent);
             if ($link_parent == ''){
-                $link_parent = SITE_PAGE_PRODUCT_STRING;
+                $link_parent = defined('SITE_PAGE_PRODUCT_STRING') ? SITE_PAGE_PRODUCT_STRING : 'san-pham';
             }
-            
             $prod_category->link = trim($link_parent . '/' .$prod_category->link, '/');
             if ($prod_category->validateInput()) {
                 $prod_category->insert();

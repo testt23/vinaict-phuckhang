@@ -101,11 +101,11 @@ class ProductCategory extends Product_category_model {
         
         while ($lang->fetchNext()) {
                 
-            if (strlen(getI18n($this->name, $lang->code)) > MAX_LENGTH_NAME) {
+            if (strlen(getI18n($this->name, $lang->code)) > (MAX_LENGTH_TITLE * CHARS_PER_WORD)) {
                 MessageHandler::add (lang('err_name_too_long').': '.lang('msg_please_check'). ' "'.getI18n($this->name, $lang->code).'"', MSG_ERROR, MESSAGE_ONLY);
             }
             
-            if (strlen(getI18n($this->description, $lang->code)) > MAX_LENGTH_NAME) {
+            if (strlen(getI18n($this->description, $lang->code)) > (MAX_LENGTH_SHORT_DESC * CHARS_PER_WORD)) {
                 MessageHandler::add (lang('err_desc_too_long').': '.lang('msg_please_check'). ' "'.getI18n($this->description, $lang->code).'"', MSG_ERROR, MESSAGE_ONLY);
             }
                 
