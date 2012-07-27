@@ -10,13 +10,13 @@ class Page_controller extends CI_Controller {
     }
 
     public function the_page($link = '') {
+        
         if ($link != '') {
             $Webpage = new WebPage();
             $info = $Webpage->getPage($link);
             if (empty($info) || $info->countRows() == 0) {
                 redirect('index');
             }
-
 
             $info->fetchNext();
             $data['content'] = 'webpage';
