@@ -70,7 +70,22 @@
                                         <?php echo lang('txt_link'); ?>
                                 </label>
                                 <div>
-                                        <input type="text" tabindex="1" maxlength="255" class="field text medium" id="link" name="link" value="<?php echo $product->link; ?>" />
+                                        <?php 
+                                        $arr_link = explode('-',  $product->link);
+                                        $total_link = count($arr_link);
+                                        $link = '';
+                                        if ($total_link > 2){
+                                            for ($i = 0; $i < $total_link - 1; $i++){
+                                                $link[] = $arr_link[$i];
+                                            }
+                                            $link = implode('-', $link);
+                                        }else{
+                                            $link = $product->link;
+                                        }
+                                        
+                                        
+                                        ?>
+                                    <input type="text" tabindex="1" maxlength="255" class="field text medium" id="link" name="link" value="<?php echo $link; ?>" />
                                 </div>
                         </li>
                         <li>
