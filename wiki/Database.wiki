@@ -1076,5 +1076,7 @@ UPDATE `parameter` SET `value` = '<en>Come to Phuc Khang to own the best gilded 
 INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES
 (96, 'Overall Meta Title', 'FO_META_OVERALL_TITLE', '<en>Gilding, Gilded Frames, Gilded Souvenirs, Gilded Furniture, Gilded Statues</en><vi>Dát Vàng, Quà Lưu Niệm, Đồ Nội Thất, Tượng Dát Vàng</vi>', 1, 0, '2012-07-27 19:27:20', NULL, 1, NULL, 0, 12, NULL);
 
+UPDATE `parameter` SET `value` = 'dat-hang.html' WHERE `id` = 65;
+UPDATE `parameter` SET `value` = 'lien-he.html' WHERE `id` = 66;
 
 }}}
