@@ -1322,4 +1322,6 @@ insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `d
 insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('55','<en>Mirror Frame</en><vi>Khung Gương</vi>','4','san-pham/noi-that/khung-guong','khung-guong','26','0','1',NULL);
 insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `disabled`, `type`, `relation`) values('56','<en>Gilding Statues</en><vi>Tượng Dát Vàng</vi>','5','san-pham/noi-that/tuong-dat-vang','tuong-dat-vang','26','0','1',NULL);
 
+UPDATE `parameter` SET `value` =  'sanpham' WHERE `id` = 64;
+
 }}}
