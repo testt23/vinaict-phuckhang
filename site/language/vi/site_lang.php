@@ -144,3 +144,12 @@ $lang['address']                    = 'Địa chỉ';
 $lang['fax']                        = 'Fax';
 $lang['view_more']                  = 'Xem thêm';
 $lang['view_more_other']            = 'Xem các bài viết khác';
+
+/* Thứ */
+$lang['txt_Mon']                    = 'Thứ hai';
+$lang['txt_Tue']                    = 'Thứ ba';
+$lang['txt_Wed']                    = 'Thứ tư';
+$lang['txt_Thu']                    = 'Thứ năm';
+$lang['txt_Fri']                    = 'Thứ sáu';
+$lang['txt_Sat']                    = 'Thứ bảy';
+$lang['txt_Sun']                    = 'Chủ nhật';

@@ -18,7 +18,7 @@
              
         ?>
         <p class="title"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php  echo getI18n($article['title'][$j]); ?></a>
-        <h7 class="date"><?php echo date_sql_to_local_date($article['date'][$j]); ?></h7>
+        <h7 class="date"><?php echo lang('txt_'.date('D',  strtotime($article['date'][$j]))).', '.date_sql_to_local_date($article['date'][$j]); ?></h7>
         </p>
         <p class="content-news"> <?php echo strlen(getI18n($article['content'][$j])) > 200 ? substr(getI18n($article['content'][$j]),0,200).'...': getI18($article['content'][$j]) ; ?>
         <span class="view-more"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php echo lang('view_more'); ?> &raquo;</a></span>
@@ -51,7 +51,7 @@
                 <li>    <a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$k]; ?>">
                             <?php echo $list_article['title'][$k]; ?>
                         </a>
-                        <h7 class="date"><?php echo date_sql_to_local_date($list_article['date'][$k]); ?></h7>
+                        <h7 class="date"><?php echo lang('txt_'.date('D',  strtotime($list_article['date'][$k]))).', '.date_sql_to_local_date($list_article['date'][$k]); ?></h7>
                 </li>
                 <?php } ?>
             </ul>
