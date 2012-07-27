@@ -12,7 +12,7 @@ class Product extends Product_model {
         $this->if = new DbInfo();
         $this->lang = get_system_language();
         $this->image_default = base_url() . $this->config->item('image_defailt_thum');
-        $this->pre_fix_product = isset($_SERVER['PATH_INFO']) ? trim(str_replace(array('products', 'index.html'), array('products', 'products'), $_SERVER['PATH_INFO']), '/') : trim(get_raw_app_uri(), '/');
+        $this->pre_fix_product = isset($_SERVER['PATH_INFO']) ? trim(str_replace(array(Variable::getProductPageString(), 'index.html'), array(Variable::getProductPageString(), Variable::getProductPageString()), $_SERVER['PATH_INFO']), '/') : trim(get_raw_app_uri(), '/');
         if ($this->pre_fix_product == '') {
             $this->pre_fix_product = 'products';
         }

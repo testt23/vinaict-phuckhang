@@ -14,7 +14,8 @@ class Product_controller extends CI_Controller {
     
     
     // function display a list products by page
-    public function prod_list_by_category($url_cate = '') {
+    public function prod_list_by_category() {
+        $url_cate = get_raw_app_uri();
         if (!empty($url_cate)) {
             $Product = new Product();
             $info = $Product->getProductByCategory($url_cate);
@@ -150,7 +151,6 @@ class Product_controller extends CI_Controller {
     // function get list cart and order cart
     public function prod_list_cart() {
         $Shopping = new ShoppingCart();
-
         if ($this->input->post('click_access') != null && $this->input->post('click_access') == 'click_access') {
             $id_product = $this->input->post('h_id');
             $code_product = $this->input->post('h_code');

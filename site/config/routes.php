@@ -49,7 +49,7 @@ $route['directory'] = '';
 $route['^contact.html'] =  'contact/index';
 
 // index page
-
+$route['^sitemap.html'] =  'page/getSitemap';
 $route['^'.Variable::getActiveShopPageString()] =  'product/active_cat';
 
 $route['^'.Variable::getIndexPageString().'.html'] =  'index';
