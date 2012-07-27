@@ -6,8 +6,22 @@ class Contact_controller extends CI_Controller {
         parent::__construct();
     }
 
-    public function index() {     
-        $data['content'] = 'contact';        
+    public function index() { 
+        
+        //menu
+        $array_menus = array();
+        $filter1 = array();
+        $filter1['parent_id'] = 0;
+        Menu::getMenuTree($array_menus, $filter1);
+        
+        $data['content'] = 'contact';
+        $data['array_menus'] = $array_menus;
+        $data['selected'] = 'contact';      
+        
+        $data['content'] = 'contact';    
+        $data['title_page'] = lang('title_page_contact');
+        $data['description'] = lang('description_page_contact');
+        $data['keywords'] = lang('keywords_page_contact');
         $this->load->view('temp', $data);
     }
     

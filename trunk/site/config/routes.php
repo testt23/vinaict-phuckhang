@@ -43,6 +43,11 @@ $route['default_controller'] = "index";
 $route['controller_suffix'] = '_controller';
 $route['404_override'] = '';
 $route['directory'] = '';
+
+
+// contact page
+$route['^contact.html'] =  'contact/index';
+
 // index page
 
 $route['^'.Variable::getActiveShopPageString()] =  'product/active_cat';

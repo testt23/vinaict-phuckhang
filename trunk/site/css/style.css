@@ -1020,3 +1020,34 @@ range-image-wrapper{
     opacity: 1.0;
     filter:alpha(opacity=100);
 }
+
+.contact{
+    float: right;
+    width: 490px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.contact ul{
+    padding: 10px;
+}
+
+.contact ul li{
+    padding: 10px;
+    font-size: 18px;
+    font-family: array;
+}
+
+.uppercase{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.website-address{
+    text-decoration: none;
+    color: #0000ff;
+}
+
+.website-address:hover{
+    color: #ff0033;
+}

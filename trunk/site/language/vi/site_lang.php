@@ -84,14 +84,14 @@ $lang['txt_message'] = 'Thông tin liên hệ';
 /* Contact US */
 $lang['txt_name_contact']       = 'Họ tên người liên hệ';
 $lang['txt_company_contact']    = 'Tên công ty liên hệ';
-$lang['txt_website_contact']    = 'Website công ty';
+$lang['txt_website_contact']    = 'Website';
 $lang['txt_tax_code_contact']   = 'Mã số thuế';
 $lang['txt_email_contact']      = 'Email';
 $lang['txt_yahoo_contact']      = 'Nick yahoo';
 $lang['txt_skype_contact']      = 'Nick skype';
 $lang['txt_message_contact']    = 'Nội dung liên hệ';
 $lang['txt_person_contact']     = 'Người liên hệ';
-$lang['txt_phone_contact']      = 'Số điện thoại';
+$lang['txt_phone_contact']      = 'Điện thoại';
 
 
 // page product detail
@@ -139,3 +139,8 @@ $lang['keywords_page_order']        = 'Giỏ hàng, danh sách sản phẩm';
 $lang['title_news_page']       = 'Tin tức';
 $lang['description_news_page']      = 'Tín tức của cửa hàng dát vàng Phúc Khang';
 $lang['keywords_news_page']         = 'Tin tức, dát vàng Phúc Khang';
+
+$lang['address']                    = 'Địa chỉ';
+$lang['fax']                        = 'Fax';
+$lang['view_more']                  = 'Xem thêm';
+$lang['view_more_other']            = 'Xem các bài viết khác';

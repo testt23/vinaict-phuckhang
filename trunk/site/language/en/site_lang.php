@@ -136,3 +136,8 @@ $lang['title_news_page']       = 'News';
 $lang['description_news_page']      = 'News of gold shop Phuc Khang';
 $lang['keywords_news_page']         = 'News, gold shop Phuc Khang';
 
+
+$lang['address']                    = 'Address';
+$lang['fax']                        = 'Fax';
+$lang['view_more']                  = 'View more';
+$lang['view_more_other']            = 'View other articles';
