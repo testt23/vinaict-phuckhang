@@ -35,7 +35,7 @@
                         <li><a href="<?php echo base_url(); ?>"><?php echo lang('site_home'); ?></a></li>
                         <li><a href="<?php echo base_url('about.html'); ?>"><?php echo lang('site_about_us'); ?></a></li>
                         <li><a href="<?php echo base_url('contact.html'); ?>"><?php echo lang('site_contact'); ?></a></li>
-                        <li><a href="<?php echo base_url('sitemap.html'); ?>"><?php echo lang('site_map'); ?></a></li>
+                        <li><a href="<?php echo base_url('site-map.html'); ?>"><?php echo lang('site_map'); ?></a></li>
                     </ul>
                     <div id="copyright">
                         <p>
