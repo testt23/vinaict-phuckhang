@@ -75,7 +75,7 @@ class Variable {
     
     // index page string route
     public function getIndexPageString(){
-        return defined('SITE_PAGE_DEFAULT_STRING') ? SITE_PAGE_DEFAULT_STRING : 'index.html';
+        return defined('SITE_PAGE_DEFAULT_STRING') ? SITE_PAGE_DEFAULT_STRING : 'index';
     }
     
     // page page string route
