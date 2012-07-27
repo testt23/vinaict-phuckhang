@@ -1437,4 +1437,10 @@ UPDATE `menu` SET `link` = 'lien-he.html', `section` = 'lien-he' WHERE `id` = 40
 ALTER TABLE `parameter` 
    CHANGE `value` `value` TEXT NOT NULL;
 
+UPDATE `parameter` SET `value` = '<en>Come to Phuc Khang to own the best gilded items such as gilded frames, gilded souvenirs, the luxury gilded furnitures and the high quality gilded statues.</en><vi>Hãy đến với Phúc Khang để sở hữu những vật phẩm dát vàng đẳng cấp và tuyệt vời nhất như: Khung hình, quà lưu niệm dát vàng độc đáo, đồ nội thất dát vàng sang trọng và tượng dát vàng cao cấp</vi>' WHERE `id` = 90;
+
+INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES
+(96, 'Overall Meta Title', 'FO_META_OVERALL_TITLE', '<en>Gilding, Gilded Frames, Gilded Souvenirs, Gilded Furniture, Gilded Statues</en><vi>Dát Vàng, Quà Lưu Niệm, Đồ Nội Thất, Tượng Dát Vàng</vi>', 1, 0, '2012-07-27 19:27:20', NULL, 1, NULL, 0, 12, NULL);
+
+
 }}}
