@@ -50,7 +50,7 @@ class WebPage extends Web_page_model {
         
         while ($lang->fetchNext()) {
                 
-            if (strlen(getI18n($this->title, $lang->code)) > MAX_LENGTH_NAME) {
+            if (strlen(getI18n($this->title, $lang->code)) > (MAX_LENGTH_TITLE * MAX_LENGTH_TITLE)) {
                 MessageHandler::add (lang('err_title_too_long').': '.lang('msg_please_check'). '', MSG_ERROR, MESSAGE_ONLY);
             }
             
