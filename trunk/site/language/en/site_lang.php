@@ -141,3 +141,12 @@ $lang['address']                    = 'Address';
 $lang['fax']                        = 'Fax';
 $lang['view_more']                  = 'View more';
 $lang['view_more_other']            = 'View other articles';
+
+/* Thứ */
+$lang['txt_Mon']                    = 'Monday';
+$lang['txt_Tue']                    = 'Tuesday';
+$lang['txt_Wed']                    = 'Webnesday';
+$lang['txt_Thu']                    = 'Thursday';
+$lang['txt_Fri']                    = 'Friday';
+$lang['txt_Sat']                    = 'Saturday';
+$lang['txt_Sun']                    = 'Sunday';

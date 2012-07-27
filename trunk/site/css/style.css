@@ -188,12 +188,33 @@ body {
     padding: 20px 0;
 }
 #container{
-    background-color: #FDFDE8;
+    background: #FDFDE8;
     width:980px;
     min-height: 285px;
     margin: 0 auto;
-    padding-bottom: 20px;
     border: 1px solid #e5b201;
+}
+
+#content-container{
+    width: 74%;
+    float: left;
+    border-right: 1px solid #e5b201;
+    padding-bottom: 20px;
+    min-height: 285px;
+}
+
+#content-container .side-show{
+    width: 100%;
+    display: block;
+    height: 300px;
+    border-bottom: 1px solid #e5b201;
+}
+
+#sidebar-container{
+    width: 25%;
+    float: left;
+    min-height: 285px;
+    padding-bottom: 20px;
 }
 #container p{
     margin:20px;
@@ -215,19 +236,18 @@ body {
 /*them moi*/
 
 #product-container{
-    width: 960px;
     padding: 20px 20px 0px 20px;
-
 }
+
 #product-container ul{
-    width: 980px;
+    width: 99%;
     margin: 0px auto;
 }
 #product-container ul li{
     width:200px;
     height:275px;
     float:left;
-    padding:0px 15px 10px 15px;
+    padding:12px;
     margin: 0px;
 }
 
@@ -1022,20 +1042,23 @@ range-image-wrapper{
 }
 
 .contact{
-    float: right;
-    width: 490px;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin: 0px auto;
+    width: 100%;
+    margin-bottom: 30px;
+    display: block;
+    text-align: center;
 }
 
 .contact ul{
     padding: 10px;
+    margin-left: 50px;
 }
 
 .contact ul li{
     padding: 10px;
     font-size: 18px;
     font-family: array;
+    text-align: left !important;
 }
 
 .uppercase{
