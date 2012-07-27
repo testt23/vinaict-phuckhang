@@ -47,7 +47,7 @@ class ProductCategory extends Product_category_model {
         return $this->{$this->if->_product_category_as_link};
     }
     public function get_prod_cate_meta_description(){
-        return getI18n($this->{$this->if->_product_category_as_meta_description}, self::$lang);
+        return getI18n($this->{$this->if->_product_category_as_description}, self::$lang);
     }
     public function get_prod_cate_description() {
         return getI18n($this->{$this->if->_product_category_as_description}, self::$lang);

@@ -52,10 +52,11 @@ $route['^contact.html'] =  'contact/index';
 $route['^site-map.html'] =  'index/sitemap';
 
 // index page
+$route['^index'] =  'error';
 $route['^sitemap.html'] =  'page/getSitemap';
 $route['^'.Variable::getActiveShopPageString()] =  'product/active_cat';
 
-$route['^'.Variable::getIndexPageString().'.html'] =  'index';
+$route['^'.Variable::getIndexPageString()] =  'index';
 
 // order
 $route['^'.Variable::getProductListCartPageString().''] =  'product/prod_list_cart';

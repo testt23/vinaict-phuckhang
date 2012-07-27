@@ -75,7 +75,7 @@ class Variable {
     
     // index page string route
     public function getIndexPageString(){
-        return defined('SITE_PAGE_INDEX_STRING') ? SITE_PAGE_INDEX_STRING : 'index';
+        return defined('SITE_PAGE_DEFAULT_STRING') ? SITE_PAGE_DEFAULT_STRING : 'index.html';
     }
     
     // page page string route
@@ -101,7 +101,7 @@ class Variable {
     
     // product list cart 
     public function getProductListCartPageString(){
-        return defined('SITE_PAGE_PRODUCT_LIST_CART_STRING') ? SITE_PAGE_PRODUCT_LIST_CART_STRING : 'list-cart';
+        return defined('SITE_PAGE_PRODUCT_LIST_CART_STRING') ? SITE_PAGE_PRODUCT_LIST_CART_STRING : 'gio-hang';
     }
     
     
