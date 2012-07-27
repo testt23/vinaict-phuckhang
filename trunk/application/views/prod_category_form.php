@@ -101,7 +101,7 @@
                             </label>
                             <div>
                                 <select id="id_parent" name="id_parent" class="field select medium"  size="10" >
-                                    <option value="0" <?php if ($id_parent == '0' or $id_parent == '') echo 'selected'; ?>> + <?php echo lang('txt_prod_cate_is_parent'); ?> </option>
+                                    <option value="0" <?php if ($id_parent == '0' or $id_parent == '') echo 'selected'; ?>> -- <?php echo lang('txt_prod_cate_is_parent'); ?> </option>
                                     <?php foreach ($categories as $category) { ?>
                                     
                                     <option <?php if ($category['id'] == $id_parent) { echo 'selected'; } ?> value="<?php echo $category['id']; ?>">
