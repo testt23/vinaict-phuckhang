@@ -1,7 +1,7 @@
 <?php while($news_category->fetchNext()){ ?>
 
 <div class="news">
-    <h2 class="news-category"><?php echo $news_category->name; ?></h2>
+    <h2 class="news-category"><?php echo $news_category->get_name(); ?></h2>
     <div class="news-new">
         <?php
          $i = 0;
@@ -17,17 +17,17 @@
                      if( $i < 2 ){
              
         ?>
-        <p class="title"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php  echo $article['title'][$j]; ?></a>
+        <p class="title"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php  echo getI18n($article['title'][$j]); ?></a>
         <h7 class="date"><?php echo date_sql_to_local_date($article['date'][$j]); ?></h7>
         </p>
-        <p class="content-news"> <?php echo strlen($article['content'][$j]) > 200 ? substr($article['content'][$j],0,200).'...': $article['content'][$j] ; ?>
-        <span class="view-more"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>">Xem thêm &raquo;</a></span>
+        <p class="content-news"> <?php echo strlen(getI18n($article['content'][$j])) > 200 ? substr(getI18n($article['content'][$j]),0,200).'...': getI18($article['content'][$j]) ; ?>
+        <span class="view-more"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php echo lang('view_more'); ?> &raquo;</a></span>
         </p>
         <?php 
                         $i++;
                      }elseif( $i < 8 ){
                          $list_article['id'][] =  $article['id'][$j];
-                         $list_article['title'][] =  $article['title'][$j];
+                         $list_article['title'][] =  getI18n($article['title'][$j]);
                          $list_article['date'][] =  $article['date'][$j];
                          $i++;
                      }else break;
@@ -56,7 +56,7 @@
                 <?php } ?>
             </ul>
         
-            <span class="view-more"><a href="<?php echo base_url(); ?>news/list_article/<?php echo $news_category->id; ?>">Xem thêm &raquo;</a></span>
+            <span class="view-more"><a href="<?php echo base_url(); ?>news/list_article/<?php echo $news_category->id; ?>"><?php echo lang('view_more_other'); ?> &raquo;</a></span>
         
         <?php } ?>
     </div>
