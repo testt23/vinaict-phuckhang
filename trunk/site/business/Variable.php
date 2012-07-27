@@ -60,7 +60,7 @@ class Variable {
     /******************** DEFAULT PAGE******************************/
     /***************************************************************/
     public function getDefaultPageString(){
-        return defined('SITE_PAGE_DEFAULT_STRING') ? SITE_PAGE_DEFAULT_STRING : 'index';
+        return defined('SITE_PAGE_DEFAULT_STRING') ? SITE_PAGE_DEFAULT_STRING : 'trang-chu.html';
     }
     
     
@@ -86,7 +86,7 @@ class Variable {
     
     // product page string route
     public function getProductPageString(){
-        return defined('SITE_PAGE_PRODUCT_STRING') ? SITE_PAGE_PRODUCT_STRING : 'products';
+        return defined('SITE_PAGE_PRODUCT_STRING') ? SITE_PAGE_PRODUCT_STRING : 'san-pham';
     }
     
     // product page string route
