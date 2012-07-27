@@ -212,4 +212,6 @@ $lang['txt_social_link']                = 'Linkes list';
 $lang['txt_add_social_link']            = 'Add a link';
 $lang['txt_url']                        = 'Url';
 
+/*product category*/
+$lang['txt_prod_cate_is_parent'] = 'Is Parent';
 ?>

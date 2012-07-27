@@ -226,3 +226,4 @@ $lang['txt_social_link']                = 'Danh sách liên kết';
 $lang['txt_add_social_link']            = 'Thêm liên kết';
 $lang['txt_url']                        = 'Url';
 $lang['txt_edit_social_link']           = 'Sửa thông tin liên kết';
+$lang['txt_prod_cate_is_parent'] = 'Nhóm sản phẩm cha';
