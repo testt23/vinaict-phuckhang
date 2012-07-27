@@ -25,7 +25,7 @@
                     $data['content']  = 'index';
                     $data['array_menus'] = $array_menus;
                     
-                    $data['title_page'] = lang('title_home_page');
+                    $data['title_page'] = getI18n(FO_META_OVERALL_TITLE);
                     $data['description'] = getI18n(FO_META_DESCRIPTION);
                     $data['keywords'] = FO_META_KEYWORDS;
                     
