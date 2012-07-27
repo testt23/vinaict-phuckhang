@@ -5,7 +5,7 @@ class ProductCategory extends Product_category_model {
     function __construct() {
             parent::__construct();
     }
-
+    
     function getList($filter = array()) {
 
         $prod_category = new ProductCategory();
@@ -42,7 +42,7 @@ class ProductCategory extends Product_category_model {
         if (isset($filter['id_prod_category_parent']) && $filter['id_prod_category_parent'])
             $prod_category->addWhere("FIND_IN_SET('".$filter['id_prod_category_parent']."', id_parent)");
         else
-            $prod_category->addWhere("id_parent IS NULL");
+            $prod_category->addWhere("id_parent IS NULL OR id_parent = 0");
 
         if (!isset($filter['level']))
             $filter['level'] = 0;
@@ -204,5 +204,24 @@ class ProductCategory extends Product_category_model {
         $this->update();
         
     }
-                
+    
+    
+    /*writen by TheHalfHeart*/
+    function getLinkById($id){
+        if ($id * 1 > 0)
+        {
+            $category = new ProductCategory();
+            $category->addSelect();
+            $category->addSelect('product_category.link');
+            $category->addWhere('product_category.id = ' . $id );
+            $category->find();
+            if ($category->countRows() > 0)
+            {
+                $category->fetchFirst();
+                return trim($category->link, '/');
+            }
+        }
+        return '';
+    }       
+    
 }
