@@ -1325,4 +1325,10 @@ insert into `menu` (`id`, `name`, `position`, `link`, `section`, `id_parent`, `d
 UPDATE `parameter` SET `value` =  'san-pham' WHERE `id` = 64;
 
 UPDATE `parameter` SET `value` = 'gio-hang.html' WHERE `id` = 67
+
+
+/*27/07/2012 - Nguyen Van Cuong - add parameter*/
+insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('93','Chars percent word','CHARS_PER_WORD','6','1','0','2012-07-27 17:18:18',NULL,'1','1','0','1',NULL);
+insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('94','Max length short description meta','MAX_LENGTH_SHORT_DESC','50','1','0','2012-07-27 17:20:22',NULL,'1',NULL,'0','1',NULL);
+insert into `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) values('95','Max length title','MAX_LENGTH_TITLE','12','1','0','2012-07-27 17:21:03',NULL,'1',NULL,'0','1',NULL);
 }}}
