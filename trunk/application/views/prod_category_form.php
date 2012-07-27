@@ -100,7 +100,7 @@
                                     <?php echo lang('txt_parent_product_category'); ?> 
                             </label>
                             <div>
-                                <select id="id_parent" name="id_parent" class="field select medium"  size="10" >
+                                <select id="id_parent" name="id_parent" class="field select medium">
                                     <option value="0" <?php if ($id_parent == '0' or $id_parent == '') echo 'selected'; ?>> -- <?php echo lang('txt_prod_cate_is_parent'); ?> </option>
                                     <?php foreach ($categories as $category) { ?>
                                     
