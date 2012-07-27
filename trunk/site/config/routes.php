@@ -50,9 +50,9 @@ $route['^contact.html'] =  'contact/index';
 
 // contact page
 $route['^site-map.html'] =  'index/sitemap';
-
+$route['^tin-tuc/(:any)'] =  'news/$1';
+$route['^tin-tuc'] =  'news';
 // index page
-$route['^index'] =  'error';
 $route['^sitemap.html'] =  'page/getSitemap';
 $route['^'.Variable::getActiveShopPageString()] =  'product/active_cat';
 
