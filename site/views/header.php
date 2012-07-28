@@ -53,6 +53,23 @@
                 jQuery('.close-search-pop').click(function(){
                     jQuery('.search-popup').removeClass('show').addClass('hide');
                 });
+                
+                var list_li = jQuery('#menu > ul > li');
+                for (var i = 0; i < list_li.length; i++){
+                    var obj = list_li[i];
+                    var left = parseInt(jQuery(obj).css('width').replace('px','') - 20).toString() + 'px';
+                    var ul = jQuery(obj).children('ul');
+                    var li = jQuery(ul).children('li');
+                    li.css('width', left);
+                    ul.css('width', jQuery(obj).css('width'));
+                    if (ul.length > 0){
+                        console.log(left);
+                        jQuery('#menu > ul > li > ul > li')
+                        .children('ul')
+                        .css('left', jQuery(obj).css('width'));
+                    }
+                }
+                
             });
              
             
