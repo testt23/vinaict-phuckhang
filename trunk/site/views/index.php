@@ -15,7 +15,7 @@
                     <div class="wrapper-popup">
                         <div class="list-image-wrapper">
                             <a class="range-img" href="<?php echo $product->get_product_link(); ?>">
-                                <img src="<?php echo $product->get_image_link_thumb(); ?>" alt="<?php echo $product->get_image_name(); ?>" />
+                                <img src="<?php echo $product->get_image_link_thumb(); ?>" alt="<?php echo $product->get_product_name(); ?>" />
                             </a>
                         </div>
                     </div>

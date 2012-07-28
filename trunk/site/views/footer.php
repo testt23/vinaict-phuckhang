@@ -21,13 +21,13 @@
             <div id="footer" >
                 <div id="linkbox">
                     <div class="box">
-                        <a href="<?php echo base_url('products/qua-luu-niem/');  ?>"><img src="<?php echo $image_path; ?>/pk-souvenirs.png"  alt=""/></a>
+                        <a href="<?php echo base_url('san-pham/qua-luu-niem/');  ?>"><img src="<?php echo $image_path; ?>/pk-souvenirs.png"  alt="qua luu niem"/></a>
                     </div>
                     <div class="box" style="margin-left:112px;">
-                        <a href="<?php echo base_url('products/noi-that/');  ?>"><img src="<?php echo $image_path; ?>/pk-interior.png"  alt=""/></a>
+                        <a href="<?php echo base_url('san-pham/noi-that/');  ?>"><img src="<?php echo $image_path; ?>/pk-interior.png"  alt="noi that"/></a>
                     </div>
                     <div class="box" style="float:right;">
-                        <a href="<?php echo base_url('products/spa/');  ?>"><img src="<?php echo $image_path; ?>/pk-spa.png"  alt=""/></a>
+                        <a href="<?php echo base_url('san-pham/spa/');  ?>"><img src="<?php echo $image_path; ?>/pk-spa.png"  alt="spa"/></a>
                     </div>
                 </div>
                 <div id="footer-info">

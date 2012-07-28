@@ -82,7 +82,19 @@
         </style>
         <![endif]-->
         
-            
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-33711474-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>    
         
     </head>
     
@@ -114,7 +126,7 @@
                            if($lang = Language::getArraylangIso()){
                                    foreach($lang as $k => $l){
                         ?>
-                        <a id="<?php echo $l; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right <?php if($this->session->userdata('lang')) { echo (($this->session->userdata('lang') == $l )?"language-wrapper-active":"language-wrapper-unactive"); } elseif($l == 'vi') echo "language-wrapper-active"; else echo "language-wrapper-unactive"; ?>"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" /></a>
+                        <a id="<?php echo $l; ?>" href="<?php echo base_url(); ?>language/index/?lang=<?php echo $l; ?>" class="float-right <?php if($this->session->userdata('lang')) { echo (($this->session->userdata('lang') == $l )?"language-wrapper-active":"language-wrapper-unactive"); } elseif($l == 'vi') echo "language-wrapper-active"; else echo "language-wrapper-unactive"; ?>"><span><?php echo $k; ?></span> <img style="width: 24px; height: 24px;" src="<?php echo base_url(); ?>/images/icons/<?php echo $l; ?>.png" alt="<?php echo $k; ?>" /></a>
                          <?php 
                                     } 
                               }
@@ -180,9 +192,9 @@
                 </div>
                 -->
                 </div>
-                <div id="logo">
-                    <a href="#"><img src="<?php echo $image_path; ?>/Logo.png" alt="" /></a>
-                </div>
+                <h1 id="logo">
+                    <a href="<?php echo base_url(); ?>"><img src="<?php echo $image_path; ?>/Logo.png" alt="<?php echo getI18n(SITE_NAME).', '.FO_META_KEYWORDS; ?>" /></a>
+                </h1>
                 
                 <div class="clear"></div>
             </div>
