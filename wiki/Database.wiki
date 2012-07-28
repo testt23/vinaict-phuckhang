@@ -1080,4 +1080,7 @@ UPDATE `parameter` SET `value` = 'dat-hang.html' WHERE `id` = 65;
 UPDATE `parameter` SET `value` = 'lien-he.html' WHERE `id` = 66;
 UPDATE `parameter` SET `value` = 'gio-hang.html' WHERE `id` = 67;
 
+/* 28-07-2012 - Nguyen van cuong - Update webpage*/
+UPDATE web_page SET link = 'gioi-thieu' WHERE id = 2;
+
 }}}
