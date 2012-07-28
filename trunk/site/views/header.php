@@ -63,13 +63,11 @@
                     li.css('width', left);
                     ul.css('width', jQuery(obj).css('width'));
                     if (ul.length > 0){
-                        console.log(left);
                         jQuery('#menu > ul > li > ul > li')
                         .children('ul')
                         .css('left', jQuery(obj).css('width'));
                     }
                 }
-                
             });
              
             
