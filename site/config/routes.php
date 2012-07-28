@@ -46,7 +46,7 @@ $route['directory'] = '';
 
 
 // contact page
-$route['^lien-he.html'] =  'contact/index';
+$route['^'. Variable::getProductContactPageString()] =  'contact/index';
 
 // contact page
 $route['^site-map.html'] =  'index/sitemap';
