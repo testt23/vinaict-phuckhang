@@ -10,7 +10,6 @@ class Page_controller extends CI_Controller {
     }
 
     public function the_page($link = '') {
-        
         if ($link != '') {
             $Webpage = new WebPage();
             $info = $Webpage->getPage($link);

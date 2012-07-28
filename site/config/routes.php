@@ -46,7 +46,7 @@ $route['directory'] = '';
 
 
 // contact page
-$route['^contact.html'] =  'contact/index';
+$route['^lien-he.html'] =  'contact/index';
 
 // contact page
 $route['^site-map.html'] =  'index/sitemap';
@@ -62,6 +62,7 @@ $route['^'.Variable::getIndexPageString()] =  'index';
 $route['^'.Variable::getProductListCartPageString().''] =  'product/prod_list_cart';
         //$route['^product'] =  'product/prod_list_cart';
 $route['^'.Variable::getProductOrderPageString().''] =  'product/prod_order_contact';
+
         //$route['^product/list-cart'] =  'product/prod_list_cart';
 
 $route['^'.Variable::getProductPageString().'/'.Variable::getProductPageSearchString().''] =  'product/prod_search';

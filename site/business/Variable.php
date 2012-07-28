@@ -96,7 +96,7 @@ class Variable {
     
     //product contact
     public function getProductContactPageString(){
-        return defined('SITE_PAGE_PRODUCT_CONTACT_STRING') ? SITE_PAGE_PRODUCT_CONTACT_STRING : 'contact';
+        return defined('SITE_PAGE_PRODUCT_CONTACT_STRING') ? SITE_PAGE_PRODUCT_CONTACT_STRING : 'contact.html';
     }
     
     // product list cart 
