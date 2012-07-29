@@ -23,13 +23,14 @@
         ?>
         
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="<?php echo base_url('images/icons/') ?>favicon.png" rel="shortcut icon" type="image/x-icon" />
         
         <meta http-equiv="content-language" content="<?php echo get_system_language(); ?>" />
         <title><?php echo getI18n(SITE_NAME, get_system_language()) . ' - '. $title_page ; ?></title>
                         
         <meta name="description" content="<?php echo $description; ?>" />
         <meta name="keywords" content="<?php echo $keywords; ?>"/>
+		<meta name="Publisher" content="vinaict" />
         
         <meta name="robots" content="noodp,index,follow" />
         <meta name='revisit-after' content='1 days' />
