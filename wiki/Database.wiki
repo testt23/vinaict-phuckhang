@@ -1085,5 +1085,6 @@ UPDATE web_page SET link = 'gioi-thieu' WHERE id = 2;
 
 /* 01-08-2012 - Pham Thanh Nam - add image article*/
 ALTER TABLE `article` ADD `id_image` VARCHAR( 255 ) NULL AFTER `keywords`;
+INSERT INTO `image_group` (`id`, `code`, `name`, `id_image_size`, `use_wm`) VALUES (NULL, 'article', 'Article', '6', '0');
 
 }}}
