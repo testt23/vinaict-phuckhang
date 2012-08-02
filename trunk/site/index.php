@@ -157,10 +157,7 @@ include 'app_config.php';
         
 /*code bellow require by cuong*/
 
-require_once(APPPATH . 'libraries/JSON.php');
-require_once(APPPATH . 'libraries/Yahoo.inc');
-require_once(APPPATH . 'libraries/YahooSessionStore.inc');
-require_once(APPPATH . 'libraries/OAuth.php');
+@require_once(APPPATH . 'libraries/yahoo_api/Yahoo.inc');
 
 /*end*/
 /*
