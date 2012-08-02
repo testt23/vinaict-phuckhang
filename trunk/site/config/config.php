@@ -417,3 +417,21 @@ $config['self_url_name'] = 'www.DatVangNgheThuat.com';
 $config['self_url'] = 'www.DatVangNgheThuat.com';
 $config['self_email'] = 'phuckhanggold@gmail.com';
 $config['title'] = 'Xác nhận thông tin đặt hạng';
+
+
+    
+
+// facebook app
+
+$config['facebook_app_id'] = '389891111065749';
+$config['facebook_app_key'] = '';
+$config['facebook_app_secret'] = '45be4d05a788f15aa83c52b2752f58fa';
+
+//tweet ap
+$config['tweet_consumer_key'] = "YOUR-CONSUMER-KEY";
+$config['tweet_consumer_secret'] = "YOUR-CONSUMER-SECRET";
+
+// google open id
+
+
+// yahoo open id

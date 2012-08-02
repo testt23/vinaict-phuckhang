@@ -106,7 +106,8 @@ class DbInfo {
     public $_image_as_description                   = 'image_description';
     public $_image_as_id_image_group                = 'image_id_image_group';
     public $_image_as_file                          = 'image_file';
-    public $_image_as_creation_date_timestamp       = 'image_creation_date_timestamp';
+    public $_image_as_creation_date                 = 'image_creation_date';
+    public $_image_as_is_display_front_end                = 'image_is_display_front_end';
     
     public $_image_id                               = 'image.id';
     public $_image_code                             = 'image.code';
@@ -114,8 +115,8 @@ class DbInfo {
     public $_image_description                      = 'image.description';
     public $_image_id_image_group                   = 'image.id_image_group';
     public $_image_file                             = 'image.file';
-    public $_image_creation_date_timestamp          = 'image.creation_date_timestamp';
-    
+    public $_image_creation_date                    = 'image.creation_date';
+    public $_image_is_display_front_end             = 'image.is_display_front_end';
     
     /*IMAGE GROUP*/
     
