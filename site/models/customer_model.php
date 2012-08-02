@@ -12,9 +12,9 @@
 		var $company;	//varchar(200)			NULL
 		var $gender;	//char(1)			NULL
 		var $birthdate;	//date			NULL
-		var $billing_address;	//varchar(255)			NOT NULL
-		var $shipping_address;	//varchar(255)			NOT NULL
-		var $contact_address;	//varchar(255)			NOT NULL
+		var $billing_address;	//varchar(255)			NULL
+		var $shipping_address;	//varchar(255)			NULL
+		var $contact_address;	//varchar(255)			NULL
 		var $home_phone;	//varchar(20)			NULL
 		var $work_phone;	//varchar(20)			NULL
 		var $mobile_phone;	//varchar(20)			NULL
@@ -29,6 +29,7 @@
 		var $career;	//varchar(50)			NULL
 		var $contact_person;	//varchar(200)			NULL
 		var $position;	//varchar(50)			NULL
+		var $openid;	//varchar(150)			NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'int', 'null' => FALSE, 'auto_increment' => TRUE),
@@ -38,9 +39,9 @@
 			'company' => array('type' => 'varchar', 'size' => 200, 'null' => TRUE),
 			'gender' => array('type' => 'char', 'size' => 1, 'null' => TRUE),
 			'birthdate' => array('type' => 'date', 'null' => TRUE),
-			'billing_address' => array('type' => 'varchar', 'size' => 255, 'null' => FALSE),
-			'shipping_address' => array('type' => 'varchar', 'size' => 255, 'null' => FALSE),
-			'contact_address' => array('type' => 'varchar', 'size' => 255, 'null' => FALSE),
+			'billing_address' => array('type' => 'varchar', 'size' => 255, 'null' => TRUE),
+			'shipping_address' => array('type' => 'varchar', 'size' => 255, 'null' => TRUE),
+			'contact_address' => array('type' => 'varchar', 'size' => 255, 'null' => TRUE),
 			'home_phone' => array('type' => 'varchar', 'size' => 20, 'null' => TRUE),
 			'work_phone' => array('type' => 'varchar', 'size' => 20, 'null' => TRUE),
 			'mobile_phone' => array('type' => 'varchar', 'size' => 20, 'null' => TRUE),
@@ -54,7 +55,8 @@
 			'fax' => array('type' => 'varchar', 'size' => 20, 'null' => TRUE),
 			'career' => array('type' => 'varchar', 'size' => 50, 'null' => TRUE),
 			'contact_person' => array('type' => 'varchar', 'size' => 200, 'null' => TRUE),
-			'position' => array('type' => 'varchar', 'size' => 50, 'null' => TRUE)
+			'position' => array('type' => 'varchar', 'size' => 50, 'null' => TRUE),
+			'openid' => array('type' => 'varchar', 'size' => 150, 'null' => TRUE)
 		);
 
 		protected $__relation = array(

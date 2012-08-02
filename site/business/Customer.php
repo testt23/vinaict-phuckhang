@@ -19,7 +19,28 @@ class Customer extends Customer_model {
 
     }
 
-
+    
+    public function _insert($data){
+        
+        $customer = new Customer();
+        
+        if (isset($data['contact/email']) && $data['contact/email'])
+            $customer->email = $data['contact/email'];
+        
+        if (isset($data['namePerson/first']) && $data['namePerson/first'])
+            $customer->firstname = $data['namePerson/first'];
+        
+        if (isset($data['namePerson/last']) && $data['namePerson/last'])
+            $customer->lastname = $data['namePerson/last'];
+        
+        if (isset($data['openid']) && $data['openid'])
+            $customer->openid = $data['openid'];
+        
+        $customer->insert();
+    }
+    
+    
+/*
     public function insert_with_company() {
         // neu nguoi dung submit
         $Customer->email = $this->input->post('email');
@@ -68,5 +89,5 @@ class Customer extends Customer_model {
         $Customer->yahoo_id = '';
         $Customer->skype_id = '';
     }
-
+*/
 }

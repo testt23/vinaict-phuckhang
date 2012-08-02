@@ -154,6 +154,15 @@ include 'app_config.php';
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
 
+        
+/*code bellow require by cuong*/
+
+require_once(APPPATH . 'libraries/JSON.php');
+require_once(APPPATH . 'libraries/Yahoo.inc');
+require_once(APPPATH . 'libraries/YahooSessionStore.inc');
+require_once(APPPATH . 'libraries/OAuth.php');
+
+/*end*/
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
@@ -199,6 +208,7 @@ function __autoload($className)
 	}
         
 }
+
 
 
 date_default_timezone_set(config_item('timezone'));

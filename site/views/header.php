@@ -38,6 +38,7 @@
         <link href="<?php echo base_url(); ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="<?php echo base_url(); ?>/css/lightbox.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
+        <script type="text/javascript" language="javascript" src="http://www.webservices.mizles.com/services/basic/gfc/gfc.js"></script>        
         <script language="javascript">
             function switchCurrency(id_currency){
                 window.location.href=window.location.href + '?currency=' + id_currency;

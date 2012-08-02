@@ -1,10 +1,29 @@
 <!--
 <?php if ($title_page != ''): ?>
-        <h1 class="title-main">
+            <h1 class="title-main">
     <?php echo $title_page; ?>
-        </h1>
+            </h1>
 <?php endif; ?>
 -->
+<div>
+    <a href="https://plus.google.com/113363812506979846549" rel="publisher">Tìm chúng tôi trên Google+</a>
+    <h1>TEST</h1>
+    
+
+    <a href="<?php echo $openid->authUrl(); ?>">GOOGLE</a>
+    <a href="<?php echo $openid->authUrl(); ?>">YAHOO</a>
+
+    <HR/>
+
+    <script language="javascript">
+        gfc.id="15151858450723523553";
+        
+    </script>
+
+
+    <hr/>
+
+</div>
 <div id="product-container">
     <ul>
         <?php if (isset($product) && $product): ?>
