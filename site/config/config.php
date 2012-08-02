@@ -432,6 +432,14 @@ $config['tweet_consumer_key'] = "YOUR-CONSUMER-KEY";
 $config['tweet_consumer_secret'] = "YOUR-CONSUMER-SECRET";
 
 // google open id
+$config['oauth2_client_id'] = '42178469013.apps.googleusercontent.com';
+$config['oauth2_client_secret'] = '3xiWJg9rQurgAkefuPpiHBCg';
+$config['oauth2_redirect_uri'] = 'https://datvangnghethuat.com/oauth2callback';
 
+$config['oauth_consumer_key'] = 'datvangnghethuat.com';
+$config['oauth_consumer_secret'] = 'QSUjazh265XID1TvQ1LKEdev';
 
 // yahoo open id
+$config['yahoo_consumer_key'] = "dj0yJmk9MWhTMTZ3Zk1PQ240JmQ9WVdrOVdGTklZekpMTlRRbWNHbzlOemd5T0RVME5UWXkmcz1jb25zdW1lcnNlY3JldCZ4PTQw";
+$config['yahoo_consumer_secret'] = "4fd6a01053b3c2185b13d68d785779c8bd2d7565";
+$config['yahoo_app_id'] = "XSHc2K54";
