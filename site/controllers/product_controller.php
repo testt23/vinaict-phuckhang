@@ -19,7 +19,7 @@ class Product_controller extends CI_Controller {
         if (!empty($url_cate)) {
             $Product = new Product();
             $info = $Product->getProductByCategory($url_cate);
-            $data['content'] = 'index';            
+            $data['content'] = 'list_product';            
             $data['product'] = $info['product'];
             $data['paging'] = $info['paging'];
             $data['selected'] = $url_cate;

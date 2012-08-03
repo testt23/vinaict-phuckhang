@@ -1,3 +1,10 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#content-container').css('border','0px');
+        $('#content-container').css('background','none');
+        $('#content-container').css('width','720px;');
+    });
+</script>
 <div id="product-container">
     <ul>
         <?php if (isset($product) && $product): ?>
@@ -14,12 +21,12 @@
                         <h3 class="name-pro"><a href="<?php echo $product->get_product_link(); ?>"><?php echo truncateString($product->get_product_name(), 45); ?></a></h3>
                         <span class="label-pro"><?php echo lang('lbl_prod_code') . ': '; ?></span>
                         <span class="value-pro"><?php echo $product->get_product_code(); ?></span>
-                        <div class="description-pro"><?php echo trim(truncateString($product->get_product_description(), 270)); ?></div>
+                        <span class="description-pro"><?php echo trim(truncateString($product->get_product_description(), 270)); ?></p></span>
                         <p class="view-more"><a href="<?php echo $product->get_product_link(); ?>"><?php echo lang('view_more'); ?>&raquo;</a></p>
                     </div>
                     <div class="clear"></div>
-                    
-                </li>     
+                </li>
+                
                 <?php $i++; ?>    
             <?php endwhile; ?>
         <?php endif; ?>

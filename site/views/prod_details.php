@@ -22,19 +22,13 @@
     <?php $product->fetchFirst(); ?>
     <div id="detail-prod">
         <div class="title-prod"><h1><?php echo $product->get_product_name(); ?></h1></div>
+        
         <div id="slide-show-image">
-
-            <div class="t-slide-wrapper-1">
-                <div class="t-slide">
-                    <div id="lightbox" class="wrap-tslide">
-                        <a rel="prettyPhoto[pp_gal]" href="<?php echo $product->get_image_link(); ?>" title="<?php echo $product->get_product_name(); ?>">
-                            <img id="showimage" src="<?php echo $product->get_image_link_medium(); ?>"/>
-                        </a>
-                    </div>
-                </div>
-               
-            </div>
+                <a rel="prettyPhoto[pp_gal]" href="<?php echo $product->get_image_link(); ?>" title="<?php echo $product->get_product_name(); ?>">
+                    <img src="<?php echo $product->get_image_link_medium(); ?>"/>
+                </a>
         </div>
+        
         <div id="info-show-image">
             <ul>
                 <li>
@@ -49,7 +43,7 @@
                     </font> 
                 </li>
                 <li>
-                    <?php echo $product->get_product_description(); ?>
+                    <div class="description-pro"><?php echo $product->get_product_description(); ?></div>
                 </li>
                 <li>
                     <div id="order" style="background:url(<?php echo base_url(); ?>images/site/<?php echo lang('txt_btn_order'); ?>) no-repeat;" onclick="validate()">

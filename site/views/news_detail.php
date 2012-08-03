@@ -1,6 +1,7 @@
-<div class="news">
+<div class="news-detail">
     <?php $article->fetchNext(); ?>
-    <h2 class="news-category"><?php echo $article->get_title(); ?></h2>
+    <span class="img-detail"><img src="<?php echo Article::get_image_link_small($article->picture); ?>"  /></span>
+    <h2 class="title-detail"><?php echo $article->get_title(); ?></h2>
     <h4 class="date"><?php echo lang('txt_'.date('D',  strtotime($article->date))).', '.$article->get_date(); ?></h4>
-    <p class="content-news"><?php echo $article->get_content(); ?></p>
+    <div class="content-detail"><?php echo $article->get_content(); ?></div>
 </div>
