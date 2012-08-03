@@ -9,11 +9,11 @@ class Article extends Article_model {
     public function getList($filter = array()) {
 
         $article = new Article();
-
-        $article->addJoin(new NewsCategory);
-
+        $article->addJoin(new NewsCategory());
+        $article->addJoin(new Image(),'LEFT');
+        
         $article->addSelect();
-        $article->addSelect('article.*, news_category.name name_category');
+        $article->addSelect('article.*, news_category.name name_category, image.file picture');
 
         if (isset($filter['title']) && $filter['title'])
             $article->addWhere("title LIKE '%" . $filter['title'] . "%'");
@@ -57,4 +57,35 @@ class Article extends Article_model {
         return getI18n($this->keywords);
     }
     
+    public function get_image_group_code(){
+        return 'article';
+    }
+     
+    public function get_image_default(){
+        return direct_url(base_url(config_item('upload_path').'images/'.self::get_image_group_code().'/default.png'));
+    }
+    
+    public function get_image_link_tiny($image) {
+        if(trim($image) == ''){
+            return self::image_exists(self::get_image_default());
+        }
+        $url = self::get_image_group_code(). '/' . str_replace(array('.jpg', '.png', '.gif'), array('_tiny.jpg', '_tiny.png', '_tiny.gif'), $image);
+        return self::image_exists($url);
+    }
+    
+    public function get_image_link_small($image) {
+        if(trim($image) == ''){
+            return self::image_exists(self::get_image_default());
+        }
+        $url = self::get_image_group_code() . '/' . str_replace(array('.jpg', '.png', '.gif'), array('_small.jpg', '_small.png', '_small.gif'), $image);
+        return self::image_exists($url);
+    }
+    
+   public function image_exists($url){
+        $url = trim($url, '/');
+        if (empty($url)){
+            return $this->image_default;
+        }
+        return file_exists(direct_url(APPLICATION_PATH.'/'.config_item('upload_path').'images/'.$url)) ? direct_url(base_url(config_item('upload_path').'images/'.$url)) : self::get_image_default();
+    }
 }

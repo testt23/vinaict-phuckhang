@@ -18,7 +18,7 @@ class Product extends Product_model {
         }
     }
 
-    // this function use for get a list new product limited 20 products
+    // this function use for get a list new product limited 5 products
     public function getNewProduct($page = 1) {
         // begin join image//
         // setting select field
@@ -82,6 +82,8 @@ class Product extends Product_model {
         $Product->addSelect($this->if->_product_code . ' as ' . $this->if->_product_as_code);
         $Product->addSelect($this->if->_product_keywords . ' as ' . $this->if->_product_as_keywords);
         $Product->addSelect($this->if->_product_name . ' as ' . $this->if->_product_as_name);
+        $Product->addSelect($this->if->_product_description . ' as ' . $this->if->_product_as_description);
+        $Product->addSelect($this->if->_product_short_description . ' as ' . $this->if->_product_as_short_description);
         $Product->addSelect('p.' . $this->if->_image_as_name);
         $Product->addSelect('p.' . $this->if->_image_as_file);
         $Product->addSelect('p.' . $this->if->_image_group_as_code);
@@ -162,6 +164,7 @@ class Product extends Product_model {
         $Product->addSelect($this->if->_product_code . ' as ' . $this->if->_product_as_code);
         $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
         $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
+        $Product->addSelect($this->if->_product_short_description . ' as ' . $this->if->_product_as_short_description);
         $Product->addSelect('p.' . $this->if->_image_as_name);
         $Product->addSelect('p.' . $this->if->_image_as_file);
         $Product->addSelect('p.' . $this->if->_image_group_as_code);
@@ -301,6 +304,7 @@ class Product extends Product_model {
                     $Product->addSelect($this->if->_product_keywords . ' as ' . $this->if->_product_as_keywords);
                     $Product->addSelect($this->if->_product_price . ' as ' . $this->if->_product_as_price);
                     $Product->addSelect($this->if->_product_currency . ' as ' . $this->if->_product_as_currency);
+                    $Product->addSelect($this->if->_product_short_description . ' as ' . $this->if->_product_as_short_description);
                     $Product->addSelect('p.' . $this->if->_image_as_name);
                     $Product->addSelect('p.' . $this->if->_image_as_file);
                     $Product->addSelect('p.' . $this->if->_image_group_as_code);

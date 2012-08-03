@@ -9,20 +9,20 @@
          $article = Array();
          foreach($article_array as $key => $article){
              if($key == $news_category->id){
-                 
-//                    echo '<pre>';
-//                    var_dump($article); 
-//                    echo '<pre>';
+
                  for( $j = 0 ; $j < count($article['id']) ; $j++ ){
                      if( $i < 2 ){
-             
         ?>
-        <p class="title"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php  echo getI18n($article['title'][$j]); ?></a>
-        <h7 class="date"><?php echo lang('txt_'.date('D',  strtotime($article['date'][$j]))).', '.date_sql_to_local_date($article['date'][$j]); ?></h7>
+        <div class ="article">
+        <p class="title">
+            <span class="new-img"><a href="#"><img src="<?php echo Article::get_image_link_tiny($article['picture'][$j]); ?>" /></a></span>
+            <a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php  echo getI18n($article['title'][$j]); ?></a>
+            <h7 class="date"><?php echo lang('txt_'.date('D',  strtotime($article['date'][$j]))).', '.date_sql_to_local_date($article['date'][$j]); ?></h7>
         </p>
-        <p class="content-news"> <?php echo strlen(getI18n($article['content'][$j])) > 200 ? substr(getI18n($article['content'][$j]),0,200).'...': getI18($article['content'][$j]) ; ?>
+        <div class="content-news"> <?php echo truncateString(getI18n($article['content'][$j]),200); ?></div>
         <span class="view-more"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php echo lang('view_more'); ?> &raquo;</a></span>
-        </p>
+        <div class="clear"></div>
+        </div>
         <?php 
                         $i++;
                      }elseif( $i < 8 ){
@@ -36,9 +36,6 @@
                  break;
             }
         } 
-//                    echo '<pre>';
-//                    var_dump($list_article); 
-//                    echo '<pre>';
         ?>
         
     </div>

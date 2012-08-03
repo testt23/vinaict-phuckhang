@@ -24,6 +24,7 @@ class News_controller extends CI_Controller {
             $article_arr[$article->id_news_category]['keywords'][] = $article->keywords;
             $article_arr[$article->id_news_category]['id_news_category'][] = $article->id_news_category;
             $article_arr[$article->id_news_category]['date'][] = $article->date;  
+            $article_arr[$article->id_news_category]['picture'][] = $article->picture;  
         }
         
 //        echo '<pre>';
@@ -57,12 +58,19 @@ class News_controller extends CI_Controller {
         $article = new Article();
         $back = 'news';
         if($id){
-            if(!$article->get($id)){
+            $article->addJoin(new Image(), 'LEFT');
+            $article->addwhere('article.id = '.$id);
+            $article->addSelect();
+            $article->addSelect('article.*, image.file picture');
+            
+            if(!$article->find()){
                 redirect($back);
             }
         }else{
             redirect($back);
         }
+        
+        
         
         $data['article'] = $article;
         $data['content'] = 'news_detail';
@@ -92,9 +100,10 @@ class News_controller extends CI_Controller {
         $back = 'news';
         if($id_news_category){
             if($news_category->get($id_news_category)){
+                $articles->addJoin(new Image(),'LEFT');
                 $articles->addWhere('id_news_category ='. $id_news_category);
                 $articles->addSelect();
-                $articles->addSelect('article.*');
+                $articles->addSelect('article.*, image.file picture');
                 $articles->orderBy('date DESC');
                 $articles->find();
             }
