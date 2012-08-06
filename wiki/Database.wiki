@@ -1097,5 +1097,6 @@ ALTER TABLE `customer` ADD COLUMN `link_profile` VARCHAR(250) AFTER POSITION;
 /* 06-08-2012 - Pham Thanh Nam - limit 5 product */
 UPDATE `parameter` SET `value` = '5' WHERE `parameter`.`id` =69;
 
+ALTER TABLE `social_link` ADD `is_social` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0'
 
 }}}
