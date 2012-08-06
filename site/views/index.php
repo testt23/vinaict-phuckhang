@@ -1,3 +1,13 @@
+<style type="text/css">
+    #content-container{
+        border: none !important;
+        background: none !important;
+        width: 720px !important;
+    }
+</style>
+<div class="slide-show">
+    <?php $this->load->view('slide_show'); ?>
+</div>
 <div id="product-container">
     <ul>
         <?php if (isset($product) && $product): ?>
