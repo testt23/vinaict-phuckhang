@@ -1099,4 +1099,8 @@ UPDATE `parameter` SET `value` = '5' WHERE `parameter`.`id` =69;
 
 ALTER TABLE `social_link` ADD `is_social` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0'
 
+INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES
+(97, 'Is social link', 'IS_SOCIAL', '1', 1, 0, '2012-08-06 16:22:15', NULL, 1, NULL, 0, 1, NULL),
+(98, 'Is not social link', 'IS_NOT_SOCIAL', '0', 1, 0, '2012-08-06 16:24:23', NULL, 1, NULL, 0, 1, NULL);
+
 }}}
