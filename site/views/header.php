@@ -105,7 +105,11 @@
     ?>
     <body>
         <?php 
-            $social = SocialLink::getlist();
+            $filter = Array(
+                'is_social' => IS_SOCIAL
+            );
+            
+            $social = SocialLink::getlist($filter);
             if($social){
         ?>
         <div class="social-link-right">

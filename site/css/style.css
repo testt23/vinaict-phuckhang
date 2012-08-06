@@ -1275,36 +1275,26 @@ range-image-wrapper{
 }
 
 /* Sidebar*/
-
-#HTML5, #HTML3, #HTML4{
-    width: 240px;
-    margin: 20px auto;
+.box-sidebar{
+    margin: 10px 0px;
     display: block;
-    border-bottom: 1px solid #bff43d;
-    border-right: 1px solid #bff43d;
-    border-left: 1px solid #bff43d;
+    overflow: hidden;
 }
 
-#HTML5 #html12 .title, #HTML3 .title, #HTML4 .title{
-    background: #bff43d;
-    border-top: 4px solid #f6d631;
-    height: 28px;
-    font-size: 20px;
-    width: 100%;
-    text-align: center;
+.box-sidebar .box-sidebar-header{
+    color: #fff;
+    background: #609d36;
+    border: 1px solid #fae606;
+    padding: 3px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
 }
 
-
-.thongtin {
-    width: 100% !important;
-    border: 0px !important;
-    margin: 10px;
-}
-
-.thongtin tr td ul li {
-    float: left;
-    display: block;
-    font-size: 12px;
+.box-sidebar .box-sidebar-content{
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
 }
 
 .slideShowNam{
