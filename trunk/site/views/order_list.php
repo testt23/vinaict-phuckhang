@@ -87,9 +87,9 @@
     <div class="button"><a href="<?php echo Variable::getLinkOrderContact(); ?>"><img src="<?php echo base_url(); ?>images/site/<?php echo lang('txt_btn_order'); ?>" /></a></div>
     <div class="button"><a href="<?php echo $link; ?>"><br /><?php echo lang('txt_btn_buymore'); ?></a></div>
     
+</div>
 <?php else: ?>
 <h1 style="text-align: center; color: gray; font-size: 20px;"><?php echo lang('show_message');?></h1>
 <?php endif; ?>
-</div>
 <div class="clear"></div>
 

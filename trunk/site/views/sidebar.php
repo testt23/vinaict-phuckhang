@@ -25,7 +25,7 @@
     });
     
 </script>
-<style>
+<!--<style>
     .box-sidebar .box-title{
         height: 30px;
         line-height: 30px;
@@ -46,7 +46,7 @@
     </h3>
     <hr/>
     <div class="box-sidebar-content">
-        <span>Bạn có tài khoản rồi? <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Đăng Nhập</a></span>
+        <span>Bạn có tài khoản rồi? <a id="login" href="#<?php echo base_url('login/load_form'); ?>">�?ăng Nhập</a></span>
             <ul class="list-customer">
                 <li>
                     
@@ -54,4 +54,19 @@
             </ul>
     </div>
     <div class="clear"></div>
+</div>-->
+
+<div class="box-sidebar">
+    <div class="box-sidebar-header">Liên kết</div>
+    <div class="box-sidebar-content">
+        <ul>
+            <?php 
+                $filter = Array('is_social' => IS_NOT_SOCIAL);
+                $social = SocialLink::getList($filter);
+                while($social->fetchNext()){
+            ?>
+            <li><a href="<?php echo $social->url; ?>"><?php echo $social->getName(); ?></a></li>
+            <?php } ?>
+        </ul>
+    </div>
 </div>
