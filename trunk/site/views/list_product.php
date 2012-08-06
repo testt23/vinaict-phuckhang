@@ -1,11 +1,10 @@
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#content-container').css('border','0px');
-        $('#content-container').css('background','none');
-        $('#content-container').css('width','720px;');
-    });
-</script>
+<style type="text/css">
+    #content-container{
+        border: none !important;
+        background: none !important;
+        width: 720px !important;
+    }
+</style>
 <div id="product-container">
     <ul>
         <?php if (isset($product) && $product): ?>
