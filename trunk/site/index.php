@@ -157,7 +157,7 @@ include 'app_config.php';
         
 /*code bellow require by cuong*/
 
-@require_once(APPPATH . 'libraries/yahoo_api/Yahoo.inc');
+//@require_once(APPPATH . 'libraries/yahoo_api/Yahoo.inc');
 
 /*end*/
 /*
