@@ -1,6 +1,12 @@
+<style type="text/css" rel="stylesheet">
+    *{list-style:none;}
+    
+</style>
+
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
 <script language="javascript">
     $(document).ready(function(){
-        jQuery('#login' ).click(function(){
+        jQuery('#dangnhap' ).click(function(){
             var winW = 630, winH = 460;
             if (document.body && document.body.offsetWidth) {
                 winW = document.body.offsetWidth;
@@ -25,33 +31,14 @@
     });
     
 </script>
-<style>
-    .box-sidebar .box-title{
-        height: 30px;
-        line-height: 30px;
-        margin-top: 10px;
-        text-align: center;
-    }
-    .box-sidebar-content{
-    }
-    ul.list-customer li{
-        width: 80px; height: 80px;
-        float:left;
-    }
-</style>
 
-<div class="box-sidebar">
-    <h3 class="box-title">
-        HỘP NGƯỜI THEO DÕI
-    </h3>
-    <hr/>
-    <div class="box-sidebar-content">
-        <span>Bạn có tài khoản rồi? <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Đăng Nhập</a></span>
-            <ul class="list-customer">
-                <li>
-                    
-                </li>
-            </ul>
+
+<?php //$customer = Customer::selectAll(); ?>
+<div class="wrapper-list-user">
+    <h1>NGƯỜI THEO DÕI</h1>
+    <div>
+        <h2><a id="dangnhap" href="<?php echo base_url('login/load_form'); ?>">Đăng Nhập</a></h2>
+        
     </div>
-    <div class="clear"></div>
+    
 </div>
