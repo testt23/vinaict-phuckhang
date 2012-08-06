@@ -428,8 +428,8 @@ $config['facebook_app_key'] = '';
 $config['facebook_app_secret'] = '45be4d05a788f15aa83c52b2752f58fa';
 
 //tweet ap
-$config['tweet_consumer_key'] = "YOUR-CONSUMER-KEY";
-$config['tweet_consumer_secret'] = "YOUR-CONSUMER-SECRET";
+$config['tweet_consumer_key'] = "X5wKuk0I0CcCch14SgWUA";
+$config['tweet_consumer_secret'] = "ZatzYFtlb9HntwHvgRgmVHtxBgnCtfQJbXxlvNO3aw";
 
 // google open id
 $config['oauth2_client_id'] = '42178469013.apps.googleusercontent.com';
