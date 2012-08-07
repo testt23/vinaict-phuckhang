@@ -1138,4 +1138,8 @@ ALTER TABLE `customer` DROP INDEX `idx_email` ;
 /* 07-08-2012 - Pham Thanh Nam - link */
 ALTER TABLE `social_link` ADD `type_show` TINYINT UNSIGNED NOT NULL DEFAULT '0';
 
+INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`, `creation_date`, `modification_date`, `id_user_created`, `id_user_modified`, `disabled`, `data_type`, `data`) VALUES
+(100, 'Show link is type text', 'TYPE_TEXT', '0', 1, 0, '2012-08-07 14:38:35', NULL, 1, NULL, 0, 1, NULL),
+(101, 'Show link is type image', 'TYPE_IMAGE', '1', 1, 0, '2012-08-07 14:39:58', NULL, 1, NULL, 0, 1, NULL);
+
 }}}
