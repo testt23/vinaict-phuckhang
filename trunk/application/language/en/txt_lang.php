@@ -211,7 +211,11 @@ $lang['txt_hot_line']                   = 'Hot line';
 $lang['txt_social_link']                = 'Linkes list';
 $lang['txt_add_social_link']            = 'Add a link';
 $lang['txt_url']                        = 'Url';
+$lang['txt_edit_social_link']           = 'Edit social link';
+$lang['txt_link_social']                = 'Link social';
+$lang['txt_is_social']                  = 'Yes';
+$lang['txt_is_not_social']              = 'No';
 
 /*product category*/
-$lang['txt_prod_cate_is_parent'] = 'None';
+$lang['txt_prod_cate_is_parent']    = 'None';
 ?>

@@ -30,7 +30,8 @@
             while($social_link->fetchNext()) {
                 $arr_social_link[$social_link->id] = array('name' => getI18n($social_link->name),
                                                     'url' => $social_link->url,
-                                                    'picture' => $social_link->picture
+                                                    'picture' => $social_link->picture,
+                                                    'is_social' => $social_link->is_social
                                                     );
             }
         }
@@ -74,7 +75,7 @@
         
         $cfer = new Cfer(array(
             lang('txt_dashboard') => base_url('dashboard'),
-            lang('txt_product_category') => $back,
+            lang('txt_social_link') => $back,
             lang('txt_add_social_link') => base_url('social_link/add/')));
         
         $act = $this->input->get_post('act');
@@ -92,11 +93,10 @@
                     $social_link->name .= '<'.$lang->code.'>'.utf8_escape_textarea($this->input->post('name_'.$lang->code)).'</'.$lang->code.'>';
                 }
                
-                
             }
             
             $social_link->url = utf8_escape_textarea($this->input->post('url'));
-            
+            $social_link->is_social = $this->input->post('is_social');
                         
             if ($social_link->validateInput()) {
                 $social_link->insert();
@@ -176,6 +176,7 @@
             }
             
             $social_link->url = utf8_escape_textarea($this->input->post('url'));
+            $social_link->is_social = $this->input->post('is_social');
             
                         
             if ($social_link->validateInput()) {

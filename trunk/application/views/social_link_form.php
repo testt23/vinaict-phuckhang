@@ -111,7 +111,15 @@
                                         <input type="file" id="image" name="image" />
                                 </div>
                         </li>
-                        
+                        <li>
+                                <label class="desc">
+                                        <?php echo lang('txt_link_social'); ?>
+                                </label>
+                                <div>
+                                    <input type="radio" name="is_social" id="is_social" value="<?php echo IS_SOCIAL; ?>" <?php if($social_link->is_social == IS_SOCIAL) echo 'checked="checked"'; ?> /><?php echo lang('txt_is_social'); ?>
+                                    <input type="radio" name="is_social" id="is_social" value="<?php echo IS_NOT_SOCIAL; ?>" <?php if($social_link->is_social != IS_SOCIAL) echo 'checked="checked"'; ?>/><?php echo lang('txt_is_not_social'); ?>
+                                </div>
+                        </li>
                 </ul>
             <input type="hidden" name="act" value="<?php echo ACT_SUBMIT; ?>" />
         </form>
