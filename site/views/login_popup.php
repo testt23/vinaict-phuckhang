@@ -1,9 +1,10 @@
-<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
+
 <!DOCTYPE html>
 <html>
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
         <style type="text/css" rel="stylesheet">
             *{
                 padding: 0px;
@@ -42,6 +43,7 @@
             .content{
                 width: 400px;
                 margin: 20px auto;
+                position: relative;
             }
             .content a{
                 margin: 0px 10px;
@@ -97,9 +99,24 @@
             .paging a.page-active{
                 color: yellow !important;
             }
+            .waitting{
+                position: absolute;
+                top: 40px;
+                left: 48%;
+                display: none;
+            }
         </style>
+        <script language="javascript">
+            $(document).ready(function(){
+                jQuery('.waitting').hide();
+                jQuery('.content a').click(function(){
+                    jQuery('.waitting').show();
+                });
+            });
+        </script>
     </head>
     <body>
+            
         <div id="wrapper">
             <div id="title">
                 <h1>
@@ -111,16 +128,19 @@
                 </p>
             </div>
             <div class="clear"></div>
-
+            <?php if (Customer::getSessionLogin() == false): ?>
             <h2 class="select-login">Lựa chọn phương thức đăng nhập:</h2>
             <div class="content">
+                <img class="waitting" src="<?php echo base_url('images/loadding.gif'); ?>"/>
                 <a href="<?php echo $url_login_google; ?>"><img src="<?php echo base_url('images/google.jpg'); ?>"/></a>
                 <a href="<?php echo $url_login_tweet; ?>"><img src="<?php echo base_url('images/twitter.jpg'); ?>"/></a>
                 <a href="<?php echo $url_login_yahoo; ?>"><img src="<?php echo base_url('images/yahoo.jpg'); ?>"/></a>
                 <a href="<?php echo $url_login_facebook; ?>"><img src="<?php echo base_url('images/facebook.jpg'); ?>"/></a>
             </div>
+            <?php endif; ?>
+            
+            <?php if ($customer->countRows() > 0): ?>
             <h2 class="select-login">Danh sách thành viên:</h2>
-
             <div class="customer">
                 <ul>
                     <?php while ($customer->fetchNext()): ?>
@@ -138,6 +158,7 @@
                 echo $paging;
                 ?>
             </div>
+            <?php endif; ?>
         </div>
     </body>
 </html>

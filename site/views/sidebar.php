@@ -119,33 +119,42 @@
                     <img src="<?php echo $login['image']; ?>" width="40px" height="40px" />
                 </h3>
                 <div>
-                    <span><?php echo $login['email']; ?></span><br/>
-                    <a href="#<?php echo base_url('login/google_logout'); ?>">LogOut</a>
+                    <span>
+                    <?php 
+                        if (empty($login['email']))  echo $login['username']; else echo $login['email'];
+                    ?>
+                    </span><br/>
+                    <a style="color: yellowgreen;" href="<?php echo base_url('login/logout'); ?>"> >>Thoát</a>
                 </div>
             <?php else: ?>
-                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Login</a>
+                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Đăng Nhập</a>
             <?php endif; ?>
         </div>
         <div class="clear"></div>
         
         <h5 style="padding: 10px;">Dách sách thành viên:</h5>
-        <ul>
-            <?php $customer = Customer::selectAll(array('limit' => 10, 'start' => 0)); ?>
-            <?php while ($customer->fetchNext()): ?>
-                <?php if (!empty($customer->link_profile)): ?>
-                    <li><a href="<?php echo $customer->link_profile; ?>"><img alt="" title="<?php if ($customer->username != '')
-                echo $customer->username; else
-                echo $customer->email; ?>" width="100%" height="100%" src="<?php echo $customer->image; ?>"/></a></li>        
-                <?php else: ?>
-                    <li><img alt="" title="<?php if ($customer->username != '')
-                echo $customer->username; else
-                echo $customer->email; ?>" width="50px" height="50px" src="<?php echo $customer->image; ?>"/></li>
-    <?php endif; ?>
-<?php endwhile; ?>
-        </ul>
+        <div style="padding: 0px 10px;">
+            <ul id="list-member">
+                <?php $customer = Customer::selectAll(array('limit' => 12, 'start' => 0)); ?>
+                <?php while ($customer->fetchNext()): ?>
+                    <?php if (!empty($customer->link_profile)): ?>
+                        <li><a href="<?php echo $customer->link_profile; ?>"><img alt="" title="<?php if ($customer->username != '')
+                            echo $customer->username; else
+                            echo $customer->email; ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></a></li>        
+                            <?php else: ?>
+                                <li><img alt="" title="<?php if ($customer->username != '')
+                            echo $customer->username; else
+                            echo $customer->email; ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></li>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+            </ul>
+         </div>
+        <div class="clear"></div>
+        <?php  if ($customer->countRows() > 24):?>
         <div style="text-align: right; padding: 10px;">
-            <a href="#">>>See more</a>
+            <a style="color: yellowgreen;" href="#">>>See more</a>
         </div>
+        <?php endif; ?>
     </div>
 </div>
 <!--News-->

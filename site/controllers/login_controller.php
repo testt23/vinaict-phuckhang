@@ -12,31 +12,30 @@ class Login_controller extends CI_Controller {
     }
 
     function load_form() {
-        
-        
+
+
         // data user
-        
         // initial page
         $page = ($this->input->get(Variable::getPaginationQueryString())) ? $this->input->get(Variable::getPaginationQueryString()) : 1;
-        if ($page * 1 == 0){
+        if ($page * 1 == 0) {
             $page = 1;
         }
         $total_record = Customer::countAll();
         //$limit = Variable::getLimitRecordPerPage();
         $limit = 1;
         $total_page = ceil($total_record / $limit);
-        if ($total_page <= 0){
+        if ($total_page <= 0) {
             $total_page = 1;
         }
-        
-        if ($total_page < $page){
+
+        if ($total_page < $page) {
             $page = $total_page;
         }
         $start = ($page - 1) * $limit;
         // call paging class to get string pagation
         $Paging = new Paging();
         $string_paging = $Paging->paging_html(base_url('login/load_form'), $total_page, $page, 7);
-        
+
         $customer = Customer::selectAll(array('start' => $start, 'limit' => $limit));
         // link api
         $this->load->library('google_api/Lightopenid');
@@ -89,19 +88,23 @@ class Login_controller extends CI_Controller {
 
             if (isset($user->screen_name))
                 $filter['username'] = $user->screen_name;
-            
+
             $filter['email'] = $user->screen_name . 'twetter.com';
             $filter['link_profile'] = 'https://twitter.com/' . $filter['username'];
-            
-            
+
+
             $customer = Customer::findByUsername($filter['username']);
             if ($customer->countRows() > 0)
-                    Customer::updateCustomerExist($customer, $filter);
-                else
-                    Customer::insertCustomer($filter);
+                Customer::updateCustomerExist($customer, $filter);
+            else
+                Customer::insertCustomer($filter);
 
-                $this->session->set_userdata('logined', true);
-            
+            $array = array();
+            $array['username'] = $filter['username'] = '';
+            $array['email'] = $filter['email'];
+            $array['link_profile'] = $filter['link_profile'];
+            $array['image'] = $filter['image'];
+            $this->session->set_userdata('logined', $array);
         }
     }
 
@@ -140,7 +143,7 @@ class Login_controller extends CI_Controller {
                     Customer::insertCustomer($filter);
 
                 $array = array();
-                $array['type'] = $filter['type_connect'];
+                $array['username'] = $filter['username'] = '';
                 $array['email'] = $filter['email'];
                 $array['link_profile'] = $filter['link_profile'];
                 $array['image'] = $filter['image'];
@@ -149,9 +152,12 @@ class Login_controller extends CI_Controller {
         }
         $this->exit_login();
     }
-    function google_logout(){
-        session_encode();
+
+    function logout() {
+        $this->session->unset_userdata('logined');
+        redirect(base_url());
     }
+
     //YAHOO ACCESS
 
     function yahoo_login() {
@@ -197,7 +203,7 @@ class Login_controller extends CI_Controller {
 
                 if (isset($profile->image->imageUrl))
                     $filter['image'] = $profile->image->imageUrl;
-                else 
+                else
                     $filter['image'] = base_url('images/no-picture.jpg');
 
 
@@ -207,7 +213,12 @@ class Login_controller extends CI_Controller {
                 else
                     Customer::insertCustomer($filter);
 
-                $this->session->set_userdata('logined', true);
+                $array = array();
+                $array['username'] = $filter['username'] = '';
+                $array['email'] = $filter['email'];
+                $array['link_profile'] = $filter['link_profile'];
+                $array['image'] = $filter['image'];
+                $this->session->set_userdata('logined', $array);
             }
         }
     }
@@ -268,20 +279,26 @@ class Login_controller extends CI_Controller {
                 else
                     $filter['gender'] = 'M';
             }
-            
+
             $customer = Customer::findByEmail($filter['email']);
             if ($customer->countRows() > 0)
                 Customer::updateCustomerExist($customer, $filter);
             else
                 Customer::insertCustomer($filter);
 
-            $this->session->set_userdata('logined', true);
+            $array = array();
+            $array['username'] = $filter['username'] = '';
+            $array['email'] = $filter['email'];
+            $array['link_profile'] = $filter['link_profile'];
+            $array['image'] = $filter['image'];
+            $this->session->set_userdata('logined', $array);
         }
     }
-    function exit_login(){
+
+    function exit_login() {
         echo '<script language="javascript">';
-            echo 'opener.location.reload(true);';
-            echo 'self.close();';
+        echo 'opener.location.reload(true);';
+        echo 'self.close();';
         echo '</script>';
     }
 

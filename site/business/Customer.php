@@ -91,7 +91,12 @@ class Customer extends Customer_model {
     
     public function getByUsernameOrEmail($filter = array()){
         $customer = null;
-        if ($filter['type'] == 3){
+        if ($filter['type'] == 3 or $filter['type'] = 2 or $filter['type'] = 4){
+            $customer = new Customer();
+            $customer->addSelect();
+            $customer->addSelect('customer.*');
+            $customer->addWhere("customer.email = '" .$filter['email']. "'");
+        }else{
             $customer = new Customer();
             $customer->addSelect();
             $customer->addSelect('customer.*');
