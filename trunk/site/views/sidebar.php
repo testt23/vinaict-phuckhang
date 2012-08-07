@@ -56,17 +56,44 @@
     <div class="clear"></div>
 </div>-->
 
+
+<!--Shopping cart-->
+<div class="box-sidebar">
+    <div class="box-sidebar-content">
+        <a class="shopping-cart" href="<?php echo base_url().'gio-hang.html'; ?>"><img src="<?php echo base_url().'images/site/shopping_cart.png'; ?>" />Giỏ hàng</a>
+    </div>
+</div>
+
+<!--Link-->
 <div class="box-sidebar">
     <div class="box-sidebar-header">Liên kết</div>
     <div class="box-sidebar-content">
-        <ul>
+        <ul class="ul-sidebar">
             <?php 
                 $filter = Array('is_social' => IS_NOT_SOCIAL);
                 $social = SocialLink::getList($filter);
                 while($social->fetchNext()){
             ?>
-            <li><a href="<?php echo $social->url; ?>"><?php echo $social->getName(); ?></a></li>
+            <li><a href="<?php echo $social->url; ?>" target="_blank"><?php echo $social->getName(); ?></a></li>
             <?php } ?>
         </ul>
+    </div>
+</div>
+
+<!--News-->
+<div class="box-sidebar">
+    <div class="box-sidebar-header">Tin tức mới</div>
+    <div class="box-sidebar-content">
+        <ul>
+            <?php 
+                $filter = Array('limit' => '5');
+                $article = Article::getList($filter);
+                while($article->fetchNext()){
+            ?>
+            <li><a href="<?php echo base_url(); ?>news/detail/<?php echo $article->get_id(); ?>" title="<?php echo $article->get_title(); ?>">&raquo; &nbsp;<?php echo truncateString($article->get_title(),100); ?></a></li>
+            <?php } ?>
+        </ul>
+        <span><a href="<?php echo base_url(); ?>tin-tuc"><?php echo lang('view_more_other'); ?> &raquo;</a></span>
+        
     </div>
 </div>
