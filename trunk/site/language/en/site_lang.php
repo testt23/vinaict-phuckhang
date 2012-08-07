@@ -150,3 +150,8 @@ $lang['txt_Thu']                    = 'Thursday';
 $lang['txt_Fri']                    = 'Friday';
 $lang['txt_Sat']                    = 'Saturday';
 $lang['txt_Sun']                    = 'Sunday';
+
+/* Sidebar */
+$lang['txt_hot_new']                = 'Hot news';
+$lang['txt_link']                   = 'Link';
+$lang['txt_shopping_cart']          = 'Shopping cart';

@@ -136,14 +136,14 @@ $lang['title_page_order']           = 'Giỏ hàng';
 $lang['description_page_order']     = 'Các sản phẩm bạn đặt mua';
 $lang['keywords_page_order']        = 'Giỏ hàng, danh sách sản phẩm';
 
-$lang['title_news_page']       = 'Tin tức';
+$lang['title_news_page']            = 'Tin tức';
 $lang['description_news_page']      = 'Tín tức của cửa hàng dát vàng Phúc Khang';
 $lang['keywords_news_page']         = 'Tin tức, dát vàng Phúc Khang';
 
 $lang['address']                    = 'Địa chỉ';
 $lang['fax']                        = 'Fax';
 $lang['view_more']                  = 'Xem thêm';
-$lang['view_more_other']            = 'Xem các bài viết khác';
+$lang['view_more_other']            = 'Xem thêm các tin tức khác';
 
 /* Thứ */
 $lang['txt_Mon']                    = 'Thứ hai';
@@ -153,3 +153,8 @@ $lang['txt_Thu']                    = 'Thứ năm';
 $lang['txt_Fri']                    = 'Thứ sáu';
 $lang['txt_Sat']                    = 'Thứ bảy';
 $lang['txt_Sun']                    = 'Chủ nhật';
+
+/* Sidebar */
+$lang['txt_hot_new']                = 'Tin tức mới';
+$lang['txt_link']                   = 'Liên kết';
+$lang['txt_shopping_cart']          = 'Giỏ hàng';
