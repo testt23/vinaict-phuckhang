@@ -25,24 +25,36 @@
 <div id="slide" class="slideShowNam">
     <ul id="demoOne">
         <?php
-        $dir = opendir(UPLOAD_IMAGE_URL . 'slide_show');
-        $i = 1; $j = 1;
-        while (($file = readdir($dir)) !== FALSE) {
-            if ($j <= 2) {
-                $j++;
-            } else {
-                $arr = explode('.', $file);
-                $test_img = $arr[count($arr) - 1];
-                $test_img = strtolower($test_img);
-
-                if ($test_img == 'jpg' || $test_img == 'png' || $test_img == 'gif') {
-                    ?>
-                    <li><img src="<?php echo UPLOAD_IMAGE_URL . 'slide_show/' . $file; ?>" alt="<?php echo $i++; ?>" /></li>
-                    <?php
-                }
+        $k = 1;
+        for ($i = 1; $i <= 20; $i++) {
+            if (file_exists(direct_url(APPLICATION_PATH . '/' . config_item('upload_path') . 'images/slide_show/slide' . $i . '.jpg'))) {
+                ?>
+                <li><img src="<?php echo UPLOAD_IMAGE_URL . 'slide_show/slide' . $i . '.jpg'; ?>" alt="<?php echo $k++; ?>" /></li>    
+                <?php
             }
         }
-        closedir();
+        ?>
+        <?php
+        // OPEN FORDER
+//        $dir = opendir(UPLOAD_IMAGE_URL . 'slide_show');
+//        $i = 1; $j = 1;
+//        while (($file = readdir($dir)) !== FALSE) {
+//            if ($j <= 2) {
+//                $j++;
+//            } else {
+//                $arr = explode('.', $file);
+//                $test_img = $arr[count($arr) - 1];
+//                $test_img = strtolower($test_img);
+//
+//                if ($test_img == 'jpg' || $test_img == 'png' || $test_img == 'gif') {
+//                    
+        ?>
+<!--        <li><img src="<?php // echo UPLOAD_IMAGE_URL . 'slide_show/' . $file; ?>" alt="<?php //echo $i++; ?>" /></li>-->
+        <?php
+//                }
+//            }
+//        }
+//        closedir();
         ?>
     </ul>
 </div>
