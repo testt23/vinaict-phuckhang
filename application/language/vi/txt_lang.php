@@ -226,4 +226,9 @@ $lang['txt_social_link']                = 'Danh sách liên kết';
 $lang['txt_add_social_link']            = 'Thêm liên kết';
 $lang['txt_url']                        = 'Url';
 $lang['txt_edit_social_link']           = 'Sửa thông tin liên kết';
-$lang['txt_prod_cate_is_parent'] = 'Không';
+$lang['txt_link_social']                = 'Là liên kết mạng xã hội';
+$lang['txt_is_social']                  = 'Phải';
+$lang['txt_is_not_social']              = 'Không';
+
+/*product category*/
+$lang['txt_prod_cate_is_parent']        = 'Không';

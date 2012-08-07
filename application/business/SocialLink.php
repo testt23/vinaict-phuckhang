@@ -16,6 +16,9 @@ class SocialLink extends Social_link_model {
         if (isset($filter['name']) && $filter['name'])
             $social_link->addWhere("social_link.name LIKE '%".$filter['name']."%'");
 
+        if (isset($filter['is_social']) && $filter['is_social'])
+            $social_link->addWhere("social_link.is_social = ".$filter['is_social']);
+        
         $social_link->find();
         return $social_link;
 

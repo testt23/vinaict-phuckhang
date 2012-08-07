@@ -36,7 +36,9 @@
         $filter = array();
         $filter['parent_id'] = 0;
         Menu::getMenuTree($array_menus, $filter);
-
+        
+        
+        $this->data['image_group_code'] = 'article';
         $this->data['cfer'] = $cfer;
         $this->data['array_menus'] = $array_menus;
         $this->data['section'] = $section;
@@ -106,6 +108,11 @@
                         
             if ($article->validateInput()) {
                 $article->insert();
+                
+                if (!empty($_FILES['image']['name'])) {
+                    $article->addPicture();
+                }
+                
                 redirect($back);
             }
             
@@ -150,6 +157,14 @@
             redirect($back);
         elseif (!$article->get($id)) {
             redirect($back);
+        }
+        
+        $image = new Image();
+        
+        if ($image->get($article->id_image)) {
+            $img_urls = $image->getImageURLs();
+            $this->data['img_urls'] = $img_urls;
+            $this->data['image'] = $image;
         }
         
         if ($act == ACT_SUBMIT) {
@@ -209,5 +224,63 @@
         $this->data['section'] = $section;
         
         $this->load->view('main', $this->data);
+    }
+    
+    function recreateImage($image_id, $id_article) {
+        
+        $back = base_url('article');
+        User::checkAccessable($this->session->userdata('userID'), 'article/recreateImage');
+        
+        $article = new Article();
+        
+        if (!$id_article || !$article->get($id_article)) {
+            redirect($back);
+        }
+        
+        $img = new Image();
+        
+        if (!$image_id || !$img->get($image_id))
+            redirect('article/edit/'.$article->id);
+        
+        if (!$img->recreate()) {
+            
+            if (MessageHandler::countError() > 0) {
+                $messages = MessageHandler::getMessages();
+                
+                foreach ($messages as $msg) {
+                    if ($msg['type'] == MSG_ERROR) {
+                        $msg = $msg['message'];
+                        redirect('article/edit/'.$article->id, null, null, $msg, MSG_ERROR);
+                        break;
+                    }
+                }
+            }
+            
+        }
+        
+        redirect('article/edit/'.$article->id);
+        
+    }
+    
+    function deleteImage($image_id, $id_article) {
+        
+        $back = base_url('article');
+        User::checkAccessable($this->session->userdata('userID'), 'article/deleteImage');
+        
+        $article = new ProductCategory();
+        
+        if (!$id_article || !$article->get($id_article)) {
+            redirect($back);
+        }
+        
+        $img = new Image();
+        
+        if (!$image_id || !$img->get($image_id))
+            redirect('article/edit/'.$article->id);
+        
+        $article->deletePicture($image_id);
+        
+        redirect('article/edit/'.$article->id);
+        
     }
 }

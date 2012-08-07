@@ -22,9 +22,10 @@
     <table> 
         <thead> 
             <tr>
-                <th width="200px"><?php echo lang('txt_name'); ?></th> 
-                <th width="120px"><?php echo lang('txt_picture'); ?></th> 
+                <th width="120px"><?php echo lang('txt_name'); ?></th> 
+                <th width="100px"><?php echo lang('txt_picture'); ?></th> 
                 <th width="200px"><?php echo lang('txt_url'); ?></th> 
+                <th width="120px"><?php echo lang('txt_link_social'); ?></th> 
                 <th width="120px"><?php echo lang('txt_options'); ?></th> 
             </tr> 
         </thead> 
@@ -39,6 +40,7 @@
                     </a>' : lang('txt_no_picture'); ?>
                 </td>
                 <td><?php echo $social_link['url']; ?></td>
+                <td><?php echo ($social_link['is_social'] == IS_SOCIAL ? lang('txt_is_social'):lang('txt_is_not_social') );  ?></td>
                 <td>
                     <a class="btn_no_text btn ui-state-<?php if (!$social_link['picture']) { echo 'alert'; } else { echo 'default'; } ?> ui-corner-all tooltip" title="<?php echo lang('txt_edit'); ?>" href="<?php echo base_url('social_link/edit/'.$id); ?>">
                             <span class="ui-icon ui-icon-wrench"></span>
