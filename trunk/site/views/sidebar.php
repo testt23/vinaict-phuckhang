@@ -96,7 +96,7 @@
                 ?>
                 <li><a href="<?php echo base_url(); ?>news/detail/<?php echo $article->get_id(); ?>" title="<?php echo $article->get_title(); ?>">&raquo; &nbsp;<?php echo truncateString($article->get_title(), 100); ?></a></li>
             <?php } ?>
-        </ul>
+        </ul> 
         <?php if(count($article) > 0){ ?>
             <span class="more-news"><a href="<?php echo base_url(); ?>tin-tuc"><?php echo lang('view_more_other'); ?> &raquo;</a></span>
         <?php } ?>
