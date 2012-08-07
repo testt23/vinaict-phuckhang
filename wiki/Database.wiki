@@ -1110,7 +1110,7 @@ ALTER TABLE `customer` CHANGE `billing_address` `billing_address` VARCHAR( 255 )
 ALTER TABLE `customer` CHANGE `shipping_address` `shipping_address` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL;
 ALTER TABLE `customer` CHANGE `contact_address` `contact_address` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
 ALTER TABLE `customer` ADD `type_connect` INT( 2 ) NOT NULL;
-
+ALTER TABLE `image` CHANGE `is_display_front_end` `is_display_front_end` INT( 1 ) NOT NULL DEFAULT '1'
 
 
 }}}
