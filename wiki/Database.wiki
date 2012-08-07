@@ -1142,4 +1142,7 @@ INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`,
 (100, 'Show link is type text', 'TYPE_TEXT', '0', 1, 0, '2012-08-07 14:38:35', NULL, 1, NULL, 0, 1, NULL),
 (101, 'Show link is type image', 'TYPE_IMAGE', '1', 1, 0, '2012-08-07 14:39:58', NULL, 1, NULL, 0, 1, NULL);
 
+INSERT INTO `image_size` (`id`, `code`, `name`, `value`) VALUES ('8', 'link', 'Link', '225x50');
+UPDATE `image_group` SET `id_image_size` = '7,8' WHERE `image_group`.`id` =4;
+
 }}}
