@@ -12,18 +12,45 @@ class Login_controller extends CI_Controller {
     }
 
     function load_form() {
-
+        
+        
+        // data user
+        
+        // initial page
+        $page = ($this->input->get(Variable::getPaginationQueryString())) ? $this->input->get(Variable::getPaginationQueryString()) : 1;
+        if ($page * 1 == 0){
+            $page = 1;
+        }
+        $total_record = Customer::countAll();
+        //$limit = Variable::getLimitRecordPerPage();
+        $limit = 1;
+        $total_page = ceil($total_record / $limit);
+        if ($total_page <= 0){
+            $total_page = 1;
+        }
+        
+        if ($total_page < $page){
+            $page = $total_page;
+        }
+        $start = ($page - 1) * $limit;
+        // call paging class to get string pagation
+        $Paging = new Paging();
+        $string_paging = $Paging->paging_html(base_url('login/load_form'), $total_page, $page, 7);
+        
+        $customer = Customer::selectAll(array('start' => $start, 'limit' => $limit));
+        // link api
         $this->load->library('google_api/Lightopenid');
         $this->lightopenid->returnUrl = base_url('login/google_login');
         $data['url_login_tweet'] = base_url('login/tweet_login');
         $data['url_login_yahoo'] = base_url('login/yahoo_login?login');
         $data['url_login_google'] = $this->lightopenid->authUrl();
         $data['url_login_facebook'] = base_url('login/facebook_login');
+        $data['customer'] = $customer;
+        $data['paging'] = $string_paging;
         $this->load->view('login_popup', $data);
     }
 
     // TWEET LOGIN ACCESS
-
 
     function tweet_login() {
 
@@ -46,6 +73,7 @@ class Login_controller extends CI_Controller {
             $filter['image'] = '';
             $filter['username'] = '';
             $filter['link_profile'] = '';
+            $filter['type_connect'] = '1';
 
             if (isset($user->profile_image_url))
                 $filter['image'] = $user->profile_image_url;
@@ -55,20 +83,25 @@ class Login_controller extends CI_Controller {
 
             if (isset($user->profile_image_url))
                 $filter['image'] = $user->profile_image_url;
+            else
+                $filter['image'] = base_url('images/no-picture.jpg');
 
 
             if (isset($user->screen_name))
                 $filter['username'] = $user->screen_name;
-                $filter['email'] = $user->screen_name . 'twetter.com';
-                $filter['link_profile'] = 'https://twitter.com/' . $filter['username'];
-             
-                echo '<pre>';
-                print_r($user);
-                echo '</pre>';
+            
+            $filter['email'] = $user->screen_name . 'twetter.com';
+            $filter['link_profile'] = 'https://twitter.com/' . $filter['username'];
+            
+            
+            $customer = Customer::findByUsername($filter['username']);
+            if ($customer->countRows() > 0)
+                    Customer::updateCustomerExist($customer, $filter);
+                else
+                    Customer::insertCustomer($filter);
 
-//            $customer = new Customer();
-//            
-//            $customer = $customer->_insert($filter);
+                $this->session->set_userdata('logined', true);
+            
         }
     }
 
@@ -86,10 +119,10 @@ class Login_controller extends CI_Controller {
                 $filter['gender'] = '';
                 $filter['birthday'] = '';
                 $filter['mobile'] = '';
-                $filter['image'] = '';
                 $filter['username'] = '';
                 $filter['link_profile'] = '';
-
+                $filter['image'] = base_url('images/no-picture.jpg');
+                $filter['type_connect'] = '3';
                 if (array_key_exists("namePerson/first", $data))
                     $filter['firstname'] = $data['namePerson/first'];
 
@@ -99,9 +132,14 @@ class Login_controller extends CI_Controller {
                 if (array_key_exists("contact/email", $data))
                     $filter['email'] = $data['contact/email'];
 
-                echo '<pre>';
-                print_r($filter);
-                echo '</pre>';
+                $customer = Customer::findByEmail($filter['email']);
+
+                if ($customer->countRows() > 0)
+                    Customer::updateCustomerExist($customer, $filter);
+                else
+                    Customer::insertCustomer($filter);
+
+                $this->session->set_userdata('logined', true);
             }
         }
     }
@@ -125,7 +163,7 @@ class Login_controller extends CI_Controller {
                 $filter['image'] = '';
                 $filter['username'] = '';
                 $filter['link_profile'] = '';
-
+                $filter['type_connect'] = '2';
                 if (isset($profile->givenName))
                     $filter['firstname'] = $profile->givenName;
 
@@ -144,17 +182,24 @@ class Login_controller extends CI_Controller {
 
                 if (isset($profile->gender)) {
                     if ($profile->gender == 'M')
-                        $filter['gender'] = 1;
+                        $filter['gender'] = 'M';
                     else
-                        $filter['gender'] = 0;
+                        $filter['gender'] = 'F';
                 }
 
                 if (isset($profile->image->imageUrl))
                     $filter['image'] = $profile->image->imageUrl;
+                else 
+                    $filter['image'] = base_url('images/no-picture.jpg');
 
-                echo '<pre>';
-                var_dump($filter);
-                echo '</pre>';
+
+                $customer = Customer::findByEmail($filter['email']);
+                if ($customer->countRows() > 0)
+                    Customer::updateCustomerExist($customer, $filter);
+                else
+                    Customer::insertCustomer($filter);
+
+                $this->session->set_userdata('logined', true);
             }
         }
     }
@@ -174,53 +219,56 @@ class Login_controller extends CI_Controller {
             try {
                 $user_profile = $this->facebook->api('/me');
             } catch (FacebookApiException $e) {
-                //error_log($e);
                 $user = null;
             }
-        } else {
-            header('Location: ' . $this->facebook->getLoginUrl(array('scope' => 'email,read_stream')));
-            //$logoutUrl = $this->facebook->getLogoutUrl();
         }
 
-        $filter = array();
-        $filter['firstname'] = '';
-        $filter['lastname'] = '';
-        $filter['email'] = '';
-        $filter['gender'] = '';
-        $filter['birthday'] = '';
-        $filter['mobile'] = '';
-        $filter['image'] = '';
-        $filter['username'] = '';
-        $filter['link_profile'] = '';
+        if ($user != null) {
+            $filter = array();
+            $filter['firstname'] = '';
+            $filter['lastname'] = '';
+            $filter['email'] = '';
+            $filter['gender'] = '';
+            $filter['birthday'] = '';
+            $filter['mobile'] = '';
+            $filter['image'] = '';
+            $filter['username'] = '';
+            $filter['link_profile'] = '';
+            $filter['type_connect'] = '4';
 
-        if (array_key_exists('link', $user_profile))
-            $filter['link_profile'] = $user_profile['link'];
+            if (array_key_exists('link', $user_profile))
+                $filter['link_profile'] = $user_profile['link'];
 
-        if (array_key_exists('first_name', $user_profile))
-            $filter['firstname'] = $user_profile['first_name'];
+            if (array_key_exists('first_name', $user_profile))
+                $filter['firstname'] = $user_profile['first_name'];
 
-        if (array_key_exists('email', $user_profile))
-            $filter['email'] = $user_profile['email'];
+            if (array_key_exists('email', $user_profile))
+                $filter['email'] = $user_profile['email'];
 
-        if (array_key_exists('last_name', $user_profile))
-            $filter['lastname'] = $user_profile['last_name'];
+            if (array_key_exists('last_name', $user_profile))
+                $filter['lastname'] = $user_profile['last_name'];
 
-        if (array_key_exists('username', $user_profile)) {
-            $filter['username'] = $user_profile['username'];
-            $filter['image'] = 'https://graph.facebook.com/' . $filter['username'] . '/picture';
-        }
+            if (array_key_exists('username', $user_profile)) {
+                $filter['username'] = $user_profile['username'];
+                $filter['image'] = 'https://graph.facebook.com/' . $filter['username'] . '/picture';
+            }else
+                $filter['image'] = base_url('images/no-picture.jpg');
 
-
-
-        if (array_key_exists('gender', $user_profile)) {
-            if ($user_profile['gender'] == 'female')
-                $filter['gender'] = 1;
+            if (array_key_exists('gender', $user_profile)) {
+                if ($user_profile['gender'] == 'female')
+                    $filter['gender'] = 'F';
+                else
+                    $filter['gender'] = 'M';
+            }
+            
+            $customer = Customer::findByEmail($filter['email']);
+            if ($customer->countRows() > 0)
+                Customer::updateCustomerExist($customer, $filter);
             else
-                $filter['gender'] = 0;
+                Customer::insertCustomer($filter);
+
+            $this->session->set_userdata('logined', true);
         }
-        echo '<pre>';
-        var_dump($filter);
-        echo '</pre>';
     }
 
 }
