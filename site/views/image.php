@@ -1,8 +1,8 @@
 
 <link rel="stylesheet" href="<?php echo base_url('js/prettyPhoto/css/prettyPhoto.css'); ?>" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 <script src="<?php echo base_url('js/prettyPhoto/js/jquery.prettyPhoto.js'); ?>" type="text/javascript" charset="utf-8"></script>
-<script language="javscript">
-    alert("vao");
+
+<script language="javascript">
     jQuery(document).ready(function(){
         $("a[rel^='prettyPhoto']").prettyPhoto({
             animation_speed: 'fast',
@@ -33,6 +33,9 @@
             display: table-cell;
             vertical-align: bottom;
         }
+        .library-image li img{
+            box-shadow: 3px 3px 3px 3px gray;
+        }
     </style>
     
     
@@ -43,7 +46,7 @@
                     
                     <div>
                         <a rel="prettyPhoto[pp_gal]" href="<?php echo $images['image']->the_image_link(); ?>">
-                        <img title="<?php echo $images['image']->the_image_name(); ?>" alt="<?php echo $images['image']->the_image_name(); ?>" src="<?php echo $images['image']->the_image_link_avata(); ?>" alt=""/>
+                        <img title="<?php echo $images['image']->the_image_description(); ?>" alt="<?php echo $images['image']->the_image_description(); ?>" src="<?php echo $images['image']->the_image_link_avata(); ?>" alt=""/>
                         </a>
                     </div>
                         
