@@ -70,11 +70,12 @@
     <div class="box-sidebar-content">
         <ul class="ul-sidebar">
             <?php
-            $filter = Array(
+            
+            $filterT = Array(
                 'is_social' => IS_NOT_SOCIAL,
                 'type_show' => TYPE_TEXT
-                ); 
-            $social = SocialLink::getList($filter);
+            );
+            $social = SocialLink::getList($filterT);
             while ($social->fetchNext()) {
                 ?>
                 <li><a href="<?php echo $social->url; ?>" target="_blank"><?php echo $social->getName(); ?></a></li>
