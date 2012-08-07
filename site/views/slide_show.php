@@ -1,5 +1,48 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#demoOne").jqGalScroll();
+    
+        var total = jQuery(".jqGSPagination ul li").length;
+        var interval;
+        function run(){
+            clearInterval(interval);
+            var currentImage = parseInt(jQuery(".jqGSPagination ul li a.selected").attr("title"));
+            currentImage = currentImage + 1;
+            var listA = jQuery(".jqGSPagination ul li a");
+            var number = listA.attr("title");
+            if (currentImage == total){
+                currentImage = 0;
+            }
+            var obj = listA[currentImage];
+            obj.click();
+            interval = setInterval(run, 5000);
+        }
+        interval = setInterval(run, 5000);
+                
+    });
+</script>
+
 <div id="slide" class="slideShowNam">
-    <ul>
-        <li><img src="<?php echo UPLOAD_IMAGE_URL; ?>slide_show/slide5.jpg" alt="1" /></li>      
+    <ul id="demoOne">
+        <?php
+        $dir = opendir(UPLOAD_IMAGE_URL . 'slide_show');
+        $i = 1; $j = 1;
+        while (($file = readdir($dir)) !== FALSE) {
+            if ($j <= 2) {
+                $j++;
+            } else {
+                $arr = explode('.', $file);
+                $test_img = $arr[count($arr) - 1];
+                $test_img = strtolower($test_img);
+
+                if ($test_img == 'jpg' || $test_img == 'png' || $test_img == 'gif') {
+                    ?>
+                    <li><img src="<?php echo UPLOAD_IMAGE_URL . 'slide_show/' . $file; ?>" alt="<?php echo $i++; ?>" /></li>
+                    <?php
+                }
+            }
+        }
+        closedir();
+        ?>
     </ul>
 </div>
