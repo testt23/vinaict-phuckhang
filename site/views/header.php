@@ -43,9 +43,9 @@
         
 
         <script language="javascript">
-            function switchCurrency(id_currency){
-                window.location.href=window.location.href + '?currency=' + id_currency;
-            }
+//            function switchCurrency(id_currency){
+//                window.location.href=window.location.href + '?currency=' + id_currency;
+//            }
             
             $(document).ready(function(){
                 jQuery('#advance').click(function(){
