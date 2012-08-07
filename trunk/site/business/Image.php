@@ -72,6 +72,7 @@ class Image extends Image_model {
         $Image->addSelect($this->if->_image_id . ' as ' . $this->if->_image_as_id);
         $Image->addSelect($this->if->_image_name . ' as ' . $this->if->_image_as_name);
         $Image->addSelect($this->if->_image_file . ' as ' . $this->if->_image_as_file);
+        $Image->addSelect($this->if->_image_description . ' as ' . $this->if->_image_as_description);
         $Image->addSelect($this->if->_image_group_code . ' as ' . $this->if->_image_group_as_code);
         $Image->addJoin(new ImageGroup(), 'INNER', $this->if->_table_image_group, $this->if->_image_id_image_group . ' = ' . $this->if->_image_group_id);
         $Image->addWhere($this->if->_image_is_display_front_end . ' = 0');
@@ -124,6 +125,10 @@ class Image extends Image_model {
 
     public function the_image_name() {
         return $this->{$this->if->_image_as_name};
+    }
+    
+    public function the_image_description() {
+        return getI18n($this->{$this->if->_image_as_description}, get_system_language());
     }
 
     public function the_image_link_thumb() {
