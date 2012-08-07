@@ -94,7 +94,7 @@
             <?php } ?>
         </ul>
         <?php if(count($article) > 0){ ?>
-            <span><a href="<?php echo base_url(); ?>tin-tuc"><?php echo lang('view_more_other'); ?> &raquo;</a></span>
+            <span class="more-news"><a href="<?php echo base_url(); ?>tin-tuc"><?php echo lang('view_more_other'); ?> &raquo;</a></span>
         <?php } ?>
     </div>
 </div>
@@ -152,7 +152,7 @@
                     <a style="color: yellowgreen;" href="<?php echo base_url('login/logout'); ?>"> >>Thoát</a>
                 </div>
             <?php else: ?>
-                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">�?ăng Nhập</a>
+                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Đăng Nhập</a>
             <?php endif; ?>
         </div>
         <div class="clear"></div>
