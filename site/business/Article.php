@@ -49,7 +49,10 @@ class Article extends Article_model {
     }
     
     public function get_content(){
-        return getI18n($this->content);
+        
+        $utf8_string = preg_replace("/\r?\n/", "", getI18n($this->content));
+	return htmlspecialchars_decode($utf8_string);
+        //return getI18n($this->content);
     }
     
     public function get_meta_description(){
