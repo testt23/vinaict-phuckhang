@@ -150,7 +150,7 @@
                 <div>
                     <span>
                     <?php 
-                        if (empty($login['email']))  echo $login['username']; else echo $login['email'];
+                        if (empty($login['username']))  echo str_replace (array('@yahoo.com', '@gmail.com'), array('',''), $login['email']); else echo $login['username'];
                     ?>
                     </span><br/>
                     <a style="color: yellowgreen;" href="<?php echo base_url('login/logout'); ?>"> >>Thoát</a>
