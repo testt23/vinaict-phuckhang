@@ -60,13 +60,13 @@
 <!--Shopping cart-->
 <div class="box-sidebar">
     <div class="box-sidebar-content">
-        <a class="shopping-cart" href="<?php echo base_url().'gio-hang.html'; ?>"><img src="<?php echo base_url().'images/site/shopping_cart.png'; ?>" />Giỏ hàng</a>
+        <a class="shopping-cart" href="<?php echo base_url().'gio-hang.html'; ?>"><img src="<?php echo base_url().'images/site/shopping_cart.png'; ?>" /><?php echo lang('txt_shopping_cart'); ?></a>
     </div>
 </div>
 
 <!--Link-->
 <div class="box-sidebar">
-    <div class="box-sidebar-header">Liên kết</div>
+    <div class="box-sidebar-header"><?php echo lang('txt_link'); ?></div>
     <div class="box-sidebar-content">
         <ul class="ul-sidebar">
             <?php 
@@ -82,7 +82,7 @@
 
 <!--News-->
 <div class="box-sidebar">
-    <div class="box-sidebar-header">Tin tức mới</div>
+    <div class="box-sidebar-header"><?php echo lang('txt_hot_new'); ?></div>
     <div class="box-sidebar-content">
         <ul>
             <?php 
