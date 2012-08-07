@@ -37,7 +37,10 @@
         
         <link href="<?php echo base_url(); ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="<?php echo base_url(); ?>/css/lightbox.css" rel="stylesheet" type="text/css" media="all" />
-        <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>        
+        <link href="<?php echo base_url(); ?>/css/jqGalScroll.css" rel="stylesheet" type="text/css" media="all" />
+        <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>
+        <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>/js/jqgalscroll.js"></script>
+        
 
         <script language="javascript">
             function switchCurrency(id_currency){
