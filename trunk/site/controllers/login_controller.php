@@ -139,11 +139,19 @@ class Login_controller extends CI_Controller {
                 else
                     Customer::insertCustomer($filter);
 
-                $this->session->set_userdata('logined', true);
+                $array = array();
+                $array['type'] = $filter['type_connect'];
+                $array['email'] = $filter['email'];
+                $array['link_profile'] = $filter['link_profile'];
+                $array['image'] = $filter['image'];
+                $this->session->set_userdata('logined', $array);
             }
         }
+        $this->exit_login();
     }
-
+    function google_logout(){
+        session_encode();
+    }
     //YAHOO ACCESS
 
     function yahoo_login() {
@@ -269,6 +277,12 @@ class Login_controller extends CI_Controller {
 
             $this->session->set_userdata('logined', true);
         }
+    }
+    function exit_login(){
+        echo '<script language="javascript">';
+            echo 'opener.location.reload(true);';
+            echo 'self.close();';
+        echo '</script>';
     }
 
 }
