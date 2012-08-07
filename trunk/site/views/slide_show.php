@@ -26,18 +26,16 @@
     <ul id="demoOne">
         <?php
         $k = 1;
-        for ($i = 1; $i <= 20; $i++) {
-            if (file_exists(direct_url(APPLICATION_PATH . '/' . config_item('upload_path') . 'images/slide_show/slide' . $i . '.jpg'))) {
-                ?>
+        for ($i = 2; $i <= 5; $i++) {
+            ?>
                 <li><img src="<?php echo UPLOAD_IMAGE_URL . 'slide_show/slide' . $i . '.jpg'; ?>" alt="<?php echo $k++; ?>" /></li>    
-                <?php
-            }
+            <?php
             
-            if (file_exists(direct_url(APPLICATION_PATH . '/' . config_item('upload_path') . 'images/slide_show/slide' . $i . '.png'))) {
+            //if (file_exists(direct_url(APPLICATION_PATH . '/' . config_item('upload_path') . 'images/slide_show/slide' . $i . '.png'))) {
                 ?>
-                <li><img src="<?php echo UPLOAD_IMAGE_URL . 'slide_show/slide' . $i . '.png'; ?>" alt="<?php echo $k++; ?>" /></li>    
+<!--                <li><img src="<?php echo UPLOAD_IMAGE_URL . 'slide_show/slide' . $i . '.png'; ?>" alt="<?php echo $k++; ?>" /></li>    -->
                 <?php
-            }
+            //}
         }
         ?>
         <?php
