@@ -98,6 +98,31 @@
         <?php } ?>
     </div>
 </div>
+
+<!--Link Image-->
+<div class="box-sidebar">
+    <div class="box-sidebar-header"><?php echo lang('txt_link_image'); ?></div>
+    <div class="box-sidebar-content">
+        <ul class="link-image">
+            <?php
+            $filter = Array(
+                'is_social' => IS_NOT_SOCIAL,
+                'type_show' => TYPE_IMAGE
+            );
+            $social = SocialLink::getList($filter);
+            while ($social->fetchNext()) {
+                ?>   
+                <li>
+                    <a href="<?php echo $social->url; ?>" target="_blank">
+                        <img src="<?php echo direct_url(base_url(UPLOAD_IMAGE_URL . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array('_link.jpg','_link.png','_link.gif','_link.JPG','_link.PNG','_link.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
+                    </a>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
+
+
 <style type="text/css">
             .login h3{
                 float:left;
@@ -127,7 +152,7 @@
                     <a style="color: yellowgreen;" href="<?php echo base_url('login/logout'); ?>"> >>Thoát</a>
                 </div>
             <?php else: ?>
-                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Đăng Nhập</a>
+                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">�?ăng Nhập</a>
             <?php endif; ?>
         </div>
         <div class="clear"></div>

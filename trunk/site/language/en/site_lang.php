@@ -155,3 +155,4 @@ $lang['txt_Sun']                    = 'Sunday';
 $lang['txt_hot_new']                = 'Hot news';
 $lang['txt_link']                   = 'Link';
 $lang['txt_shopping_cart']          = 'Shopping cart';
+$lang['txt_link_image']             = 'Link';

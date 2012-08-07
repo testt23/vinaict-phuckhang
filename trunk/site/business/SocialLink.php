@@ -19,6 +19,16 @@ class SocialLink extends Social_link_model {
         if (isset($filter['is_social']) && $filter['is_social'])
             $social_link->addWhere("social_link.is_social = ".$filter['is_social']);
         
+        if (isset($filter['type_show']) && $filter['type_show'])
+            $social_link->addWhere("social_link.type_show = ".$filter['type_show']);
+        
+        if (isset($filter['limit']) && $filter['limit']){}
+        else{
+            $filter['limit'] = '5';
+        }
+        $social_link->limit ($filter['limit']);
+        $social_link->orderBy('id DESC');
+        
         $social_link->find();
         return $social_link;
 
@@ -27,4 +37,5 @@ class SocialLink extends Social_link_model {
     public function getName(){
         return clean_html(getI18n($this->name));
     }
+    
 }

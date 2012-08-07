@@ -1315,6 +1315,14 @@ range-image-wrapper{
     color: #333 !important;
 }
 
+.box-sidebar .link-image{
+    text-align: center;
+}
+
+.box-sidebar .link-image img{
+    max-width: 225px;
+}
+
 .slideShowNam{
     overflow: hidden !important;
     padding: 0px !important;

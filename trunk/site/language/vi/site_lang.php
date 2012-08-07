@@ -158,3 +158,4 @@ $lang['txt_Sun']                    = 'Chủ nhật';
 $lang['txt_hot_new']                = 'Tin tức mới';
 $lang['txt_link']                   = 'Liên kết';
 $lang['txt_shopping_cart']          = 'Giỏ hàng';
+$lang['txt_link_image']             = 'Các đối tác';
