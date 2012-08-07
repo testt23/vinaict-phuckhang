@@ -1,8 +1,19 @@
 <?php
 
-	class User extends User_model {
+class User extends User_model {
 
-		function __construct() {
-			parent::__construct();
-		}
-	}
+    function __construct() {
+        parent::__construct();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+}
