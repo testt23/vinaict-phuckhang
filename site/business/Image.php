@@ -40,7 +40,7 @@ class Image extends Image_model {
         $Image->addSelect();
         $Image->addSelect('count(image.id) as total_record');
         $Image->addJoin(new ImageGroup(), 'INNER', $this->if->_table_image_group, $this->if->_image_id_image_group . ' = ' . $this->if->_image_group_id);
-        $Image->addWhere($this->if->_image_is_display_front_end . ' = 0');
+        $Image->addWhere($this->if->_image_is_display_front_end . ' = 1');
         $Image->find();
         
         $Image->fetchFirst();
@@ -53,7 +53,7 @@ class Image extends Image_model {
             $page = 1;
         }
         
-        $limit = Variable::getLimitRecordPerPage();
+        $limit = (defined(LIMIT_PICTURE)) ? LIMIT_PICTURE : 21;
         $total_page = ceil($total_record / $limit);
         if ($total_page <= 0){
             $total_page = 1;

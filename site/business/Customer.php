@@ -88,5 +88,21 @@ class Customer extends Customer_model {
         $customer->link_profile = $filter['link_profile'];
         $customer->update();
     }
+    
+    public function getByUsernameOrEmail($filter = array()){
+        $customer = null;
+        if ($filter['type'] == 3){
+            $customer = new Customer();
+            $customer->addSelect();
+            $customer->addSelect('customer.*');
+            $customer->addWhere("customer.email = '" .$filter['email']. "'");
+        }
+    }
+    
+    public function getSessionLogin(){
+        $CI = &get_instance();
+        $CI->load->library('session');
+        return $CI->session->userdata('logined');
+    }
 
 }

@@ -47,6 +47,7 @@ $route['directory'] = '';
 
 // contact page
 $route['^'. Variable::getProductContactPageString()] =  'contact/index';
+$route['^thu-vien-anh'] =  'image/index';
 
 // contact page
 $route['^site-map.html'] =  'index/sitemap';

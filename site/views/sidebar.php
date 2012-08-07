@@ -97,21 +97,60 @@
 
     </div>
 </div>
-
+<style type="text/css">
+            .login h3{
+                float:left;
+                width: 20%;
+            }
+            .login div{
+                float:right;
+                width: 79%;
+            }
+        </style>
 <!--News-->
 <div class="box-sidebar">
-    <div class="box-sidebar-header"><?php echo lang('txt_hot_new'); ?></div>
-    <div class="box-sidebar-content">
+    <div class="box-sidebar-header">Thành Viên</div>
+    <div class="box-sidebar-content" style="padding: 10px;">
+        <div class="login">
+            <?php $login = Customer::getSessionLogin(); ?>
+            <?php if ($login): ?>
+                <h3>
+                    <img src="<?php echo $login['image']; ?>" width="40px" height="40px" />
+                </h3>
+                <div>
+                    <span><?php echo $login['email']; ?></span><br/>
+                    <a href="#<?php echo base_url('login/google_logout'); ?>">LogOut</a>
+                </div>
+            <?php else: ?>
+                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Login</a>
+            <?php endif; ?>
+        </div>
+        <div class="clear"></div>
+        
+        <h5 style="padding: 10px;">Dách sách thành viên:</h5>
         <ul>
             <?php $customer = Customer::selectAll(array('limit' => 10, 'start' => 0)); ?>
             <?php while ($customer->fetchNext()): ?>
                 <?php if (!empty($customer->link_profile)): ?>
-                    <li><a href="<?php echo $customer->link_profile; ?>"><img alt="" width="100%" height="100%" src="<?php echo $customer->image; ?>"/></a></li>        
+                    <li><a href="<?php echo $customer->link_profile; ?>"><img alt="" title="<?php if ($customer->username != '')
+                echo $customer->username; else
+                echo $customer->email; ?>" width="100%" height="100%" src="<?php echo $customer->image; ?>"/></a></li>        
                 <?php else: ?>
-                    <li><img width="50px" height="50px" src="<?php echo $customer->image; ?>"/></li>
-                <?php endif; ?>
-            <?php endwhile; ?>
+                    <li><img alt="" title="<?php if ($customer->username != '')
+                echo $customer->username; else
+                echo $customer->email; ?>" width="50px" height="50px" src="<?php echo $customer->image; ?>"/></li>
+    <?php endif; ?>
+<?php endwhile; ?>
         </ul>
-
+        <div style="text-align: right; padding: 10px;">
+            <a href="#">>>See more</a>
+        </div>
+    </div>
+</div>
+<!--News-->
+<div class="box-sidebar">
+    <div class="box-sidebar-header">Lượt Truy Cập</div>
+    <div class="box-sidebar-content" style="padding: 10px 0px 0px 0px;">
+        <div align="center"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3094423&c=9283582" alt="Web Site Counters"></div>
     </div>
 </div>
