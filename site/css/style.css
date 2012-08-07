@@ -1281,6 +1281,11 @@ range-image-wrapper{
     overflow: hidden;
 }
 
+.box-sidebar a{
+    text-decoration: none;
+}
+
+
 .box-sidebar .box-sidebar-header{
     color: #fff;
     background: #609d36;
@@ -1292,9 +1297,22 @@ range-image-wrapper{
 }
 
 .box-sidebar .box-sidebar-content{
-    padding: 5px;
+    padding: 0px 5px;
     font-size: 14px;
     color: #333;
+}
+
+.box-sidebar .box-sidebar-content .ul-sidebar li{
+    background:url(../images/site/icon-ul.png) no-repeat;
+    padding:0px 0px 0px 15px;
+    background-position:0px 5px;
+    margin: 5px auto;
+}
+
+.box-sidebar .shopping-cart{
+    font-size: 28px;
+    font-weight: bold;
+    color: #333 !important;
 }
 
 .slideShowNam{

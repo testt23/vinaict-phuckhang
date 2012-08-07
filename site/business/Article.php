@@ -23,8 +23,11 @@ class Article extends Article_model {
 
         if (isset($filter['id_news_category']) && $filter['id_news_category'])
             $article->addWhere("id_news_category = " . $filter['id_news_category']);
+        
+        if (isset($filter['limit']) && $filter['limit'])
+            $article->limit($filter['limit']);
 
-        $article->orderBy(getI18nRealStringSql("title"));
+        $article->orderBy("date DESC");
 
         $article->find();
 
