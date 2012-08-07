@@ -70,7 +70,10 @@
     <div class="box-sidebar-content">
         <ul class="ul-sidebar">
             <?php
-            $filter = Array('is_social' => IS_NOT_SOCIAL);
+            $filter = Array(
+                'is_social' => IS_NOT_SOCIAL,
+                'type_show' => TYPE_TEXT
+                ); 
             $social = SocialLink::getList($filter);
             while ($social->fetchNext()) {
                 ?>
