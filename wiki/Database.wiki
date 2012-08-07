@@ -1132,6 +1132,10 @@ CURRENT_TIMESTAMP , NULL , '1', NULL , '0', '1', NULL
 );
 UPDATE `phuckhang`.`parameter` SET `status` = '0' WHERE `parameter`.`id` =99 LIMIT 1 ;
 
-ALTER TABLE `customer` CHANGE `type_connect` `type_connect` INT( 2 ) NOT NULL DEFAULT '2'
-ALTER TABLE `customer` DROP INDEX `idx_email` 
+ALTER TABLE `customer` CHANGE `type_connect` `type_connect` INT( 2 ) NOT NULL DEFAULT '2';
+ALTER TABLE `customer` DROP INDEX `idx_email` ;
+
+/* 07-08-2012 - Pham Thanh Nam - link */
+ALTER TABLE `social_link` ADD `type_show` TINYINT UNSIGNED NOT NULL DEFAULT '0';
+
 }}}
