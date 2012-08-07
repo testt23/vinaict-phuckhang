@@ -1145,4 +1145,24 @@ INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`,
 INSERT INTO `image_size` (`id`, `code`, `name`, `value`) VALUES ('8', 'link', 'Link', '225x50');
 UPDATE `image_group` SET `id_image_size` = '7,8' WHERE `image_group`.`id` =4;
 
+INSERT INTO `image` (`id`, `code`, `name`, `description`, `id_image_group`, `file`, `creation_date`, `is_display_front_end`) VALUES (NULL, 'test_social_link', '', 'test_social_link.jpg', '4', 'test_social_link.jpg', CURRENT_TIMESTAMP, '1');
+
+INSERT INTO `social_link` (`id`, `name`, `url`, `id_image`, `is_social`, `type_show`) VALUES
+(1, '<en>Google+</en><vi>Google+</vi>', 'http://www.google.com.vn', 196, 1, 0),
+(2, '<en>facebook</en><vi>facebook</vi>', 'http://www.facebook.com', 195, 1, 0),
+(3, '<en>linkin</en><vi>linkin</vi>', 'http://www.linkin.com', 194, 1, 0),
+(5, '<en>twiter</en><vi>twitter</vi>', 'http://www.twitter.com', 193, 1, 0),
+(6, '<en>Tuoi Tre News</en><vi>Báo tuổi trẻ</vi>', 'http://www.google.com.vn', NULL, 0, 0),
+(7, '<en>Tuoi Tre News</en><vi>Báo tuổi trẻ</vi>', 'http://www.google.com.vn', NULL, 0, 0),
+(8, '<en>Tuoi Tre News</en><vi>Báo tuổi trẻ</vi>', 'http://www.google.com.vn', NULL, 0, 0),
+(9, '<en>Tuoi Tre News</en><vi>Báo tuổi trẻ</vi>', 'http://www.google.com.vn', NULL, 0, 0);
+
+INSERT INTO `image` (`id`, `code`, `name`, `description`, `id_image_group`, `file`, `creation_date`, `is_display_front_end`) VALUES
+(193, '8A1621DAE39BF1D91D372C77F441E80B8F68B9B6', '', 'twitter', 4, '8A1621DAE39BF1D91D372C77F441E80B8F68B9B6.png', '2012-08-07 11:56:32', 0),
+(194, '7728240C80B6BFD450849405E8500D6D207783B6', '', 'linkin', NULL, '7728240C80B6BFD450849405E8500D6D207783B6.png', '2012-08-07 11:58:02', 0),
+(195, 'CBE648909034C0624C205FE219D3FBD10052C715', '', 'facebook', NULL, 'CBE648909034C0624C205FE219D3FBD10052C715.png', '2012-08-07 11:58:27', 0),
+(196, 'ECAD9E2DE6834A029CBD4B1F9CCC0245BD1473B9', '', 'google+', NULL, 'ECAD9E2DE6834A029CBD4B1F9CCC0245BD1473B9.png', '2012-08-07 12:03:45', 0),
+(197, 'test_social_link', '', 'test_social_link.jpg', 4, 'test_social_link.jpg', '2012-08-07 16:12:16', 1);
+
+
 }}}
