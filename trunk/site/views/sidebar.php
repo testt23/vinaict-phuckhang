@@ -92,12 +92,16 @@
             <?php
             $filter = Array('limit' => '5');
             $article = Article::getList($filter);
+            $count = 0;
             while ($article->fetchNext()) {
                 ?>
                 <li><a href="<?php echo base_url(); ?>news/detail/<?php echo $article->get_id(); ?>" title="<?php echo $article->get_title(); ?>">&raquo; &nbsp;<?php echo truncateString($article->get_title(), 100); ?></a></li>
-            <?php } ?>
+                <?php
+                $count++;
+            }
+            ?>
         </ul> 
-        <?php if(count($article) > 0){ ?>
+        <?php if ($count > 0) { ?>
             <span class="more-news"><a href="<?php echo base_url(); ?>tin-tuc"><?php echo lang('view_more_other'); ?> &raquo;</a></span>
         <?php } ?>
     </div>
