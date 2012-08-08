@@ -40,12 +40,11 @@ class Image extends Image_model {
         $Image->addSelect();
         $Image->addSelect('count(image.id) as total_record');
         $Image->addJoin(new ImageGroup(), 'INNER', $this->if->_table_image_group, $this->if->_image_id_image_group . ' = ' . $this->if->_image_group_id);
-        $Image->addWhere($this->if->_image_is_display_front_end . ' = 1');
+        $Image->addWhere($this->if->_image_is_display_front_end . ' = 0');
         $Image->find();
         
         $Image->fetchFirst();
         $total_record = $Image->total_record;
-        
         // initial page
         $page = ($this->input->get(Variable::getPaginationQueryString())) ? $this->input->get(Variable::getPaginationQueryString()) : 1;
         
