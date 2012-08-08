@@ -133,7 +133,7 @@
             <div class="content">
                 <img class="waitting" src="<?php echo base_url('images/loadding.gif'); ?>"/>
                 <a href="<?php echo $url_login_google; ?>"><img src="<?php echo base_url('images/google.jpg'); ?>"/></a>
-                <a href="<?php echo $url_login_tweet; ?>"><img src="<?php echo base_url('images/twitter.jpg'); ?>"/></a>
+                <!--<a href="<?php echo $url_login_tweet; ?>"><img src="<?php echo base_url('images/twitter.jpg'); ?>"/></a>-->
                 <a href="<?php echo $url_login_yahoo; ?>"><img src="<?php echo base_url('images/yahoo.jpg'); ?>"/></a>
                 <a href="<?php echo $url_login_facebook; ?>"><img src="<?php echo base_url('images/facebook.jpg'); ?>"/></a>
             </div>

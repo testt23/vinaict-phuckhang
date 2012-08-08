@@ -61,9 +61,8 @@ class Login_controller extends CI_Controller {
         $this->load->library('tweet_api/tweet');
         $this->tweet->enable_debug(false);
         $this->tweet->set_callback(site_url('login/tweet_login'));
-        
         if (!$this->tweet->logged_in()) {
-            $this->tweet->set_callback(site_url('login/tweet_login'));
+            
             $this->tweet->login();
         } else {
             $user = $this->tweet->call('get', 'account/verify_credentials');
