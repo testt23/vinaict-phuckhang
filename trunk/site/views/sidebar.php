@@ -86,7 +86,7 @@ if ($social) {
     </div>
 </div>
 
-<!--Link-->
+<!--Link
 <div class="box-sidebar">
     <div class="box-sidebar-header"><?php echo lang('txt_link'); ?></div>
     <div class="box-sidebar-content">
@@ -103,7 +103,7 @@ if ($social) {
             <?php } ?>
         </ul>
     </div>
-</div>
+</div> -->
 
 <!--News-->
 <div class="box-sidebar">

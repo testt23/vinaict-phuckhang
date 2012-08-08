@@ -19,7 +19,9 @@
             <a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php  echo clean_html(getI18n($article['title'][$j])); ?></a>
             <h7 class="date"><?php echo lang('txt_'.date('D',  strtotime($article['date'][$j]))).', '.date_sql_to_local_date($article['date'][$j]); ?></h7>
         </p>
-        <div class="content-news"> <?php echo truncateString(Article::get_content_html($article['content'][$j]),200); ?></div>
+        <div class="content-news"> 
+            <?php echo truncateString(Article::get_content_html($article['content'][$j]),200); ?>
+        </div>
         <span class="view-more"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article['id'][$j]; ?>"><?php echo lang('view_more'); ?> &raquo;</a></span>
         <div class="clear"></div>
         </div>

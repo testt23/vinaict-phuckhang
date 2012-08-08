@@ -68,7 +68,7 @@ class Article extends Article_model {
     }
      
     public function get_image_default(){
-        return direct_url(base_url(config_item('upload_path').'images/'.self::get_image_group_code().'/default.png'));
+        return base_url(config_item('upload_path').'images/'.self::get_image_group_code().'/default.png');
     }
     
     public function get_image_link_tiny($image) {
@@ -92,7 +92,7 @@ class Article extends Article_model {
         if (empty($url)){
             return $this->image_default;
         }
-        return file_exists(direct_url(APPLICATION_PATH.'/'.config_item('upload_path').'images/'.$url)) ? direct_url(base_url(config_item('upload_path').'images/'.$url)) : self::get_image_default();
+        return file_exists(direct_url(UPLOAD_IMAGE_URL.$url)) ? base_url(UPLOAD_IMAGE_URL.$url) : base_url(config_item('upload_path').'images/'.self::get_image_group_code().'/default.png');
     }
     
     public function get_content_html($string){
