@@ -104,11 +104,11 @@ class NewsCategory extends News_category_model {
     }
     
     public function get_name(){
-        return $this->name;
+        return clean_html(getI18n($this->name));
     }
     
     public function get_description(){
-        return $this->description;
+        return clean_html(getI18n($this->description));
     }
     
     public function get_keyword(){

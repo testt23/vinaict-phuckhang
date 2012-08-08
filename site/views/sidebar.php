@@ -57,6 +57,28 @@
 </div>-->
 
 
+<!--Link social network-->
+<?php
+$filter = Array(
+    'is_social' => IS_SOCIAL
+);
+
+$social = SocialLink::getlist($filter);
+if ($social) {
+    ?>
+    <div class="social-link-right">
+        <?php while ($social->fetchNext()) { ?>
+            <span id="social_link">
+                <a href="<?php echo $social->url; ?>" target="_blank">
+                    <img src="<?php echo direct_url(base_url(UPLOAD_IMAGE_URL . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array(BO_SOCIAL_LINK_IMG_SUFFIX . '.jpg', BO_SOCIAL_LINK_IMG_SUFFIX . '.png', BO_SOCIAL_LINK_IMG_SUFFIX . '.gif', BO_SOCIAL_LINK_IMG_SUFFIX . '.JPG', BO_SOCIAL_LINK_IMG_SUFFIX . '.PNG', BO_PROD_CATEGORY_IMG_SUFFIX . '.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
+                </a>
+            </span>
+        <?php } ?>
+    </div>
+<?php } ?>
+
+
+
 <!--Shopping cart-->
 <div class="box-sidebar">
     <div class="box-sidebar-content">
@@ -163,7 +185,7 @@
                 </div>
             <?php else: ?>
                 <span><?php echo lang('txt_have_account'); ?></span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>"><?php echo lang('txt_login'); ?></a>
-<?php endif; ?>
+            <?php endif; ?>
         </div>
         <div class="clear"></div>
 
@@ -172,28 +194,28 @@
             <ul id="list-member">
                 <?php $customer = Customer::selectAll(array('limit' => 12, 'start' => 0)); ?>
                 <?php while ($customer->fetchNext()): ?>
-                            <?php if (!empty($customer->link_profile)): ?>
+                    <?php if (!empty($customer->link_profile)): ?>
                         <li><a href="<?php echo $customer->link_profile; ?>"><img alt="" title="<?php
-                        if ($customer->username != '')
-                            echo $customer->username; else
-                            echo $customer->email;
+                if ($customer->username != '')
+                    echo $customer->username; else
+                    echo $customer->email;
                         ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></a></li>        
-                             <?php else: ?>
+                        <?php else: ?>
                         <li><img alt="" title="<?php
-                         if ($customer->username != '')
-                             echo $customer->username; else
-                             echo $customer->email;
-                         ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></li>
-            <?php endif; ?>
-<?php endwhile; ?>
+                    if ($customer->username != '')
+                        echo $customer->username; else
+                        echo $customer->email;
+                            ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></li>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
             </ul>
         </div>
         <div class="clear"></div>
-<?php if ($customer->countRows() > 24): ?>
+        <?php if ($customer->countRows() > 24): ?>
             <div style="text-align: right; padding: 10px;">
                 <a style="color: yellowgreen;" href="#">>><?php echo lang('view_more'); ?></a>
             </div>
-<?php endif; ?>
+        <?php endif; ?>
     </div>
 </div>
 
