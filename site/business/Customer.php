@@ -1,5 +1,3 @@
-
-
 <?php
 
 class Customer extends Customer_model {
@@ -7,9 +5,8 @@ class Customer extends Customer_model {
     function __construct() {
         parent::__construct();
     }
-    
-    
     public function countAll(){
+        
         $Customer = new Customer();
         $Customer->addSelect();
         $Customer->addSelect('count(id) as total_record');
@@ -17,11 +14,12 @@ class Customer extends Customer_model {
         $Customer->addWhere("customer.image IS NOT NULL");
         $Customer->find();
         $Customer->fetchFirst();
-        return $Customer->total_record;
-        
+        return $Customer->total_record;   
     }
     public function selectAll($filter = array()) {
+        
         $Customer = new Customer();
+        
         $Customer->addSelect();
         $Customer->addSelect('customer.*');
         $Customer->addWhere("customer.image <> ''");
@@ -31,7 +29,6 @@ class Customer extends Customer_model {
         
         $Customer->find();
         return $Customer;
-        
     }
     public function findByEmail($email) {
         $Customer = new Customer();
