@@ -175,10 +175,7 @@ alter table `news_category`
 
 INSERT INTO `permission` (`id` ,`uri` ,`id_user` ,`id_usr_group` ,`value`)VALUES ('134', 'news_category', '0', '1', '1,2,3,4') ,('135' , 'news_category/add', '0', '1', '1,2,3,4'),('136', 'news_category/edit', '0', '1', '1,2,3,4'),('137', 'news_category/delete', '0', '1', '1,2,3,4');
 
-}}}
-
 /* 10-07-2012 - Nguyễn Văn Cường - Manager site paramter*/
-{{{
 
 SET NAMES utf8;
 
