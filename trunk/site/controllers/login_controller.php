@@ -60,7 +60,8 @@ class Login_controller extends CI_Controller {
 
         $this->load->library('tweet_api/tweet');
         $this->tweet->enable_debug(false);
-
+        $this->tweet->set_callback(site_url('login/tweet_login'));
+        
         if (!$this->tweet->logged_in()) {
             $this->tweet->set_callback(site_url('login/tweet_login'));
             $this->tweet->login();
@@ -70,7 +71,7 @@ class Login_controller extends CI_Controller {
             $filter['firstname'] = '';
             $filter['lastname'] = '';
             $filter['email'] = '';
-            $filter['gender'] = '';
+            $filter['gender'] = 'F';
             $filter['birthday'] = '';
             $filter['mobile'] = '';
             $filter['image'] = '';
@@ -123,7 +124,7 @@ class Login_controller extends CI_Controller {
                 $filter['firstname'] = '';
                 $filter['lastname'] = '';
                 $filter['email'] = '';
-                $filter['gender'] = '';
+                $filter['gender'] = 'F';
                 $filter['birthday'] = '';
                 $filter['mobile'] = '';
                 $filter['username'] = '';
@@ -139,10 +140,12 @@ class Login_controller extends CI_Controller {
                 if (array_key_exists("contact/email", $data))
                     $filter['email'] = $data['contact/email'];
 
-                $customer = Customer::findByEmail($filter['email']);
-
-                if ($customer->countRows() > 0)
-                    Customer::updateCustomerExist($customer, $filter);
+                
+                $customer = Customer::findByEmail($filter['email']);            
+                if ($customer->countRows() > 0){
+                    $customer->fetchFirst();
+                    $customer->updateCustomerExist($customer->id, $filter);
+                }
                 else
                     Customer::insertCustomer($filter);
 
@@ -188,7 +191,7 @@ class Login_controller extends CI_Controller {
                 $filter['firstname'] = '';
                 $filter['lastname'] = '';
                 $filter['email'] = '';
-                $filter['gender'] = '';
+                $filter['gender'] = 'F';
                 $filter['birthday'] = '';
                 $filter['mobile'] = '';
                 $filter['username'] = '';
@@ -204,16 +207,17 @@ class Login_controller extends CI_Controller {
                 if (array_key_exists("contact/email", $data))
                     $filter['email'] = $data['contact/email'];
 
-                $filter['link_profile'] = 'http://img.msg.yahoo.com/avatar.php?yids='. str_replace(array('@yahoo.com', '@yahoo.com.vn'), array('',''), $filter['email']);
-                
-                $customer = Customer::findByEmail($filter['email']);
+                $filter['image'] = 'http://img.msg.yahoo.com/avatar.php?yids='. str_replace(array('@yahoo.com', '@yahoo.com.vn'), array('',''), $filter['email']);
                 
                 
-                
-                if ($customer->countRows() > 0)
-                    Customer::updateCustomerExist($customer, $filter);
+                $customer = Customer::findByEmail($filter['email']);            
+                if ($customer->countRows() > 0){
+                    $customer->fetchFirst();
+                    $customer->updateCustomerExist($customer->id, $filter);
+                }
                 else
                     Customer::insertCustomer($filter);
+                
                 $array = array();
                 $array['username'] = $filter['username'] = '';
                 $array['email'] = $filter['email'];
@@ -310,7 +314,7 @@ class Login_controller extends CI_Controller {
             $filter['firstname'] = '';
             $filter['lastname'] = '';
             $filter['email'] = '';
-            $filter['gender'] = '';
+            $filter['gender'] = 'F';
             $filter['birthday'] = '';
             $filter['mobile'] = '';
             $filter['image'] = '';
@@ -342,15 +346,17 @@ class Login_controller extends CI_Controller {
                 else
                     $filter['gender'] = 'M';
             }
-
-            $customer = Customer::findByEmail($filter['email']);
             
-            
-            if ($customer->countRows() > 0)
-                Customer::updateCustomerExist($customer, $filter);
+            $customer = Customer::findByEmail($filter['email']);            
+            if ($customer->countRows() > 0){
+                $customer->fetchFirst();
+                $customer->updateCustomerExist($customer->id, $filter);
+            }
+                
             else
                 Customer::insertCustomer($filter);
 
+            
             $array = array();
             $array['username'] = $filter['username'] = '';
             $array['email'] = $filter['email'];
