@@ -26,7 +26,7 @@
     <ul id="demoOne">
         <?php
         $k = 1;
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             ?>
                 <li><img src="<?php echo UPLOAD_IMAGE_URL . 'slide_show/slide' . $i . '.jpg'; ?>" alt="<?php echo $k++; ?>" /></li>    
             <?php
