@@ -145,6 +145,15 @@ class Variable {
         return 'shopping';
     }
     
+    public function getTotalProductShopping(){
+        $CI = & get_instance();
+        $CI->load->library('session');
+        $data = $CI->session->userdata(Variable::getSessionShopping());
+        if ($data){
+            return count($data);
+        }
+        return 0;
+    }
     
     // number words of product title
     // 
