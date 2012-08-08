@@ -1153,8 +1153,7 @@ INSERT INTO `social_link` (`id`, `name`, `url`, `id_image`, `is_social`, `type_s
 (9, '<en>Tuoi Tre News</en><vi>Báo tuổi trẻ</vi>', 'http://www.google.com.vn', NULL, 0, 0);
 
 INSERT INTO `social_link` (`id`, `name`, `url`, `id_image`, `is_social`, `type_show`) VALUES
-(10, '<en>test link 1</en><vi>test link 1</vi>', 'http://www.google.com.vn', 197, 0, 1),
-(11, '<en>test ảnh</en><vi>tesst ảnh</vi>', 'http://www.google.com.vn', 197, 0, 1);
+(10, '<en>test link 1</en><vi>test link 1</vi>', 'http://www.google.com.vn', 197, 0, 1);
 
 INSERT INTO `image` (`id`, `code`, `name`, `description`, `id_image_group`, `file`, `creation_date`, `is_display_front_end`) VALUES
 (193, '8A1621DAE39BF1D91D372C77F441E80B8F68B9B6', '', 'twitter', 4, '8A1621DAE39BF1D91D372C77F441E80B8F68B9B6.png', '2012-08-07 11:56:32', 0),
@@ -1169,5 +1168,9 @@ ALTER TABLE `purchase_order` CHANGE `shipping_address` `shipping_address` VARCHA
 ALTER TABLE `purchase_order` CHANGE `billing_address` `billing_address` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
 
 ALTER TABLE `customer` CHANGE `type_connect` `type_connect` INT( 2 ) NULL DEFAULT '2';
+
+/*08/08/2012 - Nguyen Van Cuong - delete news_category*/
+DELETE FROM `news_category` WHERE `id` IN (1,2);
+
 
 }}}
