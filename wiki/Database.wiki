@@ -1169,4 +1169,8 @@ INSERT INTO `image` (`id`, `code`, `name`, `description`, `id_image_group`, `fil
 (197, 'test_social_link', '', 'test_social_link.jpg', 4, 'test_social_link.jpg', '2012-08-07 16:12:16', 1);
 
 
+/*08/08/2012 - Nguyen Van Cuong - udpate order */
+ALTER TABLE `purchase_order` CHANGE `shipping_address` `shipping_address` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
+ALTER TABLE `purchase_order` CHANGE `billing_address` `billing_address` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
+
 }}}
