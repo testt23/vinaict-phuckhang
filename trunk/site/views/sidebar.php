@@ -70,7 +70,6 @@
     <div class="box-sidebar-content">
         <ul class="ul-sidebar">
             <?php
-            
             $filterT = Array(
                 'is_social' => IS_NOT_SOCIAL,
                 'type_show' => TYPE_TEXT
@@ -122,7 +121,7 @@
                 ?>   
                 <li>
                     <a href="<?php echo $social->url; ?>" target="_blank">
-                        <img src="<?php echo direct_url(base_url(UPLOAD_IMAGE_URL . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array('_link.jpg','_link.png','_link.gif','_link.JPG','_link.PNG','_link.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
+                        <img src="<?php echo direct_url(base_url(UPLOAD_IMAGE_URL . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array('_link.jpg', '_link.png', '_link.gif', '_link.JPG', '_link.PNG', '_link.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
                     </a>
                 </li>
             <?php } ?>
@@ -132,18 +131,19 @@
 
 
 <style type="text/css">
-            .login h3{
-                float:left;
-                width: 20%;
-            }
-            .login div{
-                float:right;
-                width: 79%;
-            }
-        </style>
-<!--News-->
+    .login h3{
+        float:left;
+        width: 20%;
+    }
+    .login div{
+        float:right;
+        width: 79%;
+    }
+</style>
+
+<!--Member-->
 <div class="box-sidebar">
-    <div class="box-sidebar-header">Thành Viên</div>
+    <div class="box-sidebar-header"><?php echo lang('txt_member'); ?></div>
     <div class="box-sidebar-content" style="padding: 10px;">
         <div class="login">
             <?php $login = Customer::getSessionLogin(); ?>
@@ -153,46 +153,54 @@
                 </h3>
                 <div>
                     <span>
-                    <?php 
-                        if (empty($login['username']))  echo str_replace (array('@yahoo.com', '@gmail.com'), array('',''), $login['email']); else echo $login['username'];
-                    ?>
+                        <?php
+                        if (empty($login['username']))
+                            echo str_replace(array('@yahoo.com', '@gmail.com'), array('', ''), $login['email']); else
+                            echo $login['username'];
+                        ?>
                     </span><br/>
-                    <a style="color: yellowgreen;" href="<?php echo base_url('login/logout'); ?>"> >>Thoát</a>
+                    <a style="color: yellowgreen;" href="<?php echo base_url('login/logout'); ?>"> >><?php echo lang('txt_cancal'); ?></a>
                 </div>
             <?php else: ?>
-                <span>Bạn đã có tài khoảng ?</span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>">Đăng Nhập</a>
-            <?php endif; ?>
+                <span><?php echo lang('txt_have_account'); ?></span> <a id="login" href="#<?php echo base_url('login/load_form'); ?>"><?php echo lang('txt_login'); ?></a>
+<?php endif; ?>
         </div>
         <div class="clear"></div>
-        
-        <h5 style="padding: 10px;">Dách sách thành viên:</h5>
+
+        <h5 style="padding: 10px;"><?php echo lang('txt_list_member'); ?></h5>
         <div style="padding: 0px 10px;">
             <ul id="list-member">
                 <?php $customer = Customer::selectAll(array('limit' => 12, 'start' => 0)); ?>
                 <?php while ($customer->fetchNext()): ?>
-                    <?php if (!empty($customer->link_profile)): ?>
-                        <li><a href="<?php echo $customer->link_profile; ?>"><img alt="" title="<?php if ($customer->username != '')
+                            <?php if (!empty($customer->link_profile)): ?>
+                        <li><a href="<?php echo $customer->link_profile; ?>"><img alt="" title="<?php
+                        if ($customer->username != '')
                             echo $customer->username; else
-                            echo $customer->email; ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></a></li>        
-                            <?php else: ?>
-                                <li><img alt="" title="<?php if ($customer->username != '')
-                            echo $customer->username; else
-                            echo $customer->email; ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></li>
-                            <?php endif; ?>
-                        <?php endwhile; ?>
+                            echo $customer->email;
+                        ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></a></li>        
+                             <?php else: ?>
+                        <li><img alt="" title="<?php
+                         if ($customer->username != '')
+                             echo $customer->username; else
+                             echo $customer->email;
+                         ?>" width="30px" height="30px" src="<?php echo $customer->image; ?>"/></li>
+            <?php endif; ?>
+<?php endwhile; ?>
             </ul>
-         </div>
-        <div class="clear"></div>
-        <?php  if ($customer->countRows() > 24):?>
-        <div style="text-align: right; padding: 10px;">
-            <a style="color: yellowgreen;" href="#">>>See more</a>
         </div>
-        <?php endif; ?>
+        <div class="clear"></div>
+<?php if ($customer->countRows() > 24): ?>
+            <div style="text-align: right; padding: 10px;">
+                <a style="color: yellowgreen;" href="#">>><?php echo lang('view_more'); ?></a>
+            </div>
+<?php endif; ?>
     </div>
 </div>
-<!--News-->
+
+
+<!--Counter-->
 <div class="box-sidebar">
-    <div class="box-sidebar-header">Lượt Truy Cập</div>
+    <div class="box-sidebar-header"><?php echo lang('txt_counter'); ?></div>
     <div class="box-sidebar-content" style="padding: 10px 0px 0px 0px;">
         <div align="center"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3094423&c=9283582" alt="Web Site Counters"></div>
     </div>
