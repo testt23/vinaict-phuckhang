@@ -165,4 +165,4 @@ $lang['txt_member']                 = 'Thành viên';
 $lang['txt_cancal']                 = 'Thoát';
 $lang['txt_login']                  = 'Đăng nhập';
 $lang['txt_counter']                = 'Lượt truy cập';
-
+$lang['txt_product']                = 'Sản phẩm';
