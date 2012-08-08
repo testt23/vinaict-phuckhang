@@ -9,6 +9,6 @@
     </ul>
 </div>
 <div class="contact">
-<iframe width="96%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=215205295227588149453.0004c5b9cf916c56bf7b3&amp;hl=vi&amp;ie=UTF8&amp;ll=10.831474,106.635417&amp;spn=0,0&amp;t=m&amp;output=embed"></iframe><br /><small>Xem <a href="https://maps.google.com/maps/ms?msa=0&amp;msid=215205295227588149453.0004c5b9cf916c56bf7b3&amp;hl=vi&amp;ie=UTF8&amp;ll=10.831474,106.635417&amp;spn=0,0&amp;t=m&amp;source=embed" style="color:#0000FF;text-align:left">Công ty TNHH Dát Vàng Phúc Khang</a> ở bản đồ lớn hơn</small>
+    <iframe style="border: 2px solid  #bdb7b7;" width="96%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=215205295227588149453.0004c5b9cf916c56bf7b3&amp;hl=vi&amp;ie=UTF8&amp;ll=10.831474,106.635417&amp;spn=0,0&amp;t=m&amp;output=embed"></iframe><br /><small>Xem <a target="_blank" href="https://maps.google.com/maps/ms?msa=0&amp;msid=215205295227588149453.0004c5b9cf916c56bf7b3&amp;hl=vi&amp;ie=UTF8&amp;ll=10.831474,106.635417&amp;spn=0,0&amp;t=m&amp;source=embed" style="color:#0000FF;text-align:left">Công ty TNHH Dát Vàng Phúc Khang</a> ở bản đồ lớn hơn</small>
 </div>
 <div class="clear"></div>
