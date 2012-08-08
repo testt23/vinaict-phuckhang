@@ -54,11 +54,11 @@ class Article extends Article_model {
 
         while ($lang->fetchNext()) {
 
-            if (strlen(getI18n($this->title, $lang->code)) > MAX_LENGTH_NAME) {
+            if (strlen(getI18n($this->title, $lang->code)) > MAX_LENGTH_NAME_GROUP) {
                 MessageHandler::add(lang('err_title_too_long') . ': ' . lang('msg_please_check') . '', MSG_ERROR, MESSAGE_ONLY);
             }
 
-            if (strlen(getI18n($this->link, $lang->code)) > MAX_LENGTH_NAME) {
+            if (strlen(getI18n($this->link, $lang->code)) > MAX_LENGTH_NAME_GROUP) {
                 MessageHandler::add(lang('err_url_too_long') . ': ' . lang('msg_please_check') . '', MSG_ERROR, MESSAGE_ONLY);
             }
         }
