@@ -94,4 +94,11 @@ class Article extends Article_model {
         }
         return file_exists(direct_url(APPLICATION_PATH.'/'.config_item('upload_path').'images/'.$url)) ? direct_url(base_url(config_item('upload_path').'images/'.$url)) : self::get_image_default();
     }
+    
+    public function get_content_html($string){
+        
+        $utf8_string = preg_replace("/\r?\n/", "", getI18n($string));
+	return htmlspecialchars_decode($utf8_string);
+    }
+    
 }
