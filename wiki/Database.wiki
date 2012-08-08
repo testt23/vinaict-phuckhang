@@ -1173,4 +1173,6 @@ INSERT INTO `image` (`id`, `code`, `name`, `description`, `id_image_group`, `fil
 ALTER TABLE `purchase_order` CHANGE `shipping_address` `shipping_address` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
 ALTER TABLE `purchase_order` CHANGE `billing_address` `billing_address` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
 
+ALTER TABLE `customer` CHANGE `type_connect` `type_connect` INT( 2 ) NULL DEFAULT '2';
+
 }}}
