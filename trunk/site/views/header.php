@@ -106,26 +106,7 @@
     <?php
     $this->session->set_userdata('lang_url', curPageURL());
     ?>
-    <body>
-        <?php 
-            $filter = Array(
-                'is_social' => IS_SOCIAL
-            );
-            
-            $social = SocialLink::getlist($filter);
-            if($social){
-        ?>
-        <div class="social-link-right">
-            <?php while($social->fetchNext()){ ?>
-            <span id="social_link">
-                <a href="<?php echo $social->url; ?>" target="_blank">
-                    <img src="<?php echo base_url(UPLOAD_IMAGE_URL.'social/'.str_replace(array('.jpg','.png','.gif','.JPG','.PNG','.GIF'), array(BO_SOCIAL_LINK_IMG_SUFFIX.'.jpg',BO_SOCIAL_LINK_IMG_SUFFIX.'.png',BO_SOCIAL_LINK_IMG_SUFFIX.'.gif',BO_SOCIAL_LINK_IMG_SUFFIX.'.JPG',BO_SOCIAL_LINK_IMG_SUFFIX.'.PNG',BO_PROD_CATEGORY_IMG_SUFFIX.'.GIF'), $social->picture)).'" alt="'.clean_html(getI18n($social->name)); ?>" />
-                </a>
-            </span>
-            <?php } ?>
-        </div>
-        <?php }  ?>
-        
+    <body>        
         <div id="header">
             <div id="header-container">
                 <div id="header-right"> 
