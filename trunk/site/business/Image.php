@@ -53,7 +53,7 @@ class Image extends Image_model {
             $page = 1;
         }
         
-        $limit = (defined(LIMIT_PICTURE)) ? LIMIT_PICTURE : 21;
+        $limit = (defined('LIMIT_PICTURE')) ? LIMIT_PICTURE : 21;
         $total_page = ceil($total_record / $limit);
         if ($total_page <= 0){
             $total_page = 1;
@@ -178,7 +178,7 @@ class Image extends Image_model {
         if ($url == '' || $url == '/') {
             return false;
         }
-        return file_exists(direct_url(APPLICATION_PATH . '/' . config_item('upload_path') . 'images/' . $url));
+        return file_exists(direct_url(UPLOAD_IMAGE_URL.$url)) ? base_url(UPLOAD_IMAGE_URL.$url) : $this->image_default;
     }
 
 }

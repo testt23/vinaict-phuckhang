@@ -1,3 +1,5 @@
+
+
 <?php
 
 class Customer extends Customer_model {
@@ -76,16 +78,23 @@ class Customer extends Customer_model {
         $customer->insert();
     }
 
-    public function updateCustomerExist($customer, $filter) {
-        $customer->firstname = $filter['firstname'];
-        $customer->lastname = $filter['lastname'];
-        $customer->email = $filter['email'];
-        $customer->gender = $filter['gender'];
-        $customer->birthday = $filter['birthday'];
-        $customer->mobile = $filter['mobile'];
-        $customer->image = $filter['image'];
-        $customer->username = $filter['username'];
-        $customer->link_profile = $filter['link_profile'];
+    public function updateCustomerExist($id, $filter) {
+        $customer = new Customer();
+        $customer->get($id);
+        if (empty($customer->firstname))
+                $customer->firstname = $filter['firstname'];
+        if (empty($customer->lastname))
+                $customer->lastname = $filter['lastname'];
+        if ((empty($customer->image) or $customer->image == base_url('images/no-picture.jpg')) and !empty($filter['image']))
+                $customer->image = $filter['image'];
+        if (empty($customer->birthdate))
+                $customer->birthdate = $filter['birthday'];
+        if (empty($customer->link_profile))
+                $customer->link_profile = $filter['link_profile'];
+        if (empty($customer->gender))
+                $customer->gender = $filter['gender'];
+        if (empty($customer->mobile_phone))
+                $customer->mobile_phone = $filter['mobile'];
         $customer->update();
     }
     
