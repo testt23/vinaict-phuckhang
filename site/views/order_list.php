@@ -56,8 +56,8 @@
                         ?>
                 </td>
                 <td>
-                    <input type="hidden" name="id_prods<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_id_product(); ?>" onchange="update_giohang()"/>
-                    <input class="updae_input" type="text" name="num_prod<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_number(); ?>" onchange="update_giohang('id_prods<?php echo $shopping[$i]->get_id_product(); ?>', this, '<?php echo base_url() . 'products/update_shop' ?>');" onkeypress="return keypress(event)" maxlength="3" style="text-align: center;" />
+                    <input type="hidden" name="id_prods<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_id_product(); ?>"/>
+                    <input class="updae_input" type="text" name="num_prod<?php echo $shopping[$i]->get_id_product(); ?>" value="<?php echo $shopping[$i]->get_number(); ?>" onchange="update_giohang('id_prods<?php echo $shopping[$i]->get_id_product(); ?>', this, '<?php echo base_url() . 'product/update_shopping' ?>');" onkeypress="return keypress(event)" maxlength="3" style="text-align: center;" />
                 </td>
                 <td>
                     <b style="color:brown;">
@@ -70,7 +70,7 @@
                         ?>
                     </b>
                 </td>
-                <td class="del"><a onclick="return delete_shop('tr_<?php echo $shopping[$i]->get_id_product(); ?>',<?php echo $shopping[$i]->get_id_product(); ?>,'<?php echo base_url() . 'products/delete_shop'; ?>'  )" href="#" class="del-gio"><?php echo lang('site_product_delete'); ?></a></td>
+                <td class="del"><a onclick="return delete_shop('tr_<?php echo $shopping[$i]->get_id_product(); ?>',<?php echo $shopping[$i]->get_id_product(); ?>,'<?php echo base_url() . 'product/delete_shopping'; ?>'  )" href="#" class="del-gio"><?php echo lang('site_product_delete'); ?></a></td>
             </tr>
         <?php endfor; ?>
     
@@ -89,7 +89,11 @@
     
 </div>
 <?php else: ?>
-<h1 style="text-align: center; color: gray; font-size: 20px;"><?php echo lang('show_message');?></h1>
+<h1 style="margin-top: 50px; text-align: center; color: gray; font-size: 20px;"><?php echo lang('show_message');?></h1>
+<div style="width: 100px; height: 30px; float:right; width: 200px; margin-top: 40px; ">
+    <h5><a href="<?php echo base_url(); ?>" style="text-decoration: none;" ><?php echo getI18n('<vi> Trở lại<< </vi><en>Back<< </en>', get_system_language()); ?></a></h5>
+</div>
+<div class="clear"></div>
 <?php endif; ?>
 <div class="clear"></div>
 

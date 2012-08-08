@@ -13,7 +13,6 @@
         <?php if (isset($product) && $product): ?>
             <?php $i = 0; ?>
             <?php while ($product->fetchNext()): ?>
-
                 <li>
                     <div class="img-product">   
                         <a href="<?php echo $product->get_product_link(); ?>">

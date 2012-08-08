@@ -46,7 +46,7 @@
                     
                     <div>
                         <a rel="prettyPhoto[pp_gal]" href="<?php echo $images['image']->the_image_link(); ?>">
-                        <img title="<?php echo $images['image']->the_image_description(); ?>" alt="<?php echo $images['image']->the_image_description(); ?>" src="<?php echo $images['image']->the_image_link_avata(); ?>" alt=""/>
+                        <img title="<?php echo $images['image']->the_image_description(); ?>" alt="<?php echo $images['image']->the_image_description(); ?>" src="<?php echo $images['image']->the_image_link_thumb(); ?>" alt=""/>
                         </a>
                     </div>
                         
