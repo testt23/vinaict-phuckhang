@@ -118,8 +118,9 @@
 					else if( el.opts.direction == 'horizontal'){
 						params = {right:(el.opts.width*href)}
 					};
-					
-					el.jqthis.stop().fadeOut(500).animate(params,el.opts.speed, el.opts.ease).fadeIn(500);
+					el.jqthis.stop().fadeOut(500).animate(params,el.opts.speed, el.opts.ease).fadeIn(500).css('opacity', '1.0');
+                                        jQuery(el).children().css('opacity','1.0');
+                                        //el.jqthis.stop().animate(params,el.opts.speed, el.opts.ease).fadeIn(500);
 					//index = href;
 					//alert("OK");
 					return false;
