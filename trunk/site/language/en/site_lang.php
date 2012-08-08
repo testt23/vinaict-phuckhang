@@ -162,3 +162,4 @@ $lang['txt_member']                 = 'Member';
 $lang['txt_cancal']                 = 'Cancel';
 $lang['txt_login']                  = 'Sign in';
 $lang['txt_counter']                = 'Visitors';
+$lang['txt_product']                = 'Product';

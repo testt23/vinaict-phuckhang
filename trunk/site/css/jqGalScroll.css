@@ -29,7 +29,7 @@
 .jqGSContainer .jqGSPagination ul li a.selected{background:#fff;color:#c61d23;border: 1px solid #eaeaea;}
 .jqGSContainer .jqGSPagination ul li a:hover{background:#fff;color:#c61d23;border:1px solid #fff;}
 
-.jqGSImgContainer{border:1px solid #fff;}
+.jqGSImgContainer{border:1px solid #fff; border-radius:10px; overflow: hidden;}
 
 .info-in-slideimgge{
 	position:absolute;
