@@ -81,8 +81,9 @@ if ($social) {
 
 <!--Shopping cart-->
 <div class="box-sidebar">
+    <div class="box-sidebar-header"><?php echo lang('txt_shopping_cart'); ?></div>
     <div class="box-sidebar-content">
-        <a class="shopping-cart" href="<?php echo base_url() . 'gio-hang.html'; ?>"><img src="<?php echo base_url() . 'images/site/shopping_cart.png'; ?>" /><?php echo lang('txt_shopping_cart'); ?></a>
+        <a class="shopping-cart" href="<?php echo base_url() . 'gio-hang.html'; ?>"><img src="<?php echo base_url() . 'images/site/shopping_cart.png'; ?>" /></a>
     </div>
 </div>
 
