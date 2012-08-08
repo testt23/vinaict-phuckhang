@@ -7,7 +7,7 @@
 		}
 
 		function index(){
-                    
+                   
                     $product = new Product();
                     $info = $product->getNewProduct();
                     
