@@ -159,3 +159,10 @@ $lang['txt_hot_new']                = 'Tin tức mới';
 $lang['txt_link']                   = 'Liên kết';
 $lang['txt_shopping_cart']          = 'Giỏ hàng';
 $lang['txt_link_image']             = 'Các đối tác';
+$lang['txt_list_member']            = 'Danh sách thành viên';
+$lang['txt_have_account']           = 'Bạn đã có tài khoảng ?';
+$lang['txt_member']                 = 'Thành viên';
+$lang['txt_cancal']                 = 'Thoát';
+$lang['txt_login']                  = 'Đăng nhập';
+$lang['txt_counter']                = 'Lượt truy cập';
+
