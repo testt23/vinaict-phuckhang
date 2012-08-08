@@ -4,7 +4,7 @@
     <?php while ($article->fetchNext()) { ?>
         <div class="article">    
             <p class="title">
-                <span class="new-img"><a href="#"><img src="<?php echo Article::get_image_link_tiny($article->picture); ?>"></img></a></span>
+                <span class="new-img"><a href="<?php echo base_url(); ?>news/detail/<?php echo $article->id; ?>"><img src="<?php echo Article::get_image_link_tiny($article->picture); ?>"></img></a></span>
                 <a href="<?php echo base_url(); ?>news/detail/<?php echo $article->id; ?>"><?php echo $article->get_title(); ?></a>
                 <h7 class="date"><?php echo lang('txt_' . date('D', strtotime($article->date))) . ', ' . date_sql_to_local_date($article->date); ?></h7>
             </p>
