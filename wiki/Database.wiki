@@ -1092,8 +1092,6 @@ ALTER TABLE `customer` ADD COLUMN `image` VARCHAR(250) AFTER POSITION;
 ALTER TABLE `customer` ADD COLUMN `username` VARCHAR(50) AFTER POSITION;
 ALTER TABLE `customer` ADD COLUMN `link_profile` VARCHAR(250) AFTER POSITION;
 
-
-
 /* 06-08-2012 - Pham Thanh Nam - limit 5 product */
 UPDATE `parameter` SET `value` = '5' WHERE `parameter`.`id` =69;
 
@@ -1103,7 +1101,7 @@ INSERT INTO `parameter` (`id`, `name`, `code`, `value`, `always_load`, `status`,
 (97, 'Is social link', 'IS_SOCIAL', '1', 1, 0, '2012-08-06 16:22:15', NULL, 1, NULL, 0, 1, NULL),
 (98, 'Is not social link', 'IS_NOT_SOCIAL', '0', 1, 0, '2012-08-06 16:24:23', NULL, 1, NULL, 0, 1, NULL);
 
-/*07/08/2012 - Nguyen Van Cuong - add image and customer*/
+/* 07/08/2012 - Nguyen Van Cuong - add image and customer */
 ALTER TABLE `image` ADD `is_display_front_end` INT( 1 ) NOT NULL AFTER `creation_date` ;
 ALTER TABLE `customer` CHANGE `email` `email` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
 ALTER TABLE `customer` CHANGE `billing_address` `billing_address` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
@@ -1169,7 +1167,7 @@ INSERT INTO `image` (`id`, `code`, `name`, `description`, `id_image_group`, `fil
 (197, 'test_social_link', '', 'test_social_link.jpg', 4, 'test_social_link.jpg', '2012-08-07 16:12:16', 1);
 
 
-/*08/08/2012 - Nguyen Van Cuong - udpate order */
+/* 08/08/2012 - Nguyen Van Cuong - udpate order */
 ALTER TABLE `purchase_order` CHANGE `shipping_address` `shipping_address` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
 ALTER TABLE `purchase_order` CHANGE `billing_address` `billing_address` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;
 
