@@ -572,6 +572,7 @@ table tr td{text-align:center}
 .contact-wrapper h1{
     border-radius: 10px 10px 0px 0px;
     -moz-border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
     background: gray;
     color: white;
     font-size: 16px;
