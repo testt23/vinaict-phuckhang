@@ -163,3 +163,5 @@ $lang['txt_cancal']                 = 'Cancel';
 $lang['txt_login']                  = 'Sign in';
 $lang['txt_counter']                = 'Visitors';
 $lang['txt_product']                = 'Product';
+$lang['txt_no_news']                = 'No infomation';
+$lang['txt_no_link']                = 'No link';

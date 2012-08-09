@@ -85,8 +85,8 @@ if ($social) {
     <div class="box-sidebar-content">
         <a class="shopping-cart" href="<?php echo base_url() . 'gio-hang.html'; ?>"><img src="<?php echo base_url() . 'images/site/shopping_cart.png'; ?>" /></a>
         <span class="number-product">
-            <?php 
-                echo Variable::getTotalProductShopping() . ' ' . lang('txt_product');
+            <?php
+            echo Variable::getTotalProductShopping() . ' ' . lang('txt_product');
             ?>
         </span>
     </div>
@@ -97,16 +97,16 @@ if ($social) {
     <div class="box-sidebar-header"><?php echo lang('txt_link'); ?></div>
     <div class="box-sidebar-content">
         <ul class="ul-sidebar">
-            <?php
-            $filterT = Array(
-                'is_social' => IS_NOT_SOCIAL,
-                'type_show' => TYPE_TEXT
-            );
-            $social = SocialLink::getList($filterT);
-            while ($social->fetchNext()) {
-                ?>
-                <li><a href="<?php echo $social->url; ?>" target="_blank"><?php echo $social->getName(); ?></a></li>
-            <?php } ?>
+<?php
+$filterT = Array(
+    'is_social' => IS_NOT_SOCIAL,
+    'type_show' => TYPE_TEXT
+);
+$social = SocialLink::getList($filterT);
+while ($social->fetchNext()) {
+    ?>
+                            <li><a href="<?php echo $social->url; ?>" target="_blank"><?php echo $social->getName(); ?></a></li>
+<?php } ?>
         </ul>
     </div>
 </div> -->
@@ -130,13 +130,19 @@ if ($social) {
         </ul> 
         <?php if ($count > 0) { ?>
             <span class="more-news"><a href="<?php echo base_url(); ?>tin-tuc"><?php echo lang('view_more_other'); ?> &raquo;</a></span>
-        <?php } ?>
+            <?php
+        } else {
+            ?>
+            <h4 class="no-news"> <?php echo lang('txt_no_news'); ?>  </h4>
+            <?php
+        }
+        ?>
     </div>
 </div>
 
 <!--Link Image-->
 <div class="box-sidebar">
-    <div class="box-sidebar-header"><?php echo lang('txt_link_image'); ?></div>
+    <div class="box-sidebar-header"><?php echo lang('txt_link'); ?></div>
     <div class="box-sidebar-content">
         <ul class="link-image">
             <?php
@@ -145,6 +151,7 @@ if ($social) {
                 'type_show' => TYPE_IMAGE
             );
             $social = SocialLink::getList($filter);
+            $count = 1;
             while ($social->fetchNext()) {
                 ?>   
                 <li>
@@ -152,6 +159,12 @@ if ($social) {
                         <img src="<?php echo direct_url(base_url(UPLOAD_IMAGE_URL . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array('_link.jpg', '_link.png', '_link.gif', '_link.JPG', '_link.PNG', '_link.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
                     </a>
                 </li>
+                <?php
+                $count++;
+            }
+            if ($count <= 1) {
+                ?>
+                <li><?php echo lang('txt_no_link'); ?></li>
             <?php } ?>
         </ul>
     </div>
