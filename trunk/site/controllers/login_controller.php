@@ -167,7 +167,6 @@ class Login_controller extends CI_Controller {
             case 1:
                 break;
             case 2:
-                YahooSession::clearSession();
                 break;
             case 3:
                 break;
