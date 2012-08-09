@@ -1176,4 +1176,8 @@ DELETE FROM `news_category` WHERE `id` IN (1,2);
 UPDATE `social_link` SET `name` = '<en>linkedin</en><vi>linkedin</vi>',
 `url` = 'http://www.linkedin.com/' WHERE `social_link`.`id` =3;
 
+UPDATE `image_group` SET `id_image_size` = '1,3,6' WHERE `image_group`.`id` =2;
+DELETE FROM `image_group` WHERE `id` = 5;
+
+
 }}}
