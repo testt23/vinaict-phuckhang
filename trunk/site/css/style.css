@@ -570,13 +570,15 @@ table tr td{text-align:center}
     width: 100%;
 }
 .contact-wrapper h1{
+    border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
     background: gray;
     color: white;
     font-size: 16px;
     padding: 5px 10px;
 }
 .contact-main{
-    border: solid 1px gray;
+    
 }
 .contact-main span{
     padding: 0px 0px 0px 20px;
@@ -1354,3 +1356,21 @@ range-image-wrapper{
     float:left;
     margin: 2px;
 }
+
+    #sitemap .sitemap-wrapper{
+        margin: 30px 30px 30px 100px;
+    }
+    #sitemap .sitemap-wrapper li{
+        padding-left: 25px;
+        background: url('../images/line.gif') no-repeat top left;
+    }
+    #sitemap .sitemap-wrapper li a{
+        color: #000;
+        text-decoration: none;
+    }
+    #sitemap .sitemap-wrapper li a:hover{
+        text-decoration: underline;
+    }
+    #sitemap .sitemap-wrapper li ul{
+        margin-left: 20px;
+    }
