@@ -1172,5 +1172,8 @@ ALTER TABLE `customer` CHANGE `type_connect` `type_connect` INT( 2 ) NULL DEFAUL
 /*08/08/2012 - Nguyen Van Cuong - delete news_category*/
 DELETE FROM `news_category` WHERE `id` IN (1,2);
 
+/* 09/08/2012 - Pham Thanh Nam - fix link linkedin */
+UPDATE `social_link` SET `name` = '<en>linkedin</en><vi>linkedin</vi>',
+`url` = 'http://www.linkedin.com/' WHERE `social_link`.`id` =3;
 
 }}}
