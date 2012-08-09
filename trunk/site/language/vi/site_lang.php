@@ -166,3 +166,5 @@ $lang['txt_cancal']                 = 'Thoát';
 $lang['txt_login']                  = 'Đăng nhập';
 $lang['txt_counter']                = 'Lượt truy cập';
 $lang['txt_product']                = 'Sản phẩm';
+$lang['txt_no_news']                = 'Chưa có thông tin';
+$lang['txt_no_link']                = 'Chưa có liên kết';

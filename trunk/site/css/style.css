@@ -1312,6 +1312,11 @@ range-image-wrapper{
     margin: auto;
 }
 
+.box-sidebar .box-sidebar-content .no-news{
+    text-align: center;
+    font-weight: normal;
+} 
+
 .box-sidebar .shopping-cart{
     font-weight: bold;
     color: #333 !important;
