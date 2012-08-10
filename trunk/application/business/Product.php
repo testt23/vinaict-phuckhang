@@ -8,7 +8,6 @@ class Product extends Product_model {
     
     
     public function getList($filter = array()) {
-        
         $product = new Product();
         $product->addJoin(new Image(), 'LEFT', 'image img', 'img.id = product.id_def_image');
         $product->addSelect();
@@ -16,30 +15,115 @@ class Product extends Product_model {
         $product->addWhere('product.is_deleted = '.IS_NOT_DELETED);
         
         if (isset($filter['code']) && $filter['code'])
-            $product->addWhere("code LIKE '%".$filter['code']."%'");
+            $product->addWhere("product.code LIKE '%".$filter['code']."%'");
         
         if (isset($filter['name']) && $filter['name'])
-            $product->addWhere("name LIKE '%".$filter['name']."%'");
-        
-        if (isset($filter['description']) && $filter['description']) {
-            $product->addWhere("(short_description LIKE '%".$filter['description']."%'");
-            $product->addWhere("description LIKE '%".$filter['description']."%')", "OR");
-        }
+            $product->addWhere("product.name LIKE '%".$filter['name']."%'");
         
         if (isset($filter['keywords']) && $filter['keywords'])
-            $product->addWhere("FIND_IN_SET(keywords, '".$filter['keywords']."')");
+            $product->addWhere("FIND_IN_SET(product.keywords, '".$filter['keywords']."')");
+        
         
         if (isset($filter['id_prod_category']) && $filter['id_prod_category'])
-            $product->addWhere('id_prod_category = '.$filter['id_prod_category']);
+            $product->addWhere('product.id_prod_category = '.$filter['id_prod_category']);
         
-        $product->orderBy("product.id");
-        $product->orderBy(getI18nRealStringSql("product.name"));
+        if (isset($filter['is_featured']) && $filter['is_featured'])
+            $product->addWhere('product.is_featured = 1');
         
+        if (isset($filter['disable_yes']) && $filter['disable_yes'] && (!isset($filter['disable_no']) or !$filter['disable_no']))
+            $product->addWhere('product.is_disabled = 1');
+        else if (isset($filter['disable_no']) && $filter['disable_no'] && (!isset($filter['disable_yes']) or !$filter['disable_yes']))
+            $product->addWhere('product.is_disabled = 0');
+        
+        if (isset($filter['currency']) && $filter['currency'])
+            $product->addWhere("product.currency = '".$filter['currency']."'");
+        
+        if (isset($filter['price']) && $filter['price'] != '' && isset($filter['option_price'])){
+            $sosanh_price = '';
+            switch ($filter['option_price']){
+                case 2: $sosanh_price = '>'; break;
+                case 3: $sosanh_price = '<'; break;
+                case 4: $sosanh_price = '='; break;
+                default: $sosanh_price = '';
+            }
+            
+            if ($sosanh_price != ''){
+                $product->addWhere('product.price ' . $sosanh_price . ' ' . $filter['price'] * 1);
+            }
+            
+        }
+        // order access
+        $order = 'id';
+        if (isset($filter['sort_by']) && $filter['sort_by']){
+            switch($filter['sort_by']){
+                case '1': $order = 'id'; break;
+                case '2': $order = 'code'; break;
+                case '3': $order = 'name'; break;
+                case '4': $order = 'price'; break;
+            }
+        }
+        
+        if (isset($filter['limit']) && isset($filter['start']))   
+             $product->limit($filter['start'] . ',' . $filter['limit']);
+         
+        $product->orderBy(getI18nRealStringSql("product." . $order));
         $product->find();
-        
         return $product;
         
     }
+    
+    public function getTotalRecord($filter = array()){
+        $product = new Product();
+        $product->addJoin(new Image(), 'LEFT', 'image img', 'img.id = product.id_def_image');
+        $product->addSelect();
+        $product->addSelect('count(product.id) as total');
+        $product->addWhere('product.is_deleted = '.IS_NOT_DELETED);
+        
+        if (isset($filter['code']) && $filter['code'])
+            $product->addWhere("product.code LIKE '%".$filter['code']."%'");
+        
+        if (isset($filter['name']) && $filter['name'])
+            $product->addWhere("product.name LIKE '%".$filter['name']."%'");
+        
+        if (isset($filter['keywords']) && $filter['keywords'])
+            $product->addWhere("FIND_IN_SET(product.keywords, '".$filter['keywords']."')");
+        
+        
+        if (isset($filter['id_prod_category']) && $filter['id_prod_category'])
+            $product->addWhere('product.id_prod_category = '.$filter['id_prod_category']);
+        
+        if (isset($filter['is_featured']) && $filter['is_featured'])
+            $product->addWhere('product.is_featured = 1');
+        
+        if (isset($filter['disable_yes']) && $filter['disable_yes'] && (!isset($filter['disable_no']) or !$filter['disable_no']))
+            $product->addWhere('product.is_disabled = 1');
+        else if (isset($filter['disable_no']) && $filter['disable_no'] && (!isset($filter['disable_yes']) or !$filter['disable_yes']))
+            $product->addWhere('product.is_disabled = 0');
+        
+        if (isset($filter['currency']) && $filter['currency'])
+            $product->addWhere("product.currency = '".$filter['currency']."'");
+        
+        if (isset($filter['price']) && $filter['price'] != '' && isset($filter['option_price'])){
+            $sosanh_price = '';
+            switch ($filter['option_price']){
+                case 2: $sosanh_price = '>'; break;
+                case 3: $sosanh_price = '<'; break;
+                case 4: $sosanh_price = '='; break;
+                default: $sosanh_price = '';
+            }
+            
+            if ($sosanh_price != ''){
+                $product->addWhere('product.price ' . $sosanh_price . ' ' . $filter['price'] * 1);
+            }
+            
+        }
+        
+        $product->find();
+        $product->fetchFirst();
+        return $product->total;
+    }
+    
+    
     
     function validateInput() {
 

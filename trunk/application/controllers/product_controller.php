@@ -22,14 +22,28 @@
         $filter = array();
         $filter['code'] = $this->input->get_post('code');
         $filter['name'] = $this->input->get_post('name');
-        $filter['description'] = $this->input->get_post('description');
         $filter['keywords'] = $this->input->get_post('keywords');
-        $filter['id_prod_category'] = $this->input->get_post('id_prod_category');
+        $filter['id_prod_category'] = $this->input->get_post('category');
+        $filter['is_featured'] = $this->input->get_post('is_featured');
+        $filter['disable_yes'] = $this->input->get_post('disable_yes');
+        $filter['disable_no'] = $this->input->get_post('disable_no');
+        $filter['option_price'] = $this->input->get_post('option_price');
+        $filter['price'] = $this->input->get_post('price');
+        $filter['currency'] = $this->input->get_post('currency');
+        $filter['sort_by'] = $this->input->get_post('sort_by');
+        $total_record = Product::getTotalRecord($filter);
+        $filter['limit'] = $this->input->get_post('limit');
+        if (!$filter['limit'])
+            $filter['limit'] = 10;
+        $pagination = new Pagination($this, $total_record, $filter['limit']);
+        
+        $filter['start'] = $pagination->start;
         $product = Product::getList($filter);
         
+        $this->data['categories'] = ProductCategory::getTree();
         $this->data['product'] = $product;
         $this->data['filter'] = $filter;
-
+        $this->data['pagination'] = $pagination->get_html(2);
         $array_menus = array();
         $filter = array();
         $filter['parent_id'] = 0;
