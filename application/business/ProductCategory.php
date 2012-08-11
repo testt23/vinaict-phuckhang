@@ -12,20 +12,7 @@ class ProductCategory extends Product_category_model {
         $prod_category->addJoin(new Image(), 'LEFT');
         $prod_category->addSelect();
         $prod_category->addSelect('product_category.*, image.file picture');
-        $prod_category->addWhere('product_category.is_deleted = '.IS_NOT_DELETED);
-
-        if (isset($filter['name']) && $filter['name'])
-            $prod_category->addWhere("product_category.name LIKE '%".$filter['name']."%'");
-
-        if (isset($filter['keywords']) && $filter['keywords'])
-            $prod_category->addWhere("FIND_IN_SET('".$filter['keywords']."', product_category.keywords)");
-
-        if (isset($filter['code']) && $filter['code'])
-            $prod_category->addWhere("product_category.code LIKE '%".$filter['code']."%'");
-        
-        if (isset($filter['category']) && $filter['category'])
-            $prod_category->addWhere("product_category.id_parent = '". ( $filter['category'] * 1 )."'");
-        
+        $prod_category->addWhereSearch($filter);
         $sort_by = 'id DESC' ;
         if (isset($filter['sort_by']) && $filter['sort_by']){
             switch($filter['sort_by']){
@@ -34,7 +21,6 @@ class ProductCategory extends Product_category_model {
                 case 3: $sort_by = 'name';  break;
             }
         }
-        
         $prod_category->orderBy('product_category.' . $sort_by);
         
         if (isset($filter['limit']) && $filter['limit'] && isset($filter['start']) && is_numeric($filter['start']))
@@ -49,24 +35,30 @@ class ProductCategory extends Product_category_model {
         $prod_category->addJoin(new Image(), 'LEFT');
         $prod_category->addSelect();
         $prod_category->addSelect('count(product_category.id) as total_record');
-        $prod_category->addWhere('product_category.is_deleted = '.IS_NOT_DELETED);
-
-        if (isset($filter['name']) && $filter['name'])
-            $prod_category->addWhere("product_category.name LIKE '%".$filter['name']."%'");
-
-        if (isset($filter['keywords']) && $filter['keywords'])
-            $prod_category->addWhere("FIND_IN_SET('".$filter['keywords']."', product_category.keywords)");
-
-        if (isset($filter['code']) && $filter['code'])
-            $prod_category->addWhere("product_category.code LIKE '%".$filter['code']."%'");
-        
-        if (isset($filter['category']) && $filter['category'])
-            $prod_category->addWhere("product_category.id_parent = '". ( $filter['category'] * 1 )."'");
-        
+        $prod_category->addWhereSearch($filter);
         $prod_category->find();
         $prod_category->fetchFirst();
         return $prod_category->total_record;
     }
+    
+    function addWhereSearch($filter = array()){
+        $this->addWhere('product_category.is_deleted = '.IS_NOT_DELETED);
+
+        if (isset($filter['name']) && $filter['name'])
+            $this->addWhere("product_category.name LIKE '%".$filter['name']."%'");
+
+        if (isset($filter['keywords']) && $filter['keywords'])
+            $this->addWhere("FIND_IN_SET('".$filter['keywords']."', product_category.keywords)");
+
+        if (isset($filter['code']) && $filter['code'])
+            $this->addWhere("product_category.code LIKE '%".$filter['code']."%'");
+        
+        if (isset($filter['category']) && $filter['category'])
+            $this->addWhere("product_category.id_parent = '". ( $filter['category'] * 1 )."'");
+        
+    }
+    
+    
     function getTree($filter = array(), $id_prod_category_excluded = null) {
 
         $arrProdCategory = array();

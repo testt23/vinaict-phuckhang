@@ -67,6 +67,7 @@
                             </li>
                             <li>
                                 <input type="button" id="bnt_search" value="<?php echo lang('txt_search'); ?>" />
+                                <input type="reset" name="" value="Xóa hết"/>
                             </li>
                         </ul>
                     </form>

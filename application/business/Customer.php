@@ -7,35 +7,65 @@
 		}
                 
                 function getList(&$filter = array(), $pager = true) {
-        
                     $customer = new Customer();
-
-                    if(isset($filter['name']) && $filter['name']) {
-                        $customer->addWhere("(customer.last_name LIKE '%".utf8_escape_textarea($filter['name'])."%'");
-                        $customer->addWhere("customer.first_name LIKE '%".utf8_escape_textarea($filter['name'])."%')", 'OR');
+                    $customer->addWhereSearch($filter);
+                    if (isset($filter['limit']) && $filter['limit'] && isset($filter['start']) && is_numeric($filter['start'])){
+                        $customer->limit($filter['start']. ',' . $filter['limit']);
                     }
-
-                    $customer->addWhere('customer.is_deleted = '.IS_NOT_DELETED);
-
-                    // Get total rows
                     $customer->groupBy('customer.id');
                     $customer->orderBy("customer.lastname, customer.firstname");
                     $customer->find();
-
-                    if ($pager) {
-
-                        $filter[PAGINATION_QUERY_STRING_SEGMENT] = isset($filter[PAGINATION_QUERY_STRING_SEGMENT]) && $filter[PAGINATION_QUERY_STRING_SEGMENT] ? $filter[PAGINATION_QUERY_STRING_SEGMENT] : 1;
-                        // Initialize pagination
-                        $ci =& get_instance();
-                        $ci->load->library('pagination');
-                        $ci->pagination->setModel($customer);
-                        $ci->pagination->url = curPageURL();
-                        $ci->pagination->cur_page = $filter[PAGINATION_QUERY_STRING_SEGMENT];
-
-                    }
-
                     return $customer;
                 }
+                
+                public function getTotalRecord($filter = array()){
+                    $customer = new Customer();
+                    $customer->addSelect();
+                    $customer->addSelect("count(customer.id) as total_record");
+                    $customer->addWhereSearch($filter);
+                    $customer->find();
+                    $customer->fetchFirst();
+                    return $customer->total_record;
+                }
+                
+                function addWhereSearch($filter = array()){
+                    if(isset($filter['name']) && $filter['name']) {
+                        $this->addWhere("(customer.lastname LIKE '%".utf8_escape_textarea($filter['name'])."%'");
+                        $this->addWhere("customer.firstname LIKE '%".utf8_escape_textarea($filter['name'])."%')", 'OR');
+                    }
+                    
+                    if(isset($filter['address']) && $filter['address']) {
+                        $this->addWhere("(customer.billing_address LIKE '%".utf8_escape_textarea($filter['address'])."%'");
+                        $this->addWhere("customer.shipping_address LIKE '%".utf8_escape_textarea($filter['address'])."%'", 'OR');
+                        $this->addWhere("customer.contact_address LIKE '%".utf8_escape_textarea($filter['address'])."%')");
+                    }
+                    
+                    if(isset($filter['gender']) && $filter['gender'])
+                        $this->addWhere("customer.gender ='".$filter['gender']."'");
+                    
+                    if(isset($filter['code']) && $filter['code'])
+                        $this->addWhere("customer.code LIKE '%".utf8_escape_textarea($filter['code'])."%'");
+                    
+                    if(isset($filter['phone']) && $filter['phone']){
+                        $this->addWhere("(customer.home_phone LIKE '%".utf8_escape_textarea($filter['phone'])."%'");
+                        $this->addWhere("customer.work_phone LIKE '%".utf8_escape_textarea($filter['phone'])."%'", 'OR');
+                        $this->addWhere("customer.mobile_phone LIKE '%".utf8_escape_textarea($filter['phone'])."%')");
+                    }
+                        
+                    
+                    if(isset($filter['email']) && $filter['email'])
+                        $this->addWhere("customer.email LIKE '%".utf8_escape_textarea($filter['email'])."%'");
+                    
+                    if(isset($filter['yahoo']) && $filter['yahoo'])
+                        $this->addWhere("customer.yahoo_id LIKE '%".utf8_escape_textarea($filter['yahoo'])."%'");
+                    
+                    if(isset($filter['skype']) && $filter['skype'])
+                        $this->addWhere("customer.skype_id LIKE '%".utf8_escape_textarea($filter['skype'])."%'");
+                    
+                    $this->addWhere('customer.is_deleted = '.IS_NOT_DELETED);
+                    
+                }
+                
                 
                 function validateInput() {
                     

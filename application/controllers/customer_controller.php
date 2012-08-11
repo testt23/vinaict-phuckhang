@@ -25,8 +25,22 @@
                     $filter['name'] = $this->input->get_post('name');
                     $filter['address'] = $this->input->get_post('address');
                     $filter['gender'] = $this->input->get_post('gender');
+                    $filter['code'] = $this->input->get_post('code');
+                    $filter['phone'] = $this->input->get_post('phone');
                     $filter['email'] = $this->input->get_post('email');
-                    $filter[PAGINATION_QUERY_STRING_SEGMENT] = $this->input->get(PAGINATION_QUERY_STRING_SEGMENT);
+                    $filter['yahoo'] = $this->input->get_post('yahoo');
+                    $filter['skype'] = $this->input->get_post('skype');
+                    $filter['limit'] = $this->input->get_post('limit');
+                    if (!$filter['limit']  || !is_numeric($filter['limit']))
+                        $filter['limit'] = 2;
+                    
+                    $total_record = Customer::getTotalRecord($filter);
+                    
+                    $pagination = new Pagination($this, $total_record, $filter['limit']);
+                    $filter['start'] = $pagination->start;
+                    $this->data['pagination'] = $pagination->get_html(2);
+                    
+                    
                     $customer = Customer::getList($filter, true);
 
                     $this->data['customer'] = $customer;
@@ -40,7 +54,7 @@
                     $this->data['cfer'] = $cfer;
                     $this->data['array_menus'] = $array_menus;
                     $this->data['section'] = $section;
-                    $this->data['pagination'] = $customer->pagination;
+                    
 
                     $this->load->view('main', $this->data);
                     

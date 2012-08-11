@@ -14,7 +14,6 @@
                     $img_size->addSelect('*');
                     $img_size->find();
                     $img_size->fetchNext();
-                    
                     return $img_size->id ? $img_size : FALSE;
                 }
 	}

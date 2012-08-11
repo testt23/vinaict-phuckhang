@@ -193,7 +193,6 @@ class User extends User_model {
             $ci->pagination->setModel($user);
             $ci->pagination->url = curPageURL();
             $ci->pagination->cur_page = $filter[PAGINATION_QUERY_STRING_SEGMENT];
-            
         }
         
         return $user;

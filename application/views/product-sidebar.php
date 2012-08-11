@@ -129,7 +129,8 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <input type="button" value="Tìm kiếm" id="bnt_search"/>
+                                    <input type="button" value="<?php echo lang('txt_search'); ?>" id="bnt_search"/>
+                                    <input type="reset" name="" value="Xóa hết"/>
                                 </li>
                             </ul>
                         </form>

@@ -33,7 +33,7 @@
             <?php foreach($arr_social_link as $id => $social_link) { ?>
             <tr>
                 <td><?php echo $social_link['name']; ?></td>
-                <td>
+                <td style="vertical-align: middle; text-align: center;">
                     <?php echo $social_link['picture'] ? 
                     '<a href="'.direct_url(base_url(UPLOAD_IMAGE_URL.$image_group_code.'/'.$social_link['picture'])).'" title="'.$social_link['name'].'" rel="prettyPhoto">
                         <img src="'.direct_url(base_url(UPLOAD_IMAGE_URL.$image_group_code.'/'.str_replace(array('.jpg','.png','.gif','.JPG','.PNG','.GIF'), array(BO_SOCIAL_LINK_IMG_SUFFIX.'.jpg',BO_SOCIAL_LINK_IMG_SUFFIX.'.png',BO_SOCIAL_LINK_IMG_SUFFIX.'.gif',BO_SOCIAL_LINK_IMG_SUFFIX.'.JPG',BO_SOCIAL_LINK_IMG_SUFFIX.'.PNG',BO_PROD_CATEGORY_IMG_SUFFIX.'.GIF'), $social_link['picture']))).'" alt="'.$social_link['name'].'" />

@@ -11,14 +11,15 @@
 		var $order_date;	//date			NULL
 		var $amount;	//float unsigned			NOT NULL
 		var $is_deleted = 0;	//tinyint(1) unsigned			NOT NULL
-		var $status;	//tinyint(2) unsigned			NOT NULL
+		var $status = 1;	//tinyint(2) unsigned			NOT NULL
 		var $description;	//text			NULL
-		var $shipping_address;	//varchar(100)			NOT NULL
-		var $billing_address;	//varchar(100)			NOT NULL
+		var $shipping_address;	//varchar(100)			NULL
+		var $billing_address;	//varchar(100)			NULL
 		var $shipping_date;	//date			NULL
 		var $payment_date;	//date			NULL
 		var $creation_date = 'CURRENT_TIMESTAMP';	//timestamp			NOT NULL
 		var $modification_date;	//datetime			NULL
+		var $currency = 'VND';	//varchar(3)			NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'bigint', 'null' => FALSE, 'auto_increment' => TRUE),
@@ -29,12 +30,13 @@
 			'is_deleted' => array('type' => 'tinyint', 'null' => FALSE),
 			'status' => array('type' => 'tinyint', 'null' => FALSE),
 			'description' => array('type' => 'text', 'null' => TRUE),
-			'shipping_address' => array('type' => 'varchar', 'size' => 100, 'null' => FALSE),
-			'billing_address' => array('type' => 'varchar', 'size' => 100, 'null' => FALSE),
+			'shipping_address' => array('type' => 'varchar', 'size' => 100, 'null' => TRUE),
+			'billing_address' => array('type' => 'varchar', 'size' => 100, 'null' => TRUE),
 			'shipping_date' => array('type' => 'date', 'null' => TRUE),
 			'payment_date' => array('type' => 'date', 'null' => TRUE),
 			'creation_date' => array('type' => 'timestamp', 'null' => FALSE),
-			'modification_date' => array('type' => 'datetime', 'null' => TRUE)
+			'modification_date' => array('type' => 'datetime', 'null' => TRUE),
+			'currency' => array('type' => 'varchar', 'size' => 3, 'null' => TRUE)
 		);
 
 		protected $__relation = array(
