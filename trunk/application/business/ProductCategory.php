@@ -20,11 +20,53 @@ class ProductCategory extends Product_category_model {
         if (isset($filter['keywords']) && $filter['keywords'])
             $prod_category->addWhere("FIND_IN_SET('".$filter['keywords']."', product_category.keywords)");
 
+        if (isset($filter['code']) && $filter['code'])
+            $prod_category->addWhere("product_category.code LIKE '%".$filter['code']."%'");
+        
+        if (isset($filter['category']) && $filter['category'])
+            $prod_category->addWhere("product_category.id_parent = '". ( $filter['category'] * 1 )."'");
+        
+        $sort_by = 'id DESC' ;
+        if (isset($filter['sort_by']) && $filter['sort_by']){
+            switch($filter['sort_by']){
+                case 1: $sort_by = 'id  DESC';    break;
+                case 2: $sort_by = 'code';  break;
+                case 3: $sort_by = 'name';  break;
+            }
+        }
+        
+        $prod_category->orderBy('product_category.' . $sort_by);
+        
+        if (isset($filter['limit']) && $filter['limit'] && isset($filter['start']) && is_numeric($filter['start']))
+            $prod_category->limit($filter['start']. ',' . $filter['limit']);
+        
         $prod_category->find();
         return $prod_category;
 
     }
+    function getTotalRecord($filter = array()){
+        $prod_category = new ProductCategory();
+        $prod_category->addJoin(new Image(), 'LEFT');
+        $prod_category->addSelect();
+        $prod_category->addSelect('count(product_category.id) as total_record');
+        $prod_category->addWhere('product_category.is_deleted = '.IS_NOT_DELETED);
 
+        if (isset($filter['name']) && $filter['name'])
+            $prod_category->addWhere("product_category.name LIKE '%".$filter['name']."%'");
+
+        if (isset($filter['keywords']) && $filter['keywords'])
+            $prod_category->addWhere("FIND_IN_SET('".$filter['keywords']."', product_category.keywords)");
+
+        if (isset($filter['code']) && $filter['code'])
+            $prod_category->addWhere("product_category.code LIKE '%".$filter['code']."%'");
+        
+        if (isset($filter['category']) && $filter['category'])
+            $prod_category->addWhere("product_category.id_parent = '". ( $filter['category'] * 1 )."'");
+        
+        $prod_category->find();
+        $prod_category->fetchFirst();
+        return $prod_category->total_record;
+    }
     function getTree($filter = array(), $id_prod_category_excluded = null) {
 
         $arrProdCategory = array();
@@ -169,30 +211,13 @@ class ProductCategory extends Product_category_model {
     }
     
     function addPicture($field = 'image') {
-        
-        $image = new Image();
-        
+        $image = new Image();    
         if ($image->upload($field, IMG_PRODUCT_CATEGORY_CODE, array('name' => $this->code, 'description' => getI18n($this->name)))) {
-            
-            if ($this->id_image) {
-                $img = new Image();
-                if ($img->get($this->id_image)) {
-                    $img->delete();
-                }
-            }
-            
             $this->id_image = $image->id;
-            
-            if ($this->id)
-                $this->update();
-            
+            $this->update();            
             return true;
-            
         }
-        else {
-            return false;
-        }
-        
+        return false;
     }
     
     function deletePicture($id) {

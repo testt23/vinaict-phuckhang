@@ -8,7 +8,6 @@
     }
 
     function index(){
-        
         $section = "product";
         
         User::checkAccessable($this->session->userdata('userID'), "product");
@@ -33,7 +32,7 @@
         $filter['sort_by'] = $this->input->get_post('sort_by');
         $total_record = Product::getTotalRecord($filter);
         $filter['limit'] = $this->input->get_post('limit');
-        if (!$filter['limit'])
+        if (!$filter['limit'] || !is_numeric($filter['limit']))
             $filter['limit'] = 10;
         $pagination = new Pagination($this, $total_record, $filter['limit']);
         

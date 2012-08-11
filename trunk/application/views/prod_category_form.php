@@ -159,12 +159,18 @@
                                 </div>
                         </li>
                         <?php } ?>
+                        
+                        <li>
+                                <label class="desc">
+                                        Ảnh đại diện
+                                </label>
+                        </li>
                         <li>
                                 <label class="desc">
                                         <?php echo lang('txt_select_file'); ?>
                                 </label>
                                 <div>
-                                        <input type="file" id="image" name="image" />
+                                    <input type="file" id="image" name="image" value="" />
                                 </div>
                         </li>
                         

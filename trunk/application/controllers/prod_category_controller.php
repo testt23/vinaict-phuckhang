@@ -22,8 +22,25 @@
         $filter = array();
         $filter['name'] = $this->input->get_post('name');
         $filter['keywords'] = $this->input->get_post('keywords');
-        $prod_category = ProductCategory::getList($filter);
+        $filter['code'] = $this->input->get_post('code');
+        $filter['sort_by'] = $this->input->get_post('sort_by');
+        $filter['category'] = $this->input->get_post('category');
+        $filter['limit'] = $this->input->get_post('limit');
+        if (!$filter['limit'] && !is_numeric($filter['limit']))
+            $filter['limit'] = 10;
         
+        
+        $total_record = ProductCategory::getTotalRecord($filter);
+        
+
+        
+        $pagination = new Pagination($this, $total_record, $filter['limit']);
+        
+        $filter['start'] = $pagination->start;
+        $this->data['pagination'] = $pagination->get_html(2);
+        
+        $prod_category = ProductCategory::getList($filter);
+        $arr_prod_category = array();
         while($prod_category->fetchNext()) {
             $arr_prod_category[$prod_category->id] = array('code' => $prod_category->code,
                                                 'name' => getI18n($prod_category->name),
@@ -38,7 +55,7 @@
         $this->data['arr_prod_category'] = $arr_prod_category;
         $this->data['image_group_code'] = 'prod_category';
         $this->data['filter'] = $filter;
-
+        $this->data['categories'] = ProductCategory::getTree();
         $array_menus = array();
         $filter = array();
         $filter['parent_id'] = 0;
@@ -206,14 +223,11 @@
                 $link_parent = SITE_PAGE_PRODUCT_STRING;
             }
             $prod_category->link = trim($link_parent . '/' .$prod_category->link, '/');
-            
             if ($prod_category->validateInput()) {
                 $prod_category->update();
-                
-                if (!empty($_FILES['image']['name'])) {
+                if ($_FILES['image']['size'] > 0 && !empty($_FILES['image']['tmp_name'])){
                     $prod_category->addPicture();
                 }
-                
                 redirect($back);
             }
             

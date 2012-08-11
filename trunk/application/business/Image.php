@@ -13,14 +13,12 @@
                  * Return: If upload action is OK, return image file name, else return FALSE
                  */
                 function upload($field, $group_code, $data) {
-                    
+
                     $ci =& get_instance();
-                    
-                    $config = array();
-                    
                     $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
                     
-                    $config['upload_path'] = realpath($upload_path).'/'.$group_code.'/';
+                    //$config['upload_path'] = realpath($upload_path).'/'.$group_code.'/';
+                    $config['upload_path'] = $upload_path.$group_code.'/';
                     $img_size = ImageGroup::getImageSizeData($group_code);
                     
                     if (!file_exists($config['upload_path'])) {
@@ -37,7 +35,8 @@
                                                                         </html>');
                     }
                     
-                    $config['allowed_types'] = config_item('allowed_types');
+                    //$config['allowed_types'] = config_item('allowed_types');
+                    $config['allowed_types'] = '*';
                     $config['max_size']	= config_item('max_size');
                     $config['max_width']  = config_item('max_width');
                     $config['max_height']  = config_item('max_height');
@@ -48,14 +47,10 @@
                     $config['group_code'] = $group_code;
                     
                     $ci->load->library('upload', $config);
-
-                    if ($ci->upload->do_upload($field)) {
-
-                        $img = $ci->upload->data();
-                        
+                    if ($ci->upload->do_upload($field)) {    
+                        $img = $ci->upload->data();                        
                         $config['source_image'] = $img['file_name'];
                         unset($config['upload_path']);
-                        
                         $img_group = ImageGroup::getImageGroup($group_code);
 
                         if ($img_group && $img_group->use_wm) {
@@ -65,7 +60,6 @@
                         }
                         
                         foreach ($img_size as $code => $value) {
-                            
                             $config['new_image'] = str_replace(array('.jpg','.png','.gif'), array('_'.$code.'.jpg', '_'.$code.'.png', '_'.$code.'.gif'), strtolower($img['file_name']));
                             
                             if ($value && $value !="") {
@@ -74,16 +68,18 @@
                                 $config['height'] = trim($size[1]) != '' ? trim($size[1]) : config_item('height');
                             }
                             
+                            
                             $str_config = urlencode(serialize($config));
                             
                             $img_processing_result = file_get_contents(base_url('image/process?config='.$str_config));
                             
                             if (strpos(trim($img_processing_result), '[0]') !== FALSE) {
-                                $message = str_replace('[0]', '', trim($img_processing_result));
                                 
+                                $message = str_replace('[0]', '', trim($img_processing_result));
                                 if ($message != '')
                                     MessageHandler::add($message);
                             }
+                            
                             
                         }
                         
@@ -105,13 +101,11 @@
                         return true;
 
                     }
-                    else {
-
+                    else { 
                         if (!$ci->upload->is_image()) {
                             MessageHandler::add(lang('err_invalid_picture'), MSG_ERROR, MESSAGE_ONLY);
                         }
                         else {
-
                             if (!$ci->upload->is_allowed_dimensions()) {
                                 MessageHandler::add(lang('err_wrong_file_dimension'), MSG_ERROR, MESSAGE_ONLY);
                             }

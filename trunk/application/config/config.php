@@ -374,6 +374,7 @@ $config['app_name'] = 'Phuc Khang Gilding Store';
 $config['timezone'] = 'Asia/Ho_Chi_Minh';
 $config['external_apis'] = './../external_apis/';
 
+//$config['upload_path'] = './../uploads/';
 $config['upload_path'] = './../uploads/';
 $config['source_image'] = './../uploads/images/';
 $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -383,7 +384,7 @@ $config['max_height']  = '1600';
 $config['encrypt_name'] = true;
 
 $config['image_library'] = 'gd2';
-$config['create_thumb'] = FALSE;
+$config['create_thumb'] = TRUE;
 $config['maintain_ratio'] = TRUE;
 $config['width'] = 10000;
 $config['height'] = 10000;
