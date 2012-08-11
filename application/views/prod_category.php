@@ -66,5 +66,16 @@
         <?php } ?>
         </tbody>
     </table>
-    
+    <style type="text/css">
+        .pagination a{
+            margin: 0px 5px;
+            padding: 3px 5px;
+        }
+        .active-tmp{
+            opacity: 0.3;
+        }
+    </style>
+    <div class="pagination" style="text-align: center;">
+        <?php echo $pagination; ?>
+    </div>  
 </div>

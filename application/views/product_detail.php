@@ -20,8 +20,7 @@
         
     }
     
-    $(document).ready(function(){
-        
+    $(document).ready(function(){        
         $('#file_upload').uploadifive({
             'auto'         : false,
             'queueID'      : 'queue',

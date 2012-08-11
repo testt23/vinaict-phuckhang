@@ -10,7 +10,7 @@ class Pagination {
 
     function __construct($CI, $total_record = 0, $limit = 10) {
 
-        $current_page = $CI->input->get_post('current_page');
+        $current_page = $CI->input->get_post('page');
         $this->current_page = $current_page;
         if ($current_page * 1 == 0)
             $current_page = 1;
@@ -40,7 +40,47 @@ class Pagination {
     }
 
     function get_html($range) {
-        $s = '';
+        $s = ' 
+            
+            <script language="javascript">
+                function search(href){
+                    searchForm = document.getElementById("searchform");
+                    searchForm.action = href;
+                    searchForm.submit();
+                    return false;
+                }
+                $(document).ready(function(){
+                    jQuery("#bnt_search").click(function(){
+                        search(getHref());
+                    });
+                    jQuery(".pagination a").click(function(){
+                        if ($(this).hasClass("active-tmp"))
+                            return false;
+                        var href = getHref();
+                        var page = $(this).attr("href");
+                        page = page.replace("?", "&");
+                        href += page;
+                        search(href);
+                        return false
+                    }); 
+
+                    jQuery("#bt_gotopage").click(function(){
+                        var href = getHref();
+                        var page = $("#num_goto_page").val();
+                        page = parseInt(page);
+                        href += "&page=" + page;
+                        search(href);
+                        return false;
+                    });
+
+                    jQuery("#limit option").click(function(){
+                        jQuery("#num_goto_page").val("1");
+                    });
+                 });
+             </script>    
+            ';
+        
+        
         $min = 1;
         $max = $this->total_page;
         if ($this->total_page > ($range * 2 + 1)) {

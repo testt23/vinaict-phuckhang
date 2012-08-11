@@ -43,44 +43,6 @@
         href +="&limit=" + limit;
         return href;
     }
-    
-    function search(href){
-        searchForm = document.getElementById('searchform');
-        searchForm.action = href;
-        searchForm.submit();
-        return false;
-    }
-    
-    $(document).ready(function(){
-        jQuery('.pagination a').click(function(){
-            if ($(this).hasClass('active-tmp'))
-                return false;
-            var href = getHref();
-            var page = $(this).attr('href');
-            page = page.replace('?', '&current_');
-            href += page;
-            search(href);
-            return false
-        }); 
-            
-        jQuery('#bt_gotopage').click(function(){
-            var href = getHref();
-            var page = $('#num_goto_page').val();
-            page = parseInt(page);
-            href += "&current_page=" + page;
-            search(href);
-            return false;
-        });
-        jQuery('#bnt_search').click(function(){
-            var href = getHref();
-            search(href);
-        });
-        jQuery('#limit option').click(function(){
-            jQuery('#num_goto_page').val('1');
-        });
-    });
-    
-    
 </script>
 
 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
