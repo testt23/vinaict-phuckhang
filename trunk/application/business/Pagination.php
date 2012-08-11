@@ -10,7 +10,7 @@ class Pagination {
 
     function __construct($CI, $total_record = 0, $limit = 10) {
 
-        $current_page = $CI->input->get_post('page');
+        $current_page = $CI->input->get_post(PAGINATION_QUERY_STRING_SEGMENT);
         $this->current_page = $current_page;
         if ($current_page * 1 == 0)
             $current_page = 1;
@@ -102,14 +102,14 @@ class Pagination {
         // prev, first
         if ($this->total_page > ($range * 2) + 1) {
             if ($this->current_page != 1) {
-                $s .= '<a href="?page=' . ($this->current_page - 1) . '" >Prev</a>';
+                $s .= '<a href="?'.PAGINATION_QUERY_STRING_SEGMENT.'=' . ($this->current_page - 1) . '" >Prev</a>';
                 if ($this->current_page > $range + 1)
-                    $s .= '<a href="?page=1">1</a>';
+                    $s .= '<a href="?'.PAGINATION_QUERY_STRING_SEGMENT.'=1">1</a>';
                 if ($this->current_page > $range + 2 && ($this->total_page > ($range * 2 + 2)))
                     $s .= ' ... ';
             }
             else {
-                $s .= '<a class="active-tmp" href="?page=1" >Prev</a>';
+                $s .= '<a class="active-tmp" href="?'.PAGINATION_QUERY_STRING_SEGMENT.'=1" >Prev</a>';
             }
         }
 
@@ -117,9 +117,9 @@ class Pagination {
         // range page
         for ($i = $min; $i <= $max; $i++) {
             if ($i == $this->current_page)
-                $s .= '<a href="#page' . $i . '" class="active-tmp">' . $i . '</a>';
+                $s .= '<a href="#'.PAGINATION_QUERY_STRING_SEGMENT.'' . $i . '" class="active-tmp">' . $i . '</a>';
             else
-                $s .= '<a href="?page=' . $i . '">' . $i . '</a>';
+                $s .= '<a href="?'.PAGINATION_QUERY_STRING_SEGMENT.'=' . $i . '">' . $i . '</a>';
         }
 
         // next, end
@@ -128,10 +128,10 @@ class Pagination {
                 if ($this->current_page < ($this->total_page - $range - 1) && ($this->total_page > ($range * 2 + 2)))
                     $s .= ' ... ';
                 if ($this->current_page < ($this->total_page - $range))
-                    $s .= '<a href="?page=' . $this->total_page . '">' . $this->total_page . '</a>';
-                $s .= '<a href="?page=' . ($this->current_page + 1) . '">Next</a>';
+                    $s .= '<a href="?'.PAGINATION_QUERY_STRING_SEGMENT.'=' . $this->total_page . '">' . $this->total_page . '</a>';
+                $s .= '<a href="?'.PAGINATION_QUERY_STRING_SEGMENT.'=' . ($this->current_page + 1) . '">Next</a>';
             }else {
-                $s .= '<a href="?page=' . $this->total_page . '" class="active-tmp">Next</a>';
+                $s .= '<a href="?'.PAGINATION_QUERY_STRING_SEGMENT.'=' . $this->total_page . '" class="active-tmp">Next</a>';
             }
         }
 

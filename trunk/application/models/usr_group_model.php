@@ -1,8 +1,8 @@
 <?php
 
-	class Group_model extends CI_Model {
+	class Usr_group_model extends CI_Model {
 
-		protected $__tbname = 'group';
+		protected $__tbname = 'usr_group';
 		protected $__dbconf = 'default';
 
 		var $id;	//smallint(5) unsigned	Primary Key	Auto Increment	NOT NULL

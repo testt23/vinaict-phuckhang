@@ -8,7 +8,7 @@
 		var $id;	//int(11)	Primary Key	Auto Increment	NOT NULL
 		var $name;	//varchar(255)			NOT NULL
 		var $code;	//varchar(255)			NOT NULL
-		var $value;	//varchar(255)			NOT NULL
+		var $value;	//text			NOT NULL
 		var $always_load = 0;	//tinyint(1)			NOT NULL
 		var $status = 0;	//tinyint(1)			NOT NULL
 		var $creation_date = 'CURRENT_TIMESTAMP';	//timestamp			NOT NULL
@@ -23,7 +23,7 @@
 			'id' => array('key' => 'PRI', 'type' => 'int', 'null' => FALSE, 'auto_increment' => TRUE),
 			'name' => array('type' => 'varchar', 'size' => 255, 'null' => FALSE),
 			'code' => array('type' => 'varchar', 'size' => 255, 'null' => FALSE),
-			'value' => array('type' => 'varchar', 'size' => 255, 'null' => FALSE),
+			'value' => array('type' => 'text', 'null' => FALSE),
 			'always_load' => array('type' => 'tinyint', 'null' => FALSE),
 			'status' => array('type' => 'tinyint', 'null' => FALSE),
 			'creation_date' => array('type' => 'timestamp', 'null' => FALSE),

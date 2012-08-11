@@ -184,7 +184,6 @@
                 }
                 
                 function delete() {
-                    
                     $image_group = new ImageGroup();
                     $image_group->get($this->id_image_group);
                     $img_size = ImageGroup::getImageSizeData($image_group->code);
@@ -199,6 +198,8 @@
                     parent::delete();
                     
                 }
+                
+                
                 
                 function getImageURLs() {
                     
@@ -263,6 +264,24 @@
                     
                 }
                 
+                public static function deleteImage($code, $path){
+                    $image = new Image();
+                    $image->addSelect();
+                    $image->addSelect('image.*');
+                    $image->addWhere("image.code = '".$code."'");
+                    $image->find();
+                    if ($image->countRows() > 0){
+                        $image->fetchFirst();
+                        $image->delete();
+                        return 'yes';
+                    }
+                    else{
+                        return 'no';
+                    }
+                }
+                
+                
+                
                 public static function getImageGalleryTree($folder_name = '') {
                     
                     $dir = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
@@ -322,7 +341,9 @@
 
                                 if (isset($segment[1]) && !empty($segment[1])) {
                                     $img_size = ImageSize::getImageSizeByCode($segment[1]);
-                                    $name .= " ($img_size->name)";
+                                    if ($img_size){
+                                        $name .= $img_size->name;
+                                    }
                                 }
 
                                 $arr_files[] = array('id' => random_string('unique'), 'code' => $code, 'name' => $name, 'file' => $file, 'path' => $file, 'description' => $description, 'creation_date' => $creation_date, 'is_dir' => FALSE);
@@ -340,7 +361,7 @@
                 public static function renderFolderTrees($folder_name = '') {
                     
                     $files = self::getImageGalleryTree($folder_name);
-                    
+
                     $folder_tree = '';
         
                     foreach($files as $key => $file) {
@@ -354,14 +375,13 @@
                 public static function getFolderTreeString($folder) {
         
                     $str = '';
-
                     $class = $folder['is_dir'] ? 'folder' : 'file';
                     $aclass = $folder['is_dir'] ? 'folder-link' : 'file-link';
                     $f = $folder['is_dir'] ? 'foldername="'.$folder['folder'].'"' : 'filename="'.$folder['file'].'"';
                     $cdate = $folder['is_dir'] ? '' : 'cdate="'.$folder['creation_date'].'"';
                     $description = $folder['is_dir'] ? '' : 'description="'.$folder['description'].'"';
 
-                    $str .= '<li id="'.$folder['id'].'"><span class="'.$class.'"><a href="#'.$folder['id'].'" class="'.$aclass.'" '.$f.' path="'.$folder['path'].'" '.$description.' '.$cdate.' >'.$folder['name'].'</a></span>';
+                    $str .= '<li id="'.$folder['id'].'"><span class="'.$class.'"><a href="#'.$folder['code'].'" class="'.$aclass.'" '.$f.' path="'.$folder['path'].'" '.$description.' '.$cdate.' >'.$folder['name'].'</a></span>';
 
                     if ($folder['is_dir'] === TRUE) {
                         if (is_array($folder['childs']) && count($folder['childs']) > 0) {

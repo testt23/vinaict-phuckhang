@@ -14,6 +14,7 @@
 		var $keywords;	//varchar(200)			NULL
 		var $id_image;	//int(11)			NULL
 		var $link;	//varchar(400)			NOT NULL
+		var $meta_description;	//text			NULL
 
 		protected $__validation_rule = array(
 			'id' => array('key' => 'PRI', 'type' => 'int', 'null' => FALSE, 'auto_increment' => TRUE),
@@ -24,7 +25,8 @@
 			'description' => array('type' => 'text', 'null' => TRUE),
 			'keywords' => array('type' => 'varchar', 'size' => 200, 'null' => TRUE),
 			'id_image' => array('type' => 'int', 'null' => TRUE),
-			'link' => array('type' => 'varchar', 'size' => 400, 'null' => FALSE)
+			'link' => array('type' => 'varchar', 'size' => 400, 'null' => FALSE),
+			'meta_description' => array('type' => 'text', 'null' => TRUE)
 		);
 
 		protected $__relation = array(

@@ -7,7 +7,8 @@ class JqueryValidator
             'Image::renderFolderTrees',
             'Parameter::getParamByID',
             'Parameter::renderInput',
-            'Parameter::saveValue'
+            'Parameter::saveValue',
+            'Image::deleteImage'
 	);
 
 	var $classInvalid = false;
@@ -52,8 +53,8 @@ class JqueryValidator
 
 	function ajaxCallFunction($objectfunction, $agrs)
 	{
+            
 		$result = $this->checkValidate($objectfunction);
-                
 		if( !$result )
 			return false;
 

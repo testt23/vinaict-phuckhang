@@ -58,16 +58,80 @@
                 $(this).attr('class', $(this).attr('class').toString().replace(' select', ''));
             });
             $(this).attr('class', $(this).attr('class')+' select');
+            var code = $(this).attr('href').replace('#','');
+            var path = $(this).attr('path');
+            var htmlcontent = '<ul>';
+            htmlcontent += '<li alt="'+$(this).attr('href').replace('#','')+'" id="item_'+$(this).parent().parent().attr('id')+'" class="thumbnail" style="width:<?php echo $image_size[0]; ?>px;height:<?php echo $image_size[1]; ?>px" >';
+                    htmlcontent += '<div class="wrapper_edit_image">';
+                        htmlcontent += '<a  path="'+path+'" href="#'+code+'" class=" delete_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
+                        htmlcontent += '<span class="ui-icon ui-icon-trash">&nbsp;</span>';
+                        htmlcontent += '</a>';
+                        htmlcontent += '<a href="#" class=" edit_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
+                        htmlcontent += '<span class="ui-icon ui-icon-wrench">&nbsp;</span>';
+                        htmlcontent += '</a>';
+                    htmlcontent += '</div>';
+                    htmlcontent += '<a href="<?php echo direct_url(site_url().'../uploads/images/'); ?>'+$(this).attr('path')+'" rel="prettyPhoto" title="'+$(this).attr('description')+'<br/><?php echo lang('txt_creation_date'); ?>: '+$(this).attr('cdate')+'"><div class="image-container"><img src="<?php echo direct_url(site_url().'../uploads/images/'); ?>'+$(this).attr('path')+'" alt="'+$(this).html()+'" /></div><h3>'+$(this).html()+'</h3></a>';
+            htmlcontent += '</li>';
+            htmlcontent += '</ul>';
+            $('#viewport').html(htmlcontent);
+            
+            $('#viewport li.thumbnail').mouseover(function() {
+                $(this).attr('class', 'thumbnail thumbnail-hover');
+            });
+            
+            $('#viewport li.thumbnail').mouseout(function() {
+                $(this).attr('class', $(this).attr('class') + 'thumbnail');
+            });
+            
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                animation_speed: 'fast',
+                social_tools: false
+            });
+            $('a.delete_image').click(function(){
+                if (confirm('Bạn có chắc là muốn xóa hình ảnh này?')){
+                    var code = $(this).attr('href').replace('#','');
+                    var path = $(this).attr('path');
+                    var agr = new Array();
+                    agr[0] = code;
+                    agr[1] = path;
+                    var data = ajaxCallFunction('Image::deleteImage',agr,'json');
+                    if (data == 'yes'){
+                        alert('Xóa thành công');
+                        reloadTrees();
+                        $(this).parent().parent().remove();
+                    }else{
+                        alert('Hình ảnh hệ thống không thể xóa');
+                    }
+                    
+                }
+            });
+            $('a.edit_image').click(function(){
+                alert(1);
+            })
         });
         
+        
+        
         $('#browser .folder-link').click(function() {
-            
             $('#file_upload').uploadifive("destroy");
             loadUpload($(this).attr('foldername'));
             
             var htmlcontent = '<ul>';
+            
             $(this).parent().parent().find('li .file-link').each(function() {
-                htmlcontent += '<li id="item_'+$(this).parent().parent().attr('id')+'" class="thumbnail" style="width:<?php echo $image_size[0]; ?>px;height:<?php echo $image_size[1]; ?>px" ><a href="<?php echo direct_url(site_url().'../uploads/images/'); ?>'+$(this).attr('path')+'" rel="prettyPhoto" title="'+$(this).attr('description')+'<br/><?php echo lang('txt_creation_date'); ?>: '+$(this).attr('cdate')+'"><div class="image-container"><img src="<?php echo direct_url(site_url().'../uploads/images/'); ?>'+$(this).attr('path')+'" alt="'+$(this).html()+'" /></div><h3>'+$(this).html()+'</h3></a></li>';
+                var code = $(this).attr('href').replace('#','');
+                var path = $(this).attr('path');
+                htmlcontent += '<li alt="'+$(this).attr('href').replace('#','')+'" id="item_'+$(this).parent().parent().attr('id')+'" class="thumbnail" style="width:<?php echo $image_size[0]; ?>px;height:<?php echo $image_size[1]; ?>px" >';
+                    htmlcontent += '<div class="wrapper_edit_image">';
+                        htmlcontent += '<a href="#'+code+'" path="'+path+'" class=" delete_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
+                        htmlcontent += '<span class="ui-icon ui-icon-trash">&nbsp;</span>';
+                        htmlcontent += '</a>';
+                        htmlcontent += '<a href="#" class=" edit_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
+                        htmlcontent += '<span class="ui-icon ui-icon-wrench">&nbsp;</span>';
+                        htmlcontent += '</a>';
+                    htmlcontent += '</div>';
+                    htmlcontent += '<a href="<?php echo direct_url(site_url().'../uploads/images/'); ?>'+$(this).attr('path')+'" rel="prettyPhoto" title="'+$(this).attr('description')+'<br/><?php echo lang('txt_creation_date'); ?>: '+$(this).attr('cdate')+'"><div class="image-container"><img src="<?php echo direct_url(site_url().'../uploads/images/'); ?>'+$(this).attr('path')+'" alt="'+$(this).html()+'" /></div><h3>'+$(this).html()+'</h3></a>';
+                htmlcontent += '</li>';
             });
             htmlcontent += '</ul>';
             $('#viewport').html(htmlcontent);
@@ -84,8 +148,28 @@
                 animation_speed: 'fast',
                 social_tools: false
             });
+            $('a.delete_image').click(function(){
+                if (confirm('Bạn có chắc là muốn xóa hình ảnh này?')){
+                    var code = $(this).attr('href').replace('#','');
+                    var path = $(this).attr('path');
+                    var agr = new Array();
+                    agr[0] = code;
+                    agr[1] = path;
+                    var data = ajaxCallFunction('Image::deleteImage',agr,'json');
+                    if (data == 'yes'){
+                        alert('Xóa thành công');
+                        reloadTrees();
+                        $('#viewport ul li[alt="'+code+'"]').remove();
+                    }else{
+                        alert('Hình ảnh hệ thống không thể xóa');
+                    }
+                    
+                }
+            });
             
         });
+        
+        
         
         $('#browser a.file-link').each(function(){
             $(this).qtip({
@@ -136,10 +220,25 @@
             $('#openUploadBox').click(function() {
                 $('#upload-box').dialog("open");
             });
+            
     });
     
 </script>
-
+<style type="text/css">
+    .wrapper_edit_image{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display:none;
+        z-index: 90;
+    }
+    #viewport ul li{
+        position: relative;
+    }
+    #viewport ul li:hover .wrapper_edit_image{
+        display: block;
+    }
+</style>
 <div id="upload-box" title="<?php echo lang('txt_upload_image'); ?>">
     <form>
             <div id="queue"></div>

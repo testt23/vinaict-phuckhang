@@ -27,7 +27,6 @@ class Ajax_controller extends CI_Controller {
         $val = new JqueryValidator();
         echo $val->ajaxCallFunction($objectfunction, $agrs);
         die();
-        
     }
     
 }
