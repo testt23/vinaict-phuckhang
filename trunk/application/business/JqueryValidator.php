@@ -8,7 +8,8 @@ class JqueryValidator
             'Parameter::getParamByID',
             'Parameter::renderInput',
             'Parameter::saveValue',
-            'Image::deleteImage'
+            'Image::deleteImage',
+            'Image::convertStringEdit'
 	);
 
 	var $classInvalid = false;
