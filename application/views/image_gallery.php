@@ -66,7 +66,7 @@
                         htmlcontent += '<a  path="'+path+'" href="#'+code+'" class=" delete_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
                         htmlcontent += '<span class="ui-icon ui-icon-trash">&nbsp;</span>';
                         htmlcontent += '</a>';
-                        htmlcontent += '<a href="#" class=" edit_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
+                        htmlcontent += '<a href="<?php echo base_url('image_gallery/edit'); ?>/'+code+'?iframe=true&width=55%&height=70%&scroll=false" rel="prettyPhoto"  class=" edit_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
                         htmlcontent += '<span class="ui-icon ui-icon-wrench">&nbsp;</span>';
                         htmlcontent += '</a>';
                     htmlcontent += '</div>';
@@ -87,6 +87,10 @@
                 animation_speed: 'fast',
                 social_tools: false
             });
+            $("a[rel^='prettyPhoto']").prettyPhoto.close = function(){
+                parentloc = window.location;
+                window.location = parentloc;
+            };
             $('a.delete_image').click(function(){
                 if (confirm('Bạn có chắc là muốn xóa hình ảnh này?')){
                     var code = $(this).attr('href').replace('#','');
@@ -102,12 +106,20 @@
                     }else{
                         alert('Hình ảnh hệ thống không thể xóa');
                     }
-                    
+                    $("a.edit_image [rel='prettyPhoto[iframes]']").prettyPhoto({
+                        animation_speed: 'fast',
+                                social_tools: false
+                    });
                 }
             });
-            $('a.edit_image').click(function(){
-                alert(1);
-            })
+//            $('a.edit_image').click(function(){
+//                var href = $(this).attr('code').replace('#','');
+//                var agr = new Array();
+//                    agr[0] = href;
+//                var data = ajaxCallFunction('Image::convertStringEdit',agr,'json');
+//                    console.log(data);
+//                return false;
+//            })
         });
         
         
@@ -126,7 +138,7 @@
                         htmlcontent += '<a href="#'+code+'" path="'+path+'" class=" delete_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
                         htmlcontent += '<span class="ui-icon ui-icon-trash">&nbsp;</span>';
                         htmlcontent += '</a>';
-                        htmlcontent += '<a href="#" class=" edit_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
+                        htmlcontent += '<a href="<?php echo base_url('image_gallery/edit'); ?>/'+code+'?iframe=true&width=55%&height=70%&scroll=false" rel="prettyPhoto" class=" edit_image btn_no_text btn ui-state-default ui-corner-all tooltip">';
                         htmlcontent += '<span class="ui-icon ui-icon-wrench">&nbsp;</span>';
                         htmlcontent += '</a>';
                     htmlcontent += '</div>';

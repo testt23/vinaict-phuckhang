@@ -46,4 +46,23 @@ class Image_gallery_controller extends CI_Controller {
         echo $path;
     }
     
+    function edit($code = ''){
+        
+        $mess = '';
+        if ( array_key_exists('save', $_POST) ){
+            $id = $this->input->post('id');
+            $image = new Image();
+            $image->get($id);
+            $image->name = $this->input->post('name');
+            $image->description = $this->input->post('description');
+            $image->is_display_front_end = $this->input->post('is_display_front_end');
+            $image->update();
+            $mess = 'Cập nhật thành công!';
+        }
+        $data['image'] = Image::getImageByCode($code);
+        $data['mess'] = $mess;
+        $this->load->view('image_gallery_edit', $data);
+        
+    }
+    
 }

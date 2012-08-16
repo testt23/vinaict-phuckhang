@@ -282,6 +282,26 @@
                 
                 
                 
+                public static function convertStringEdit($code = ''){
+                    $image = Image::getImageByCode($code);
+                    
+                    
+                    $s ='<?xml version="1.0" encoding="utf-8"?>';
+                    $s .= '<select>';
+                    if ($image){
+                            $image->fetchFirst();
+                            $s .='<id><![CDATA['.$image->id.']]></id>';
+                            $s .='<code><![CDATA['.$image->code.']]></code>';
+                            $s .='<name><![CDATA['.$image->name.']]></name>';
+                            $s .='<description><![CDATA['.$image->description.']]></description>';
+                            $s .='<display_front><![CDATA['.$image->is_display_front_end.']]></display_front>';
+                    }
+                    $s .= '</select>';
+
+                    return $s;
+                }
+                
+                
                 public static function getImageGalleryTree($folder_name = '') {
                     
                     $dir = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
@@ -373,7 +393,6 @@
                 }
                 
                 public static function getFolderTreeString($folder) {
-        
                     $str = '';
                     $class = $folder['is_dir'] ? 'folder' : 'file';
                     $aclass = $folder['is_dir'] ? 'folder-link' : 'file-link';
