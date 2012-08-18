@@ -416,10 +416,6 @@ class CI_Loader {
 	 */
 	public function view($view, $vars = array(), $return = FALSE)
 	{
-		if (MessageHandler::count() > 0) {
-			$messages = MessageHandler::getDisplayMessages();
-			$vars['sysmsg'] = $messages;
-		}
 		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
 	}
 
@@ -517,6 +513,7 @@ class CI_Loader {
 
 				include_once($ext_helper);
 				include_once($base_helper);
+
 				$this->_ci_helpers[$helper] = TRUE;
 				log_message('debug', 'Helper loaded: '.$helper);
 				continue;

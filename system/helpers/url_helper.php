@@ -466,39 +466,35 @@ if ( ! function_exists('prep_url'))
  * Create URL Title
  *
  * Takes a "title" string as input and creates a
- * human-friendly URL string with either a dash
- * or an underscore as the word separator.
+ * human-friendly URL string with a "separator" string 
+ * as the word separator.
  *
  * @access	public
  * @param	string	the string
- * @param	string	the separator: dash, or underscore
+ * @param	string	the separator
  * @return	string
  */
 if ( ! function_exists('url_title'))
 {
-	function url_title($str, $separator = 'dash', $lowercase = FALSE)
+	function url_title($str, $separator = '-', $lowercase = FALSE)
 	{
-		if ($separator == 'dash')
+		if ($separator == 'dash') 
 		{
-			$search		= '_';
-			$replace	= '-';
+		    $separator = '-';
 		}
-		else
+		else if ($separator == 'underscore')
 		{
-			$search		= '-';
-			$replace	= '_';
+		    $separator = '_';
 		}
+		
+		$q_separator = preg_quote($separator);
 
 		$trans = array(
-						'&\#\d+?;'				=> '',
-						'&\S+?;'				=> '',
-						'\s+'					=> $replace,
-						'[^a-z0-9\-\._]'		=> '',
-						$replace.'+'			=> $replace,
-						$replace.'$'			=> $replace,
-						'^'.$replace			=> $replace,
-						'\.+$'					=> ''
-					);
+			'&.+?;'                 => '',
+			'[^a-z0-9 _-]'          => '',
+			'\s+'                   => $separator,
+			'('.$q_separator.')+'   => $separator
+		);
 
 		$str = strip_tags($str);
 
@@ -512,7 +508,7 @@ if ( ! function_exists('url_title'))
 			$str = strtolower($str);
 		}
 
-		return trim(stripslashes($str));
+		return trim($str, $separator);
 	}
 }
 
@@ -532,21 +528,12 @@ if ( ! function_exists('url_title'))
  */
 if ( ! function_exists('redirect'))
 {
-	function redirect($uri = '', $method = 'location', $http_response_code = 302, $error_message = '', $error_type = null)
+	function redirect($uri = '', $method = 'location', $http_response_code = 302)
 	{
 		if ( ! preg_match('#^https?://#i', $uri))
 		{
-			$uri = site_url().$uri;
+			$uri = site_url($uri);
 		}
-                
-                if ($error_message != '') {
-                    $uri = appendQueryString($uri, 'errmsg', $error_message);
-                    $uri = appendQueryString($uri, 'errtype', $error_type);
-                }
-                else {
-                    $uri = removeQueryString($uri, 'errmsg');
-                    $uri = removeQueryString($uri, 'errtype');
-                }
 
 		switch($method)
 		{
@@ -602,119 +589,6 @@ if ( ! function_exists('_parse_attributes'))
 	}
 }
 
-
-/**
- * Self URL
- *
- * Returns the full URL (including segments and query string parameter) of the page where this
- * function is placed
- *
- * @access	public
- * @return	string
- */
-
-function strleft($s1, $s2) { return substr($s1, 0, strpos($s1, $s2)); }
-
-if ( ! function_exists('selfURL'))
-{
-    function selfURL() {
-
-        $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
-        $protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")).$s;
-        $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
-
-        return $protocol."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
-
-    }
-}
-
-if ( ! function_exists('appendQueryString')) {
-    
-    function appendQueryString($origin_url, $param, $value='') {
-        
-        $origin_url = removeQueryString($origin_url, $param);
-            
-        if (strpos($origin_url, "?"))
-            $origin_url .= "&$param=".urlencode($value);
-        else
-            $origin_url .= "?$param=".urlencode($value);
-            
-        
-        return $origin_url;
-            
-    }
-    
-}
-
-if ( ! function_exists('removeQueryString')) {
-    
-    function removeQueryString($origin_url, $param) {
-        
-        $origin_url = preg_replace('/(?:&|(\?))' . $param . '=[^&]*(?(1)&|)?/i', "$1", $origin_url);
-        
-        if (strpos($origin_url, '?') == (strlen($origin_url) - 1)) {
-            $origin_url = str_replace("?", "", $origin_url);
-        }
-        
-        return $origin_url;
-        
-    }
-    
-}
-
-if ( ! function_exists('curPageURL'))
-{
-    function curPageURL() {
-
-        $pageURL = 'http';
-
-        if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-        $pageURL .= "://";
-        if ($_SERVER["SERVER_PORT"] != "80") {
-        $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-        } else {
-        $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-        }
-        return $pageURL;
-
-    }
-}
-
-if ( ! function_exists('direct_url'))
-{
-    function direct_url($url) {
-
-        $url = str_replace('\\', '/', $url);
-        return preg_replace('/\/([A-Za-z0-9-_.]*)\/\../', '', $url);
-
-    }
-}
-
-if ( ! function_exists('validate_uri'))
-{
-    function validate_uri($uri, $uri_pattern, $prefix = '', $suffix = '') {
-        
-        if ($prefix != '')
-            $preg_prefix = $prefix.'(\/)';
-        else
-            $preg_prefix = '';
-        
-        if ($suffix != '')
-            $preg_suffix = '\\'.$suffix;
-        else
-            $preg_suffix = '';
-        
-        $pattern = '/'.$preg_prefix.$uri_pattern.'('.$preg_suffix.')$/';
-        
-        $uri = $prefix.'/'.$uri.$suffix;
-        
-        if (preg_match($pattern, $uri))
-            return true;
-        else
-            return false;
-        
-    }
-}
 
 /* End of file url_helper.php */
 /* Location: ./system/helpers/url_helper.php */
