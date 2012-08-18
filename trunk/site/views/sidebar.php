@@ -70,7 +70,7 @@ if ($social) {
         <?php while ($social->fetchNext()) { ?>
             <span id="social_link">
                 <a href="<?php echo $social->url; ?>" target="_blank">
-                    <img src="<?php echo direct_url(base_url(UPLOAD_IMAGE_URL . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array(BO_SOCIAL_LINK_IMG_SUFFIX . '.jpg', BO_SOCIAL_LINK_IMG_SUFFIX . '.png', BO_SOCIAL_LINK_IMG_SUFFIX . '.gif', BO_SOCIAL_LINK_IMG_SUFFIX . '.JPG', BO_SOCIAL_LINK_IMG_SUFFIX . '.PNG', BO_PROD_CATEGORY_IMG_SUFFIX . '.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
+                    <img src="<?php echo direct_url(base_url(config_item('source_image') . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array(BO_SOCIAL_LINK_IMG_SUFFIX . '.jpg', BO_SOCIAL_LINK_IMG_SUFFIX . '.png', BO_SOCIAL_LINK_IMG_SUFFIX . '.gif', BO_SOCIAL_LINK_IMG_SUFFIX . '.JPG', BO_SOCIAL_LINK_IMG_SUFFIX . '.PNG', BO_PROD_CATEGORY_IMG_SUFFIX . '.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
                 </a>
             </span>
         <?php } ?>
@@ -156,7 +156,7 @@ while ($social->fetchNext()) {
                 ?>   
                 <li>
                     <a href="<?php echo $social->url; ?>" target="_blank">
-                        <img src="<?php echo direct_url(base_url(UPLOAD_IMAGE_URL . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array('_link.jpg', '_link.png', '_link.gif', '_link.JPG', '_link.PNG', '_link.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
+                        <img src="<?php echo direct_url(base_url(config_item('source_image') . 'social/' . str_replace(array('.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'), array('_link.jpg', '_link.png', '_link.gif', '_link.JPG', '_link.PNG', '_link.GIF'), $social->picture))) . '" alt="' . clean_html(getI18n($social->name)); ?>" />
                     </a>
                 </li>
                 <?php

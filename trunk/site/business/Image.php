@@ -170,16 +170,8 @@ class Image extends Image_model {
         if (empty($url)) {
             return $this->image_default;
         }
-        return file_exists(direct_url(UPLOAD_IMAGE_URL.$url)) ? base_url(UPLOAD_IMAGE_URL.$url) : $this->image_default;
+        return file_exists(direct_url(config_item('source_image').$url)) ? base_url(config_item('source_image').$url) : $this->image_default;
     }
-
-//    public function have_image($url) {
-//        echo $url;
-//        if ($url == '' || $url == '/') {
-//            return false;
-//        }
-//        return file_exists(direct_url(UPLOAD_IMAGE_URL.$url)) ? base_url(UPLOAD_IMAGE_URL.$url) : $this->image_default;
-//    }
 
 }
 
