@@ -379,8 +379,8 @@ $config['upload_path'] = './../uploads/';
 $config['source_image'] = './../uploads/images/';
 $config['allowed_types'] = 'gif|jpg|png|jpeg';
 $config['max_size']	= '4194304'; // 4MB
-$config['max_width']  = '1600';
-$config['max_height']  = '1600';
+$config['max_width']  = '0'; // Unlimit
+$config['max_height']  = '0'; // Unlimit
 $config['encrypt_name'] = true;
 
 $config['image_library'] = 'gd2';

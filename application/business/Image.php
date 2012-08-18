@@ -17,8 +17,7 @@
                     $ci =& get_instance();
                     $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
                     
-                    //$config['upload_path'] = realpath($upload_path).'/'.$group_code.'/';
-                    $config['upload_path'] = $upload_path.$group_code.'/';
+                    $config['upload_path'] = realpath($upload_path).'/'.$group_code.'/';
                     $img_size = ImageGroup::getImageSizeData($group_code);
                     
                     if (!file_exists($config['upload_path'])) {
@@ -35,8 +34,7 @@
                                                                         </html>');
                     }
                     
-                    //$config['allowed_types'] = config_item('allowed_types');
-                    $config['allowed_types'] = '*';
+                    $config['allowed_types'] = config_item('allowed_types');
                     $config['max_size']	= config_item('max_size');
                     $config['max_width']  = config_item('max_width');
                     $config['max_height']  = config_item('max_height');
@@ -102,6 +100,7 @@
 
                     }
                     else { 
+                        
                         if (!$ci->upload->is_image()) {
                             MessageHandler::add(lang('err_invalid_picture'), MSG_ERROR, MESSAGE_ONLY);
                         }
@@ -115,7 +114,7 @@
                             }
 
                             if (!$ci->upload->is_allowed_filetype()) {
-                                MessageHandler::add('err_wrong_file_type', MSG_ERROR, MESSAGE_ONLY);
+                                MessageHandler::add(lang('err_wrong_file_type'), MSG_ERROR, MESSAGE_ONLY);
                             }
 
                         }
