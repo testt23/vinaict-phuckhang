@@ -40,7 +40,7 @@ class Image_controller extends CI_Controller {
             
             $config = array();
                     
-            $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
+            $upload_path = config_item('source_image');
             $config['wm_type'] = defined('WM_TYPE') ? WM_TYPE : config_item('wm_type');
 
             $config['upload_path'] = realpath($upload_path).'/'.$group_code;

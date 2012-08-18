@@ -143,9 +143,9 @@
     <?php while ($picture->fetchNext()) { ?>
                             <tr>
                                 <td>
-                                    <a href="<?php $image_file = direct_url(base_url(UPLOAD_IMAGE_URL) . $picture->image_path);
+                                    <a href="<?php $image_file = direct_url(base_url(config_item('source_image')) . $picture->image_path);
         echo $image_file; ?>" title="<?php $picture->code . '-' . $picture->name; ?>" rel="prettyPhoto[pp_gal]" >
-                                        <img id="img_<?php echo $picture->code; ?>" src="<?php echo base_url(UPLOAD_IMAGE_URL) . str_replace(array('.jpg', '.JPG', '.png', '.PNG', '.gif', '.GIF'), array(BO_PROD_DETAIL_IMG_SUFFIX . '.jpg', BO_PROD_DETAIL_IMG_SUFFIX . '.JPG', BO_PROD_DETAIL_IMG_SUFFIX . '.png', BO_PROD_DETAIL_IMG_SUFFIX . '.PNG', BO_PROD_DETAIL_IMG_SUFFIX . '.gif', BO_PROD_DETAIL_IMG_SUFFIX . '.GIF'), $picture->image_path); ?>" alt="<?php echo $picture->description; ?>" />
+                                        <img id="img_<?php echo $picture->code; ?>" src="<?php echo base_url(config_item('source_image')) . str_replace(array('.jpg', '.JPG', '.png', '.PNG', '.gif', '.GIF'), array(BO_PROD_DETAIL_IMG_SUFFIX . '.jpg', BO_PROD_DETAIL_IMG_SUFFIX . '.JPG', BO_PROD_DETAIL_IMG_SUFFIX . '.png', BO_PROD_DETAIL_IMG_SUFFIX . '.PNG', BO_PROD_DETAIL_IMG_SUFFIX . '.gif', BO_PROD_DETAIL_IMG_SUFFIX . '.GIF'), $picture->image_path); ?>" alt="<?php echo $picture->description; ?>" />
                                     </a>
                                 </td>
                                 <td>
