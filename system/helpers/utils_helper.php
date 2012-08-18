@@ -826,3 +826,213 @@ if ( ! function_exists('get_raw_app_uri')) {
         return $request_uri;
     }
 }
+
+if ( ! function_exists('timezone_by_offset'))
+{
+    function timezone_by_offset($offset) {
+        $offset = ($offset+1) * 60 * 60;
+        $abbrarray = timezone_abbreviations_list();
+
+        foreach ($abbrarray as $abbr) {
+            foreach ($abbr as $city) {
+                if ($city['offset'] == $offset) { 
+                    return $city['timezone_id'];
+                }
+            }
+        }
+        return false;
+    } 
+}
+
+if ( ! function_exists('get_code_by_timezone_name'))
+{
+    function get_code_by_timezone_name($timezone_name = 'Asia/Ho_Chi_Minh') {
+
+        $abbrarray = timezone_abbreviations_list();
+
+        foreach ($abbrarray as $abbr) {
+            foreach ($abbr as $city) {
+                if ($city['timezone_id'] == $timezone_name) { 
+                    $offset = ($city['offset'] / 3600);
+                    
+                    $timezones = timezones();
+                    
+                    foreach ($timezones as $k => $tz) {
+                        if ($tz == $offset)
+                            return $k;
+                    }
+                    
+                }
+            }
+        }
+
+        return false;
+
+    }
+}
+
+if ( ! function_exists('current_local_time_by_timezone_code'))
+{
+    function current_local_time_by_timezone_code($timezone_code = 'UTC') {
+        return gmt_to_local(local_to_gmt(time()), $timezone_code);
+    }
+}
+
+if ( ! function_exists('strleft'))
+{
+    function strleft($s1, $s2) { return substr($s1, 0, strpos($s1, $s2)); }
+}
+
+/**
+ * Self URL
+ *
+ * Returns the full URL (including segments and query string parameter) of the page where this
+ * function is placed
+ *
+ * @access	public
+ * @return	string
+ */
+
+if ( ! function_exists('selfURL'))
+{
+    function selfURL() {
+
+        $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+        $protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")).$s;
+        $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+
+        return $protocol."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
+
+    }
+}
+
+if ( ! function_exists('appendQueryString')) {
+    
+    function appendQueryString($origin_url, $param, $value='') {
+        
+        $origin_url = removeQueryString($origin_url, $param);
+            
+        if (strpos($origin_url, "?"))
+            $origin_url .= "&$param=".urlencode($value);
+        else
+            $origin_url .= "?$param=".urlencode($value);
+            
+        
+        return $origin_url;
+            
+    }
+    
+}
+
+if ( ! function_exists('removeQueryString')) {
+    
+    function removeQueryString($origin_url, $param) {
+        
+        $origin_url = preg_replace('/(?:&|(\?))' . $param . '=[^&]*(?(1)&|)?/i', "$1", $origin_url);
+        
+        if (strpos($origin_url, '?') == (strlen($origin_url) - 1)) {
+            $origin_url = str_replace("?", "", $origin_url);
+        }
+        
+        return $origin_url;
+        
+    }
+    
+}
+
+if ( ! function_exists('curPageURL'))
+{
+    function curPageURL() {
+
+        $pageURL = 'http';
+
+        if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+        $pageURL .= "://";
+        if ($_SERVER["SERVER_PORT"] != "80") {
+        $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+        } else {
+        $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+        }
+        return $pageURL;
+
+    }
+}
+
+if ( ! function_exists('direct_url'))
+{
+    function direct_url($url) {
+
+        $url = str_replace('\\', '/', $url);
+        return preg_replace('/\/([A-Za-z0-9-_.]*)\/\../', '', $url);
+
+    }
+}
+
+if ( ! function_exists('validate_uri'))
+{
+    function validate_uri($uri, $uri_pattern, $prefix = '', $suffix = '') {
+        
+        if ($prefix != '')
+            $preg_prefix = $prefix.'(\/)';
+        else
+            $preg_prefix = '';
+        
+        if ($suffix != '')
+            $preg_suffix = '\\'.$suffix;
+        else
+            $preg_suffix = '';
+        
+        $pattern = '/'.$preg_prefix.$uri_pattern.'('.$preg_suffix.')$/';
+        
+        $uri = $prefix.'/'.$uri.$suffix;
+        
+        if (preg_match($pattern, $uri))
+            return true;
+        else
+            return false;
+        
+    }
+}
+
+// ------------------------------------------------------------------------
+
+/**
+ * Header Redirect
+ *
+ * Header redirect in two flavors
+ * For very fine grained control over headers, you could use the Output
+ * Library's set_header() function.
+ *
+ * @access	public
+ * @param	string	the URL
+ * @param	string	the method: location or redirect
+ * @return	string
+ */
+if ( ! function_exists('redirect'))
+{
+	function redirect($uri = '', $method = 'location', $http_response_code = 302, $error_message = '', $error_type = null)
+	{
+		if ( ! preg_match('#^https?://#i', $uri))
+		{
+			$uri = site_url().$uri;
+		}
+                
+                if ($error_message != '') {
+                    $uri = appendQueryString($uri, 'errmsg', $error_message);
+                    $uri = appendQueryString($uri, 'errtype', $error_type);
+                }
+                else {
+                    $uri = removeQueryString($uri, 'errmsg');
+                    $uri = removeQueryString($uri, 'errtype');
+                }
+
+		switch($method)
+		{
+			case 'refresh'	: header("Refresh:0;url=".$uri);
+				break;
+			default			: header("Location: ".$uri, TRUE, $http_response_code);
+				break;
+		}
+		exit;
+	}
+}
