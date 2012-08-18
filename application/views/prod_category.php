@@ -39,8 +39,8 @@
                 <td><?php echo $prod_category['name']; ?></td>
                 <td>
                     <?php echo $prod_category['picture'] ? 
-                    '<a href="'.direct_url(base_url(UPLOAD_IMAGE_URL.$image_group_code.'/'.$prod_category['picture'])).'" title="'.$prod_category['description'].'" rel="prettyPhoto">
-                        <img src="'.direct_url(base_url(UPLOAD_IMAGE_URL.$image_group_code.'/'.str_replace(array('.jpg','.png','.gif','.JPG','.PNG','.GIF'), array(BO_PROD_CATEGORY_IMG_SUFFIX.'.jpg',BO_PROD_CATEGORY_IMG_SUFFIX.'.png',BO_PROD_CATEGORY_IMG_SUFFIX.'.gif',BO_PROD_CATEGORY_IMG_SUFFIX.'.JPG',BO_PROD_CATEGORY_IMG_SUFFIX.'.PNG',BO_PROD_CATEGORY_IMG_SUFFIX.'.GIF'), $prod_category['picture']))).'" alt="'.$prod_category['name'].'" />
+                    '<a href="'.direct_url(base_url(config_item('source_image').$image_group_code.'/'.$prod_category['picture'])).'" title="'.$prod_category['description'].'" rel="prettyPhoto">
+                        <img src="'.direct_url(base_url(config_item('source_image').$image_group_code.'/'.str_replace(array('.jpg','.png','.gif','.JPG','.PNG','.GIF'), array(BO_PROD_CATEGORY_IMG_SUFFIX.'.jpg',BO_PROD_CATEGORY_IMG_SUFFIX.'.png',BO_PROD_CATEGORY_IMG_SUFFIX.'.gif',BO_PROD_CATEGORY_IMG_SUFFIX.'.JPG',BO_PROD_CATEGORY_IMG_SUFFIX.'.PNG',BO_PROD_CATEGORY_IMG_SUFFIX.'.GIF'), $prod_category['picture']))).'" alt="'.$prod_category['name'].'" />
                     </a>' : lang('txt_no_picture'); ?>
                 </td>
                 <td><?php echo $prod_category['description']; ?></td>

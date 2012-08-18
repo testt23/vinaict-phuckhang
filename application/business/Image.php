@@ -15,7 +15,7 @@
                 function upload($field, $group_code, $data) {
 
                     $ci =& get_instance();
-                    $upload_path = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
+                    $upload_path = config_item('source_image');
                     
                     $config['upload_path'] = realpath($upload_path).'/'.$group_code.'/';
                     $img_size = ImageGroup::getImageSizeData($group_code);
@@ -205,7 +205,7 @@
                     $image_group = new ImageGroup();
                     $image_group->get($this->id_image_group);
                     
-                    $upload_image_path = direct_url(base_url(UPLOAD_IMAGE_URL));
+                    $upload_image_path = direct_url(base_url(config_item('source_image')));
                     
                     $image_size = ImageGroup::getImageSizeData($image_group->code);
                     
@@ -303,7 +303,7 @@
                 
                 public static function getImageGalleryTree($folder_name = '') {
                     
-                    $dir = defined('UPLOAD_IMAGE_URL') ? UPLOAD_IMAGE_URL : config_item('upload_path').'images';
+                    $dir = config_item('source_image');
                     $dir = realpath($dir).($folder_name == '' ? '' : '/'.$folder_name);
                     
                     $files = preg_grep('/^([^.])/', scandir($dir));
