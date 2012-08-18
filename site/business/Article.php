@@ -92,7 +92,7 @@ class Article extends Article_model {
         if (empty($url)){
             return $this->image_default;
         }
-        return file_exists(direct_url(UPLOAD_IMAGE_URL.$url)) ? base_url(UPLOAD_IMAGE_URL.$url) : base_url(config_item('upload_path').'images/'.self::get_image_group_code().'/default.png');
+        return file_exists(direct_url(config_item('source_image').$url)) ? base_url(config_item('source_image').$url) : base_url(config_item('upload_path').'images/'.self::get_image_group_code().'/default.png');
     }
     
     public function get_content_html($string){
