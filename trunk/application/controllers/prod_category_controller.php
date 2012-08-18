@@ -226,9 +226,8 @@
             if ($prod_category->validateInput()) {
                 $prod_category->update();
                 if ($_FILES['image']['size'] > 0 && !empty($_FILES['image']['tmp_name'])){
-                    $prod_category->addPicture();
+                    if ($prod_category->addPicture()) redirect($back);
                 }
-                redirect($back);
             }
             
         }

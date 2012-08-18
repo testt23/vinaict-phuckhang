@@ -14,7 +14,11 @@ class Image_controller extends CI_Controller {
             $config['source_image'] = $config['upload_path'].$config['source_image'];
             $config['new_image'] = $config['new_image'];
             $config['create_thumb'] = FALSE;
-            $this->load->library('image_lib', $config);
+            
+            if ($this->load->library('image_lib', $config) == FALSE) {
+                echo '[0]'.$this->image_lib->display_errors();
+                die;
+            }
 
             if ($this->image_lib->resize())
                 echo '[1]';
