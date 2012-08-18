@@ -77,7 +77,7 @@ class CI_Router {
 	 * @access public
 	 */
 	var $default_controller;
-	var $controller_suffix = '';
+
 	/**
 	 * Constructor
 	 *
@@ -144,29 +144,7 @@ class CI_Router {
 		// Set the default controller so we can display it in the event
 		// the URI doesn't correlated to a valid controller.
 		$this->default_controller = ( ! isset($this->routes['default_controller']) OR $this->routes['default_controller'] == '') ? FALSE : strtolower($this->routes['default_controller']);
-		$this->directory = ( ! isset($this->routes['directory']) OR $this->routes['directory'] == '') ? FALSE : strtolower($this->routes['directory']);
-		$this->controller_suffix = ( ! isset($this->routes['controller_suffix']) OR $this->routes['controller_suffix'] == '') ? FALSE : strtolower($this->routes['controller_suffix']);
-	
-		// Process $_SERVER['QUERY_STRING'] which is not 'controller_trigger' in config.php file
-		if (!isset($_GET[$this->config->item('controller_trigger')]) && $_SERVER['QUERY_STRING']) {
-			$app_folder = trim(str_replace($_SERVER['DOCUMENT_ROOT'], '', str_replace('\\', '/', APPPATH)), '/');
-			$request_uri = trim(str_replace($app_folder, '', trim($_SERVER['REQUEST_URI'], '/')),'/');
-			
-			if ($_SERVER['QUERY_STRING'] && $_SERVER['QUERY_STRING'] != '')
-				$request_uri = trim(str_replace(trim($_SERVER['QUERY_STRING']), '', $request_uri),'/');
-			
-			$request_uri = trim(str_replace('?', '', $request_uri),'/');
-			$s = explode('/', $request_uri);
-			
-			if (count($s) > 1) {
-				$this->set_class(trim($this->uri->_filter_uri($s[0].$this->controller_suffix)));
-				$this->set_method(trim($this->uri->_filter_uri($s[1])));
-			}
-			elseif (count($s) == 1) {
-				$this->set_class(trim($this->uri->_filter_uri($s[0].$this->controller_suffix)));
-			}
-		}
-		
+
 		// Were there any query string segments?  If so, we'll validate them and bail out since we're done.
 		if (count($segments) > 0)
 		{
@@ -205,10 +183,6 @@ class CI_Router {
 	 */
 	function _set_default_controller()
 	{
-		if ($this->directory && $this->directory != '') {
-			$this->default_controller = $this->directory.'/'.$this->default_controller;
-		}
-		
 		if ($this->default_controller === FALSE)
 		{
 			show_error("Unable to determine what should be displayed. A default route has not been specified in the routing file.");
@@ -217,9 +191,9 @@ class CI_Router {
 		if (strpos($this->default_controller, '/') !== FALSE)
 		{
 			$x = explode('/', $this->default_controller);
-			// VinaICT: Try to remove
-			//$this->set_class($x[0]);
-			//$this->set_method($x[1]);
+
+			$this->set_class($x[0]);
+			$this->set_method($x[1]);
 			$this->_set_request($x);
 		}
 		else
@@ -257,8 +231,7 @@ class CI_Router {
 			return $this->_set_default_controller();
 		}
 
-		// VinaICT: Add controller_suffix when load class
-		$this->set_class($segments[0].($this->controller_suffix && $this->controller_suffix != '' ? $this->controller_suffix : ''));
+		$this->set_class($segments[0]);
 
 		if (isset($segments[1]))
 		{
@@ -295,15 +268,6 @@ class CI_Router {
 			return $segments;
 		}
 
-		// VinaICT: Add controller_suffix when load class
-		if ($this->controller_suffix) {
-			// Does the requested controller exist in the root folder?
-			if (file_exists(APPPATH.'controllers/'.$segments[0].$this->controller_suffix.EXT))
-			{
-				return $segments;
-			}
-		}
-		
 		// Does the requested controller exist in the root folder?
 		if (file_exists(APPPATH.'controllers/'.$segments[0].'.php'))
 		{
@@ -325,9 +289,11 @@ class CI_Router {
 					if ( ! empty($this->routes['404_override']))
 					{
 						$x = explode('/', $this->routes['404_override']);
+
 						$this->set_directory('');
 						$this->set_class($x[0]);
 						$this->set_method(isset($x[1]) ? $x[1] : 'index');
+
 						return $x;
 					}
 					else
@@ -342,6 +308,7 @@ class CI_Router {
 				if (strpos($this->default_controller, '/') !== FALSE)
 				{
 					$x = explode('/', $this->default_controller);
+
 					$this->set_class($x[0]);
 					$this->set_method($x[1]);
 				}
@@ -359,6 +326,7 @@ class CI_Router {
 				}
 
 			}
+
 			return $segments;
 		}
 
@@ -368,8 +336,10 @@ class CI_Router {
 		if ( ! empty($this->routes['404_override']))
 		{
 			$x = explode('/', $this->routes['404_override']);
+
 			$this->set_class($x[0]);
 			$this->set_method(isset($x[1]) ? $x[1] : 'index');
+
 			return $x;
 		}
 
@@ -392,17 +362,9 @@ class CI_Router {
 	 */
 	function _parse_routes()
 	{
-		if ($this->directory && $this->directory != '') {
-			$this->uri->segments[count($this->uri->segments)] = '';
-			for ($i = count($this->uri->segments) - 1; $i > 0; $i--) {
-				$this->uri->segments[$i] = $this->uri->segments[$i - 1];
-			}
-			$this->uri->segments[0] = $this->directory;
-		}
-		
 		// Turn the segment array into a URI string
 		$uri = implode('/', $this->uri->segments);
-		
+
 		// Is there a literal match?  If so we're done
 		if (isset($this->routes[$uri]))
 		{
@@ -488,6 +450,7 @@ class CI_Router {
 		{
 			return 'index';
 		}
+
 		return $this->method;
 	}
 

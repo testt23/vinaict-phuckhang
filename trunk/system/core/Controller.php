@@ -30,7 +30,7 @@
 class CI_Controller {
 
 	private static $instance;
-	public $data;
+
 	/**
 	 * Constructor
 	 */
@@ -48,10 +48,6 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 
-		if ($errmsg = $this->input->get_post('errmsg')) {
-			$errtype = $this->input->get_post('errtype') ? $this->input->get_post('errtype') : MSG_INFO;
-			MessageHandler::add($errmsg, $errtype, MESSAGE_ONLY);
-		}
 		$this->load->initialize();
 		
 		log_message('debug', "Controller Class Initialized");

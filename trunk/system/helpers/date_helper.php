@@ -116,7 +116,7 @@ if ( ! function_exists('standard_date'))
 						'DATE_COOKIE'	=>	'%l, %d-%M-%y %H:%i:%s UTC',
 						'DATE_ISO8601'	=>	'%Y-%m-%dT%H:%i:%s%Q',
 						'DATE_RFC822'	=>	'%D, %d %M %y %H:%i:%s %O',
-						'DATE_RFC850'	=>	'%l, %d-%M-%y %H:%m:%i UTC',
+						'DATE_RFC850'	=>	'%l, %d-%M-%y %H:%i:%s UTC',
 						'DATE_RFC1036'	=>	'%D, %d %M %y %H:%i:%s %O',
 						'DATE_RFC1123'	=>	'%D, %d %M %Y %H:%i:%s %O',
 						'DATE_RSS'		=>	'%D, %d %M %Y %H:%i:%s %O',
@@ -606,56 +606,6 @@ if ( ! function_exists('timezones'))
 	}
 }
 
-if ( ! function_exists('timezone_by_offset'))
-{
-    function timezone_by_offset($offset) {
-        $offset = ($offset+1) * 60 * 60;
-        $abbrarray = timezone_abbreviations_list();
-
-        foreach ($abbrarray as $abbr) {
-            foreach ($abbr as $city) {
-                if ($city['offset'] == $offset) { 
-                    return $city['timezone_id'];
-                }
-            }
-        }
-        return false;
-    } 
-}
-
-if ( ! function_exists('get_code_by_timezone_name'))
-{
-    function get_code_by_timezone_name($timezone_name = 'Asia/Ho_Chi_Minh') {
-
-        $abbrarray = timezone_abbreviations_list();
-
-        foreach ($abbrarray as $abbr) {
-            foreach ($abbr as $city) {
-                if ($city['timezone_id'] == $timezone_name) { 
-                    $offset = ($city['offset'] / 3600);
-                    
-                    $timezones = timezones();
-                    
-                    foreach ($timezones as $k => $tz) {
-                        if ($tz == $offset)
-                            return $k;
-                    }
-                    
-                }
-            }
-        }
-
-        return false;
-
-    }
-}
-
-if ( ! function_exists('current_local_time_by_timezone'))
-{
-    function current_local_time_by_timezone_code($timezone_code = 'UTC') {
-        return gmt_to_local(local_to_gmt(time()), $timezone_code);
-    }
-}
 
 /* End of file date_helper.php */
 /* Location: ./system/helpers/date_helper.php */
