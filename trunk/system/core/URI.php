@@ -35,6 +35,7 @@ class CI_URI {
 	 * @access public
 	 */
 	var	$keyval			= array();
+	
 	/**
 	 * Current uri string
 	 *
@@ -42,6 +43,7 @@ class CI_URI {
 	 * @access public
 	 */
 	var $uri_string;
+	
 	/**
 	 * List of uri segments
 	 *
@@ -49,6 +51,7 @@ class CI_URI {
 	 * @access public
 	 */
 	var $segments		= array();
+	
 	/**
 	 * Re-indexed list of uri segments
 	 * Starts at 1 instead of 0
@@ -92,7 +95,6 @@ class CI_URI {
 				$this->_set_uri_string($this->_parse_cli_args());
 				return;
 			}
-
 			// Let's try the REQUEST_URI first, this will work in most situations
 			if ($uri = $this->_detect_uri())
 			{
